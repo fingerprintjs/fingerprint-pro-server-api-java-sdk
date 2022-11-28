@@ -1,0 +1,17 @@
+{
+  "modelPackage": "com.fingerprint.models",
+  "apiPackage": "com.fingerprint.api",
+  "invokerPackage": "com.fingerprint.sdk",
+  "artifactVersion": "0.0.0",
+  "developerName": "Fingerprint",
+  "developerEmail": "support@fingerprint.com",
+  "developerOrganization": "Fingerprint",
+  "developerOrganizationUrl": "https://www.fingerprint.com",
+  "sourceFolder": "src",
+  "groupId": "com.fingerprint",
+  "artifactId": "fingerprint-pro-server-api-sdk",
+  "artifactUrl": "https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk",
+  "licenseName": "MIT",
+  "licenseUrl": "https://choosealicense.com/licenses/mit",
+  "useOas2": true
+}

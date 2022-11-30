@@ -8,12 +8,10 @@ import io.github.cdimascio.dotenv.Dotenv;
 
 public class FunctionalTests {
     public static void main(String... args) {
-        Dotenv dotenv = Dotenv.configure().load();
-
-        final String FPJS_API_SECRET = dotenv.get("FPJS_API_SECRET");
-        final String FPJS_VISITOR_ID = dotenv.get("FPJS_VISITOR_ID");
-        final String FPJS_REQUEST_ID = dotenv.get("FPJS_REQUEST_ID");
-        final String FPJS_API_REGION = dotenv.get("FPJS_API_REGION");
+        final String FPJS_API_SECRET = System.getenv("FPJS_API_SECRET");
+        final String FPJS_VISITOR_ID = System.getenv("FPJS_VISITOR_ID");
+        final String FPJS_REQUEST_ID = System.getenv("FPJS_REQUEST_ID");
+        final String FPJS_API_REGION = System.getenv("FPJS_API_REGION");
 
         ApiClient client = Configuration.getDefaultApiClient(FPJS_API_SECRET, FPJS_API_REGION != null ? FPJS_API_REGION : "eu");
         FingerprintApi api = new FingerprintApi(client);

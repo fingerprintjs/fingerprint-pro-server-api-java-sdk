@@ -106,6 +106,13 @@ ext {
     junit_version = "4.12"
 }
 
+task runFunctionalTests(type: JavaExec) {
+    group = "functional tests"
+    description = "Run the Functional Tests"
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'main.FunctionalTests'
+}
+
 dependencies {
     compile "io.swagger:swagger-annotations:$swagger_annotations_version"
     compile 'com.squareup.okhttp:okhttp:2.7.5'

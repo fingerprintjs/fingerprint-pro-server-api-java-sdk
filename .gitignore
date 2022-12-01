@@ -13,3 +13,4 @@ build
 .idea
 .vscode
 .env
+release/node_modules

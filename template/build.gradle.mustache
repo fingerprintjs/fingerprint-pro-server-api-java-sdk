@@ -136,3 +136,8 @@ dependencies {
     implementation 'org.mockito:mockito-all:1.10.19'
     implementation 'io.github.cdimascio:java-dotenv:5.2.2'
 }
+
+task fatJar(type: Jar) {
+    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}

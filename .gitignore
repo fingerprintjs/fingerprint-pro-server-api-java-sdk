@@ -14,3 +14,4 @@ build
 .vscode
 .env
 release/node_modules
+.DS_Store

@@ -61,7 +61,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.fingerprint</groupId>
   <artifactId>fingerprint-pro-server-api-sdk</artifactId>
-  <version>0.0.0</version>
+  <version>dev-1.0.0-1</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -71,7 +71,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.fingerprint:fingerprint-pro-server-api-sdk:0.0.0"
+compile "com.fingerprint:fingerprint-pro-server-api-sdk:dev-1.0.0-1"
 ```
 
 ### Others
@@ -84,7 +84,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/fingerprint-pro-server-api-sdk-0.0.0.jar`
+* `target/fingerprint-pro-server-api-sdk-dev-1.0.0-1.jar`
 * `target/lib/*.jar`
 
 ## Getting Started

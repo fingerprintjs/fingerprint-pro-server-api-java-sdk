@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Map;
 
 public class FingerprintApi {
-    public static final String INTEGRATION_INFO = "fingerprint-pro-server-java-sdk/0.0.0";
+    public static final String INTEGRATION_INFO = "fingerprint-pro-server-java-sdk/dev-1.0.0-1";
     private ApiClient apiClient;
 
     public FingerprintApi() {

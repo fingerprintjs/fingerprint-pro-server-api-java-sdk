@@ -2,7 +2,7 @@
   "modelPackage": "com.fingerprint.models",
   "apiPackage": "com.fingerprint.api",
   "invokerPackage": "com.fingerprint.sdk",
-  "artifactVersion": "0.0.0",
+  "artifactVersion": "dev-1.0.0-1",
   "developerName": "Fingerprint",
   "developerEmail": "support@fingerprint.com",
   "developerOrganization": "Fingerprint",

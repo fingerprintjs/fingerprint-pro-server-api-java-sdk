@@ -2,7 +2,7 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 group = 'com.fingerprint'
-version = '0.0.0'
+version = 'dev-1.0.0-1'
 
 buildscript {
     repositories {

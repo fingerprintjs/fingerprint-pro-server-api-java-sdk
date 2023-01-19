@@ -1,11 +1,13 @@
 apply plugin: 'idea'
 apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
 
 group = 'com.fingerprint'
 version = 'dev-1.0.0-1'
 
 buildscript {
     repositories {
+        mavenLocal()
         jcenter()
     }
     dependencies {
@@ -15,6 +17,7 @@ buildscript {
 }
 
 repositories {
+    mavenLocal()
     jcenter()
 }
 
@@ -128,4 +131,15 @@ dependencies {
 jar {
     exclude 'main/**'
     from configurations.runtime.collect { zipTree(it) }
+}
+
+publishing {
+    publications {
+        localPublication(MavenPublication) {
+            artifact jar
+            groupId 'com.fingerprint'
+            artifactId 'fingerprint-pro-server-api-sdk'
+            version 'dev-1.0.0-1'
+        }
+    }
 }

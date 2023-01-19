@@ -1,11 +1,13 @@
 apply plugin: 'idea'
 apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
 
 group = '{{groupId}}'
 version = '{{artifactVersion}}'
 
 buildscript {
     repositories {
+        mavenLocal()
         jcenter()
     }
     dependencies {
@@ -15,6 +17,7 @@ buildscript {
 }
 
 repositories {
+    mavenLocal()
     jcenter()
 }
 
@@ -140,4 +143,15 @@ dependencies {
 jar {
     exclude 'main/**'
     from configurations.runtime.collect { zipTree(it) }
+}
+
+publishing {
+    publications {
+        localPublication(MavenPublication) {
+            artifact jar
+            groupId '{{groupId}}'
+            artifactId '{{artifactId}}'
+            version '{{artifactVersion}}'
+        }
+    }
 }

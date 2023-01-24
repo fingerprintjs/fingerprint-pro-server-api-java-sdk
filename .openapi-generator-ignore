@@ -1,0 +1,7 @@
+.travis.yml
+build.sbt
+git_push.sh
+api/*
+src/test/java/com/fingerprint/model/*
+src/main/AndroidManifest.xml
+.github/workflows/maven.yml

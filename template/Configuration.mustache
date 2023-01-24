@@ -1,0 +1,72 @@
+{{>licenseInfo}}
+
+package {{invokerPackage}};
+
+{{>generatedAnnotation}}
+public class Configuration {
+    private static ApiClient defaultApiClient = new ApiClient();
+
+    /**
+     * Get the default API client, which would be used when creating API
+     * instances without providing an API client.
+     *
+     * @return Default API client
+     */
+    public static ApiClient getDefaultApiClient() {
+        return defaultApiClient;
+    }
+
+    public static ApiClient getDefaultApiClient(String apiKey, Region region) {
+        defaultApiClient.setApiKey(apiKey);
+        defaultApiClient.setBasePath(region.toString());
+        return defaultApiClient;
+    }
+
+    public static ApiClient getDefaultApiClient(String apiKey, String regionStr) {
+        switch (regionStr) {
+            case "eu":
+            case "EU":
+            case "EUROPE":
+            case "europe":
+                defaultApiClient.setBasePath(Region.EUROPE.toString());
+                break;
+            case "global":
+            case "GLOBAL":
+            case "us":
+            case "US":
+            case "usa":
+            case "USA":
+            case "America":
+            case "america":
+            case "AMERICA":
+                defaultApiClient.setBasePath(Region.GLOBAL.toString());
+                break;
+            case "asia":
+            case "Asia":
+            case "as":
+            case "AS":
+                defaultApiClient.setBasePath(Region.ASIA.toString());
+                break;
+            default:
+                defaultApiClient.setBasePath(regionStr);
+        }
+        defaultApiClient.setApiKey(apiKey);
+        return defaultApiClient;
+    }
+
+    public static ApiClient getDefaultApiClient(String apiKey) {
+        defaultApiClient.setApiKey(apiKey);
+        defaultApiClient.setBasePath(Region.GLOBAL.toString());
+        return defaultApiClient;
+    }
+
+    /**
+     * Set the default API client, which would be used when creating API
+     * instances without providing an API client.
+     *
+     * @param apiClient API client
+     */
+    public static void setDefaultApiClient(ApiClient apiClient) {
+        defaultApiClient = apiClient;
+    }
+}

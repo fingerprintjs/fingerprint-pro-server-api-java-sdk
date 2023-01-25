@@ -47,7 +47,7 @@ import com.fingerprint.sdk.JSON;
   IPLocation.JSON_PROPERTY_CONTINENT,
   IPLocation.JSON_PROPERTY_SUBDIVISIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-25T11:57:30.688477+03:00[Europe/Istanbul]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class IPLocation {
   public static final String JSON_PROPERTY_ACCURACY_RADIUS = "accuracyRadius";
   private Integer accuracyRadius;

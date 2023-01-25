@@ -56,7 +56,7 @@ import com.fingerprint.sdk.JSON;
   ProductsResponseIdentificationData.JSON_PROPERTY_LAST_SEEN_AT,
   ProductsResponseIdentificationData.JSON_PROPERTY_VISITOR_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-25T11:57:30.688477+03:00[Europe/Istanbul]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProductsResponseIdentificationData {
   public static final String JSON_PROPERTY_REQUEST_ID = "requestId";
   private String requestId;

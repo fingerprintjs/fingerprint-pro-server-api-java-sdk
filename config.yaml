@@ -8,3 +8,4 @@ gitHost: github.com
 gitRepoId: fingerprint-pro-server-api-java-sdk
 gitUserId: fingerprintjs
 library: jersey2
+hideGenerationTimestamp: true

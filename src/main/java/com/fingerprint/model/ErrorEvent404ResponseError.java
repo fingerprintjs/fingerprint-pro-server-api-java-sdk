@@ -35,7 +35,7 @@ import com.fingerprint.sdk.JSON;
   ErrorEvent404ResponseError.JSON_PROPERTY_CODE,
   ErrorEvent404ResponseError.JSON_PROPERTY_MESSAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-24T04:06:37.641076+03:00[Europe/Istanbul]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-25T11:57:30.688477+03:00[Europe/Istanbul]")
 public class ErrorEvent404ResponseError {
   /**
    * Error code:  * &#x60;RequestNotFound&#x60; - request not found for specified id 

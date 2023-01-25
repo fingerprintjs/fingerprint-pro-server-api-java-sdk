@@ -35,7 +35,7 @@ import com.fingerprint.sdk.JSON;
   Subdivision.JSON_PROPERTY_ISO_CODE,
   Subdivision.JSON_PROPERTY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-24T04:06:37.641076+03:00[Europe/Istanbul]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-25T11:57:30.688477+03:00[Europe/Istanbul]")
 public class Subdivision {
   public static final String JSON_PROPERTY_ISO_CODE = "isoCode";
   private String isoCode;

@@ -40,7 +40,7 @@ import com.fingerprint.sdk.JSON;
   BotdResult.JSON_PROPERTY_URL,
   BotdResult.JSON_PROPERTY_BOT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-24T04:06:37.641076+03:00[Europe/Istanbul]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-25T11:57:30.688477+03:00[Europe/Istanbul]")
 public class BotdResult {
   public static final String JSON_PROPERTY_IP = "ip";
   private String ip;

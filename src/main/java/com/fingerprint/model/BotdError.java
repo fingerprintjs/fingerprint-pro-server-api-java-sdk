@@ -35,7 +35,7 @@ import com.fingerprint.sdk.JSON;
   BotdError.JSON_PROPERTY_CODE,
   BotdError.JSON_PROPERTY_MESSAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-24T04:06:37.641076+03:00[Europe/Istanbul]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-25T11:57:30.688477+03:00[Europe/Istanbul]")
 public class BotdError {
   /**
    * Error code:  * &#x60;TooManyRequests&#x60; - the limit on secret API key requests per second has been exceeded  * &#x60;Failed&#x60; - internal server error 

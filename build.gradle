@@ -122,3 +122,10 @@ jar {
     duplicatesStrategy 'exclude'
     from configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
 }
+
+task runFunctionalTests(type: JavaExec) {
+group = "execute"
+description = "Run the Functional Tests"
+classpath = sourceSets.main.runtimeClasspath
+main = 'com.fingerprint.example.FunctionalTests'
+}

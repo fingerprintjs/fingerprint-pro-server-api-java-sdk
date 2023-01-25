@@ -35,7 +35,7 @@ import com.fingerprint.sdk.JSON;
   ErrorEvent403ResponseError.JSON_PROPERTY_CODE,
   ErrorEvent403ResponseError.JSON_PROPERTY_MESSAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-24T04:06:37.641076+03:00[Europe/Istanbul]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-25T11:57:30.688477+03:00[Europe/Istanbul]")
 public class ErrorEvent403ResponseError {
   /**
    * Error code:  * &#x60;TokenRequired&#x60; - &#x60;Auth-API-Key&#x60; header is missing or empty  * &#x60;TokenNotFound&#x60; - subscription not found for specified secret key  * &#x60;SubscriptionNotActive&#x60; - subscription is not active  * &#x60;WrongRegion&#x60; - server and subscription region differ 

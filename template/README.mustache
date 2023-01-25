@@ -36,7 +36,12 @@
 Building the API client library requires:
 
 1. Java 1.8+
+{{#jersey2}}
 2. Maven (3.8.3+)/Gradle (7.2+)
+{{/jersey2}}
+{{^jersey2}}
+2. Maven/Gradle
+{{/jersey2}}
 
 ## Installation
 
@@ -60,9 +65,9 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-  <groupId>com.fingerprint</groupId>
-  <artifactId>fingerprint-pro-server-api-sdk</artifactId>
-  <version>dev-1.0.0-2</version>
+  <groupId>{{{groupId}}}</groupId>
+  <artifactId>{{{artifactId}}}</artifactId>
+  <version>{{{artifactVersion}}}</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -73,12 +78,12 @@ Add this dependency to your project's build file:
 
 ```groovy
   repositories {
-    mavenCentral()     // Needed if the 'fingerprint-pro-server-api-sdk' jar has been published to maven central.
-    mavenLocal()       // Needed if the 'fingerprint-pro-server-api-sdk' jar has been published to the local maven repo.
+    mavenCentral()     // Needed if the '{{{artifactId}}}' jar has been published to maven central.
+    mavenLocal()       // Needed if the '{{{artifactId}}}' jar has been published to the local maven repo.
   }
 
   dependencies {
-     implementation "com.fingerprint:fingerprint-pro-server-api-sdk:dev-1.0.0-2"
+     implementation "{{{groupId}}}:{{{artifactId}}}:{{{artifactVersion}}}"
   }
 ```
 
@@ -92,18 +97,19 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/fingerprint-pro-server-api-sdk-dev-1.0.0-2.jar`
+- `target/{{{artifactId}}}-{{{artifactVersion}}}.jar`
 
+{{#jersey2}}
 ## Usage
 
 To add a HTTP proxy for the API client, use `ClientConfig`:
 ```java
-
+{{#apiInfo}}{{#apis}}{{#-first}}{{#operations}}{{#operation}}{{#-first}}
 import org.glassfish.jersey.apache.connector.ApacheConnectorProvider;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.ClientProperties;
-import com.fingerprint.sdk.*;
-import com.fingerprint.api.FingerprintApi;
+import {{{invokerPackage}}}.*;
+import {{{package}}}.{{{classname}}};
 
 ...
 
@@ -115,10 +121,11 @@ clientConfig.property(ClientProperties.PROXY_USERNAME, "proxy_username");
 clientConfig.property(ClientProperties.PROXY_PASSWORD, "proxy_password");
 defaultClient.setClientConfig(clientConfig);
 
-FingerprintApi apiInstance = new FingerprintApi(defaultClient);
-
+{{{classname}}} apiInstance = new {{{classname}}}(defaultClient);
+{{/-first}}{{/operation}}{{/operations}}{{/-first}}{{/apis}}{{/apiInfo}}
 ```
 
+{{/jersey2}}
 ## Getting Started
 
 Please follow the [installation](#installation) instruction and execute the following Java code:
@@ -200,62 +207,45 @@ public class FingerprintApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.fpjs.io*
+All URIs are relative to *{{basePath}}*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*FingerprintApi* | [**getEvent**](docs/FingerprintApi.md#getEvent) | **GET** /events/{request_id} | Get event by requestId
-*FingerprintApi* | [**getVisits**](docs/FingerprintApi.md#getVisits) | **GET** /visitors/{visitor_id} | Get visits by visitorId
-*FingerprintApi* | [**webhookTrace**](docs/FingerprintApi.md#webhookTrace) | **TRACE** /webhook | 
-
+{{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}*{{classname}}* | [**{{operationId}}**]({{apiDocPath}}{{classname}}.md#{{operationId}}) | **{{httpMethod}}** {{commonPath}}{{path}} | {{summary}}
+{{/operation}}{{/operations}}{{/apis}}{{/apiInfo}}
 
 ## Documentation for Models
 
- - [BotdDetectionResult](docs/BotdDetectionResult.md)
- - [BotdError](docs/BotdError.md)
- - [BotdResult](docs/BotdResult.md)
- - [BrowserDetails](docs/BrowserDetails.md)
- - [Confidence](docs/Confidence.md)
- - [ErrorEvent403Response](docs/ErrorEvent403Response.md)
- - [ErrorEvent403ResponseError](docs/ErrorEvent403ResponseError.md)
- - [ErrorEvent404Response](docs/ErrorEvent404Response.md)
- - [ErrorEvent404ResponseError](docs/ErrorEvent404ResponseError.md)
- - [ErrorVisits403](docs/ErrorVisits403.md)
- - [EventResponse](docs/EventResponse.md)
- - [IPLocation](docs/IPLocation.md)
- - [IPLocationCity](docs/IPLocationCity.md)
- - [IdentificationError](docs/IdentificationError.md)
- - [Location](docs/Location.md)
- - [ManyRequestsResponse](docs/ManyRequestsResponse.md)
- - [ProductsResponse](docs/ProductsResponse.md)
- - [ProductsResponseBotd](docs/ProductsResponseBotd.md)
- - [ProductsResponseIdentification](docs/ProductsResponseIdentification.md)
- - [ProductsResponseIdentificationData](docs/ProductsResponseIdentificationData.md)
- - [Response](docs/Response.md)
- - [ResponseVisits](docs/ResponseVisits.md)
- - [SeenAt](docs/SeenAt.md)
- - [Subdivision](docs/Subdivision.md)
- - [Visit](docs/Visit.md)
- - [WebhookVisit](docs/WebhookVisit.md)
-
+{{#models}}{{#model}} - [{{classname}}]({{modelDocPath}}{{classname}}.md)
+{{/model}}{{/models}}
 
 ## Documentation for Authorization
 
-Authentication schemes defined for the API:
-### ApiKeyHeader
+{{^authMethods}}All endpoints do not require authorization.
+{{/authMethods}}Authentication schemes defined for the API:
+{{#authMethods}}### {{name}}
 
-
-- **Type**: API key
-- **API key parameter name**: Auth-API-Key
-- **Location**: HTTP header
-
-### ApiKeyQuery
-
+{{#isApiKey}}
 
 - **Type**: API key
-- **API key parameter name**: api_key
-- **Location**: URL query string
+- **API key parameter name**: {{keyParamName}}
+- **Location**: {{#isKeyInQuery}}URL query string{{/isKeyInQuery}}{{#isKeyInHeader}}HTTP header{{/isKeyInHeader}}
+{{/isApiKey}}
+{{#isBasic}}
 
+- **Type**: HTTP basic authentication
+{{/isBasic}}
+{{#isOAuth}}
+
+- **Type**: OAuth
+- **Flow**: {{flow}}
+- **Authorization URL**: {{authorizationUrl}}
+- **Scopes**: {{^scopes}}N/A{{/scopes}}
+{{#scopes}}  - {{scope}}: {{description}}
+{{/scopes}}
+{{/isOAuth}}
+
+{{/authMethods}}
 
 ## Recommendation
 
@@ -263,5 +253,5 @@ It's recommended to create an instance of `ApiClient` per thread in a multithrea
 
 ## Author
 
-support@fingerprint.com
-
+{{#apiInfo}}{{#apis}}{{#-last}}{{infoEmail}}
+{{/-last}}{{/apis}}{{/apiInfo}}

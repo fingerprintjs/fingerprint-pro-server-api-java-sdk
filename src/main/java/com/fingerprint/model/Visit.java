@@ -55,7 +55,7 @@ import com.fingerprint.sdk.JSON;
   Visit.JSON_PROPERTY_FIRST_SEEN_AT,
   Visit.JSON_PROPERTY_LAST_SEEN_AT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-24T04:06:37.641076+03:00[Europe/Istanbul]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-25T11:57:30.688477+03:00[Europe/Istanbul]")
 public class Visit {
   public static final String JSON_PROPERTY_REQUEST_ID = "requestId";
   private String requestId;

@@ -41,7 +41,7 @@ import com.fingerprint.sdk.JSON;
   Response.JSON_PROPERTY_LAST_TIMESTAMP,
   Response.JSON_PROPERTY_PAGINATION_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-24T04:06:37.641076+03:00[Europe/Istanbul]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-25T11:57:30.688477+03:00[Europe/Istanbul]")
 public class Response {
   public static final String JSON_PROPERTY_VISITOR_ID = "visitorId";
   private String visitorId;

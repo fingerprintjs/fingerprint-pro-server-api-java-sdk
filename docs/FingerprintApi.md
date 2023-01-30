@@ -126,7 +126,7 @@ public class FingerprintApiExample {
         String requestId = "requestId_example"; // String | Filter visits by requestId
         String linkedId = "linkedId_example"; // String | Filter visits by custom identifier
         Integer limit = 56; // Integer | Limit scanned results
-        Integer before = 56; // Integer | Used to paginate results
+        Long before = 56L; // Long | Timestamp (in milliseconds since epoch) used to paginate results
         try {
             Response result = apiInstance.getVisits(visitorIdrequestIdlinkedIdlimitbefore);
             System.out.println(result);
@@ -147,7 +147,7 @@ public class FingerprintApiExample {
 | **requestId** | **String**| Filter visits by requestId | [optional] |
 | **linkedId** | **String**| Filter visits by custom identifier | [optional] |
 | **limit** | **Integer**| Limit scanned results | [optional] |
-| **before** | **Integer**| Used to paginate results | [optional] |
+| **before** | **Long**| Timestamp (in milliseconds since epoch) used to paginate results | [optional] |
 
 ### Return type
 

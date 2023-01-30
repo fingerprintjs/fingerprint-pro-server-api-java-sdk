@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 
 import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mockito;
@@ -28,23 +29,34 @@ public class FingerprintApiTest {
     private final String MOCK_VISITOR_REQUEST_ID = "1655373780901.HhjRFX";
 
 
+    private InputStream getFileAsIOStream(final String fileName) {
+        InputStream ioStream = this.getClass()
+                .getClassLoader()
+                .getResourceAsStream(fileName);
+
+        if (ioStream == null) {
+            throw new IllegalArgumentException(fileName + " is not found");
+        }
+        return ioStream;
+    }
+
     @BeforeAll
     public void before() throws ApiException, IOException {
         api = Mockito.mock(FingerprintApi.class);
         when(api.getEvent(MOCK_REQUEST_ID)).thenReturn(fetchMockEvent());
-        when(api.getVisits(MOCK_VISITOR_ID, MOCK_VISITOR_REQUEST_ID, null, 50, 0)).thenReturn(fetchMockVisit());
+        when(api.getVisits(MOCK_VISITOR_ID, MOCK_VISITOR_REQUEST_ID, null, 50, 0L)).thenReturn(fetchMockVisit());
     }
 
     private EventResponse fetchMockEvent() throws IOException {
         ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-        return mapper.readValue(new FileReader("./mocks/get_event.json"), EventResponse.class);
+        return mapper.readValue(getFileAsIOStream("mocks/get_event.json"), EventResponse.class);
     }
 
     private Response fetchMockVisit() throws IOException {
         ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-        return mapper.readValue(new FileReader("./mocks/visits_limit_500.json"), Response.class);
+        return mapper.readValue(getFileAsIOStream("mocks/visits_limit_500.json"), Response.class);
     }
 
     /**
@@ -70,7 +82,7 @@ public class FingerprintApiTest {
      */
     @Test
     public void getVisitsTest() throws ApiException {
-        Response response = api.getVisits(MOCK_VISITOR_ID, MOCK_VISITOR_REQUEST_ID, null, 50, 0);
+        Response response = api.getVisits(MOCK_VISITOR_ID, MOCK_VISITOR_REQUEST_ID, null, 50, 0L);
         assertEquals(response.getVisitorId(), MOCK_VISITOR_ID);
     }
 

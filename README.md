@@ -75,7 +75,7 @@ Add this dependency to your project's build file:
 At first generate the JAR by executing:
 
 ```shell
-mvn clean package
+gradle jar
 ```
 
 Then manually install the following JARs:

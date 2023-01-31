@@ -6,3 +6,4 @@ src/test/java/com/fingerprint/model/*
 src/main/AndroidManifest.xml
 .github/workflows/maven.yml
 pom.xml
+src/main/AndroidManifest.xml

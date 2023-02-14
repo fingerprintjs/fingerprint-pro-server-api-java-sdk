@@ -21,7 +21,7 @@ fi
 
 echo "VERSION: $VERSION"
 
-gsed -i "s/artifactVersion: .*/artifactVersion: $VERSION/g" config.yaml
+sed -i "s/artifactVersion: .*/artifactVersion: $VERSION/g" config.yaml
 
 rm -rf pom.xml README.md build.gradle settings.gradle gradle.properties
 

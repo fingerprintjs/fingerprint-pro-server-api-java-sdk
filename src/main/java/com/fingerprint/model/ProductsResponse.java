@@ -38,7 +38,7 @@ import com.fingerprint.sdk.JSON;
   ProductsResponse.JSON_PROPERTY_IDENTIFICATION,
   ProductsResponse.JSON_PROPERTY_BOTD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-25T11:57:30.688477+03:00[Europe/Istanbul]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProductsResponse {
   public static final String JSON_PROPERTY_IDENTIFICATION = "identification";
   private ProductsResponseIdentification identification;

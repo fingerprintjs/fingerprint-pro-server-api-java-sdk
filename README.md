@@ -1,3 +1,5 @@
+> :warning: **Work in progress**: This is a beta version of the library
+
 <p align="center">
     <a href="https://fingerprint.com">
         <picture>
@@ -40,20 +42,6 @@ Building the API client library requires:
 
 ## Installation
 
-To install the API client library to your local Maven repository, simply execute:
-
-```shell
-mvn clean install
-```
-
-To deploy it to a remote Maven repository instead, configure the settings of the repository and execute:
-
-```shell
-mvn clean deploy
-```
-
-Refer to the [OSSRH Guide](http://central.sonatype.org/pages/ossrh-guide.html) for more information.
-
 ### Maven users
 
 Add this dependency to your project's POM:
@@ -87,7 +75,7 @@ Add this dependency to your project's build file:
 At first generate the JAR by executing:
 
 ```shell
-mvn clean package
+./gradlew jar
 ```
 
 Then manually install the following JARs:

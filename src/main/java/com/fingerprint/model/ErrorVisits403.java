@@ -34,7 +34,7 @@ import com.fingerprint.sdk.JSON;
 @JsonPropertyOrder({
   ErrorVisits403.JSON_PROPERTY_ERROR
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-25T11:57:30.688477+03:00[Europe/Istanbul]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ErrorVisits403 {
   public static final String JSON_PROPERTY_ERROR = "error";
   private String error;

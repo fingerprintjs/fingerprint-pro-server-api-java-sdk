@@ -57,7 +57,7 @@ import com.fingerprint.sdk.JSON;
   WebhookVisit.JSON_PROPERTY_FIRST_SEEN_AT,
   WebhookVisit.JSON_PROPERTY_LAST_SEEN_AT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-25T11:57:30.688477+03:00[Europe/Istanbul]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class WebhookVisit {
   public static final String JSON_PROPERTY_VISITOR_ID = "visitorId";
   private String visitorId;

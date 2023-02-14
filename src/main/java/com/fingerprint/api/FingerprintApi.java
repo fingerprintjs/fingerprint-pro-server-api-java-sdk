@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-25T11:57:30.688477+03:00[Europe/Istanbul]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FingerprintApi {
   public static final String INTEGRATION_INFO = "fingerprint-pro-server-java-sdk/dev-1.0.0-2";
   private ApiClient apiClient;
@@ -141,7 +141,7 @@ public class FingerprintApi {
    * @param requestId Filter visits by requestId (optional)
    * @param linkedId Filter visits by custom identifier (optional)
    * @param limit Limit scanned results (optional)
-   * @param before Used to paginate results (optional)
+   * @param before Timestamp (in milliseconds since epoch) used to paginate results (optional)
    * @return Response
    * @throws ApiException if fails to make API call
    * @http.response.details
@@ -152,7 +152,7 @@ public class FingerprintApi {
        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - Indicates how long the user should wait before attempting the next request. <br>  </td></tr>
      </table>
    */
-  public Response getVisits(String visitorId, String requestId, String linkedId, Integer limit, Integer before) throws ApiException {
+  public Response getVisits(String visitorId, String requestId, String linkedId, Integer limit, Long before) throws ApiException {
     return getVisitsWithHttpInfo(visitorId, requestId, linkedId, limit, before).getData();
   }
 
@@ -163,7 +163,7 @@ public class FingerprintApi {
    * @param requestId Filter visits by requestId (optional)
    * @param linkedId Filter visits by custom identifier (optional)
    * @param limit Limit scanned results (optional)
-   * @param before Used to paginate results (optional)
+   * @param before Timestamp (in milliseconds since epoch) used to paginate results (optional)
    * @return ApiResponse&lt;Response&gt;
    * @throws ApiException if fails to make API call
    * @http.response.details
@@ -174,7 +174,7 @@ public class FingerprintApi {
        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - Indicates how long the user should wait before attempting the next request. <br>  </td></tr>
      </table>
    */
-  public ApiResponse<Response> getVisitsWithHttpInfo(String visitorId, String requestId, String linkedId, Integer limit, Integer before) throws ApiException {
+  public ApiResponse<Response> getVisitsWithHttpInfo(String visitorId, String requestId, String linkedId, Integer limit, Long before) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'visitorId' is set

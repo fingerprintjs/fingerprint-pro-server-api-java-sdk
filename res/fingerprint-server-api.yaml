@@ -306,11 +306,11 @@ paths:
             format: int32
             minimum: 0
         - name: before
-          description: Used to paginate results
+          description: Timestamp (in milliseconds since epoch) used to paginate results
           in: query
           schema:
             type: integer
-            format: int32
+            format: int64
             minimum: 0
       responses:
         '200':

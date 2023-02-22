@@ -53,10 +53,19 @@ Building the API client library requires:
 Add this dependency to your project's POM:
 
 ```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+```
+
+```xml
 <dependency>
-  <groupId>{{{groupId}}}</groupId>
-  <artifactId>{{{artifactId}}}</artifactId>
-  <version>{{{artifactVersion}}}</version>
+  <groupId>com.github.fingerprintjs</groupId>
+  <artifactId>fingerprint-pro-server-api-java-sdk</artifactId>
+  <version>v{{{artifactVersion}}}</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -67,12 +76,11 @@ Add this dependency to your project's build file:
 
 ```groovy
   repositories {
-    mavenCentral()     // Needed if the '{{{artifactId}}}' jar has been published to maven central.
-    mavenLocal()       // Needed if the '{{{artifactId}}}' jar has been published to the local maven repo.
+     maven { url 'https://jitpack.io' }
   }
 
   dependencies {
-     implementation "{{{groupId}}}:{{{artifactId}}}:{{{artifactVersion}}}"
+     implementation "com.github.fingerprintjs:fingerprint-pro-server-api-java-sdk:v{{{artifactVersion}}}"
   }
 ```
 

@@ -8,6 +8,9 @@
     </a>
 </p>
 <p align="center">
+    <a href="https://jitpack.io/#fingerprintjs/fingerprint-pro-server-api-java-sdk">
+        <img src="https://jitpack.io/v/fingerprintjs/fingerprint-pro-server-api-java-sdk.svg" alt="Jitpack Release" />
+    </a>
     <a href="https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/actions/workflows/release.yml">
         <img src="https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/actions/workflows/release.yml/badge.svg" alt="CI badge" />
     </a>

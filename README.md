@@ -1,5 +1,3 @@
-> :warning: **Work in progress**: This is a beta version of the library
-
 <p align="center">
     <a href="https://fingerprint.com">
         <picture>

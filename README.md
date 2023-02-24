@@ -61,7 +61,6 @@ Add this dependency to your project's POM:
   <groupId>com.github.fingerprintjs</groupId>
   <artifactId>fingerprint-pro-server-api-java-sdk</artifactId>
   <version>v1.0.0</version>
-  <scope>compile</scope>
 </dependency>
 ```
 

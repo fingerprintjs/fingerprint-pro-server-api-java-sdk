@@ -1,11 +1,18 @@
-package com.fingerprint.sdk;
+package {{invokerPackage}};
 
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+{{#openApiNullable}}
 import org.openapitools.jackson.nullable.JsonNullableModule;
+{{/openApiNullable}}
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.fingerprint.model.*;
+{{#joda}}
+import com.fasterxml.jackson.datatype.joda.JodaModule;
+{{/joda}}
+{{#models.0}}
+import {{modelPackage}}.*;
+{{/models.0}}
 
 import java.text.DateFormat;
 import java.util.HashMap;
@@ -15,7 +22,7 @@ import java.util.Set;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.ext.ContextResolver;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+{{>generatedAnnotation}}
 public class JSON implements ContextResolver<ObjectMapper> {
   private ObjectMapper mapper;
 
@@ -30,8 +37,13 @@ public class JSON implements ContextResolver<ObjectMapper> {
     mapper.enable(DeserializationFeature.READ_ENUMS_USING_TO_STRING);
     mapper.setDateFormat(new RFC3339DateFormat());
     mapper.registerModule(new JavaTimeModule());
+    {{#joda}}
+    mapper.registerModule(new JodaModule());
+    {{/joda}}
+    {{#openApiNullable}}
     JsonNullableModule jnm = new JsonNullableModule();
     mapper.registerModule(jnm);
+    {{/openApiNullable}}
   }
 
   /**

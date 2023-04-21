@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**global** | **OffsetDateTime** |  |  |
-|**subscription** | **OffsetDateTime** |  |  |
+|**global** | [**OffsetDateTime**](OffsetDateTime.md) |  |  |
+|**subscription** | [**OffsetDateTime**](OffsetDateTime.md) |  |  |
 
 
 

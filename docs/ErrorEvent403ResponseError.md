@@ -11,11 +11,10 @@
 |**message** | **String** |  |  |
 
 
-
 ## Enum: CodeEnum
 
 | Name | Value |
-|---- | -----|
+|---- | ----- |
 | TOKENREQUIRED | &quot;TokenRequired&quot; |
 | TOKENNOTFOUND | &quot;TokenNotFound&quot; |
 | SUBSCRIPTIONNOTACTIVE | &quot;SubscriptionNotActive&quot; |

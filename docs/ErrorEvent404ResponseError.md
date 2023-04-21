@@ -11,11 +11,10 @@
 |**message** | **String** |  |  |
 
 
-
 ## Enum: CodeEnum
 
 | Name | Value |
-|---- | -----|
+|---- | ----- |
 | REQUESTNOTFOUND | &quot;RequestNotFound&quot; |
 
 

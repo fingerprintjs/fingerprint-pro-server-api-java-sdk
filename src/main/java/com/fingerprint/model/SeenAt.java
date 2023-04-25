@@ -57,7 +57,7 @@ public class SeenAt {
    * @return global
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "2022-05-05T18:28:54.535Z", required = true, value = "")
   @JsonProperty(JSON_PROPERTY_GLOBAL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -83,7 +83,7 @@ public class SeenAt {
    * @return subscription
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "2022-06-09T22:58:05.576Z", required = true, value = "")
   @JsonProperty(JSON_PROPERTY_SUBSCRIPTION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

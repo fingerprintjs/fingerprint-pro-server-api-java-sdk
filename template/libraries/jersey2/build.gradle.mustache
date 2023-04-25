@@ -148,3 +148,16 @@ description = "Run the Functional Tests"
 classpath = sourceSets.main.runtimeClasspath
 main = 'com.fingerprint.example.FunctionalTests'
 }
+
+task removeWrongDocumentationLinks {
+    doLast {
+        fileTree("./docs").visit { FileVisitDetails details ->
+            if (details.file.isFile()) {
+                def fileContents = details.file.text
+                fileContents = fileContents.replace("[**OffsetDateTime**](OffsetDateTime.md)", "OffsetDateTime")
+                fileContents = fileContents.replace("[**URI**](URI.md)", "URI")
+                details.file.text = fileContents
+            }
+        }
+    }
+}

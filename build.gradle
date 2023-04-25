@@ -124,10 +124,10 @@ jar {
 }
 
 task runFunctionalTests(type: JavaExec) {
-group = "execute"
-description = "Run the Functional Tests"
-classpath = sourceSets.main.runtimeClasspath
-main = 'com.fingerprint.example.FunctionalTests'
+    group = "execute"
+    description = "Run the Functional Tests"
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'com.fingerprint.example.FunctionalTests'
 }
 
 task removeWrongDocumentationLinks {

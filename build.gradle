@@ -135,8 +135,8 @@ task removeWrongDocumentationLinks {
         fileTree("./docs").visit { FileVisitDetails details ->
             if (details.file.isFile()) {
                 def fileContents = details.file.text
-                fileContents = fileContents.replace("[**OffsetDateTime**](OffsetDateTime.md)", "OffsetDateTime")
-                fileContents = fileContents.replace("[**URI**](URI.md)", "URI")
+                fileContents = fileContents.replace("[**OffsetDateTime**](OffsetDateTime.md)", "**OffsetDateTime**")
+                fileContents = fileContents.replace("[**URI**](URI.md)", "**URI**")
                 details.file.text = fileContents
             }
         }

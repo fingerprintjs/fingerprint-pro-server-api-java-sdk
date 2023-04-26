@@ -116,7 +116,7 @@ public class FingerprintApiTest {
 
     @Test
     public void getEventBotdManyRequestsErrorTest() throws ApiException {
-        EventResponse response = api.getEvent(MOCK_REQUEST_BOTD_FAILED);
+        EventResponse response = api.getEvent(MOCK_REQUEST_BOTD_MANY_REQUEST);
         assert response.getProducts() != null;
         assert response.getProducts().getIdentification() != null;
         assert response.getProducts().getIdentification().getData() != null;

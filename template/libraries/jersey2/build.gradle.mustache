@@ -42,7 +42,7 @@ publishing {
     }
 }
 
-task execute(type:JavaExec) {
+tasks.register('execute', JavaExec) {
    main = System.getProperty('mainClass')
    classpath = sourceSets.main.runtimeClasspath
 }
@@ -142,14 +142,14 @@ jar {
     from configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
 }
 
-task runFunctionalTests(type: JavaExec) {
+tasks.register('runFunctionalTests', JavaExec) {
     group = "execute"
     description = "Run the Functional Tests"
     classpath = sourceSets.main.runtimeClasspath
     main = 'com.fingerprint.example.FunctionalTests'
 }
 
-task removeWrongDocumentationLinks {
+tasks.register('removeWrongDocumentationLinks') {
     doLast {
         fileTree("./docs").visit { FileVisitDetails details ->
             if (details.file.isFile()) {

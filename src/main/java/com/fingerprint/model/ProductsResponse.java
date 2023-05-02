@@ -13,10 +13,6 @@
 
 package com.fingerprint.model;
 
-import java.util.Map;
-import java.util.HashMap;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
 import java.util.Objects;
 import java.util.Arrays;
 import java.util.Map;
@@ -104,43 +100,6 @@ public class ProductsResponse {
     this.botd = botd;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   */
-  @JsonAnySetter
-  public ProductsResponse putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   */
-  @JsonAnyGetter
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
   /**
    * Return true if this ProductsResponse object is equal to o.
@@ -155,13 +114,12 @@ public class ProductsResponse {
     }
     ProductsResponse productsResponse = (ProductsResponse) o;
     return Objects.equals(this.identification, productsResponse.identification) &&
-        Objects.equals(this.botd, productsResponse.botd)&&
-        Objects.equals(this.additionalProperties, productsResponse.additionalProperties);
+        Objects.equals(this.botd, productsResponse.botd);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(identification, botd, additionalProperties);
+    return Objects.hash(identification, botd);
   }
 
   @Override
@@ -170,7 +128,6 @@ public class ProductsResponse {
     sb.append("class ProductsResponse {\n");
     sb.append("    identification: ").append(toIndentedString(identification)).append("\n");
     sb.append("    botd: ").append(toIndentedString(botd)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }

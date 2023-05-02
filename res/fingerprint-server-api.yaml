@@ -3585,7 +3585,7 @@ components:
       description: >-
         Contains all the information from each activated product - Fingerprint
         Pro or Bot Detection
-      additionalProperties: true
+      additionalProperties: false
       properties:
         identification:
           type: object

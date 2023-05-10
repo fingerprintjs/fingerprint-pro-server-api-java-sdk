@@ -1,6 +1,6 @@
 
 
-# SignalResponseRootAppsData
+# WebhookSignalResponseRootApps
 
 
 ## Properties

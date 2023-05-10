@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fingerprint.model.ProductError;
 import com.fingerprint.model.SignalResponseTorData;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -33,12 +34,16 @@ import com.fingerprint.sdk.JSON;
  * SignalResponseTor
  */
 @JsonPropertyOrder({
-  SignalResponseTor.JSON_PROPERTY_DATA
+  SignalResponseTor.JSON_PROPERTY_DATA,
+  SignalResponseTor.JSON_PROPERTY_ERROR
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SignalResponseTor {
   public static final String JSON_PROPERTY_DATA = "data";
   private SignalResponseTorData data;
+
+  public static final String JSON_PROPERTY_ERROR = "error";
+  private ProductError error;
 
   public SignalResponseTor() { 
   }
@@ -69,6 +74,32 @@ public class SignalResponseTor {
   }
 
 
+  public SignalResponseTor error(ProductError error) {
+    this.error = error;
+    return this;
+  }
+
+   /**
+   * Get error
+   * @return error
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ProductError getError() {
+    return error;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setError(ProductError error) {
+    this.error = error;
+  }
+
+
   /**
    * Return true if this SignalResponseTor object is equal to o.
    */
@@ -81,12 +112,13 @@ public class SignalResponseTor {
       return false;
     }
     SignalResponseTor signalResponseTor = (SignalResponseTor) o;
-    return Objects.equals(this.data, signalResponseTor.data);
+    return Objects.equals(this.data, signalResponseTor.data) &&
+        Objects.equals(this.error, signalResponseTor.error);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data);
+    return Objects.hash(data, error);
   }
 
   @Override
@@ -94,6 +126,7 @@ public class SignalResponseTor {
     StringBuilder sb = new StringBuilder();
     sb.append("class SignalResponseTor {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();
   }

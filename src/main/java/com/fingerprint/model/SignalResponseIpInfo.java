@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fingerprint.model.IpInfoResult;
+import com.fingerprint.model.ProductError;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -33,12 +34,16 @@ import com.fingerprint.sdk.JSON;
  * SignalResponseIpInfo
  */
 @JsonPropertyOrder({
-  SignalResponseIpInfo.JSON_PROPERTY_DATA
+  SignalResponseIpInfo.JSON_PROPERTY_DATA,
+  SignalResponseIpInfo.JSON_PROPERTY_ERROR
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SignalResponseIpInfo {
   public static final String JSON_PROPERTY_DATA = "data";
   private IpInfoResult data;
+
+  public static final String JSON_PROPERTY_ERROR = "error";
+  private ProductError error;
 
   public SignalResponseIpInfo() { 
   }
@@ -69,6 +74,32 @@ public class SignalResponseIpInfo {
   }
 
 
+  public SignalResponseIpInfo error(ProductError error) {
+    this.error = error;
+    return this;
+  }
+
+   /**
+   * Get error
+   * @return error
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ProductError getError() {
+    return error;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setError(ProductError error) {
+    this.error = error;
+  }
+
+
   /**
    * Return true if this SignalResponseIpInfo object is equal to o.
    */
@@ -81,12 +112,13 @@ public class SignalResponseIpInfo {
       return false;
     }
     SignalResponseIpInfo signalResponseIpInfo = (SignalResponseIpInfo) o;
-    return Objects.equals(this.data, signalResponseIpInfo.data);
+    return Objects.equals(this.data, signalResponseIpInfo.data) &&
+        Objects.equals(this.error, signalResponseIpInfo.error);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data);
+    return Objects.hash(data, error);
   }
 
   @Override
@@ -94,6 +126,7 @@ public class SignalResponseIpInfo {
     StringBuilder sb = new StringBuilder();
     sb.append("class SignalResponseIpInfo {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,6 +1,6 @@
 
 
-# SignalResponseEmulatorData
+# WebhookSignalResponseEmulator
 
 
 ## Properties

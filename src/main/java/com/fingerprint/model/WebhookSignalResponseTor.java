@@ -22,8 +22,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.IpInfoResult;
-import com.fingerprint.model.ProductError;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -31,78 +29,47 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * SignalResponseIpInfo1
+ * WebhookSignalResponseTor
  */
 @JsonPropertyOrder({
-  SignalResponseIpInfo1.JSON_PROPERTY_DATA,
-  SignalResponseIpInfo1.JSON_PROPERTY_ERROR
+  WebhookSignalResponseTor.JSON_PROPERTY_RESULT
 })
-@JsonTypeName("SignalResponseIpInfo_1")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class SignalResponseIpInfo1 {
-  public static final String JSON_PROPERTY_DATA = "data";
-  private IpInfoResult data;
+public class WebhookSignalResponseTor {
+  public static final String JSON_PROPERTY_RESULT = "result";
+  private Boolean result;
 
-  public static final String JSON_PROPERTY_ERROR = "error";
-  private ProductError error;
-
-  public SignalResponseIpInfo1() { 
+  public WebhookSignalResponseTor() { 
   }
 
-  public SignalResponseIpInfo1 data(IpInfoResult data) {
-    this.data = data;
+  public WebhookSignalResponseTor result(Boolean result) {
+    this.result = result;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * &#x60;true&#x60; if the request IP address is a known tor exit node, &#x60;false&#x60; otherwise. 
+   * @return result
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @ApiModelProperty(example = "false", value = "`true` if the request IP address is a known tor exit node, `false` otherwise. ")
+  @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public IpInfoResult getData() {
-    return data;
+  public Boolean getResult() {
+    return result;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(IpInfoResult data) {
-    this.data = data;
-  }
-
-
-  public SignalResponseIpInfo1 error(ProductError error) {
-    this.error = error;
-    return this;
-  }
-
-   /**
-   * Get error
-   * @return error
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_ERROR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public ProductError getError() {
-    return error;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ERROR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(ProductError error) {
-    this.error = error;
+  public void setResult(Boolean result) {
+    this.result = result;
   }
 
 
   /**
-   * Return true if this SignalResponseIpInfo_1 object is equal to o.
+   * Return true if this WebhookSignalResponseTor object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -112,22 +79,20 @@ public class SignalResponseIpInfo1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SignalResponseIpInfo1 signalResponseIpInfo1 = (SignalResponseIpInfo1) o;
-    return Objects.equals(this.data, signalResponseIpInfo1.data) &&
-        Objects.equals(this.error, signalResponseIpInfo1.error);
+    WebhookSignalResponseTor webhookSignalResponseTor = (WebhookSignalResponseTor) o;
+    return Objects.equals(this.result, webhookSignalResponseTor.result);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, error);
+    return Objects.hash(result);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SignalResponseIpInfo1 {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("class WebhookSignalResponseTor {\n");
+    sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();
   }

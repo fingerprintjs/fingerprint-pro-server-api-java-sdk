@@ -22,8 +22,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.ProductError;
-import com.fingerprint.model.VpnResult;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -31,78 +29,47 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * SignalResponseVpn1
+ * WebhookSignalResponseRootApps
  */
 @JsonPropertyOrder({
-  SignalResponseVpn1.JSON_PROPERTY_DATA,
-  SignalResponseVpn1.JSON_PROPERTY_ERROR
+  WebhookSignalResponseRootApps.JSON_PROPERTY_RESULT
 })
-@JsonTypeName("SignalResponseVpn_1")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class SignalResponseVpn1 {
-  public static final String JSON_PROPERTY_DATA = "data";
-  private VpnResult data;
+public class WebhookSignalResponseRootApps {
+  public static final String JSON_PROPERTY_RESULT = "result";
+  private Boolean result;
 
-  public static final String JSON_PROPERTY_ERROR = "error";
-  private ProductError error;
-
-  public SignalResponseVpn1() { 
+  public WebhookSignalResponseRootApps() { 
   }
 
-  public SignalResponseVpn1 data(VpnResult data) {
-    this.data = data;
+  public WebhookSignalResponseRootApps result(Boolean result) {
+    this.result = result;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * Android specific root management apps detection. There are 2 values: • &#x60;true&#x60; - Root Management Apps detected (e.g. Magisk) • &#x60;false&#x60; - No Root Management Apps detected Available only for events from Android client. The field will not be present for a browser or iOS event. 
+   * @return result
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @ApiModelProperty(example = "false", value = "Android specific root management apps detection. There are 2 values: • `true` - Root Management Apps detected (e.g. Magisk) • `false` - No Root Management Apps detected Available only for events from Android client. The field will not be present for a browser or iOS event. ")
+  @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public VpnResult getData() {
-    return data;
+  public Boolean getResult() {
+    return result;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(VpnResult data) {
-    this.data = data;
-  }
-
-
-  public SignalResponseVpn1 error(ProductError error) {
-    this.error = error;
-    return this;
-  }
-
-   /**
-   * Get error
-   * @return error
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_ERROR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public ProductError getError() {
-    return error;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ERROR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(ProductError error) {
-    this.error = error;
+  public void setResult(Boolean result) {
+    this.result = result;
   }
 
 
   /**
-   * Return true if this SignalResponseVpn_1 object is equal to o.
+   * Return true if this WebhookSignalResponseRootApps object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -112,22 +79,20 @@ public class SignalResponseVpn1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SignalResponseVpn1 signalResponseVpn1 = (SignalResponseVpn1) o;
-    return Objects.equals(this.data, signalResponseVpn1.data) &&
-        Objects.equals(this.error, signalResponseVpn1.error);
+    WebhookSignalResponseRootApps webhookSignalResponseRootApps = (WebhookSignalResponseRootApps) o;
+    return Objects.equals(this.result, webhookSignalResponseRootApps.result);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, error);
+    return Objects.hash(result);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SignalResponseVpn1 {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("class WebhookSignalResponseRootApps {\n");
+    sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();
   }

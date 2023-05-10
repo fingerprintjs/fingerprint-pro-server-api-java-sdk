@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fingerprint.model.ProductError;
 import com.fingerprint.model.SignalResponseRootAppsData;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -33,12 +34,16 @@ import com.fingerprint.sdk.JSON;
  * SignalResponseRootApps
  */
 @JsonPropertyOrder({
-  SignalResponseRootApps.JSON_PROPERTY_DATA
+  SignalResponseRootApps.JSON_PROPERTY_DATA,
+  SignalResponseRootApps.JSON_PROPERTY_ERROR
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SignalResponseRootApps {
   public static final String JSON_PROPERTY_DATA = "data";
   private SignalResponseRootAppsData data;
+
+  public static final String JSON_PROPERTY_ERROR = "error";
+  private ProductError error;
 
   public SignalResponseRootApps() { 
   }
@@ -69,6 +74,32 @@ public class SignalResponseRootApps {
   }
 
 
+  public SignalResponseRootApps error(ProductError error) {
+    this.error = error;
+    return this;
+  }
+
+   /**
+   * Get error
+   * @return error
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ProductError getError() {
+    return error;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setError(ProductError error) {
+    this.error = error;
+  }
+
+
   /**
    * Return true if this SignalResponseRootApps object is equal to o.
    */
@@ -81,12 +112,13 @@ public class SignalResponseRootApps {
       return false;
     }
     SignalResponseRootApps signalResponseRootApps = (SignalResponseRootApps) o;
-    return Objects.equals(this.data, signalResponseRootApps.data);
+    return Objects.equals(this.data, signalResponseRootApps.data) &&
+        Objects.equals(this.error, signalResponseRootApps.error);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data);
+    return Objects.hash(data, error);
   }
 
   @Override
@@ -94,6 +126,7 @@ public class SignalResponseRootApps {
     StringBuilder sb = new StringBuilder();
     sb.append("class SignalResponseRootApps {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();
   }

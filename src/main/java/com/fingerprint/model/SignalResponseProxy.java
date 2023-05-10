@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fingerprint.model.ProductError;
 import com.fingerprint.model.SignalResponseProxyData;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -33,12 +34,16 @@ import com.fingerprint.sdk.JSON;
  * SignalResponseProxy
  */
 @JsonPropertyOrder({
-  SignalResponseProxy.JSON_PROPERTY_DATA
+  SignalResponseProxy.JSON_PROPERTY_DATA,
+  SignalResponseProxy.JSON_PROPERTY_ERROR
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SignalResponseProxy {
   public static final String JSON_PROPERTY_DATA = "data";
   private SignalResponseProxyData data;
+
+  public static final String JSON_PROPERTY_ERROR = "error";
+  private ProductError error;
 
   public SignalResponseProxy() { 
   }
@@ -69,6 +74,32 @@ public class SignalResponseProxy {
   }
 
 
+  public SignalResponseProxy error(ProductError error) {
+    this.error = error;
+    return this;
+  }
+
+   /**
+   * Get error
+   * @return error
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ProductError getError() {
+    return error;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setError(ProductError error) {
+    this.error = error;
+  }
+
+
   /**
    * Return true if this SignalResponseProxy object is equal to o.
    */
@@ -81,12 +112,13 @@ public class SignalResponseProxy {
       return false;
     }
     SignalResponseProxy signalResponseProxy = (SignalResponseProxy) o;
-    return Objects.equals(this.data, signalResponseProxy.data);
+    return Objects.equals(this.data, signalResponseProxy.data) &&
+        Objects.equals(this.error, signalResponseProxy.error);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data);
+    return Objects.hash(data, error);
   }
 
   @Override
@@ -94,6 +126,7 @@ public class SignalResponseProxy {
     StringBuilder sb = new StringBuilder();
     sb.append("class SignalResponseProxy {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();
   }

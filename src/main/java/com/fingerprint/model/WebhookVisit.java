@@ -26,15 +26,15 @@ import com.fingerprint.model.BotdDetectionResult;
 import com.fingerprint.model.BrowserDetails;
 import com.fingerprint.model.Confidence;
 import com.fingerprint.model.IPLocation;
+import com.fingerprint.model.IpBlockListResult;
+import com.fingerprint.model.IpInfoResult;
 import com.fingerprint.model.SeenAt;
-import com.fingerprint.model.SignalResponseEmulator;
-import com.fingerprint.model.SignalResponseIpBlocklist;
-import com.fingerprint.model.SignalResponseIpInfo;
-import com.fingerprint.model.SignalResponseProxy;
-import com.fingerprint.model.SignalResponseRootApps;
-import com.fingerprint.model.SignalResponseTampering;
-import com.fingerprint.model.SignalResponseTor;
-import com.fingerprint.model.SignalResponseVpn;
+import com.fingerprint.model.TamperingResult;
+import com.fingerprint.model.VpnResult;
+import com.fingerprint.model.WebhookSignalResponseEmulator;
+import com.fingerprint.model.WebhookSignalResponseProxy;
+import com.fingerprint.model.WebhookSignalResponseRootApps;
+import com.fingerprint.model.WebhookSignalResponseTor;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.net.URI;
@@ -91,31 +91,31 @@ public class WebhookVisit {
   private BotdDetectionResult bot;
 
   public static final String JSON_PROPERTY_IP_INFO = "ipInfo";
-  private SignalResponseIpInfo ipInfo;
+  private IpInfoResult ipInfo;
 
   public static final String JSON_PROPERTY_INCOGNITO = "incognito";
   private Boolean incognito;
 
   public static final String JSON_PROPERTY_ROOT_APPS = "rootApps";
-  private SignalResponseRootApps rootApps;
+  private WebhookSignalResponseRootApps rootApps;
 
   public static final String JSON_PROPERTY_EMULATOR = "emulator";
-  private SignalResponseEmulator emulator;
+  private WebhookSignalResponseEmulator emulator;
 
   public static final String JSON_PROPERTY_IP_BLOCKLIST = "ipBlocklist";
-  private SignalResponseIpBlocklist ipBlocklist;
+  private IpBlockListResult ipBlocklist;
 
   public static final String JSON_PROPERTY_TOR = "tor";
-  private SignalResponseTor tor;
+  private WebhookSignalResponseTor tor;
 
   public static final String JSON_PROPERTY_VPN = "vpn";
-  private SignalResponseVpn vpn;
+  private VpnResult vpn;
 
   public static final String JSON_PROPERTY_PROXY = "proxy";
-  private SignalResponseProxy proxy;
+  private WebhookSignalResponseProxy proxy;
 
   public static final String JSON_PROPERTY_TAMPERING = "tampering";
-  private SignalResponseTampering tampering;
+  private TamperingResult tampering;
 
   public static final String JSON_PROPERTY_REQUEST_ID = "requestId";
   private String requestId;
@@ -263,7 +263,7 @@ public class WebhookVisit {
   }
 
 
-  public WebhookVisit ipInfo(SignalResponseIpInfo ipInfo) {
+  public WebhookVisit ipInfo(IpInfoResult ipInfo) {
     this.ipInfo = ipInfo;
     return this;
   }
@@ -277,14 +277,14 @@ public class WebhookVisit {
   @JsonProperty(JSON_PROPERTY_IP_INFO)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponseIpInfo getIpInfo() {
+  public IpInfoResult getIpInfo() {
     return ipInfo;
   }
 
 
   @JsonProperty(JSON_PROPERTY_IP_INFO)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIpInfo(SignalResponseIpInfo ipInfo) {
+  public void setIpInfo(IpInfoResult ipInfo) {
     this.ipInfo = ipInfo;
   }
 
@@ -315,7 +315,7 @@ public class WebhookVisit {
   }
 
 
-  public WebhookVisit rootApps(SignalResponseRootApps rootApps) {
+  public WebhookVisit rootApps(WebhookSignalResponseRootApps rootApps) {
     this.rootApps = rootApps;
     return this;
   }
@@ -329,19 +329,19 @@ public class WebhookVisit {
   @JsonProperty(JSON_PROPERTY_ROOT_APPS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponseRootApps getRootApps() {
+  public WebhookSignalResponseRootApps getRootApps() {
     return rootApps;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ROOT_APPS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRootApps(SignalResponseRootApps rootApps) {
+  public void setRootApps(WebhookSignalResponseRootApps rootApps) {
     this.rootApps = rootApps;
   }
 
 
-  public WebhookVisit emulator(SignalResponseEmulator emulator) {
+  public WebhookVisit emulator(WebhookSignalResponseEmulator emulator) {
     this.emulator = emulator;
     return this;
   }
@@ -355,19 +355,19 @@ public class WebhookVisit {
   @JsonProperty(JSON_PROPERTY_EMULATOR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponseEmulator getEmulator() {
+  public WebhookSignalResponseEmulator getEmulator() {
     return emulator;
   }
 
 
   @JsonProperty(JSON_PROPERTY_EMULATOR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEmulator(SignalResponseEmulator emulator) {
+  public void setEmulator(WebhookSignalResponseEmulator emulator) {
     this.emulator = emulator;
   }
 
 
-  public WebhookVisit ipBlocklist(SignalResponseIpBlocklist ipBlocklist) {
+  public WebhookVisit ipBlocklist(IpBlockListResult ipBlocklist) {
     this.ipBlocklist = ipBlocklist;
     return this;
   }
@@ -381,19 +381,19 @@ public class WebhookVisit {
   @JsonProperty(JSON_PROPERTY_IP_BLOCKLIST)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponseIpBlocklist getIpBlocklist() {
+  public IpBlockListResult getIpBlocklist() {
     return ipBlocklist;
   }
 
 
   @JsonProperty(JSON_PROPERTY_IP_BLOCKLIST)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIpBlocklist(SignalResponseIpBlocklist ipBlocklist) {
+  public void setIpBlocklist(IpBlockListResult ipBlocklist) {
     this.ipBlocklist = ipBlocklist;
   }
 
 
-  public WebhookVisit tor(SignalResponseTor tor) {
+  public WebhookVisit tor(WebhookSignalResponseTor tor) {
     this.tor = tor;
     return this;
   }
@@ -407,19 +407,19 @@ public class WebhookVisit {
   @JsonProperty(JSON_PROPERTY_TOR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponseTor getTor() {
+  public WebhookSignalResponseTor getTor() {
     return tor;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TOR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTor(SignalResponseTor tor) {
+  public void setTor(WebhookSignalResponseTor tor) {
     this.tor = tor;
   }
 
 
-  public WebhookVisit vpn(SignalResponseVpn vpn) {
+  public WebhookVisit vpn(VpnResult vpn) {
     this.vpn = vpn;
     return this;
   }
@@ -433,19 +433,19 @@ public class WebhookVisit {
   @JsonProperty(JSON_PROPERTY_VPN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponseVpn getVpn() {
+  public VpnResult getVpn() {
     return vpn;
   }
 
 
   @JsonProperty(JSON_PROPERTY_VPN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVpn(SignalResponseVpn vpn) {
+  public void setVpn(VpnResult vpn) {
     this.vpn = vpn;
   }
 
 
-  public WebhookVisit proxy(SignalResponseProxy proxy) {
+  public WebhookVisit proxy(WebhookSignalResponseProxy proxy) {
     this.proxy = proxy;
     return this;
   }
@@ -459,19 +459,19 @@ public class WebhookVisit {
   @JsonProperty(JSON_PROPERTY_PROXY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponseProxy getProxy() {
+  public WebhookSignalResponseProxy getProxy() {
     return proxy;
   }
 
 
   @JsonProperty(JSON_PROPERTY_PROXY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProxy(SignalResponseProxy proxy) {
+  public void setProxy(WebhookSignalResponseProxy proxy) {
     this.proxy = proxy;
   }
 
 
-  public WebhookVisit tampering(SignalResponseTampering tampering) {
+  public WebhookVisit tampering(TamperingResult tampering) {
     this.tampering = tampering;
     return this;
   }
@@ -485,14 +485,14 @@ public class WebhookVisit {
   @JsonProperty(JSON_PROPERTY_TAMPERING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponseTampering getTampering() {
+  public TamperingResult getTampering() {
     return tampering;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TAMPERING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTampering(SignalResponseTampering tampering) {
+  public void setTampering(TamperingResult tampering) {
     this.tampering = tampering;
   }
 

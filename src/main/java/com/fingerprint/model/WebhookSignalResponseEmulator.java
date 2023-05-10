@@ -22,8 +22,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.ProductError;
-import com.fingerprint.model.SignalResponseTorData;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -31,78 +29,47 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * SignalResponseTor1
+ * WebhookSignalResponseEmulator
  */
 @JsonPropertyOrder({
-  SignalResponseTor1.JSON_PROPERTY_DATA,
-  SignalResponseTor1.JSON_PROPERTY_ERROR
+  WebhookSignalResponseEmulator.JSON_PROPERTY_RESULT
 })
-@JsonTypeName("SignalResponseTor_1")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class SignalResponseTor1 {
-  public static final String JSON_PROPERTY_DATA = "data";
-  private SignalResponseTorData data;
+public class WebhookSignalResponseEmulator {
+  public static final String JSON_PROPERTY_RESULT = "result";
+  private Boolean result;
 
-  public static final String JSON_PROPERTY_ERROR = "error";
-  private ProductError error;
-
-  public SignalResponseTor1() { 
+  public WebhookSignalResponseEmulator() { 
   }
 
-  public SignalResponseTor1 data(SignalResponseTorData data) {
-    this.data = data;
+  public WebhookSignalResponseEmulator result(Boolean result) {
+    this.result = result;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * Android specific emulator detection. There are 2 values: • &#x60;true&#x60; - Emulated environment detected (e.g. launch inside of AVD) • &#x60;false&#x60; - No signs of emulated environment detected Available only for events from Android client. The field will not be present for a browser or iOS event. 
+   * @return result
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @ApiModelProperty(example = "false", value = "Android specific emulator detection. There are 2 values: • `true` - Emulated environment detected (e.g. launch inside of AVD) • `false` - No signs of emulated environment detected Available only for events from Android client. The field will not be present for a browser or iOS event. ")
+  @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponseTorData getData() {
-    return data;
+  public Boolean getResult() {
+    return result;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(SignalResponseTorData data) {
-    this.data = data;
-  }
-
-
-  public SignalResponseTor1 error(ProductError error) {
-    this.error = error;
-    return this;
-  }
-
-   /**
-   * Get error
-   * @return error
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_ERROR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public ProductError getError() {
-    return error;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ERROR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(ProductError error) {
-    this.error = error;
+  public void setResult(Boolean result) {
+    this.result = result;
   }
 
 
   /**
-   * Return true if this SignalResponseTor_1 object is equal to o.
+   * Return true if this WebhookSignalResponseEmulator object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -112,22 +79,20 @@ public class SignalResponseTor1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SignalResponseTor1 signalResponseTor1 = (SignalResponseTor1) o;
-    return Objects.equals(this.data, signalResponseTor1.data) &&
-        Objects.equals(this.error, signalResponseTor1.error);
+    WebhookSignalResponseEmulator webhookSignalResponseEmulator = (WebhookSignalResponseEmulator) o;
+    return Objects.equals(this.result, webhookSignalResponseEmulator.result);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, error);
+    return Objects.hash(result);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SignalResponseTor1 {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("class WebhookSignalResponseEmulator {\n");
+    sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();
   }

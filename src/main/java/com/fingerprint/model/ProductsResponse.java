@@ -24,15 +24,15 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fingerprint.model.ProductsResponseBotd;
 import com.fingerprint.model.ProductsResponseIdentification;
-import com.fingerprint.model.SignalResponseEmulator1;
+import com.fingerprint.model.SignalResponseEmulator;
 import com.fingerprint.model.SignalResponseIncognito;
-import com.fingerprint.model.SignalResponseIpBlocklist1;
-import com.fingerprint.model.SignalResponseIpInfo1;
-import com.fingerprint.model.SignalResponseProxy1;
-import com.fingerprint.model.SignalResponseRootApps1;
-import com.fingerprint.model.SignalResponseTampering1;
-import com.fingerprint.model.SignalResponseTor1;
-import com.fingerprint.model.SignalResponseVpn1;
+import com.fingerprint.model.SignalResponseIpBlocklist;
+import com.fingerprint.model.SignalResponseIpInfo;
+import com.fingerprint.model.SignalResponseProxy;
+import com.fingerprint.model.SignalResponseRootApps;
+import com.fingerprint.model.SignalResponseTampering;
+import com.fingerprint.model.SignalResponseTor;
+import com.fingerprint.model.SignalResponseVpn;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -65,31 +65,31 @@ public class ProductsResponse {
   private ProductsResponseBotd botd;
 
   public static final String JSON_PROPERTY_IP_INFO = "ipInfo";
-  private SignalResponseIpInfo1 ipInfo;
+  private SignalResponseIpInfo ipInfo;
 
   public static final String JSON_PROPERTY_INCOGNITO = "incognito";
   private SignalResponseIncognito incognito;
 
   public static final String JSON_PROPERTY_ROOT_APPS = "rootApps";
-  private SignalResponseRootApps1 rootApps;
+  private SignalResponseRootApps rootApps;
 
   public static final String JSON_PROPERTY_EMULATOR = "emulator";
-  private SignalResponseEmulator1 emulator;
+  private SignalResponseEmulator emulator;
 
   public static final String JSON_PROPERTY_IP_BLOCKLIST = "ipBlocklist";
-  private SignalResponseIpBlocklist1 ipBlocklist;
+  private SignalResponseIpBlocklist ipBlocklist;
 
   public static final String JSON_PROPERTY_TOR = "tor";
-  private SignalResponseTor1 tor;
+  private SignalResponseTor tor;
 
   public static final String JSON_PROPERTY_VPN = "vpn";
-  private SignalResponseVpn1 vpn;
+  private SignalResponseVpn vpn;
 
   public static final String JSON_PROPERTY_PROXY = "proxy";
-  private SignalResponseProxy1 proxy;
+  private SignalResponseProxy proxy;
 
   public static final String JSON_PROPERTY_TAMPERING = "tampering";
-  private SignalResponseTampering1 tampering;
+  private SignalResponseTampering tampering;
 
   public ProductsResponse() { 
   }
@@ -146,7 +146,7 @@ public class ProductsResponse {
   }
 
 
-  public ProductsResponse ipInfo(SignalResponseIpInfo1 ipInfo) {
+  public ProductsResponse ipInfo(SignalResponseIpInfo ipInfo) {
     this.ipInfo = ipInfo;
     return this;
   }
@@ -160,14 +160,14 @@ public class ProductsResponse {
   @JsonProperty(JSON_PROPERTY_IP_INFO)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponseIpInfo1 getIpInfo() {
+  public SignalResponseIpInfo getIpInfo() {
     return ipInfo;
   }
 
 
   @JsonProperty(JSON_PROPERTY_IP_INFO)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIpInfo(SignalResponseIpInfo1 ipInfo) {
+  public void setIpInfo(SignalResponseIpInfo ipInfo) {
     this.ipInfo = ipInfo;
   }
 
@@ -198,7 +198,7 @@ public class ProductsResponse {
   }
 
 
-  public ProductsResponse rootApps(SignalResponseRootApps1 rootApps) {
+  public ProductsResponse rootApps(SignalResponseRootApps rootApps) {
     this.rootApps = rootApps;
     return this;
   }
@@ -212,19 +212,19 @@ public class ProductsResponse {
   @JsonProperty(JSON_PROPERTY_ROOT_APPS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponseRootApps1 getRootApps() {
+  public SignalResponseRootApps getRootApps() {
     return rootApps;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ROOT_APPS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRootApps(SignalResponseRootApps1 rootApps) {
+  public void setRootApps(SignalResponseRootApps rootApps) {
     this.rootApps = rootApps;
   }
 
 
-  public ProductsResponse emulator(SignalResponseEmulator1 emulator) {
+  public ProductsResponse emulator(SignalResponseEmulator emulator) {
     this.emulator = emulator;
     return this;
   }
@@ -238,19 +238,19 @@ public class ProductsResponse {
   @JsonProperty(JSON_PROPERTY_EMULATOR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponseEmulator1 getEmulator() {
+  public SignalResponseEmulator getEmulator() {
     return emulator;
   }
 
 
   @JsonProperty(JSON_PROPERTY_EMULATOR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEmulator(SignalResponseEmulator1 emulator) {
+  public void setEmulator(SignalResponseEmulator emulator) {
     this.emulator = emulator;
   }
 
 
-  public ProductsResponse ipBlocklist(SignalResponseIpBlocklist1 ipBlocklist) {
+  public ProductsResponse ipBlocklist(SignalResponseIpBlocklist ipBlocklist) {
     this.ipBlocklist = ipBlocklist;
     return this;
   }
@@ -264,19 +264,19 @@ public class ProductsResponse {
   @JsonProperty(JSON_PROPERTY_IP_BLOCKLIST)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponseIpBlocklist1 getIpBlocklist() {
+  public SignalResponseIpBlocklist getIpBlocklist() {
     return ipBlocklist;
   }
 
 
   @JsonProperty(JSON_PROPERTY_IP_BLOCKLIST)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIpBlocklist(SignalResponseIpBlocklist1 ipBlocklist) {
+  public void setIpBlocklist(SignalResponseIpBlocklist ipBlocklist) {
     this.ipBlocklist = ipBlocklist;
   }
 
 
-  public ProductsResponse tor(SignalResponseTor1 tor) {
+  public ProductsResponse tor(SignalResponseTor tor) {
     this.tor = tor;
     return this;
   }
@@ -290,19 +290,19 @@ public class ProductsResponse {
   @JsonProperty(JSON_PROPERTY_TOR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponseTor1 getTor() {
+  public SignalResponseTor getTor() {
     return tor;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TOR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTor(SignalResponseTor1 tor) {
+  public void setTor(SignalResponseTor tor) {
     this.tor = tor;
   }
 
 
-  public ProductsResponse vpn(SignalResponseVpn1 vpn) {
+  public ProductsResponse vpn(SignalResponseVpn vpn) {
     this.vpn = vpn;
     return this;
   }
@@ -316,19 +316,19 @@ public class ProductsResponse {
   @JsonProperty(JSON_PROPERTY_VPN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponseVpn1 getVpn() {
+  public SignalResponseVpn getVpn() {
     return vpn;
   }
 
 
   @JsonProperty(JSON_PROPERTY_VPN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVpn(SignalResponseVpn1 vpn) {
+  public void setVpn(SignalResponseVpn vpn) {
     this.vpn = vpn;
   }
 
 
-  public ProductsResponse proxy(SignalResponseProxy1 proxy) {
+  public ProductsResponse proxy(SignalResponseProxy proxy) {
     this.proxy = proxy;
     return this;
   }
@@ -342,19 +342,19 @@ public class ProductsResponse {
   @JsonProperty(JSON_PROPERTY_PROXY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponseProxy1 getProxy() {
+  public SignalResponseProxy getProxy() {
     return proxy;
   }
 
 
   @JsonProperty(JSON_PROPERTY_PROXY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProxy(SignalResponseProxy1 proxy) {
+  public void setProxy(SignalResponseProxy proxy) {
     this.proxy = proxy;
   }
 
 
-  public ProductsResponse tampering(SignalResponseTampering1 tampering) {
+  public ProductsResponse tampering(SignalResponseTampering tampering) {
     this.tampering = tampering;
     return this;
   }
@@ -368,14 +368,14 @@ public class ProductsResponse {
   @JsonProperty(JSON_PROPERTY_TAMPERING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponseTampering1 getTampering() {
+  public SignalResponseTampering getTampering() {
     return tampering;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TAMPERING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTampering(SignalResponseTampering1 tampering) {
+  public void setTampering(SignalResponseTampering tampering) {
     this.tampering = tampering;
   }
 

@@ -22,8 +22,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.IpBlockListResult;
-import com.fingerprint.model.ProductError;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -31,78 +29,47 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * SignalResponseIpBlocklist1
+ * WebhookSignalResponseProxy
  */
 @JsonPropertyOrder({
-  SignalResponseIpBlocklist1.JSON_PROPERTY_DATA,
-  SignalResponseIpBlocklist1.JSON_PROPERTY_ERROR
+  WebhookSignalResponseProxy.JSON_PROPERTY_RESULT
 })
-@JsonTypeName("SignalResponseIpBlocklist_1")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class SignalResponseIpBlocklist1 {
-  public static final String JSON_PROPERTY_DATA = "data";
-  private IpBlockListResult data;
+public class WebhookSignalResponseProxy {
+  public static final String JSON_PROPERTY_RESULT = "result";
+  private Boolean result;
 
-  public static final String JSON_PROPERTY_ERROR = "error";
-  private ProductError error;
-
-  public SignalResponseIpBlocklist1() { 
+  public WebhookSignalResponseProxy() { 
   }
 
-  public SignalResponseIpBlocklist1 data(IpBlockListResult data) {
-    this.data = data;
+  public WebhookSignalResponseProxy result(Boolean result) {
+    this.result = result;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * &#x60;true&#x60; if the request IP address is used by a public proxy provider, &#x60;false&#x60; otherwise. 
+   * @return result
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @ApiModelProperty(example = "false", value = "`true` if the request IP address is used by a public proxy provider, `false` otherwise. ")
+  @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public IpBlockListResult getData() {
-    return data;
+  public Boolean getResult() {
+    return result;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(IpBlockListResult data) {
-    this.data = data;
-  }
-
-
-  public SignalResponseIpBlocklist1 error(ProductError error) {
-    this.error = error;
-    return this;
-  }
-
-   /**
-   * Get error
-   * @return error
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_ERROR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public ProductError getError() {
-    return error;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ERROR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(ProductError error) {
-    this.error = error;
+  public void setResult(Boolean result) {
+    this.result = result;
   }
 
 
   /**
-   * Return true if this SignalResponseIpBlocklist_1 object is equal to o.
+   * Return true if this WebhookSignalResponseProxy object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -112,22 +79,20 @@ public class SignalResponseIpBlocklist1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SignalResponseIpBlocklist1 signalResponseIpBlocklist1 = (SignalResponseIpBlocklist1) o;
-    return Objects.equals(this.data, signalResponseIpBlocklist1.data) &&
-        Objects.equals(this.error, signalResponseIpBlocklist1.error);
+    WebhookSignalResponseProxy webhookSignalResponseProxy = (WebhookSignalResponseProxy) o;
+    return Objects.equals(this.result, webhookSignalResponseProxy.result);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, error);
+    return Objects.hash(result);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SignalResponseIpBlocklist1 {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("class WebhookSignalResponseProxy {\n");
+    sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();
   }

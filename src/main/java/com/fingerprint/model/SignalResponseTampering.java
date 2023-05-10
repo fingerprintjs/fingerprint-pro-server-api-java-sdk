@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fingerprint.model.ProductError;
 import com.fingerprint.model.TamperingResult;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -33,12 +34,16 @@ import com.fingerprint.sdk.JSON;
  * SignalResponseTampering
  */
 @JsonPropertyOrder({
-  SignalResponseTampering.JSON_PROPERTY_DATA
+  SignalResponseTampering.JSON_PROPERTY_DATA,
+  SignalResponseTampering.JSON_PROPERTY_ERROR
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SignalResponseTampering {
   public static final String JSON_PROPERTY_DATA = "data";
   private TamperingResult data;
+
+  public static final String JSON_PROPERTY_ERROR = "error";
+  private ProductError error;
 
   public SignalResponseTampering() { 
   }
@@ -69,6 +74,32 @@ public class SignalResponseTampering {
   }
 
 
+  public SignalResponseTampering error(ProductError error) {
+    this.error = error;
+    return this;
+  }
+
+   /**
+   * Get error
+   * @return error
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ProductError getError() {
+    return error;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setError(ProductError error) {
+    this.error = error;
+  }
+
+
   /**
    * Return true if this SignalResponseTampering object is equal to o.
    */
@@ -81,12 +112,13 @@ public class SignalResponseTampering {
       return false;
     }
     SignalResponseTampering signalResponseTampering = (SignalResponseTampering) o;
-    return Objects.equals(this.data, signalResponseTampering.data);
+    return Objects.equals(this.data, signalResponseTampering.data) &&
+        Objects.equals(this.error, signalResponseTampering.error);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data);
+    return Objects.hash(data, error);
   }
 
   @Override
@@ -94,6 +126,7 @@ public class SignalResponseTampering {
     StringBuilder sb = new StringBuilder();
     sb.append("class SignalResponseTampering {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();
   }

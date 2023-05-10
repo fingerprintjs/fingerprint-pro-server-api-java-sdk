@@ -22,8 +22,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.BotdResult;
 import com.fingerprint.model.ProductError;
+import com.fingerprint.model.SignalResponseRootAppsData;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -31,24 +31,25 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * ProductsResponseBotd
+ * SignalResponseRootApps1
  */
 @JsonPropertyOrder({
-  ProductsResponseBotd.JSON_PROPERTY_DATA,
-  ProductsResponseBotd.JSON_PROPERTY_ERROR
+  SignalResponseRootApps1.JSON_PROPERTY_DATA,
+  SignalResponseRootApps1.JSON_PROPERTY_ERROR
 })
+@JsonTypeName("SignalResponseRootApps_1")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ProductsResponseBotd {
+public class SignalResponseRootApps1 {
   public static final String JSON_PROPERTY_DATA = "data";
-  private BotdResult data;
+  private SignalResponseRootAppsData data;
 
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
 
-  public ProductsResponseBotd() { 
+  public SignalResponseRootApps1() { 
   }
 
-  public ProductsResponseBotd data(BotdResult data) {
+  public SignalResponseRootApps1 data(SignalResponseRootAppsData data) {
     this.data = data;
     return this;
   }
@@ -62,19 +63,19 @@ public class ProductsResponseBotd {
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public BotdResult getData() {
+  public SignalResponseRootAppsData getData() {
     return data;
   }
 
 
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(BotdResult data) {
+  public void setData(SignalResponseRootAppsData data) {
     this.data = data;
   }
 
 
-  public ProductsResponseBotd error(ProductError error) {
+  public SignalResponseRootApps1 error(ProductError error) {
     this.error = error;
     return this;
   }
@@ -101,7 +102,7 @@ public class ProductsResponseBotd {
 
 
   /**
-   * Return true if this ProductsResponseBotd object is equal to o.
+   * Return true if this SignalResponseRootApps_1 object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -111,9 +112,9 @@ public class ProductsResponseBotd {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ProductsResponseBotd productsResponseBotd = (ProductsResponseBotd) o;
-    return Objects.equals(this.data, productsResponseBotd.data) &&
-        Objects.equals(this.error, productsResponseBotd.error);
+    SignalResponseRootApps1 signalResponseRootApps1 = (SignalResponseRootApps1) o;
+    return Objects.equals(this.data, signalResponseRootApps1.data) &&
+        Objects.equals(this.error, signalResponseRootApps1.error);
   }
 
   @Override
@@ -124,7 +125,7 @@ public class ProductsResponseBotd {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ProductsResponseBotd {\n");
+    sb.append("class SignalResponseRootApps1 {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");

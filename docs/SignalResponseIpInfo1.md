@@ -1,13 +1,13 @@
 
 
-# ProductsResponseBotd
+# SignalResponseIpInfo1
 
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**BotdResult**](BotdResult.md) |  |  [optional] |
+|**data** | [**IpInfoResult**](IpInfoResult.md) |  |  [optional] |
 |**error** | [**ProductError**](ProductError.md) |  |  [optional] |
 
 

@@ -22,8 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.BotdResult;
-import com.fingerprint.model.ProductError;
+import com.fingerprint.model.VpnResultMethods;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -31,77 +30,77 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * ProductsResponseBotd
+ * VpnResult
  */
 @JsonPropertyOrder({
-  ProductsResponseBotd.JSON_PROPERTY_DATA,
-  ProductsResponseBotd.JSON_PROPERTY_ERROR
+  VpnResult.JSON_PROPERTY_RESULT,
+  VpnResult.JSON_PROPERTY_METHODS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ProductsResponseBotd {
-  public static final String JSON_PROPERTY_DATA = "data";
-  private BotdResult data;
+public class VpnResult {
+  public static final String JSON_PROPERTY_RESULT = "result";
+  private Boolean result;
 
-  public static final String JSON_PROPERTY_ERROR = "error";
-  private ProductError error;
+  public static final String JSON_PROPERTY_METHODS = "methods";
+  private VpnResultMethods methods;
 
-  public ProductsResponseBotd() { 
+  public VpnResult() { 
   }
 
-  public ProductsResponseBotd data(BotdResult data) {
-    this.data = data;
+  public VpnResult result(Boolean result) {
+    this.result = result;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * VPN or other anonymising service has been used when sending the request.
+   * @return result
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @ApiModelProperty(example = "false", value = "VPN or other anonymising service has been used when sending the request.")
+  @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public BotdResult getData() {
-    return data;
+  public Boolean getResult() {
+    return result;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(BotdResult data) {
-    this.data = data;
+  public void setResult(Boolean result) {
+    this.result = result;
   }
 
 
-  public ProductsResponseBotd error(ProductError error) {
-    this.error = error;
+  public VpnResult methods(VpnResultMethods methods) {
+    this.methods = methods;
     return this;
   }
 
    /**
-   * Get error
-   * @return error
+   * Get methods
+   * @return methods
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonProperty(JSON_PROPERTY_METHODS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public ProductError getError() {
-    return error;
+  public VpnResultMethods getMethods() {
+    return methods;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonProperty(JSON_PROPERTY_METHODS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(ProductError error) {
-    this.error = error;
+  public void setMethods(VpnResultMethods methods) {
+    this.methods = methods;
   }
 
 
   /**
-   * Return true if this ProductsResponseBotd object is equal to o.
+   * Return true if this VpnResult object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -111,22 +110,22 @@ public class ProductsResponseBotd {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ProductsResponseBotd productsResponseBotd = (ProductsResponseBotd) o;
-    return Objects.equals(this.data, productsResponseBotd.data) &&
-        Objects.equals(this.error, productsResponseBotd.error);
+    VpnResult vpnResult = (VpnResult) o;
+    return Objects.equals(this.result, vpnResult.result) &&
+        Objects.equals(this.methods, vpnResult.methods);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, error);
+    return Objects.hash(result, methods);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ProductsResponseBotd {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("class VpnResult {\n");
+    sb.append("    result: ").append(toIndentedString(result)).append("\n");
+    sb.append("    methods: ").append(toIndentedString(methods)).append("\n");
     sb.append("}");
     return sb.toString();
   }

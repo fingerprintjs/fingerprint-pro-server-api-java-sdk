@@ -22,8 +22,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.BotdResult;
-import com.fingerprint.model.ProductError;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -31,77 +29,78 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * ProductsResponseBotd
+ * VpnResultMethods
  */
 @JsonPropertyOrder({
-  ProductsResponseBotd.JSON_PROPERTY_DATA,
-  ProductsResponseBotd.JSON_PROPERTY_ERROR
+  VpnResultMethods.JSON_PROPERTY_TIMEZONE_MISMATCH,
+  VpnResultMethods.JSON_PROPERTY_PUBLIC_V_P_N
 })
+@JsonTypeName("VpnResult_methods")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ProductsResponseBotd {
-  public static final String JSON_PROPERTY_DATA = "data";
-  private BotdResult data;
+public class VpnResultMethods {
+  public static final String JSON_PROPERTY_TIMEZONE_MISMATCH = "timezoneMismatch";
+  private Boolean timezoneMismatch;
 
-  public static final String JSON_PROPERTY_ERROR = "error";
-  private ProductError error;
+  public static final String JSON_PROPERTY_PUBLIC_V_P_N = "publicVPN";
+  private Boolean publicVPN;
 
-  public ProductsResponseBotd() { 
+  public VpnResultMethods() { 
   }
 
-  public ProductsResponseBotd data(BotdResult data) {
-    this.data = data;
+  public VpnResultMethods timezoneMismatch(Boolean timezoneMismatch) {
+    this.timezoneMismatch = timezoneMismatch;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * User&#39;s browser timezone doesn&#39;t match the timezone from which the request was originally made.
+   * @return timezoneMismatch
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @ApiModelProperty(example = "false", value = "User's browser timezone doesn't match the timezone from which the request was originally made.")
+  @JsonProperty(JSON_PROPERTY_TIMEZONE_MISMATCH)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public BotdResult getData() {
-    return data;
+  public Boolean getTimezoneMismatch() {
+    return timezoneMismatch;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonProperty(JSON_PROPERTY_TIMEZONE_MISMATCH)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(BotdResult data) {
-    this.data = data;
+  public void setTimezoneMismatch(Boolean timezoneMismatch) {
+    this.timezoneMismatch = timezoneMismatch;
   }
 
 
-  public ProductsResponseBotd error(ProductError error) {
-    this.error = error;
+  public VpnResultMethods publicVPN(Boolean publicVPN) {
+    this.publicVPN = publicVPN;
     return this;
   }
 
    /**
-   * Get error
-   * @return error
+   * Request IP address is owned and used by a public VPN service provider.
+   * @return publicVPN
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_ERROR)
+  @ApiModelProperty(example = "false", value = "Request IP address is owned and used by a public VPN service provider.")
+  @JsonProperty(JSON_PROPERTY_PUBLIC_V_P_N)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public ProductError getError() {
-    return error;
+  public Boolean getPublicVPN() {
+    return publicVPN;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonProperty(JSON_PROPERTY_PUBLIC_V_P_N)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(ProductError error) {
-    this.error = error;
+  public void setPublicVPN(Boolean publicVPN) {
+    this.publicVPN = publicVPN;
   }
 
 
   /**
-   * Return true if this ProductsResponseBotd object is equal to o.
+   * Return true if this VpnResult_methods object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -111,22 +110,22 @@ public class ProductsResponseBotd {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ProductsResponseBotd productsResponseBotd = (ProductsResponseBotd) o;
-    return Objects.equals(this.data, productsResponseBotd.data) &&
-        Objects.equals(this.error, productsResponseBotd.error);
+    VpnResultMethods vpnResultMethods = (VpnResultMethods) o;
+    return Objects.equals(this.timezoneMismatch, vpnResultMethods.timezoneMismatch) &&
+        Objects.equals(this.publicVPN, vpnResultMethods.publicVPN);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, error);
+    return Objects.hash(timezoneMismatch, publicVPN);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ProductsResponseBotd {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("class VpnResultMethods {\n");
+    sb.append("    timezoneMismatch: ").append(toIndentedString(timezoneMismatch)).append("\n");
+    sb.append("    publicVPN: ").append(toIndentedString(publicVPN)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -22,8 +22,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.BotdResult;
-import com.fingerprint.model.ProductError;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -31,77 +29,48 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * ProductsResponseBotd
+ * SignalResponseRootAppsData
  */
 @JsonPropertyOrder({
-  ProductsResponseBotd.JSON_PROPERTY_DATA,
-  ProductsResponseBotd.JSON_PROPERTY_ERROR
+  SignalResponseRootAppsData.JSON_PROPERTY_RESULT
 })
+@JsonTypeName("SignalResponseRootApps_data")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ProductsResponseBotd {
-  public static final String JSON_PROPERTY_DATA = "data";
-  private BotdResult data;
+public class SignalResponseRootAppsData {
+  public static final String JSON_PROPERTY_RESULT = "result";
+  private Boolean result;
 
-  public static final String JSON_PROPERTY_ERROR = "error";
-  private ProductError error;
-
-  public ProductsResponseBotd() { 
+  public SignalResponseRootAppsData() { 
   }
 
-  public ProductsResponseBotd data(BotdResult data) {
-    this.data = data;
+  public SignalResponseRootAppsData result(Boolean result) {
+    this.result = result;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * Android specific root management apps detection. There are 2 values: • &#x60;true&#x60; - Root Management Apps detected (e.g. Magisk) • &#x60;false&#x60; - No Root Management Apps detected Available only for events from Android client. The field will be empty for a browser/iOS event. 
+   * @return result
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @ApiModelProperty(example = "false", value = "Android specific root management apps detection. There are 2 values: • `true` - Root Management Apps detected (e.g. Magisk) • `false` - No Root Management Apps detected Available only for events from Android client. The field will be empty for a browser/iOS event. ")
+  @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public BotdResult getData() {
-    return data;
+  public Boolean getResult() {
+    return result;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(BotdResult data) {
-    this.data = data;
-  }
-
-
-  public ProductsResponseBotd error(ProductError error) {
-    this.error = error;
-    return this;
-  }
-
-   /**
-   * Get error
-   * @return error
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_ERROR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public ProductError getError() {
-    return error;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ERROR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(ProductError error) {
-    this.error = error;
+  public void setResult(Boolean result) {
+    this.result = result;
   }
 
 
   /**
-   * Return true if this ProductsResponseBotd object is equal to o.
+   * Return true if this SignalResponseRootApps_data object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -111,22 +80,20 @@ public class ProductsResponseBotd {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ProductsResponseBotd productsResponseBotd = (ProductsResponseBotd) o;
-    return Objects.equals(this.data, productsResponseBotd.data) &&
-        Objects.equals(this.error, productsResponseBotd.error);
+    SignalResponseRootAppsData signalResponseRootAppsData = (SignalResponseRootAppsData) o;
+    return Objects.equals(this.result, signalResponseRootAppsData.result);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, error);
+    return Objects.hash(result);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ProductsResponseBotd {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("class SignalResponseRootAppsData {\n");
+    sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();
   }

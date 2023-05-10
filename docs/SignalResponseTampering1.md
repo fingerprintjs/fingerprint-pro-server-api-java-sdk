@@ -1,13 +1,13 @@
 
 
-# ProductsResponseBotd
+# SignalResponseTampering1
 
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**BotdResult**](BotdResult.md) |  |  [optional] |
+|**data** | [**TamperingResult**](TamperingResult.md) |  |  [optional] |
 |**error** | [**ProductError**](ProductError.md) |  |  [optional] |
 
 

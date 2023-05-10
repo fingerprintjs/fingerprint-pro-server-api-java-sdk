@@ -2,7 +2,7 @@ package com.fingerprint.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.fingerprint.model.BotdError;
+import com.fingerprint.model.ProductError;
 import com.fingerprint.model.IdentificationError;
 import com.fingerprint.sdk.*;
 import com.fingerprint.model.EventResponse;
@@ -27,6 +27,7 @@ public class FingerprintApiTest {
     private FingerprintApi api;
     private final String MOCK_REQUEST_ID = "0KSh65EnVoB85JBmloQK";
     private final String MOCK_REQUEST_WITH_EXTRA_FIELDS_ID = "EXTRA_FIELDS";
+    private final String MOCK_REQUEST_WITH_ALL_FAILED_SIGNALS = "ALL_FAILED_SIGNALS";
     private final String MOCK_REQUEST_BOTD_FAILED = "MOCK_REQUEST_BOTD_FAILED";
     private final String MOCK_REQUEST_BOTD_MANY_REQUEST = "MOCK_REQUEST_BOTD_MANY_REQUEST";
     private final String MOCK_REQUEST_IDENTIFICATION_FAILED = "MOCK_REQUEST_IDENTIFICATION_FAILED";
@@ -52,6 +53,7 @@ public class FingerprintApiTest {
         when(api.getEvent(MOCK_REQUEST_ID)).thenReturn(fetchMockWithEventResponse("mocks/get_event.json"));
 // TODO: Find the way to test SDK correctly for this scenario
 //        when(api.getEvent(MOCK_REQUEST_WITH_EXTRA_FIELDS_ID)).thenReturn(fetchMockWithEventResponse("mocks/get_event_extra_fields.json"));
+        when(api.getEvent(MOCK_REQUEST_WITH_ALL_FAILED_SIGNALS)).thenReturn(fetchMockWithEventResponse("mocks/get_event_all_errors.json"));
         when(api.getEvent(MOCK_REQUEST_BOTD_FAILED)).thenReturn(fetchMockWithEventResponse("mocks/get_event_botd_failed_error.json"));
         when(api.getEvent(MOCK_REQUEST_BOTD_MANY_REQUEST)).thenReturn(fetchMockWithEventResponse("mocks/get_event_botd_too_many_requests_error.json"));
         when(api.getEvent(MOCK_REQUEST_IDENTIFICATION_FAILED)).thenReturn(fetchMockWithEventResponse("mocks/get_event_identification_failed_error.json"));
@@ -105,6 +107,23 @@ public class FingerprintApiTest {
 //    }
 
     @Test
+    public void getEventWithAllFailedSignalsTest() throws ApiException {
+        EventResponse response = api.getEvent(MOCK_REQUEST_WITH_ALL_FAILED_SIGNALS);
+        assert response.getProducts() != null;
+        assert response.getProducts().getIdentification().getError().getCode() == IdentificationError.CodeEnum.FAILED;
+        assert response.getProducts().getBotd().getError().getCode() == ProductError.CodeEnum.FAILED;
+        assert response.getProducts().getIpInfo().getError().getCode() == ProductError.CodeEnum.FAILED;
+        assert response.getProducts().getIncognito().getError().getCode() == ProductError.CodeEnum.FAILED;
+        assert response.getProducts().getRootApps().getError().getCode() == ProductError.CodeEnum.FAILED;
+        assert response.getProducts().getEmulator().getError().getCode() == ProductError.CodeEnum.FAILED;
+        assert response.getProducts().getIpBlocklist().getError().getCode() == ProductError.CodeEnum.FAILED;
+        assert response.getProducts().getTor().getError().getCode() == ProductError.CodeEnum.FAILED;
+        assert response.getProducts().getVpn().getError().getCode() == ProductError.CodeEnum.FAILED;
+        assert response.getProducts().getProxy().getError().getCode() == ProductError.CodeEnum.FAILED;
+        assert response.getProducts().getTampering().getError().getCode() == ProductError.CodeEnum.FAILED;
+    }
+
+    @Test
     public void getEventBotdFailedErrorTest() throws ApiException {
         EventResponse response = api.getEvent(MOCK_REQUEST_BOTD_FAILED);
         assert response.getProducts() != null;
@@ -113,7 +132,7 @@ public class FingerprintApiTest {
         assertEquals(response.getProducts().getIdentification().getData().getVisitorId(), "Ibk1527CUFmcnjLwIs4A9");
         assert response.getProducts().getBotd().getData() == null;
         assert response.getProducts().getBotd().getError() != null;
-        assert response.getProducts().getBotd().getError().getCode() == BotdError.CodeEnum.FAILED;
+        assert response.getProducts().getBotd().getError().getCode() == ProductError.CodeEnum.FAILED;
     }
 
     @Test
@@ -125,7 +144,7 @@ public class FingerprintApiTest {
         assertEquals(response.getProducts().getIdentification().getData().getVisitorId(), "Ibk1527CUFmcnjLwIs4A9");
         assert response.getProducts().getBotd().getData() == null;
         assert response.getProducts().getBotd().getError() != null;
-        assert response.getProducts().getBotd().getError().getCode() == BotdError.CodeEnum.TOOMANYREQUESTS;
+        assert response.getProducts().getBotd().getError().getCode() == ProductError.CodeEnum.TOOMANYREQUESTS;
     }
 
     @Test

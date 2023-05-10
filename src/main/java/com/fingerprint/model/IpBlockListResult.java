@@ -22,8 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.BotdResult;
-import com.fingerprint.model.ProductError;
+import com.fingerprint.model.IpBlockListResultDetails;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -31,77 +30,77 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * ProductsResponseBotd
+ * IpBlockListResult
  */
 @JsonPropertyOrder({
-  ProductsResponseBotd.JSON_PROPERTY_DATA,
-  ProductsResponseBotd.JSON_PROPERTY_ERROR
+  IpBlockListResult.JSON_PROPERTY_RESULT,
+  IpBlockListResult.JSON_PROPERTY_DETAILS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ProductsResponseBotd {
-  public static final String JSON_PROPERTY_DATA = "data";
-  private BotdResult data;
+public class IpBlockListResult {
+  public static final String JSON_PROPERTY_RESULT = "result";
+  private Boolean result;
 
-  public static final String JSON_PROPERTY_ERROR = "error";
-  private ProductError error;
+  public static final String JSON_PROPERTY_DETAILS = "details";
+  private IpBlockListResultDetails details;
 
-  public ProductsResponseBotd() { 
+  public IpBlockListResult() { 
   }
 
-  public ProductsResponseBotd data(BotdResult data) {
-    this.data = data;
+  public IpBlockListResult result(Boolean result) {
+    this.result = result;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * &#x60;true&#x60; if request IP address is part of any database that we use to search for known malicious actors, &#x60;false&#x60; otherwise. 
+   * @return result
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @ApiModelProperty(example = "false", value = "`true` if request IP address is part of any database that we use to search for known malicious actors, `false` otherwise. ")
+  @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public BotdResult getData() {
-    return data;
+  public Boolean getResult() {
+    return result;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(BotdResult data) {
-    this.data = data;
+  public void setResult(Boolean result) {
+    this.result = result;
   }
 
 
-  public ProductsResponseBotd error(ProductError error) {
-    this.error = error;
+  public IpBlockListResult details(IpBlockListResultDetails details) {
+    this.details = details;
     return this;
   }
 
    /**
-   * Get error
-   * @return error
+   * Get details
+   * @return details
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public ProductError getError() {
-    return error;
+  public IpBlockListResultDetails getDetails() {
+    return details;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(ProductError error) {
-    this.error = error;
+  public void setDetails(IpBlockListResultDetails details) {
+    this.details = details;
   }
 
 
   /**
-   * Return true if this ProductsResponseBotd object is equal to o.
+   * Return true if this IpBlockListResult object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -111,22 +110,22 @@ public class ProductsResponseBotd {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ProductsResponseBotd productsResponseBotd = (ProductsResponseBotd) o;
-    return Objects.equals(this.data, productsResponseBotd.data) &&
-        Objects.equals(this.error, productsResponseBotd.error);
+    IpBlockListResult ipBlockListResult = (IpBlockListResult) o;
+    return Objects.equals(this.result, ipBlockListResult.result) &&
+        Objects.equals(this.details, ipBlockListResult.details);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, error);
+    return Objects.hash(result, details);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ProductsResponseBotd {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("class IpBlockListResult {\n");
+    sb.append("    result: ").append(toIndentedString(result)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("}");
     return sb.toString();
   }

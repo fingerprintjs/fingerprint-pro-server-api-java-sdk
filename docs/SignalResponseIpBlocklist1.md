@@ -1,13 +1,13 @@
 
 
-# ProductsResponseBotd
+# SignalResponseIpBlocklist1
 
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**BotdResult**](BotdResult.md) |  |  [optional] |
+|**data** | [**IpBlockListResult**](IpBlockListResult.md) |  |  [optional] |
 |**error** | [**ProductError**](ProductError.md) |  |  [optional] |
 
 

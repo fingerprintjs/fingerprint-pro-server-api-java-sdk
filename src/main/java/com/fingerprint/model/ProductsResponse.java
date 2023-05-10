@@ -24,6 +24,15 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fingerprint.model.ProductsResponseBotd;
 import com.fingerprint.model.ProductsResponseIdentification;
+import com.fingerprint.model.SignalResponseEmulator1;
+import com.fingerprint.model.SignalResponseIncognito;
+import com.fingerprint.model.SignalResponseIpBlocklist1;
+import com.fingerprint.model.SignalResponseIpInfo1;
+import com.fingerprint.model.SignalResponseProxy1;
+import com.fingerprint.model.SignalResponseRootApps1;
+import com.fingerprint.model.SignalResponseTampering1;
+import com.fingerprint.model.SignalResponseTor1;
+import com.fingerprint.model.SignalResponseVpn1;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -36,7 +45,16 @@ import com.fingerprint.sdk.JSON;
 @ApiModel(description = "Contains all the information from each activated product - Fingerprint Pro or Bot Detection")
 @JsonPropertyOrder({
   ProductsResponse.JSON_PROPERTY_IDENTIFICATION,
-  ProductsResponse.JSON_PROPERTY_BOTD
+  ProductsResponse.JSON_PROPERTY_BOTD,
+  ProductsResponse.JSON_PROPERTY_IP_INFO,
+  ProductsResponse.JSON_PROPERTY_INCOGNITO,
+  ProductsResponse.JSON_PROPERTY_ROOT_APPS,
+  ProductsResponse.JSON_PROPERTY_EMULATOR,
+  ProductsResponse.JSON_PROPERTY_IP_BLOCKLIST,
+  ProductsResponse.JSON_PROPERTY_TOR,
+  ProductsResponse.JSON_PROPERTY_VPN,
+  ProductsResponse.JSON_PROPERTY_PROXY,
+  ProductsResponse.JSON_PROPERTY_TAMPERING
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProductsResponse {
@@ -45,6 +63,33 @@ public class ProductsResponse {
 
   public static final String JSON_PROPERTY_BOTD = "botd";
   private ProductsResponseBotd botd;
+
+  public static final String JSON_PROPERTY_IP_INFO = "ipInfo";
+  private SignalResponseIpInfo1 ipInfo;
+
+  public static final String JSON_PROPERTY_INCOGNITO = "incognito";
+  private SignalResponseIncognito incognito;
+
+  public static final String JSON_PROPERTY_ROOT_APPS = "rootApps";
+  private SignalResponseRootApps1 rootApps;
+
+  public static final String JSON_PROPERTY_EMULATOR = "emulator";
+  private SignalResponseEmulator1 emulator;
+
+  public static final String JSON_PROPERTY_IP_BLOCKLIST = "ipBlocklist";
+  private SignalResponseIpBlocklist1 ipBlocklist;
+
+  public static final String JSON_PROPERTY_TOR = "tor";
+  private SignalResponseTor1 tor;
+
+  public static final String JSON_PROPERTY_VPN = "vpn";
+  private SignalResponseVpn1 vpn;
+
+  public static final String JSON_PROPERTY_PROXY = "proxy";
+  private SignalResponseProxy1 proxy;
+
+  public static final String JSON_PROPERTY_TAMPERING = "tampering";
+  private SignalResponseTampering1 tampering;
 
   public ProductsResponse() { 
   }
@@ -101,6 +146,240 @@ public class ProductsResponse {
   }
 
 
+  public ProductsResponse ipInfo(SignalResponseIpInfo1 ipInfo) {
+    this.ipInfo = ipInfo;
+    return this;
+  }
+
+   /**
+   * Get ipInfo
+   * @return ipInfo
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_IP_INFO)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SignalResponseIpInfo1 getIpInfo() {
+    return ipInfo;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IP_INFO)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIpInfo(SignalResponseIpInfo1 ipInfo) {
+    this.ipInfo = ipInfo;
+  }
+
+
+  public ProductsResponse incognito(SignalResponseIncognito incognito) {
+    this.incognito = incognito;
+    return this;
+  }
+
+   /**
+   * Get incognito
+   * @return incognito
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_INCOGNITO)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SignalResponseIncognito getIncognito() {
+    return incognito;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_INCOGNITO)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIncognito(SignalResponseIncognito incognito) {
+    this.incognito = incognito;
+  }
+
+
+  public ProductsResponse rootApps(SignalResponseRootApps1 rootApps) {
+    this.rootApps = rootApps;
+    return this;
+  }
+
+   /**
+   * Get rootApps
+   * @return rootApps
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_ROOT_APPS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SignalResponseRootApps1 getRootApps() {
+    return rootApps;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ROOT_APPS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRootApps(SignalResponseRootApps1 rootApps) {
+    this.rootApps = rootApps;
+  }
+
+
+  public ProductsResponse emulator(SignalResponseEmulator1 emulator) {
+    this.emulator = emulator;
+    return this;
+  }
+
+   /**
+   * Get emulator
+   * @return emulator
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_EMULATOR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SignalResponseEmulator1 getEmulator() {
+    return emulator;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EMULATOR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEmulator(SignalResponseEmulator1 emulator) {
+    this.emulator = emulator;
+  }
+
+
+  public ProductsResponse ipBlocklist(SignalResponseIpBlocklist1 ipBlocklist) {
+    this.ipBlocklist = ipBlocklist;
+    return this;
+  }
+
+   /**
+   * Get ipBlocklist
+   * @return ipBlocklist
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_IP_BLOCKLIST)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SignalResponseIpBlocklist1 getIpBlocklist() {
+    return ipBlocklist;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IP_BLOCKLIST)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIpBlocklist(SignalResponseIpBlocklist1 ipBlocklist) {
+    this.ipBlocklist = ipBlocklist;
+  }
+
+
+  public ProductsResponse tor(SignalResponseTor1 tor) {
+    this.tor = tor;
+    return this;
+  }
+
+   /**
+   * Get tor
+   * @return tor
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_TOR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SignalResponseTor1 getTor() {
+    return tor;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TOR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTor(SignalResponseTor1 tor) {
+    this.tor = tor;
+  }
+
+
+  public ProductsResponse vpn(SignalResponseVpn1 vpn) {
+    this.vpn = vpn;
+    return this;
+  }
+
+   /**
+   * Get vpn
+   * @return vpn
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_VPN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SignalResponseVpn1 getVpn() {
+    return vpn;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VPN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVpn(SignalResponseVpn1 vpn) {
+    this.vpn = vpn;
+  }
+
+
+  public ProductsResponse proxy(SignalResponseProxy1 proxy) {
+    this.proxy = proxy;
+    return this;
+  }
+
+   /**
+   * Get proxy
+   * @return proxy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_PROXY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SignalResponseProxy1 getProxy() {
+    return proxy;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PROXY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setProxy(SignalResponseProxy1 proxy) {
+    this.proxy = proxy;
+  }
+
+
+  public ProductsResponse tampering(SignalResponseTampering1 tampering) {
+    this.tampering = tampering;
+    return this;
+  }
+
+   /**
+   * Get tampering
+   * @return tampering
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_TAMPERING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SignalResponseTampering1 getTampering() {
+    return tampering;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAMPERING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTampering(SignalResponseTampering1 tampering) {
+    this.tampering = tampering;
+  }
+
+
   /**
    * Return true if this ProductsResponse object is equal to o.
    */
@@ -114,12 +393,21 @@ public class ProductsResponse {
     }
     ProductsResponse productsResponse = (ProductsResponse) o;
     return Objects.equals(this.identification, productsResponse.identification) &&
-        Objects.equals(this.botd, productsResponse.botd);
+        Objects.equals(this.botd, productsResponse.botd) &&
+        Objects.equals(this.ipInfo, productsResponse.ipInfo) &&
+        Objects.equals(this.incognito, productsResponse.incognito) &&
+        Objects.equals(this.rootApps, productsResponse.rootApps) &&
+        Objects.equals(this.emulator, productsResponse.emulator) &&
+        Objects.equals(this.ipBlocklist, productsResponse.ipBlocklist) &&
+        Objects.equals(this.tor, productsResponse.tor) &&
+        Objects.equals(this.vpn, productsResponse.vpn) &&
+        Objects.equals(this.proxy, productsResponse.proxy) &&
+        Objects.equals(this.tampering, productsResponse.tampering);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(identification, botd);
+    return Objects.hash(identification, botd, ipInfo, incognito, rootApps, emulator, ipBlocklist, tor, vpn, proxy, tampering);
   }
 
   @Override
@@ -128,6 +416,15 @@ public class ProductsResponse {
     sb.append("class ProductsResponse {\n");
     sb.append("    identification: ").append(toIndentedString(identification)).append("\n");
     sb.append("    botd: ").append(toIndentedString(botd)).append("\n");
+    sb.append("    ipInfo: ").append(toIndentedString(ipInfo)).append("\n");
+    sb.append("    incognito: ").append(toIndentedString(incognito)).append("\n");
+    sb.append("    rootApps: ").append(toIndentedString(rootApps)).append("\n");
+    sb.append("    emulator: ").append(toIndentedString(emulator)).append("\n");
+    sb.append("    ipBlocklist: ").append(toIndentedString(ipBlocklist)).append("\n");
+    sb.append("    tor: ").append(toIndentedString(tor)).append("\n");
+    sb.append("    vpn: ").append(toIndentedString(vpn)).append("\n");
+    sb.append("    proxy: ").append(toIndentedString(proxy)).append("\n");
+    sb.append("    tampering: ").append(toIndentedString(tampering)).append("\n");
     sb.append("}");
     return sb.toString();
   }

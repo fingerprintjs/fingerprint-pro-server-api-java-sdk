@@ -22,8 +22,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.BotdResult;
-import com.fingerprint.model.ProductError;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -31,77 +29,78 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * ProductsResponseBotd
+ * IpBlockListResultDetails
  */
 @JsonPropertyOrder({
-  ProductsResponseBotd.JSON_PROPERTY_DATA,
-  ProductsResponseBotd.JSON_PROPERTY_ERROR
+  IpBlockListResultDetails.JSON_PROPERTY_EMAIL_SPAM,
+  IpBlockListResultDetails.JSON_PROPERTY_ATTACK_SOURCE
 })
+@JsonTypeName("IpBlockListResult_details")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ProductsResponseBotd {
-  public static final String JSON_PROPERTY_DATA = "data";
-  private BotdResult data;
+public class IpBlockListResultDetails {
+  public static final String JSON_PROPERTY_EMAIL_SPAM = "emailSpam";
+  private Boolean emailSpam;
 
-  public static final String JSON_PROPERTY_ERROR = "error";
-  private ProductError error;
+  public static final String JSON_PROPERTY_ATTACK_SOURCE = "attackSource";
+  private Boolean attackSource;
 
-  public ProductsResponseBotd() { 
+  public IpBlockListResultDetails() { 
   }
 
-  public ProductsResponseBotd data(BotdResult data) {
-    this.data = data;
+  public IpBlockListResultDetails emailSpam(Boolean emailSpam) {
+    this.emailSpam = emailSpam;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * IP address was part of a known email spam attack (SMTP).
+   * @return emailSpam
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @ApiModelProperty(example = "false", value = "IP address was part of a known email spam attack (SMTP).")
+  @JsonProperty(JSON_PROPERTY_EMAIL_SPAM)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public BotdResult getData() {
-    return data;
+  public Boolean getEmailSpam() {
+    return emailSpam;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonProperty(JSON_PROPERTY_EMAIL_SPAM)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(BotdResult data) {
-    this.data = data;
+  public void setEmailSpam(Boolean emailSpam) {
+    this.emailSpam = emailSpam;
   }
 
 
-  public ProductsResponseBotd error(ProductError error) {
-    this.error = error;
+  public IpBlockListResultDetails attackSource(Boolean attackSource) {
+    this.attackSource = attackSource;
     return this;
   }
 
    /**
-   * Get error
-   * @return error
+   * IP address was part of a known network attack (SSH/HTTPS).
+   * @return attackSource
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_ERROR)
+  @ApiModelProperty(example = "false", value = "IP address was part of a known network attack (SSH/HTTPS).")
+  @JsonProperty(JSON_PROPERTY_ATTACK_SOURCE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public ProductError getError() {
-    return error;
+  public Boolean getAttackSource() {
+    return attackSource;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonProperty(JSON_PROPERTY_ATTACK_SOURCE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(ProductError error) {
-    this.error = error;
+  public void setAttackSource(Boolean attackSource) {
+    this.attackSource = attackSource;
   }
 
 
   /**
-   * Return true if this ProductsResponseBotd object is equal to o.
+   * Return true if this IpBlockListResult_details object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -111,22 +110,22 @@ public class ProductsResponseBotd {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ProductsResponseBotd productsResponseBotd = (ProductsResponseBotd) o;
-    return Objects.equals(this.data, productsResponseBotd.data) &&
-        Objects.equals(this.error, productsResponseBotd.error);
+    IpBlockListResultDetails ipBlockListResultDetails = (IpBlockListResultDetails) o;
+    return Objects.equals(this.emailSpam, ipBlockListResultDetails.emailSpam) &&
+        Objects.equals(this.attackSource, ipBlockListResultDetails.attackSource);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, error);
+    return Objects.hash(emailSpam, attackSource);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ProductsResponseBotd {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("class IpBlockListResultDetails {\n");
+    sb.append("    emailSpam: ").append(toIndentedString(emailSpam)).append("\n");
+    sb.append("    attackSource: ").append(toIndentedString(attackSource)).append("\n");
     sb.append("}");
     return sb.toString();
   }

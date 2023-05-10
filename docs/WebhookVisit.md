@@ -9,9 +9,19 @@
 |------------ | ------------- | ------------- | -------------|
 |**visitorId** | **String** |  |  |
 |**clientReferrer** | **String** |  |  [optional] |
+|**userAgent** | **String** |  |  [optional] |
+|**bot** | [**BotdDetectionResult**](BotdDetectionResult.md) |  |  [optional] |
+|**ipInfo** | [**SignalResponseIpInfo**](SignalResponseIpInfo.md) |  |  [optional] |
+|**incognito** | **Boolean** | Flag if user used incognito session. |  |
+|**rootApps** | [**SignalResponseRootApps**](SignalResponseRootApps.md) |  |  [optional] |
+|**emulator** | [**SignalResponseEmulator**](SignalResponseEmulator.md) |  |  [optional] |
+|**ipBlocklist** | [**SignalResponseIpBlocklist**](SignalResponseIpBlocklist.md) |  |  [optional] |
+|**tor** | [**SignalResponseTor**](SignalResponseTor.md) |  |  [optional] |
+|**vpn** | [**SignalResponseVpn**](SignalResponseVpn.md) |  |  [optional] |
+|**proxy** | [**SignalResponseProxy**](SignalResponseProxy.md) |  |  [optional] |
+|**tampering** | [**SignalResponseTampering**](SignalResponseTampering.md) |  |  [optional] |
 |**requestId** | **String** | Unique identifier of the user&#39;s identification request. |  |
 |**browserDetails** | [**BrowserDetails**](BrowserDetails.md) |  |  |
-|**incognito** | **Boolean** | Flag if user used incognito session. |  |
 |**ip** | **String** |  |  |
 |**ipLocation** | [**IPLocation**](IPLocation.md) |  |  |
 |**timestamp** | **Long** | Timestamp of the event with millisecond precision in Unix time. |  |

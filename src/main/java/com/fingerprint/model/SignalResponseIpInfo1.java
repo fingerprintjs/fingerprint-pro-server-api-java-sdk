@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.BotdResult;
+import com.fingerprint.model.IpInfoResult;
 import com.fingerprint.model.ProductError;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -31,24 +31,25 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * ProductsResponseBotd
+ * SignalResponseIpInfo1
  */
 @JsonPropertyOrder({
-  ProductsResponseBotd.JSON_PROPERTY_DATA,
-  ProductsResponseBotd.JSON_PROPERTY_ERROR
+  SignalResponseIpInfo1.JSON_PROPERTY_DATA,
+  SignalResponseIpInfo1.JSON_PROPERTY_ERROR
 })
+@JsonTypeName("SignalResponseIpInfo_1")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ProductsResponseBotd {
+public class SignalResponseIpInfo1 {
   public static final String JSON_PROPERTY_DATA = "data";
-  private BotdResult data;
+  private IpInfoResult data;
 
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
 
-  public ProductsResponseBotd() { 
+  public SignalResponseIpInfo1() { 
   }
 
-  public ProductsResponseBotd data(BotdResult data) {
+  public SignalResponseIpInfo1 data(IpInfoResult data) {
     this.data = data;
     return this;
   }
@@ -62,19 +63,19 @@ public class ProductsResponseBotd {
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public BotdResult getData() {
+  public IpInfoResult getData() {
     return data;
   }
 
 
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(BotdResult data) {
+  public void setData(IpInfoResult data) {
     this.data = data;
   }
 
 
-  public ProductsResponseBotd error(ProductError error) {
+  public SignalResponseIpInfo1 error(ProductError error) {
     this.error = error;
     return this;
   }
@@ -101,7 +102,7 @@ public class ProductsResponseBotd {
 
 
   /**
-   * Return true if this ProductsResponseBotd object is equal to o.
+   * Return true if this SignalResponseIpInfo_1 object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -111,9 +112,9 @@ public class ProductsResponseBotd {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ProductsResponseBotd productsResponseBotd = (ProductsResponseBotd) o;
-    return Objects.equals(this.data, productsResponseBotd.data) &&
-        Objects.equals(this.error, productsResponseBotd.error);
+    SignalResponseIpInfo1 signalResponseIpInfo1 = (SignalResponseIpInfo1) o;
+    return Objects.equals(this.data, signalResponseIpInfo1.data) &&
+        Objects.equals(this.error, signalResponseIpInfo1.error);
   }
 
   @Override
@@ -124,7 +125,7 @@ public class ProductsResponseBotd {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ProductsResponseBotd {\n");
+    sb.append("class SignalResponseIpInfo1 {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");

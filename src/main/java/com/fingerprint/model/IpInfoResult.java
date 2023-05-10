@@ -22,8 +22,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.BotdResult;
-import com.fingerprint.model.ProductError;
+import com.fingerprint.model.IpInfoResultV4;
+import com.fingerprint.model.IpInfoResultV6;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -31,77 +31,78 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * ProductsResponseBotd
+ * Details about the request IP address. Has separate fields for v4 and v6 IP address versions.
  */
+@ApiModel(description = "Details about the request IP address. Has separate fields for v4 and v6 IP address versions.")
 @JsonPropertyOrder({
-  ProductsResponseBotd.JSON_PROPERTY_DATA,
-  ProductsResponseBotd.JSON_PROPERTY_ERROR
+  IpInfoResult.JSON_PROPERTY_V4,
+  IpInfoResult.JSON_PROPERTY_V6
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ProductsResponseBotd {
-  public static final String JSON_PROPERTY_DATA = "data";
-  private BotdResult data;
+public class IpInfoResult {
+  public static final String JSON_PROPERTY_V4 = "v4";
+  private IpInfoResultV4 v4;
 
-  public static final String JSON_PROPERTY_ERROR = "error";
-  private ProductError error;
+  public static final String JSON_PROPERTY_V6 = "v6";
+  private IpInfoResultV6 v6;
 
-  public ProductsResponseBotd() { 
+  public IpInfoResult() { 
   }
 
-  public ProductsResponseBotd data(BotdResult data) {
-    this.data = data;
+  public IpInfoResult v4(IpInfoResultV4 v4) {
+    this.v4 = v4;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * Get v4
+   * @return v4
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonProperty(JSON_PROPERTY_V4)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public BotdResult getData() {
-    return data;
+  public IpInfoResultV4 getV4() {
+    return v4;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonProperty(JSON_PROPERTY_V4)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(BotdResult data) {
-    this.data = data;
+  public void setV4(IpInfoResultV4 v4) {
+    this.v4 = v4;
   }
 
 
-  public ProductsResponseBotd error(ProductError error) {
-    this.error = error;
+  public IpInfoResult v6(IpInfoResultV6 v6) {
+    this.v6 = v6;
     return this;
   }
 
    /**
-   * Get error
-   * @return error
+   * Get v6
+   * @return v6
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonProperty(JSON_PROPERTY_V6)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public ProductError getError() {
-    return error;
+  public IpInfoResultV6 getV6() {
+    return v6;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonProperty(JSON_PROPERTY_V6)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(ProductError error) {
-    this.error = error;
+  public void setV6(IpInfoResultV6 v6) {
+    this.v6 = v6;
   }
 
 
   /**
-   * Return true if this ProductsResponseBotd object is equal to o.
+   * Return true if this IpInfoResult object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -111,22 +112,22 @@ public class ProductsResponseBotd {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ProductsResponseBotd productsResponseBotd = (ProductsResponseBotd) o;
-    return Objects.equals(this.data, productsResponseBotd.data) &&
-        Objects.equals(this.error, productsResponseBotd.error);
+    IpInfoResult ipInfoResult = (IpInfoResult) o;
+    return Objects.equals(this.v4, ipInfoResult.v4) &&
+        Objects.equals(this.v6, ipInfoResult.v6);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, error);
+    return Objects.hash(v4, v6);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ProductsResponseBotd {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("class IpInfoResult {\n");
+    sb.append("    v4: ").append(toIndentedString(v4)).append("\n");
+    sb.append("    v6: ").append(toIndentedString(v6)).append("\n");
     sb.append("}");
     return sb.toString();
   }

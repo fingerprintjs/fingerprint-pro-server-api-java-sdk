@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**data** | [**BotdResult**](BotdResult.md) |  |  [optional] |
-|**error** | [**BotdError**](BotdError.md) |  |  [optional] |
+|**error** | [**ProductError**](ProductError.md) |  |  [optional] |
 
 
 

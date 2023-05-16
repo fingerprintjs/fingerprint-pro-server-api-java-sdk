@@ -22,8 +22,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.BotdError;
 import com.fingerprint.model.BotdResult;
+import com.fingerprint.model.ProductError;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -43,7 +43,7 @@ public class ProductsResponseBotd {
   private BotdResult data;
 
   public static final String JSON_PROPERTY_ERROR = "error";
-  private BotdError error;
+  private ProductError error;
 
   public ProductsResponseBotd() { 
   }
@@ -74,7 +74,7 @@ public class ProductsResponseBotd {
   }
 
 
-  public ProductsResponseBotd error(BotdError error) {
+  public ProductsResponseBotd error(ProductError error) {
     this.error = error;
     return this;
   }
@@ -88,14 +88,14 @@ public class ProductsResponseBotd {
   @JsonProperty(JSON_PROPERTY_ERROR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public BotdError getError() {
+  public ProductError getError() {
     return error;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ERROR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(BotdError error) {
+  public void setError(ProductError error) {
     this.error = error;
   }
 

@@ -38,6 +38,8 @@ import com.fingerprint.sdk.JSON;
   BotdResult.JSON_PROPERTY_IP,
   BotdResult.JSON_PROPERTY_TIME,
   BotdResult.JSON_PROPERTY_URL,
+  BotdResult.JSON_PROPERTY_USER_AGENT,
+  BotdResult.JSON_PROPERTY_REQUEST_ID,
   BotdResult.JSON_PROPERTY_BOT
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
@@ -50,6 +52,12 @@ public class BotdResult {
 
   public static final String JSON_PROPERTY_URL = "url";
   private String url;
+
+  public static final String JSON_PROPERTY_USER_AGENT = "userAgent";
+  private String userAgent;
+
+  public static final String JSON_PROPERTY_REQUEST_ID = "requestId";
+  private String requestId;
 
   public static final String JSON_PROPERTY_BOT = "bot";
   private BotdDetectionResult bot;
@@ -135,6 +143,58 @@ public class BotdResult {
   }
 
 
+  public BotdResult userAgent(String userAgent) {
+    this.userAgent = userAgent;
+    return this;
+  }
+
+   /**
+   * Get userAgent
+   * @return userAgent
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36", value = "")
+  @JsonProperty(JSON_PROPERTY_USER_AGENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getUserAgent() {
+    return userAgent;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_AGENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserAgent(String userAgent) {
+    this.userAgent = userAgent;
+  }
+
+
+  public BotdResult requestId(String requestId) {
+    this.requestId = requestId;
+    return this;
+  }
+
+   /**
+   * Get requestId
+   * @return requestId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1681392853693.lRiBBD", value = "")
+  @JsonProperty(JSON_PROPERTY_REQUEST_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getRequestId() {
+    return requestId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_REQUEST_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRequestId(String requestId) {
+    this.requestId = requestId;
+  }
+
+
   public BotdResult bot(BotdDetectionResult bot) {
     this.bot = bot;
     return this;
@@ -176,12 +236,14 @@ public class BotdResult {
     return Objects.equals(this.ip, botdResult.ip) &&
         Objects.equals(this.time, botdResult.time) &&
         Objects.equals(this.url, botdResult.url) &&
+        Objects.equals(this.userAgent, botdResult.userAgent) &&
+        Objects.equals(this.requestId, botdResult.requestId) &&
         Objects.equals(this.bot, botdResult.bot);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ip, time, url, bot);
+    return Objects.hash(ip, time, url, userAgent, requestId, bot);
   }
 
   @Override
@@ -191,6 +253,8 @@ public class BotdResult {
     sb.append("    ip: ").append(toIndentedString(ip)).append("\n");
     sb.append("    time: ").append(toIndentedString(time)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("    userAgent: ").append(toIndentedString(userAgent)).append("\n");
+    sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
     sb.append("    bot: ").append(toIndentedString(bot)).append("\n");
     sb.append("}");
     return sb.toString();

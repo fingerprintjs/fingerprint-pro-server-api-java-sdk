@@ -26,3 +26,5 @@ sed -i "s/artifactVersion: .*/artifactVersion: $VERSION/g" config.yaml
 rm -rf pom.xml README.md build.gradle settings.gradle gradle.properties
 
 java -jar ./bin/generator.jar generate -c config.yaml -g java --library jersey2 -i res/fingerprint-server-api.yaml --skip-validate-spec -o . -t template
+
+./gradlew removeWrongDocumentationLinks

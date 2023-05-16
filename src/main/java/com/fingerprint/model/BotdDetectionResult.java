@@ -33,7 +33,8 @@ import com.fingerprint.sdk.JSON;
  */
 @ApiModel(description = "Stores bot detection result")
 @JsonPropertyOrder({
-  BotdDetectionResult.JSON_PROPERTY_RESULT
+  BotdDetectionResult.JSON_PROPERTY_RESULT,
+  BotdDetectionResult.JSON_PROPERTY_TYPE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BotdDetectionResult {
@@ -77,6 +78,9 @@ public class BotdDetectionResult {
   public static final String JSON_PROPERTY_RESULT = "result";
   private ResultEnum result;
 
+  public static final String JSON_PROPERTY_TYPE = "type";
+  private String type;
+
   public BotdDetectionResult() { 
   }
 
@@ -90,7 +94,7 @@ public class BotdDetectionResult {
    * @return result
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Bot detection result:  * `notDetected` - the visitor is not a bot  * `good` - good bot detected, such as Google bot, Baidu Spider, AlexaBot and so on  * `bad` - bad bot detected, such as Selenium, Puppeteer, Playwright, headless browsers, and so on ")
+  @ApiModelProperty(example = "bad", required = true, value = "Bot detection result:  * `notDetected` - the visitor is not a bot  * `good` - good bot detected, such as Google bot, Baidu Spider, AlexaBot and so on  * `bad` - bad bot detected, such as Selenium, Puppeteer, Playwright, headless browsers, and so on ")
   @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -106,6 +110,32 @@ public class BotdDetectionResult {
   }
 
 
+  public BotdDetectionResult type(String type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "selenium", value = "")
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getType() {
+    return type;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setType(String type) {
+    this.type = type;
+  }
+
+
   /**
    * Return true if this BotdDetectionResult object is equal to o.
    */
@@ -118,12 +148,13 @@ public class BotdDetectionResult {
       return false;
     }
     BotdDetectionResult botdDetectionResult = (BotdDetectionResult) o;
-    return Objects.equals(this.result, botdDetectionResult.result);
+    return Objects.equals(this.result, botdDetectionResult.result) &&
+        Objects.equals(this.type, botdDetectionResult.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(result);
+    return Objects.hash(result, type);
   }
 
   @Override
@@ -131,6 +162,7 @@ public class BotdDetectionResult {
     StringBuilder sb = new StringBuilder();
     sb.append("class BotdDetectionResult {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

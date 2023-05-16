@@ -29,14 +29,14 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * BotdError
+ * ProductError
  */
 @JsonPropertyOrder({
-  BotdError.JSON_PROPERTY_CODE,
-  BotdError.JSON_PROPERTY_MESSAGE
+  ProductError.JSON_PROPERTY_CODE,
+  ProductError.JSON_PROPERTY_MESSAGE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class BotdError {
+public class ProductError {
   /**
    * Error code:  * &#x60;TooManyRequests&#x60; - the limit on secret API key requests per second has been exceeded  * &#x60;Failed&#x60; - internal server error 
    */
@@ -78,10 +78,10 @@ public class BotdError {
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
 
-  public BotdError() { 
+  public ProductError() { 
   }
 
-  public BotdError code(CodeEnum code) {
+  public ProductError code(CodeEnum code) {
     this.code = code;
     return this;
   }
@@ -107,7 +107,7 @@ public class BotdError {
   }
 
 
-  public BotdError message(String message) {
+  public ProductError message(String message) {
     this.message = message;
     return this;
   }
@@ -134,7 +134,7 @@ public class BotdError {
 
 
   /**
-   * Return true if this BotdError object is equal to o.
+   * Return true if this ProductError object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -144,9 +144,9 @@ public class BotdError {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BotdError botdError = (BotdError) o;
-    return Objects.equals(this.code, botdError.code) &&
-        Objects.equals(this.message, botdError.message);
+    ProductError productError = (ProductError) o;
+    return Objects.equals(this.code, productError.code) &&
+        Objects.equals(this.message, productError.message);
   }
 
   @Override
@@ -157,7 +157,7 @@ public class BotdError {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BotdError {\n");
+    sb.append("class ProductError {\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");

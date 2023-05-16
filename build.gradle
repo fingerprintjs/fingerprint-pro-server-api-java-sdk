@@ -42,7 +42,7 @@ publishing {
     }
 }
 
-task execute(type:JavaExec) {
+tasks.register('execute', JavaExec) {
    main = System.getProperty('mainClass')
    classpath = sourceSets.main.runtimeClasspath
 }
@@ -123,9 +123,22 @@ jar {
     from configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
 }
 
-task runFunctionalTests(type: JavaExec) {
-group = "execute"
-description = "Run the Functional Tests"
-classpath = sourceSets.main.runtimeClasspath
-main = 'com.fingerprint.example.FunctionalTests'
+tasks.register('runFunctionalTests', JavaExec) {
+    group = "execute"
+    description = "Run the Functional Tests"
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'com.fingerprint.example.FunctionalTests'
+}
+
+tasks.register('removeWrongDocumentationLinks') {
+    doLast {
+        fileTree("./docs").visit { FileVisitDetails details ->
+            if (details.file.isFile()) {
+                def fileContents = details.file.text
+                fileContents = fileContents.replace("[**OffsetDateTime**](OffsetDateTime.md)", "**OffsetDateTime**")
+                fileContents = fileContents.replace("[**URI**](URI.md)", "**URI**")
+                details.file.text = fileContents
+            }
+        }
+    }
 }

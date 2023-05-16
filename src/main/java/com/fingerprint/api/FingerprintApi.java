@@ -224,6 +224,11 @@ public class FingerprintApi {
    * 
    * Fake path to describe webhook format. More information about webhooks can be found in the [documentation](https://dev.fingerprint.com/docs/webhooks)
    * @throws ApiException if fails to make API call
+   * @http.response.details
+     <table summary="Response Details" border="1">
+       <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+       <tr><td> 0 </td><td> Dummy for the schema </td><td>  -  </td></tr>
+     </table>
    */
   public void webhookTrace() throws ApiException {
     webhookTraceWithHttpInfo();
@@ -234,6 +239,11 @@ public class FingerprintApi {
    * Fake path to describe webhook format. More information about webhooks can be found in the [documentation](https://dev.fingerprint.com/docs/webhooks)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
+   * @http.response.details
+     <table summary="Response Details" border="1">
+       <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+       <tr><td> 0 </td><td> Dummy for the schema </td><td>  -  </td></tr>
+     </table>
    */
   public ApiResponse<Void> webhookTraceWithHttpInfo() throws ApiException {
     Object localVarPostBody = null;

@@ -22,10 +22,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fingerprint.model.BotdDetectionResult;
 import com.fingerprint.model.BrowserDetails;
 import com.fingerprint.model.Confidence;
 import com.fingerprint.model.IPLocation;
+import com.fingerprint.model.IpBlockListResult;
+import com.fingerprint.model.IpInfoResult;
 import com.fingerprint.model.SeenAt;
+import com.fingerprint.model.TamperingResult;
+import com.fingerprint.model.VpnResult;
+import com.fingerprint.model.WebhookSignalResponseEmulator;
+import com.fingerprint.model.WebhookSignalResponseProxy;
+import com.fingerprint.model.WebhookSignalResponseRootApps;
+import com.fingerprint.model.WebhookSignalResponseTor;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.net.URI;
@@ -42,9 +51,19 @@ import com.fingerprint.sdk.JSON;
 @JsonPropertyOrder({
   WebhookVisit.JSON_PROPERTY_VISITOR_ID,
   WebhookVisit.JSON_PROPERTY_CLIENT_REFERRER,
+  WebhookVisit.JSON_PROPERTY_USER_AGENT,
+  WebhookVisit.JSON_PROPERTY_BOT,
+  WebhookVisit.JSON_PROPERTY_IP_INFO,
+  WebhookVisit.JSON_PROPERTY_INCOGNITO,
+  WebhookVisit.JSON_PROPERTY_ROOT_APPS,
+  WebhookVisit.JSON_PROPERTY_EMULATOR,
+  WebhookVisit.JSON_PROPERTY_IP_BLOCKLIST,
+  WebhookVisit.JSON_PROPERTY_TOR,
+  WebhookVisit.JSON_PROPERTY_VPN,
+  WebhookVisit.JSON_PROPERTY_PROXY,
+  WebhookVisit.JSON_PROPERTY_TAMPERING,
   WebhookVisit.JSON_PROPERTY_REQUEST_ID,
   WebhookVisit.JSON_PROPERTY_BROWSER_DETAILS,
-  WebhookVisit.JSON_PROPERTY_INCOGNITO,
   WebhookVisit.JSON_PROPERTY_IP,
   WebhookVisit.JSON_PROPERTY_IP_LOCATION,
   WebhookVisit.JSON_PROPERTY_TIMESTAMP,
@@ -65,14 +84,44 @@ public class WebhookVisit {
   public static final String JSON_PROPERTY_CLIENT_REFERRER = "clientReferrer";
   private String clientReferrer;
 
+  public static final String JSON_PROPERTY_USER_AGENT = "userAgent";
+  private String userAgent;
+
+  public static final String JSON_PROPERTY_BOT = "bot";
+  private BotdDetectionResult bot;
+
+  public static final String JSON_PROPERTY_IP_INFO = "ipInfo";
+  private IpInfoResult ipInfo;
+
+  public static final String JSON_PROPERTY_INCOGNITO = "incognito";
+  private Boolean incognito;
+
+  public static final String JSON_PROPERTY_ROOT_APPS = "rootApps";
+  private WebhookSignalResponseRootApps rootApps;
+
+  public static final String JSON_PROPERTY_EMULATOR = "emulator";
+  private WebhookSignalResponseEmulator emulator;
+
+  public static final String JSON_PROPERTY_IP_BLOCKLIST = "ipBlocklist";
+  private IpBlockListResult ipBlocklist;
+
+  public static final String JSON_PROPERTY_TOR = "tor";
+  private WebhookSignalResponseTor tor;
+
+  public static final String JSON_PROPERTY_VPN = "vpn";
+  private VpnResult vpn;
+
+  public static final String JSON_PROPERTY_PROXY = "proxy";
+  private WebhookSignalResponseProxy proxy;
+
+  public static final String JSON_PROPERTY_TAMPERING = "tampering";
+  private TamperingResult tampering;
+
   public static final String JSON_PROPERTY_REQUEST_ID = "requestId";
   private String requestId;
 
   public static final String JSON_PROPERTY_BROWSER_DETAILS = "browserDetails";
   private BrowserDetails browserDetails;
-
-  public static final String JSON_PROPERTY_INCOGNITO = "incognito";
-  private Boolean incognito;
 
   public static final String JSON_PROPERTY_IP = "ip";
   private String ip;
@@ -120,7 +169,7 @@ public class WebhookVisit {
    * @return visitorId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "3HNey93AkBW6CRbxV6xP", required = true, value = "")
   @JsonProperty(JSON_PROPERTY_VISITOR_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -146,7 +195,7 @@ public class WebhookVisit {
    * @return clientReferrer
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "https://google.com?search=banking+services", value = "")
   @JsonProperty(JSON_PROPERTY_CLIENT_REFERRER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -159,6 +208,292 @@ public class WebhookVisit {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setClientReferrer(String clientReferrer) {
     this.clientReferrer = clientReferrer;
+  }
+
+
+  public WebhookVisit userAgent(String userAgent) {
+    this.userAgent = userAgent;
+    return this;
+  }
+
+   /**
+   * Get userAgent
+   * @return userAgent
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36", value = "")
+  @JsonProperty(JSON_PROPERTY_USER_AGENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getUserAgent() {
+    return userAgent;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_AGENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserAgent(String userAgent) {
+    this.userAgent = userAgent;
+  }
+
+
+  public WebhookVisit bot(BotdDetectionResult bot) {
+    this.bot = bot;
+    return this;
+  }
+
+   /**
+   * Get bot
+   * @return bot
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_BOT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public BotdDetectionResult getBot() {
+    return bot;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BOT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBot(BotdDetectionResult bot) {
+    this.bot = bot;
+  }
+
+
+  public WebhookVisit ipInfo(IpInfoResult ipInfo) {
+    this.ipInfo = ipInfo;
+    return this;
+  }
+
+   /**
+   * Get ipInfo
+   * @return ipInfo
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_IP_INFO)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public IpInfoResult getIpInfo() {
+    return ipInfo;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IP_INFO)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIpInfo(IpInfoResult ipInfo) {
+    this.ipInfo = ipInfo;
+  }
+
+
+  public WebhookVisit incognito(Boolean incognito) {
+    this.incognito = incognito;
+    return this;
+  }
+
+   /**
+   * Flag if user used incognito session.
+   * @return incognito
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Flag if user used incognito session.")
+  @JsonProperty(JSON_PROPERTY_INCOGNITO)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Boolean getIncognito() {
+    return incognito;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_INCOGNITO)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setIncognito(Boolean incognito) {
+    this.incognito = incognito;
+  }
+
+
+  public WebhookVisit rootApps(WebhookSignalResponseRootApps rootApps) {
+    this.rootApps = rootApps;
+    return this;
+  }
+
+   /**
+   * Get rootApps
+   * @return rootApps
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_ROOT_APPS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public WebhookSignalResponseRootApps getRootApps() {
+    return rootApps;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ROOT_APPS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRootApps(WebhookSignalResponseRootApps rootApps) {
+    this.rootApps = rootApps;
+  }
+
+
+  public WebhookVisit emulator(WebhookSignalResponseEmulator emulator) {
+    this.emulator = emulator;
+    return this;
+  }
+
+   /**
+   * Get emulator
+   * @return emulator
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_EMULATOR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public WebhookSignalResponseEmulator getEmulator() {
+    return emulator;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EMULATOR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEmulator(WebhookSignalResponseEmulator emulator) {
+    this.emulator = emulator;
+  }
+
+
+  public WebhookVisit ipBlocklist(IpBlockListResult ipBlocklist) {
+    this.ipBlocklist = ipBlocklist;
+    return this;
+  }
+
+   /**
+   * Get ipBlocklist
+   * @return ipBlocklist
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_IP_BLOCKLIST)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public IpBlockListResult getIpBlocklist() {
+    return ipBlocklist;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IP_BLOCKLIST)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIpBlocklist(IpBlockListResult ipBlocklist) {
+    this.ipBlocklist = ipBlocklist;
+  }
+
+
+  public WebhookVisit tor(WebhookSignalResponseTor tor) {
+    this.tor = tor;
+    return this;
+  }
+
+   /**
+   * Get tor
+   * @return tor
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_TOR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public WebhookSignalResponseTor getTor() {
+    return tor;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TOR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTor(WebhookSignalResponseTor tor) {
+    this.tor = tor;
+  }
+
+
+  public WebhookVisit vpn(VpnResult vpn) {
+    this.vpn = vpn;
+    return this;
+  }
+
+   /**
+   * Get vpn
+   * @return vpn
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_VPN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public VpnResult getVpn() {
+    return vpn;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VPN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVpn(VpnResult vpn) {
+    this.vpn = vpn;
+  }
+
+
+  public WebhookVisit proxy(WebhookSignalResponseProxy proxy) {
+    this.proxy = proxy;
+    return this;
+  }
+
+   /**
+   * Get proxy
+   * @return proxy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_PROXY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public WebhookSignalResponseProxy getProxy() {
+    return proxy;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PROXY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setProxy(WebhookSignalResponseProxy proxy) {
+    this.proxy = proxy;
+  }
+
+
+  public WebhookVisit tampering(TamperingResult tampering) {
+    this.tampering = tampering;
+    return this;
+  }
+
+   /**
+   * Get tampering
+   * @return tampering
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_TAMPERING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public TamperingResult getTampering() {
+    return tampering;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAMPERING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTampering(TamperingResult tampering) {
+    this.tampering = tampering;
   }
 
 
@@ -211,32 +546,6 @@ public class WebhookVisit {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setBrowserDetails(BrowserDetails browserDetails) {
     this.browserDetails = browserDetails;
-  }
-
-
-  public WebhookVisit incognito(Boolean incognito) {
-    this.incognito = incognito;
-    return this;
-  }
-
-   /**
-   * Flag if user used incognito session.
-   * @return incognito
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Flag if user used incognito session.")
-  @JsonProperty(JSON_PROPERTY_INCOGNITO)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public Boolean getIncognito() {
-    return incognito;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_INCOGNITO)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIncognito(Boolean incognito) {
-    this.incognito = incognito;
   }
 
 
@@ -548,9 +857,19 @@ public class WebhookVisit {
     WebhookVisit webhookVisit = (WebhookVisit) o;
     return Objects.equals(this.visitorId, webhookVisit.visitorId) &&
         Objects.equals(this.clientReferrer, webhookVisit.clientReferrer) &&
+        Objects.equals(this.userAgent, webhookVisit.userAgent) &&
+        Objects.equals(this.bot, webhookVisit.bot) &&
+        Objects.equals(this.ipInfo, webhookVisit.ipInfo) &&
+        Objects.equals(this.incognito, webhookVisit.incognito) &&
+        Objects.equals(this.rootApps, webhookVisit.rootApps) &&
+        Objects.equals(this.emulator, webhookVisit.emulator) &&
+        Objects.equals(this.ipBlocklist, webhookVisit.ipBlocklist) &&
+        Objects.equals(this.tor, webhookVisit.tor) &&
+        Objects.equals(this.vpn, webhookVisit.vpn) &&
+        Objects.equals(this.proxy, webhookVisit.proxy) &&
+        Objects.equals(this.tampering, webhookVisit.tampering) &&
         Objects.equals(this.requestId, webhookVisit.requestId) &&
         Objects.equals(this.browserDetails, webhookVisit.browserDetails) &&
-        Objects.equals(this.incognito, webhookVisit.incognito) &&
         Objects.equals(this.ip, webhookVisit.ip) &&
         Objects.equals(this.ipLocation, webhookVisit.ipLocation) &&
         Objects.equals(this.timestamp, webhookVisit.timestamp) &&
@@ -566,7 +885,7 @@ public class WebhookVisit {
 
   @Override
   public int hashCode() {
-    return Objects.hash(visitorId, clientReferrer, requestId, browserDetails, incognito, ip, ipLocation, timestamp, time, url, tag, linkedId, confidence, visitorFound, firstSeenAt, lastSeenAt);
+    return Objects.hash(visitorId, clientReferrer, userAgent, bot, ipInfo, incognito, rootApps, emulator, ipBlocklist, tor, vpn, proxy, tampering, requestId, browserDetails, ip, ipLocation, timestamp, time, url, tag, linkedId, confidence, visitorFound, firstSeenAt, lastSeenAt);
   }
 
   @Override
@@ -575,9 +894,19 @@ public class WebhookVisit {
     sb.append("class WebhookVisit {\n");
     sb.append("    visitorId: ").append(toIndentedString(visitorId)).append("\n");
     sb.append("    clientReferrer: ").append(toIndentedString(clientReferrer)).append("\n");
+    sb.append("    userAgent: ").append(toIndentedString(userAgent)).append("\n");
+    sb.append("    bot: ").append(toIndentedString(bot)).append("\n");
+    sb.append("    ipInfo: ").append(toIndentedString(ipInfo)).append("\n");
+    sb.append("    incognito: ").append(toIndentedString(incognito)).append("\n");
+    sb.append("    rootApps: ").append(toIndentedString(rootApps)).append("\n");
+    sb.append("    emulator: ").append(toIndentedString(emulator)).append("\n");
+    sb.append("    ipBlocklist: ").append(toIndentedString(ipBlocklist)).append("\n");
+    sb.append("    tor: ").append(toIndentedString(tor)).append("\n");
+    sb.append("    vpn: ").append(toIndentedString(vpn)).append("\n");
+    sb.append("    proxy: ").append(toIndentedString(proxy)).append("\n");
+    sb.append("    tampering: ").append(toIndentedString(tampering)).append("\n");
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
     sb.append("    browserDetails: ").append(toIndentedString(browserDetails)).append("\n");
-    sb.append("    incognito: ").append(toIndentedString(incognito)).append("\n");
     sb.append("    ip: ").append(toIndentedString(ip)).append("\n");
     sb.append("    ipLocation: ").append(toIndentedString(ipLocation)).append("\n");
     sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");

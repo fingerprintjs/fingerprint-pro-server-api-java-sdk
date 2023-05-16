@@ -1,6 +1,6 @@
 
 
-# BotdError
+# ProductError
 
 
 ## Properties
@@ -11,11 +11,10 @@
 |**message** | **String** |  |  |
 
 
-
 ## Enum: CodeEnum
 
 | Name | Value |
-|---- | -----|
+|---- | ----- |
 | TOOMANYREQUESTS | &quot;TooManyRequests&quot; |
 | FAILED | &quot;Failed&quot; |
 

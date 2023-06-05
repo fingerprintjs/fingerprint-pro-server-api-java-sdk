@@ -149,7 +149,7 @@ public class FingerprintApiExample {
     // An optional parameter limiting scanned results
     private static final Integer LIMIT = 10;
     // An optional parameter used to paginate results, see lastTimestamp
-    private static final Integer BEFORE = 1;
+    private static final String PAGINATION_KEY = "1683900801733.Ogvu1j";
 
     public static void main(String... args) {
         // Create a new api client instance from Configuration with your Fingerprint Pro Server API Key and your Fingerprint Pro Server API Region.
@@ -174,28 +174,28 @@ public class FingerprintApiExample {
         // Get a specific visitor's all visits
         try {
             // Fetch all visits with a given visitorId, with a page limit
-            Response response = api.getVisits(FPJS_VISITOR_ID, null, null, LIMIT, null);
+            Response response = api.getVisits(FPJS_VISITOR_ID, null, null, LIMIT, null, null);
             System.out.println(response.getVisits().toString());
         } catch (ApiException e) {
-            System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());
+            System.err.println("Exception when calling FingerprintApi.getVisits:" + e.getMessage());
         }
 
         // Get a specific visitor's all visits with a linkedId
         try {
             // Fetch all visits with a given visitorId, with a page limit, skipping the first visit
-            Response response = api.getVisits(FPJS_VISITOR_ID, null, FPJS_LINKED_ID, LIMIT, BEFORE);
+            Response response = api.getVisits(FPJS_VISITOR_ID, null, FPJS_LINKED_ID, LIMIT, PAGINATION_KEY, null);
             System.out.println(response.getVisits().toString());
         } catch (ApiException e) {
-            System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());
+            System.err.println("Exception when calling FingerprintApi.getVisits:" + e.getMessage());
         }
 
         // Use all the parameters on getVisits
         try {
             // Fetch the visitor's all visits with a given requestId and linkedId with a page limit while skipping the first visit
-            Response response = api.getVisits(FPJS_VISITOR_ID, FPJS_REQUEST_ID, FPJS_LINKED_ID, LIMIT, BEFORE);
+            Response response = api.getVisits(FPJS_VISITOR_ID, FPJS_REQUEST_ID, FPJS_LINKED_ID, LIMIT, PAGINATION_KEY, null);
             System.out.println(response.getVisits().toString());
         } catch (ApiException e) {
-            System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());
+            System.err.println("Exception when calling FingerprintApi.getVisits:" + e.getMessage());
         }
     }
 }

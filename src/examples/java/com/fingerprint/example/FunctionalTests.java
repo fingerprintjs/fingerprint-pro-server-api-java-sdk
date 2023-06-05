@@ -23,7 +23,7 @@ public class FunctionalTests {
         }
 
         try {
-            api.getVisits(FPJS_VISITOR_ID, null, null, null, null);
+            api.getVisits(FPJS_VISITOR_ID, null, null, null, null, null);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());
             System.exit(1);

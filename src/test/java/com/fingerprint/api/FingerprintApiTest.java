@@ -59,7 +59,7 @@ public class FingerprintApiTest {
         when(api.getEvent(MOCK_REQUEST_IDENTIFICATION_FAILED)).thenReturn(fetchMockWithEventResponse("mocks/get_event_identification_failed_error.json"));
         when(api.getEvent(MOCK_REQUEST_IDENTIFICATION_MANY_REQUEST)).thenReturn(fetchMockWithEventResponse("mocks/get_event_identification_too_many_requests_error.json"));
 
-        when(api.getVisits(MOCK_VISITOR_ID, MOCK_VISITOR_REQUEST_ID, null, 50, 0L)).thenReturn(fetchMockVisit());
+        when(api.getVisits(MOCK_VISITOR_ID, MOCK_VISITOR_REQUEST_ID, null, 50, "1683900801733.Ogvu1j", null)).thenReturn(fetchMockVisit());
     }
 
     private EventResponse fetchMockWithEventResponse(String fileName) throws IOException {
@@ -179,7 +179,7 @@ public class FingerprintApiTest {
      */
     @Test
     public void getVisitsTest() throws ApiException {
-        Response response = api.getVisits(MOCK_VISITOR_ID, MOCK_VISITOR_REQUEST_ID, null, 50, 0L);
+        Response response = api.getVisits(MOCK_VISITOR_ID, MOCK_VISITOR_REQUEST_ID, null, 50, "1683900801733.Ogvu1j", null);
         assertEquals(response.getVisitorId(), MOCK_VISITOR_ID);
     }
 

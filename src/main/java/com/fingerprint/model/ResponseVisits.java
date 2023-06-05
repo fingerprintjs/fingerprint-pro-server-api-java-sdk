@@ -1,6 +1,6 @@
 /*
  * Fingerprint Pro Server API
- * Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. This API can be used for data exports, decision-making, and data analysis scenarios.
+ * Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. It can be used for data exports, decision-making, and data analysis scenarios. Server API is intended for server-side usage, it's not intended to be used from the client side, whether it's a browser or a mobile device. 
  *
  * The version of the OpenAPI document: 3
  * Contact: support@fingerprint.com
@@ -215,10 +215,10 @@ public class ResponseVisits {
    * Get ipLocation
    * @return ipLocation
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_IP_LOCATION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public IPLocation getIpLocation() {
     return ipLocation;
@@ -226,7 +226,7 @@ public class ResponseVisits {
 
 
   @JsonProperty(JSON_PROPERTY_IP_LOCATION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIpLocation(IPLocation ipLocation) {
     this.ipLocation = ipLocation;
   }

@@ -7,14 +7,14 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**accuracyRadius** | **Integer** |  |  |
-|**latitude** | **Double** |  |  |
-|**longitude** | **Double** |  |  |
+|**accuracyRadius** | **Integer** |  |  [optional] |
+|**latitude** | **Double** |  |  [optional] |
+|**longitude** | **Double** |  |  [optional] |
 |**postalCode** | **String** |  |  [optional] |
-|**timezone** | **String** |  |  |
+|**timezone** | **String** |  |  [optional] |
 |**city** | [**IPLocationCity**](IPLocationCity.md) |  |  [optional] |
-|**country** | [**Location**](Location.md) |  |  |
-|**continent** | [**Location**](Location.md) |  |  |
+|**country** | [**Location**](Location.md) |  |  [optional] |
+|**continent** | [**Location**](Location.md) |  |  [optional] |
 |**subdivisions** | [**List&lt;Subdivision&gt;**](Subdivision.md) |  |  [optional] |
 
 

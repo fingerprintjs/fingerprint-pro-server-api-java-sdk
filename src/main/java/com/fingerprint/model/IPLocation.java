@@ -1,6 +1,6 @@
 /*
  * Fingerprint Pro Server API
- * Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. This API can be used for data exports, decision-making, and data analysis scenarios.
+ * Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. It can be used for data exports, decision-making, and data analysis scenarios. Server API is intended for server-side usage, it's not intended to be used from the client side, whether it's a browser or a mobile device. 
  *
  * The version of the OpenAPI document: 3
  * Contact: support@fingerprint.com
@@ -89,10 +89,10 @@ public class IPLocation {
    * minimum: 0
    * @return accuracyRadius
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "1000", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1000", value = "")
   @JsonProperty(JSON_PROPERTY_ACCURACY_RADIUS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getAccuracyRadius() {
     return accuracyRadius;
@@ -100,7 +100,7 @@ public class IPLocation {
 
 
   @JsonProperty(JSON_PROPERTY_ACCURACY_RADIUS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAccuracyRadius(Integer accuracyRadius) {
     this.accuracyRadius = accuracyRadius;
   }
@@ -117,10 +117,10 @@ public class IPLocation {
    * maximum: 90
    * @return latitude
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "37.75", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "37.75", value = "")
   @JsonProperty(JSON_PROPERTY_LATITUDE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Double getLatitude() {
     return latitude;
@@ -128,7 +128,7 @@ public class IPLocation {
 
 
   @JsonProperty(JSON_PROPERTY_LATITUDE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLatitude(Double latitude) {
     this.latitude = latitude;
   }
@@ -145,10 +145,10 @@ public class IPLocation {
    * maximum: 180
    * @return longitude
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "-97.82", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "-97.82", value = "")
   @JsonProperty(JSON_PROPERTY_LONGITUDE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Double getLongitude() {
     return longitude;
@@ -156,7 +156,7 @@ public class IPLocation {
 
 
   @JsonProperty(JSON_PROPERTY_LONGITUDE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLongitude(Double longitude) {
     this.longitude = longitude;
   }
@@ -197,10 +197,10 @@ public class IPLocation {
    * Get timezone
    * @return timezone
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "America/Chicago", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "America/Chicago", value = "")
   @JsonProperty(JSON_PROPERTY_TIMEZONE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTimezone() {
     return timezone;
@@ -208,7 +208,7 @@ public class IPLocation {
 
 
   @JsonProperty(JSON_PROPERTY_TIMEZONE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTimezone(String timezone) {
     this.timezone = timezone;
   }
@@ -249,10 +249,10 @@ public class IPLocation {
    * Get country
    * @return country
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_COUNTRY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Location getCountry() {
     return country;
@@ -260,7 +260,7 @@ public class IPLocation {
 
 
   @JsonProperty(JSON_PROPERTY_COUNTRY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCountry(Location country) {
     this.country = country;
   }
@@ -275,10 +275,10 @@ public class IPLocation {
    * Get continent
    * @return continent
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_CONTINENT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Location getContinent() {
     return continent;
@@ -286,7 +286,7 @@ public class IPLocation {
 
 
   @JsonProperty(JSON_PROPERTY_CONTINENT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setContinent(Location continent) {
     this.continent = continent;
   }

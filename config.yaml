@@ -1,4 +1,4 @@
-artifactVersion: dev-2.0.0-2
+artifactVersion: dev-2.0.0-3
 apiPackage: com.fingerprint.api
 modelPackage: com.fingerprint.model
 invokerPackage: com.fingerprint.sdk

@@ -22,7 +22,7 @@ fi
 echo "VERSION: $VERSION"
 
 sed -i "s/artifactVersion: .*/artifactVersion: $VERSION/g" config.yaml
-sed -i "s/VERSION=.*/VERSION='$VERSION'/g" generate.sh
+sed -i "s/VERSION=.*/VERSION='$VERSION'/g" ./scripts/generate.sh
 
 rm -rf pom.xml README.md build.gradle settings.gradle gradle.properties
 

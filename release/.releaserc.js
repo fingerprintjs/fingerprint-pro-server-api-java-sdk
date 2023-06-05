@@ -122,7 +122,7 @@ module.exports = {
                     "build.gradle",
                     "pom.xml",
                     "config.yaml",
-                    "generate.sh",
+                    "./scripts/generate.sh",
                     "docs/**/*",
                     "src/**/*"
                 ]

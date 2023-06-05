@@ -38,7 +38,7 @@ import com.fingerprint.sdk.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProductError {
   /**
-   * Error code:  * &#x60;TooManyRequests&#x60; - the limit on secret API key requests per second has been exceeded  * &#x60;Failed&#x60; - internal server error 
+   * Error code:  * `TooManyRequests` - the limit on secret API key requests per second has been exceeded  * `Failed` - internal server error 
    */
   public enum CodeEnum {
     TOOMANYREQUESTS("TooManyRequests"),
@@ -68,7 +68,7 @@ public class ProductError {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return null;
     }
   }
 

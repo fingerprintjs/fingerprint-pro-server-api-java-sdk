@@ -20,7 +20,7 @@
 |**vpn** | [**VpnResult**](VpnResult.md) |  |  [optional] |
 |**proxy** | [**WebhookSignalResponseProxy**](WebhookSignalResponseProxy.md) |  |  [optional] |
 |**tampering** | [**TamperingResult**](TamperingResult.md) |  |  [optional] |
-|**requestId** | **String** | Unique identifier of the user&#39;s identification request. |  |
+|**requestId** | **String** | Unique identifier of the user's identification request. |  |
 |**browserDetails** | [**BrowserDetails**](BrowserDetails.md) |  |  |
 |**ip** | **String** |  |  |
 |**ipLocation** | [**IPLocation**](IPLocation.md) |  |  [optional] |

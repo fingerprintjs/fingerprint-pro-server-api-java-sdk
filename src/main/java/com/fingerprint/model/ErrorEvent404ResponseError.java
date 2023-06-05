@@ -38,7 +38,7 @@ import com.fingerprint.sdk.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ErrorEvent404ResponseError {
   /**
-   * Error code:  * &#x60;RequestNotFound&#x60; - request not found for specified id 
+   * Error code:  * `RequestNotFound` - request not found for specified id 
    */
   public enum CodeEnum {
     REQUESTNOTFOUND("RequestNotFound");
@@ -66,7 +66,7 @@ public class ErrorEvent404ResponseError {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return null;
     }
   }
 

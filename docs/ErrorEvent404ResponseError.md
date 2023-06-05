@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**code** | [**CodeEnum**](#CodeEnum) | Error code:  * &#x60;RequestNotFound&#x60; - request not found for specified id  |  |
+|**code** | [**CodeEnum**](#CodeEnum) | Error code:  * `RequestNotFound` - request not found for specified id  |  |
 |**message** | **String** |  |  |
 
 

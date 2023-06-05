@@ -63,9 +63,9 @@ public class {{classname}} {
   {{^vendorExtensions.x-group-parameters}}
   /**
    * {{summary}}
-   * {{notes}}
+   * {{{notes}}}
    {{#allParams}}
-   * @param {{paramName}} {{description}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}
+   * @param {{paramName}} {{{description}}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}
    {{/allParams}}
    {{#returnType}}
    * @return {{.}}
@@ -76,7 +76,7 @@ public class {{classname}} {
      <table summary="Response Details" border="1">
        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
        {{#responses}}
-       <tr><td> {{code}} </td><td> {{message}} </td><td> {{#headers}} * {{baseName}} - {{description}} <br> {{/headers}}{{^headers.0}} - {{/headers.0}} </td></tr>
+       <tr><td> {{code}} </td><td> {{message}} </td><td> {{#headers}} * {{baseName}} - {{{description}}} <br> {{/headers}}{{^headers.0}} - {{/headers.0}} </td></tr>
        {{/responses}}
      </table>
    {{/responses.0}}
@@ -84,7 +84,7 @@ public class {{classname}} {
    * @deprecated
    {{/isDeprecated}}
    {{#externalDocs}}
-   * {{description}}
+   * {{{description}}}
    * @see <a href="{{url}}">{{summary}} Documentation</a>
    {{/externalDocs}}
    */
@@ -99,9 +99,9 @@ public class {{classname}} {
   {{^vendorExtensions.x-group-parameters}}
   /**
    * {{summary}}
-   * {{notes}}
+   * {{{notes}}}
    {{#allParams}}
-   * @param {{paramName}} {{description}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}
+   * @param {{paramName}} {{{description}}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}
    {{/allParams}}
    * @return ApiResponse&lt;{{returnType}}{{^returnType}}Void{{/returnType}}&gt;
    * @throws ApiException if fails to make API call
@@ -110,7 +110,7 @@ public class {{classname}} {
      <table summary="Response Details" border="1">
        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
        {{#responses}}
-       <tr><td> {{code}} </td><td> {{message}} </td><td> {{#headers}} * {{baseName}} - {{description}} <br> {{/headers}}{{^headers.0}} - {{/headers.0}} </td></tr>
+       <tr><td> {{code}} </td><td> {{message}} </td><td> {{#headers}} * {{baseName}} - {{{description}}} <br> {{/headers}}{{^headers.0}} - {{/headers.0}} </td></tr>
        {{/responses}}
      </table>
    {{/responses.0}}
@@ -118,7 +118,7 @@ public class {{classname}} {
    * @deprecated
    {{/isDeprecated}}
    {{#externalDocs}}
-   * {{description}}
+   * {{{description}}}
    * @see <a href="{{url}}">{{summary}} Documentation</a>
    {{/externalDocs}}
    */
@@ -198,7 +198,7 @@ public class {{classname}} {
 
     /**
      * Set {{paramName}}
-     * @param {{paramName}} {{description}} ({{^required}}optional{{^isContainer}}{{#defaultValue}}, default to {{.}}{{/defaultValue}}{{/isContainer}}{{/required}}{{#required}}required{{/required}})
+     * @param {{paramName}} {{{description}}} ({{^required}}optional{{^isContainer}}{{#defaultValue}}, default to {{.}}{{/defaultValue}}{{/isContainer}}{{/required}}{{#required}}required{{/required}})
      * @return API{{operationId}}Request
      */
     public API{{operationId}}Request {{paramName}}({{{dataType}}} {{paramName}}) {
@@ -217,7 +217,7 @@ public class {{classname}} {
        <table summary="Response Details" border="1">
          <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
          {{#responses}}
-         <tr><td> {{code}} </td><td> {{message}} </td><td> {{#headers}} * {{baseName}} - {{description}} <br> {{/headers}}{{^headers.0}} - {{/headers.0}} </td></tr>
+         <tr><td> {{code}} </td><td> {{message}} </td><td> {{#headers}} * {{baseName}} - {{{description}}} <br> {{/headers}}{{^headers.0}} - {{/headers.0}} </td></tr>
          {{/responses}}
        </table>
      {{/responses.0}}
@@ -237,7 +237,7 @@ public class {{classname}} {
        <table summary="Response Details" border="1">
          <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
          {{#responses}}
-         <tr><td> {{code}} </td><td> {{message}} </td><td> {{#headers}} * {{baseName}} - {{description}} <br> {{/headers}}{{^headers.0}} - {{/headers.0}} </td></tr>
+         <tr><td> {{code}} </td><td> {{message}} </td><td> {{#headers}} * {{baseName}} - {{{description}}} <br> {{/headers}}{{^headers.0}} - {{/headers.0}} </td></tr>
          {{/responses}}
        </table>
      {{/responses.0}}
@@ -254,12 +254,12 @@ public class {{classname}} {
 
   /**
    * {{summary}}
-   * {{notes}}{{#pathParams}}
-   * @param {{paramName}} {{description}} (required){{/pathParams}}
+   * {{{notes}}}{{#pathParams}}
+   * @param {{paramName}} {{{description}}} (required){{/pathParams}}
    * @return {{operationId}}Request
    * @throws ApiException if fails to make API call
    {{#isDeprecated}}* @deprecated{{/isDeprecated}}
-   {{#externalDocs}}* {{description}}
+   {{#externalDocs}}* {{{description}}}
    * @see <a href="{{url}}">{{summary}} Documentation</a>{{/externalDocs}}
    */
   {{#isDeprecated}}

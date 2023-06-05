@@ -1,3 +1,10 @@
+## [2.0.0-develop.2](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v2.0.0-develop.1...v2.0.0-develop.2) (2023-06-05)
+
+
+### Bug Fixes
+
+* fix release workflow for generate.sh ([23325be](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/23325beac93d5b839d3d336fed0f4af1336cd219))
+
 ## [2.0.0-develop.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v1.1.0...v2.0.0-develop.1) (2023-06-05)
 
 

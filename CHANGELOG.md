@@ -1,3 +1,15 @@
+## [2.0.0-develop.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v1.1.0...v2.0.0-develop.1) (2023-06-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* `IpLocation` and it's fields are optional now.
+For `getVisits` method `before` argument is deprecated, use `paginationKey` instead.
+
+### Features
+
+* update schema with correct IpLocation format and doc updates ([1c9b895](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/1c9b895c341340a299c612d01438d79ffa6fe49f))
+
 ## [1.1.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v1.0.0...v1.1.0) (2023-05-16)
 
 

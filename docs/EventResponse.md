@@ -2,7 +2,7 @@
 
 # EventResponse
 
-Contains event from activated products - Fingerprint Pro or Bot Detection
+Contains results from all activated products - Fingerprint Pro, Bot Detection, and others.
 
 ## Properties
 

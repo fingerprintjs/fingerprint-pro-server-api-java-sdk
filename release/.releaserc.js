@@ -121,6 +121,8 @@ module.exports = {
                     "config.json",
                     "build.gradle",
                     "pom.xml",
+                    "config.yaml",
+                    "./scripts/generate.sh",
                     "docs/**/*",
                     "src/**/*"
                 ]

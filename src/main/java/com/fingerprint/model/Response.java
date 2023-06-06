@@ -1,6 +1,6 @@
 /*
  * Fingerprint Pro Server API
- * Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. This API can be used for data exports, decision-making, and data analysis scenarios.
+ * Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. It can be used for data exports, decision-making, and data analysis scenarios. Server API is intended for server-side usage, it's not intended to be used from the client side, whether it's a browser or a mobile device. 
  *
  * The version of the OpenAPI document: 3
  * Contact: support@fingerprint.com
@@ -121,11 +121,11 @@ public class Response {
   }
 
    /**
-   * When more results are available (e.g., you scanned 200 results using &#x60;limit&#x60; parameter, but a total of 600 results are available), a special &#x60;lastTimestamp&#x60; top-level attribute is added to the response. If you want to paginate the results further in the past, you should use the value of this attribute.
+   * ⚠️ Deprecated paging attribute, please use &#x60;paginationKey&#x60; instead. Timestamp of the last visit in the current page of results. 
    * @return lastTimestamp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "1654815517198", value = "When more results are available (e.g., you scanned 200 results using `limit` parameter, but a total of 600 results are available), a special `lastTimestamp` top-level attribute is added to the response. If you want to paginate the results further in the past, you should use the value of this attribute.")
+  @ApiModelProperty(example = "1654815517198", value = "⚠️ Deprecated paging attribute, please use `paginationKey` instead. Timestamp of the last visit in the current page of results. ")
   @JsonProperty(JSON_PROPERTY_LAST_TIMESTAMP)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -147,11 +147,11 @@ public class Response {
   }
 
    /**
-   * Visit&#39;s &#x60;requestId&#x60; of the last visit in the current page.
+   * Request ID of the last visit in the current page of results. Use this value in the following request as the &#x60;paginationKey&#x60; parameter to get the next page of results.
    * @return paginationKey
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "1654815517198.azN4IZ", value = "Visit's `requestId` of the last visit in the current page.")
+  @ApiModelProperty(example = "1654815517198.azN4IZ", value = "Request ID of the last visit in the current page of results. Use this value in the following request as the `paginationKey` parameter to get the next page of results.")
   @JsonProperty(JSON_PROPERTY_PAGINATION_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

@@ -1,6 +1,6 @@
 /*
  * Fingerprint Pro Server API
- * Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. This API can be used for data exports, decision-making, and data analysis scenarios.
+ * Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. It can be used for data exports, decision-making, and data analysis scenarios. Server API is intended for server-side usage, it's not intended to be used from the client side, whether it's a browser or a mobile device. 
  *
  * The version of the OpenAPI document: 3
  * Contact: support@fingerprint.com
@@ -38,7 +38,7 @@ import com.fingerprint.sdk.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ErrorEvent403ResponseError {
   /**
-   * Error code:  * &#x60;TokenRequired&#x60; - &#x60;Auth-API-Key&#x60; header is missing or empty  * &#x60;TokenNotFound&#x60; - subscription not found for specified secret key  * &#x60;SubscriptionNotActive&#x60; - subscription is not active  * &#x60;WrongRegion&#x60; - server and subscription region differ 
+   * Error code:  * `TokenRequired` - `Auth-API-Key` header is missing or empty  * `TokenNotFound` - subscription not found for specified secret key  * `SubscriptionNotActive` - subscription is not active  * `WrongRegion` - server and subscription region differ 
    */
   public enum CodeEnum {
     TOKENREQUIRED("TokenRequired"),
@@ -72,7 +72,7 @@ public class ErrorEvent403ResponseError {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return null;
     }
   }
 

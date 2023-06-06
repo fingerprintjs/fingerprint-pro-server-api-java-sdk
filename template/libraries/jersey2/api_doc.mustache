@@ -1,6 +1,6 @@
 # {{classname}}{{#description}}
 
-{{.}}{{/description}}
+{{{.}}}{{/description}}
 
 All URIs are relative to *{{basePath}}*
 
@@ -72,7 +72,7 @@ public class FingerprintApiExample {
 {{^allParams}}This endpoint does not need any parameter.{{/allParams}}{{#allParams}}{{#-last}}
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|{{/-last}}{{/allParams}}
-{{#allParams}}| **{{paramName}}** | {{#isContainer}}{{#isArray}}{{#items}}{{#isModel}}{{^isFile}}[{{/isFile}}{{/isModel}}**List&lt;{{dataType}}&gt;**{{#isModel}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isModel}}{{/items}}{{/isArray}}{{#isMap}}{{#items}}{{#isModel}}{{^isFile}}[{{/isFile}}{{/isModel}}**Map&lt;String,{{dataType}}&gt;**{{#isModel}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isModel}}{{/items}}{{/isMap}}{{/isContainer}}{{^isContainer}}{{#isModel}}{{^isFile}}[{{/isFile}}{{/isModel}}**{{dataType}}**{{#isModel}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isModel}}{{/isContainer}}| {{description}} |{{^required}} [optional]{{/required}}{{^isContainer}}{{#defaultValue}} [default to {{.}}]{{/defaultValue}}{{/isContainer}}{{#allowableValues}} [enum: {{#values}}{{{.}}}{{^-last}}, {{/-last}}{{/values}}]{{/allowableValues}} |
+{{#allParams}}| **{{paramName}}** | {{#isContainer}}{{#isArray}}{{#items}}{{#isModel}}{{^isFile}}[{{/isFile}}{{/isModel}}**List&lt;{{dataType}}&gt;**{{#isModel}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isModel}}{{/items}}{{/isArray}}{{#isMap}}{{#items}}{{#isModel}}{{^isFile}}[{{/isFile}}{{/isModel}}**Map&lt;String,{{dataType}}&gt;**{{#isModel}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isModel}}{{/items}}{{/isMap}}{{/isContainer}}{{^isContainer}}{{#isModel}}{{^isFile}}[{{/isFile}}{{/isModel}}**{{dataType}}**{{#isModel}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isModel}}{{/isContainer}}| {{{description}}} |{{^required}} [optional]{{/required}}{{^isContainer}}{{#defaultValue}} [default to {{.}}]{{/defaultValue}}{{/isContainer}}{{#allowableValues}} [enum: {{#values}}{{{.}}}{{^-last}}, {{/-last}}{{/values}}]{{/allowableValues}} |
 {{/allParams}}
 
 ### Return type
@@ -93,7 +93,7 @@ public class FingerprintApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 {{#responses}}
-| **{{code}}** | {{message}} | {{#headers}} * {{baseName}} - {{description}} <br> {{/headers}}{{^headers.0}} - {{/headers.0}} |
+| **{{code}}** | {{message}} | {{#headers}} * {{baseName}} - {{{description}}} <br> {{/headers}}{{^headers.0}} - {{/headers.0}} |
 {{/responses}}
 {{/responses.0}}
 

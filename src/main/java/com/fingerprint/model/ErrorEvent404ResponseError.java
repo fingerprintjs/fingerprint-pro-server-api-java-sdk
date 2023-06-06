@@ -1,6 +1,6 @@
 /*
  * Fingerprint Pro Server API
- * Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. This API can be used for data exports, decision-making, and data analysis scenarios.
+ * Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. It can be used for data exports, decision-making, and data analysis scenarios. Server API is intended for server-side usage, it's not intended to be used from the client side, whether it's a browser or a mobile device. 
  *
  * The version of the OpenAPI document: 3
  * Contact: support@fingerprint.com
@@ -38,7 +38,7 @@ import com.fingerprint.sdk.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ErrorEvent404ResponseError {
   /**
-   * Error code:  * &#x60;RequestNotFound&#x60; - request not found for specified id 
+   * Error code:  * `RequestNotFound` - request not found for specified id 
    */
   public enum CodeEnum {
     REQUESTNOTFOUND("RequestNotFound");
@@ -66,7 +66,7 @@ public class ErrorEvent404ResponseError {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return null;
     }
   }
 

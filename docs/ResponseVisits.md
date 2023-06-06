@@ -7,11 +7,11 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**requestId** | **String** | Unique identifier of the user&#39;s identification request. |  |
+|**requestId** | **String** | Unique identifier of the user's identification request. |  |
 |**browserDetails** | [**BrowserDetails**](BrowserDetails.md) |  |  |
 |**incognito** | **Boolean** | Flag if user used incognito session. |  |
 |**ip** | **String** |  |  |
-|**ipLocation** | [**IPLocation**](IPLocation.md) |  |  |
+|**ipLocation** | [**IPLocation**](IPLocation.md) |  |  [optional] |
 |**timestamp** | **Long** | Timestamp of the event with millisecond precision in Unix time. |  |
 |**time** | **OffsetDateTime** | Time expressed according to ISO 8601 in UTC format. |  |
 |**url** | **URI** | Page URL from which identification request was sent. |  |

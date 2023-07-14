@@ -22,6 +22,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fingerprint.model.ProductError;
+import com.fingerprint.model.SignalResponseFactoryResetData;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -29,47 +31,77 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * WebhookSignalResponseEmulator
+ * SignalResponseFactoryReset
  */
 @JsonPropertyOrder({
-  WebhookSignalResponseEmulator.JSON_PROPERTY_RESULT
+  SignalResponseFactoryReset.JSON_PROPERTY_DATA,
+  SignalResponseFactoryReset.JSON_PROPERTY_ERROR
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class WebhookSignalResponseEmulator {
-  public static final String JSON_PROPERTY_RESULT = "result";
-  private Boolean result;
+public class SignalResponseFactoryReset {
+  public static final String JSON_PROPERTY_DATA = "data";
+  private SignalResponseFactoryResetData data;
 
-  public WebhookSignalResponseEmulator() { 
+  public static final String JSON_PROPERTY_ERROR = "error";
+  private ProductError error;
+
+  public SignalResponseFactoryReset() { 
   }
 
-  public WebhookSignalResponseEmulator result(Boolean result) {
-    this.result = result;
+  public SignalResponseFactoryReset data(SignalResponseFactoryResetData data) {
+    this.data = data;
     return this;
   }
 
    /**
-   * Android specific emulator detection. There are 2 values: • &#x60;true&#x60; - Emulated environment detected (e.g. launch inside of AVD) • &#x60;false&#x60; - No signs of emulated environment detected or the client isn&#39;t Android. 
-   * @return result
+   * Get data
+   * @return data
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Android specific emulator detection. There are 2 values: • `true` - Emulated environment detected (e.g. launch inside of AVD) • `false` - No signs of emulated environment detected or the client isn't Android. ")
-  @JsonProperty(JSON_PROPERTY_RESULT)
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Boolean getResult() {
-    return result;
+  public SignalResponseFactoryResetData getData() {
+    return data;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RESULT)
+  @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResult(Boolean result) {
-    this.result = result;
+  public void setData(SignalResponseFactoryResetData data) {
+    this.data = data;
+  }
+
+
+  public SignalResponseFactoryReset error(ProductError error) {
+    this.error = error;
+    return this;
+  }
+
+   /**
+   * Get error
+   * @return error
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ProductError getError() {
+    return error;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setError(ProductError error) {
+    this.error = error;
   }
 
 
   /**
-   * Return true if this WebhookSignalResponseEmulator object is equal to o.
+   * Return true if this SignalResponseFactoryReset object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -79,20 +111,22 @@ public class WebhookSignalResponseEmulator {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WebhookSignalResponseEmulator webhookSignalResponseEmulator = (WebhookSignalResponseEmulator) o;
-    return Objects.equals(this.result, webhookSignalResponseEmulator.result);
+    SignalResponseFactoryReset signalResponseFactoryReset = (SignalResponseFactoryReset) o;
+    return Objects.equals(this.data, signalResponseFactoryReset.data) &&
+        Objects.equals(this.error, signalResponseFactoryReset.error);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(result);
+    return Objects.hash(data, error);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class WebhookSignalResponseEmulator {\n");
-    sb.append("    result: ").append(toIndentedString(result)).append("\n");
+    sb.append("class SignalResponseFactoryReset {\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();
   }

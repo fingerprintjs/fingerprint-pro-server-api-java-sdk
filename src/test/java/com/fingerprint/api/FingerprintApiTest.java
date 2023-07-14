@@ -87,6 +87,18 @@ public class FingerprintApiTest {
         assert response.getProducts().getIdentification() != null;
         assert response.getProducts().getIdentification().getData() != null;
         assertEquals(response.getProducts().getIdentification().getData().getVisitorId(), "Ibk1527CUFmcnjLwIs4A9");
+
+        assertEquals(response.getProducts().getClonedApp().getData().getResult(), false);
+        assertEquals(response.getProducts().getEmulator().getData().getResult(), false);
+        assertEquals(response.getProducts().getFrida().getData().getResult(), false);
+        assertEquals(response.getProducts().getJailbroken().getData().getResult(), false);
+        assertEquals(response.getProducts().getIpBlocklist().getData().getResult(), false);
+        assertEquals(response.getProducts().getProxy().getData().getResult(), false);
+        assertEquals(response.getProducts().getTampering().getData().getResult(), false);
+        assertEquals(response.getProducts().getTor().getData().getResult(), false);
+        assertEquals(response.getProducts().getVpn().getData().getResult(), false);
+        assertEquals(response.getProducts().getVirtualMachine().getData().getResult(), false);
+        assertEquals(response.getProducts().getFactoryReset().getData().getTimestamp(), 0);
     }
 
     /**

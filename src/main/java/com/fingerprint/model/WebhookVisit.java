@@ -31,10 +31,16 @@ import com.fingerprint.model.IpInfoResult;
 import com.fingerprint.model.SeenAt;
 import com.fingerprint.model.TamperingResult;
 import com.fingerprint.model.VpnResult;
+import com.fingerprint.model.WebhookSignalResponseClonedApp;
 import com.fingerprint.model.WebhookSignalResponseEmulator;
+import com.fingerprint.model.WebhookSignalResponseFactoryReset;
+import com.fingerprint.model.WebhookSignalResponseFrida;
+import com.fingerprint.model.WebhookSignalResponseJailbroken;
+import com.fingerprint.model.WebhookSignalResponsePrivacySettings;
 import com.fingerprint.model.WebhookSignalResponseProxy;
 import com.fingerprint.model.WebhookSignalResponseRootApps;
 import com.fingerprint.model.WebhookSignalResponseTor;
+import com.fingerprint.model.WebhookSignalResponseVirtualMachine;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.net.URI;
@@ -57,8 +63,14 @@ import com.fingerprint.sdk.JSON;
   WebhookVisit.JSON_PROPERTY_INCOGNITO,
   WebhookVisit.JSON_PROPERTY_ROOT_APPS,
   WebhookVisit.JSON_PROPERTY_EMULATOR,
+  WebhookVisit.JSON_PROPERTY_CLONED_APP,
+  WebhookVisit.JSON_PROPERTY_FACTORY_RESET,
+  WebhookVisit.JSON_PROPERTY_JAILBROKEN,
+  WebhookVisit.JSON_PROPERTY_FRIDA,
   WebhookVisit.JSON_PROPERTY_IP_BLOCKLIST,
   WebhookVisit.JSON_PROPERTY_TOR,
+  WebhookVisit.JSON_PROPERTY_PRIVACY_SETTINGS,
+  WebhookVisit.JSON_PROPERTY_VIRTUAL_MACHINE,
   WebhookVisit.JSON_PROPERTY_VPN,
   WebhookVisit.JSON_PROPERTY_PROXY,
   WebhookVisit.JSON_PROPERTY_TAMPERING,
@@ -102,11 +114,29 @@ public class WebhookVisit {
   public static final String JSON_PROPERTY_EMULATOR = "emulator";
   private WebhookSignalResponseEmulator emulator;
 
+  public static final String JSON_PROPERTY_CLONED_APP = "clonedApp";
+  private WebhookSignalResponseClonedApp clonedApp;
+
+  public static final String JSON_PROPERTY_FACTORY_RESET = "factoryReset";
+  private WebhookSignalResponseFactoryReset factoryReset;
+
+  public static final String JSON_PROPERTY_JAILBROKEN = "jailbroken";
+  private WebhookSignalResponseJailbroken jailbroken;
+
+  public static final String JSON_PROPERTY_FRIDA = "frida";
+  private WebhookSignalResponseFrida frida;
+
   public static final String JSON_PROPERTY_IP_BLOCKLIST = "ipBlocklist";
   private IpBlockListResult ipBlocklist;
 
   public static final String JSON_PROPERTY_TOR = "tor";
   private WebhookSignalResponseTor tor;
+
+  public static final String JSON_PROPERTY_PRIVACY_SETTINGS = "privacySettings";
+  private WebhookSignalResponsePrivacySettings privacySettings;
+
+  public static final String JSON_PROPERTY_VIRTUAL_MACHINE = "virtualMachine";
+  private WebhookSignalResponseVirtualMachine virtualMachine;
 
   public static final String JSON_PROPERTY_VPN = "vpn";
   private VpnResult vpn;
@@ -367,6 +397,110 @@ public class WebhookVisit {
   }
 
 
+  public WebhookVisit clonedApp(WebhookSignalResponseClonedApp clonedApp) {
+    this.clonedApp = clonedApp;
+    return this;
+  }
+
+   /**
+   * Get clonedApp
+   * @return clonedApp
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_CLONED_APP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public WebhookSignalResponseClonedApp getClonedApp() {
+    return clonedApp;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CLONED_APP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setClonedApp(WebhookSignalResponseClonedApp clonedApp) {
+    this.clonedApp = clonedApp;
+  }
+
+
+  public WebhookVisit factoryReset(WebhookSignalResponseFactoryReset factoryReset) {
+    this.factoryReset = factoryReset;
+    return this;
+  }
+
+   /**
+   * Get factoryReset
+   * @return factoryReset
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_FACTORY_RESET)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public WebhookSignalResponseFactoryReset getFactoryReset() {
+    return factoryReset;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_FACTORY_RESET)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFactoryReset(WebhookSignalResponseFactoryReset factoryReset) {
+    this.factoryReset = factoryReset;
+  }
+
+
+  public WebhookVisit jailbroken(WebhookSignalResponseJailbroken jailbroken) {
+    this.jailbroken = jailbroken;
+    return this;
+  }
+
+   /**
+   * Get jailbroken
+   * @return jailbroken
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_JAILBROKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public WebhookSignalResponseJailbroken getJailbroken() {
+    return jailbroken;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_JAILBROKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setJailbroken(WebhookSignalResponseJailbroken jailbroken) {
+    this.jailbroken = jailbroken;
+  }
+
+
+  public WebhookVisit frida(WebhookSignalResponseFrida frida) {
+    this.frida = frida;
+    return this;
+  }
+
+   /**
+   * Get frida
+   * @return frida
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_FRIDA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public WebhookSignalResponseFrida getFrida() {
+    return frida;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_FRIDA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFrida(WebhookSignalResponseFrida frida) {
+    this.frida = frida;
+  }
+
+
   public WebhookVisit ipBlocklist(IpBlockListResult ipBlocklist) {
     this.ipBlocklist = ipBlocklist;
     return this;
@@ -416,6 +550,58 @@ public class WebhookVisit {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTor(WebhookSignalResponseTor tor) {
     this.tor = tor;
+  }
+
+
+  public WebhookVisit privacySettings(WebhookSignalResponsePrivacySettings privacySettings) {
+    this.privacySettings = privacySettings;
+    return this;
+  }
+
+   /**
+   * Get privacySettings
+   * @return privacySettings
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_PRIVACY_SETTINGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public WebhookSignalResponsePrivacySettings getPrivacySettings() {
+    return privacySettings;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PRIVACY_SETTINGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPrivacySettings(WebhookSignalResponsePrivacySettings privacySettings) {
+    this.privacySettings = privacySettings;
+  }
+
+
+  public WebhookVisit virtualMachine(WebhookSignalResponseVirtualMachine virtualMachine) {
+    this.virtualMachine = virtualMachine;
+    return this;
+  }
+
+   /**
+   * Get virtualMachine
+   * @return virtualMachine
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_VIRTUAL_MACHINE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public WebhookSignalResponseVirtualMachine getVirtualMachine() {
+    return virtualMachine;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VIRTUAL_MACHINE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVirtualMachine(WebhookSignalResponseVirtualMachine virtualMachine) {
+    this.virtualMachine = virtualMachine;
   }
 
 
@@ -863,8 +1049,14 @@ public class WebhookVisit {
         Objects.equals(this.incognito, webhookVisit.incognito) &&
         Objects.equals(this.rootApps, webhookVisit.rootApps) &&
         Objects.equals(this.emulator, webhookVisit.emulator) &&
+        Objects.equals(this.clonedApp, webhookVisit.clonedApp) &&
+        Objects.equals(this.factoryReset, webhookVisit.factoryReset) &&
+        Objects.equals(this.jailbroken, webhookVisit.jailbroken) &&
+        Objects.equals(this.frida, webhookVisit.frida) &&
         Objects.equals(this.ipBlocklist, webhookVisit.ipBlocklist) &&
         Objects.equals(this.tor, webhookVisit.tor) &&
+        Objects.equals(this.privacySettings, webhookVisit.privacySettings) &&
+        Objects.equals(this.virtualMachine, webhookVisit.virtualMachine) &&
         Objects.equals(this.vpn, webhookVisit.vpn) &&
         Objects.equals(this.proxy, webhookVisit.proxy) &&
         Objects.equals(this.tampering, webhookVisit.tampering) &&
@@ -885,7 +1077,7 @@ public class WebhookVisit {
 
   @Override
   public int hashCode() {
-    return Objects.hash(visitorId, clientReferrer, userAgent, bot, ipInfo, incognito, rootApps, emulator, ipBlocklist, tor, vpn, proxy, tampering, requestId, browserDetails, ip, ipLocation, timestamp, time, url, tag, linkedId, confidence, visitorFound, firstSeenAt, lastSeenAt);
+    return Objects.hash(visitorId, clientReferrer, userAgent, bot, ipInfo, incognito, rootApps, emulator, clonedApp, factoryReset, jailbroken, frida, ipBlocklist, tor, privacySettings, virtualMachine, vpn, proxy, tampering, requestId, browserDetails, ip, ipLocation, timestamp, time, url, tag, linkedId, confidence, visitorFound, firstSeenAt, lastSeenAt);
   }
 
   @Override
@@ -900,8 +1092,14 @@ public class WebhookVisit {
     sb.append("    incognito: ").append(toIndentedString(incognito)).append("\n");
     sb.append("    rootApps: ").append(toIndentedString(rootApps)).append("\n");
     sb.append("    emulator: ").append(toIndentedString(emulator)).append("\n");
+    sb.append("    clonedApp: ").append(toIndentedString(clonedApp)).append("\n");
+    sb.append("    factoryReset: ").append(toIndentedString(factoryReset)).append("\n");
+    sb.append("    jailbroken: ").append(toIndentedString(jailbroken)).append("\n");
+    sb.append("    frida: ").append(toIndentedString(frida)).append("\n");
     sb.append("    ipBlocklist: ").append(toIndentedString(ipBlocklist)).append("\n");
     sb.append("    tor: ").append(toIndentedString(tor)).append("\n");
+    sb.append("    privacySettings: ").append(toIndentedString(privacySettings)).append("\n");
+    sb.append("    virtualMachine: ").append(toIndentedString(virtualMachine)).append("\n");
     sb.append("    vpn: ").append(toIndentedString(vpn)).append("\n");
     sb.append("    proxy: ").append(toIndentedString(proxy)).append("\n");
     sb.append("    tampering: ").append(toIndentedString(tampering)).append("\n");

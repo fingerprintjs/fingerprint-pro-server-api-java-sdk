@@ -29,30 +29,31 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * WebhookSignalResponseEmulator
+ * SignalResponsePrivacySettingsData
  */
 @JsonPropertyOrder({
-  WebhookSignalResponseEmulator.JSON_PROPERTY_RESULT
+  SignalResponsePrivacySettingsData.JSON_PROPERTY_RESULT
 })
+@JsonTypeName("SignalResponsePrivacySettings_data")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class WebhookSignalResponseEmulator {
+public class SignalResponsePrivacySettingsData {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public WebhookSignalResponseEmulator() { 
+  public SignalResponsePrivacySettingsData() { 
   }
 
-  public WebhookSignalResponseEmulator result(Boolean result) {
+  public SignalResponsePrivacySettingsData result(Boolean result) {
     this.result = result;
     return this;
   }
 
    /**
-   * Android specific emulator detection. There are 2 values: • &#x60;true&#x60; - Emulated environment detected (e.g. launch inside of AVD) • &#x60;false&#x60; - No signs of emulated environment detected or the client isn&#39;t Android. 
+   * &#x60;true&#x60; if the request is from a privacy aware browser (e.g. Tor) or from a browser in which fingerprinting is blocked. Otherwise &#x60;false&#x60;. 
    * @return result
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Android specific emulator detection. There are 2 values: • `true` - Emulated environment detected (e.g. launch inside of AVD) • `false` - No signs of emulated environment detected or the client isn't Android. ")
+  @ApiModelProperty(example = "false", value = "`true` if the request is from a privacy aware browser (e.g. Tor) or from a browser in which fingerprinting is blocked. Otherwise `false`. ")
   @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -69,7 +70,7 @@ public class WebhookSignalResponseEmulator {
 
 
   /**
-   * Return true if this WebhookSignalResponseEmulator object is equal to o.
+   * Return true if this SignalResponsePrivacySettings_data object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -79,8 +80,8 @@ public class WebhookSignalResponseEmulator {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WebhookSignalResponseEmulator webhookSignalResponseEmulator = (WebhookSignalResponseEmulator) o;
-    return Objects.equals(this.result, webhookSignalResponseEmulator.result);
+    SignalResponsePrivacySettingsData signalResponsePrivacySettingsData = (SignalResponsePrivacySettingsData) o;
+    return Objects.equals(this.result, signalResponsePrivacySettingsData.result);
   }
 
   @Override
@@ -91,7 +92,7 @@ public class WebhookSignalResponseEmulator {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class WebhookSignalResponseEmulator {\n");
+    sb.append("class SignalResponsePrivacySettingsData {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();

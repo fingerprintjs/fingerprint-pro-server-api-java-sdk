@@ -15,8 +15,14 @@
 |**incognito** | **Boolean** | Flag if user used incognito session. |  |
 |**rootApps** | [**WebhookSignalResponseRootApps**](WebhookSignalResponseRootApps.md) |  |  [optional] |
 |**emulator** | [**WebhookSignalResponseEmulator**](WebhookSignalResponseEmulator.md) |  |  [optional] |
+|**clonedApp** | [**WebhookSignalResponseClonedApp**](WebhookSignalResponseClonedApp.md) |  |  [optional] |
+|**factoryReset** | [**WebhookSignalResponseFactoryReset**](WebhookSignalResponseFactoryReset.md) |  |  [optional] |
+|**jailbroken** | [**WebhookSignalResponseJailbroken**](WebhookSignalResponseJailbroken.md) |  |  [optional] |
+|**frida** | [**WebhookSignalResponseFrida**](WebhookSignalResponseFrida.md) |  |  [optional] |
 |**ipBlocklist** | [**IpBlockListResult**](IpBlockListResult.md) |  |  [optional] |
 |**tor** | [**WebhookSignalResponseTor**](WebhookSignalResponseTor.md) |  |  [optional] |
+|**privacySettings** | [**WebhookSignalResponsePrivacySettings**](WebhookSignalResponsePrivacySettings.md) |  |  [optional] |
+|**virtualMachine** | [**WebhookSignalResponseVirtualMachine**](WebhookSignalResponseVirtualMachine.md) |  |  [optional] |
 |**vpn** | [**VpnResult**](VpnResult.md) |  |  [optional] |
 |**proxy** | [**WebhookSignalResponseProxy**](WebhookSignalResponseProxy.md) |  |  [optional] |
 |**tampering** | [**TamperingResult**](TamperingResult.md) |  |  [optional] |

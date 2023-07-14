@@ -14,8 +14,14 @@ Contains all the information from each activated product - Fingerprint Pro or Bo
 |**incognito** | [**SignalResponseIncognito**](SignalResponseIncognito.md) |  |  [optional] |
 |**rootApps** | [**SignalResponseRootApps**](SignalResponseRootApps.md) |  |  [optional] |
 |**emulator** | [**SignalResponseEmulator**](SignalResponseEmulator.md) |  |  [optional] |
+|**clonedApp** | [**SignalResponseClonedApp**](SignalResponseClonedApp.md) |  |  [optional] |
+|**factoryReset** | [**SignalResponseFactoryReset**](SignalResponseFactoryReset.md) |  |  [optional] |
+|**jailbroken** | [**SignalResponseJailbroken**](SignalResponseJailbroken.md) |  |  [optional] |
+|**frida** | [**SignalResponseFrida**](SignalResponseFrida.md) |  |  [optional] |
 |**ipBlocklist** | [**SignalResponseIpBlocklist**](SignalResponseIpBlocklist.md) |  |  [optional] |
 |**tor** | [**SignalResponseTor**](SignalResponseTor.md) |  |  [optional] |
+|**privacySettings** | [**SignalResponsePrivacySettings**](SignalResponsePrivacySettings.md) |  |  [optional] |
+|**virtualMachine** | [**SignalResponseVirtualMachine**](SignalResponseVirtualMachine.md) |  |  [optional] |
 |**vpn** | [**SignalResponseVpn**](SignalResponseVpn.md) |  |  [optional] |
 |**proxy** | [**SignalResponseProxy**](SignalResponseProxy.md) |  |  [optional] |
 |**tampering** | [**SignalResponseTampering**](SignalResponseTampering.md) |  |  [optional] |

@@ -29,30 +29,30 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * WebhookSignalResponseEmulator
+ * WebhookSignalResponseFrida
  */
 @JsonPropertyOrder({
-  WebhookSignalResponseEmulator.JSON_PROPERTY_RESULT
+  WebhookSignalResponseFrida.JSON_PROPERTY_RESULT
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class WebhookSignalResponseEmulator {
+public class WebhookSignalResponseFrida {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public WebhookSignalResponseEmulator() { 
+  public WebhookSignalResponseFrida() { 
   }
 
-  public WebhookSignalResponseEmulator result(Boolean result) {
+  public WebhookSignalResponseFrida result(Boolean result) {
     this.result = result;
     return this;
   }
 
    /**
-   * Android specific emulator detection. There are 2 values: • &#x60;true&#x60; - Emulated environment detected (e.g. launch inside of AVD) • &#x60;false&#x60; - No signs of emulated environment detected or the client isn&#39;t Android. 
+   * iOS specific [Frida](https://frida.re/docs/ios/) detection. There are 2 values: • &#x60;true&#x60; - Frida detected • &#x60;false&#x60; - No signs of Frida or the client is not iOS. 
    * @return result
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Android specific emulator detection. There are 2 values: • `true` - Emulated environment detected (e.g. launch inside of AVD) • `false` - No signs of emulated environment detected or the client isn't Android. ")
+  @ApiModelProperty(example = "false", value = "iOS specific [Frida](https://frida.re/docs/ios/) detection. There are 2 values: • `true` - Frida detected • `false` - No signs of Frida or the client is not iOS. ")
   @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -69,7 +69,7 @@ public class WebhookSignalResponseEmulator {
 
 
   /**
-   * Return true if this WebhookSignalResponseEmulator object is equal to o.
+   * Return true if this WebhookSignalResponseFrida object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -79,8 +79,8 @@ public class WebhookSignalResponseEmulator {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WebhookSignalResponseEmulator webhookSignalResponseEmulator = (WebhookSignalResponseEmulator) o;
-    return Objects.equals(this.result, webhookSignalResponseEmulator.result);
+    WebhookSignalResponseFrida webhookSignalResponseFrida = (WebhookSignalResponseFrida) o;
+    return Objects.equals(this.result, webhookSignalResponseFrida.result);
   }
 
   @Override
@@ -91,7 +91,7 @@ public class WebhookSignalResponseEmulator {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class WebhookSignalResponseEmulator {\n");
+    sb.append("class WebhookSignalResponseFrida {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();

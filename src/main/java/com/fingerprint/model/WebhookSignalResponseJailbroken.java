@@ -29,30 +29,30 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * WebhookSignalResponseEmulator
+ * WebhookSignalResponseJailbroken
  */
 @JsonPropertyOrder({
-  WebhookSignalResponseEmulator.JSON_PROPERTY_RESULT
+  WebhookSignalResponseJailbroken.JSON_PROPERTY_RESULT
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class WebhookSignalResponseEmulator {
+public class WebhookSignalResponseJailbroken {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public WebhookSignalResponseEmulator() { 
+  public WebhookSignalResponseJailbroken() { 
   }
 
-  public WebhookSignalResponseEmulator result(Boolean result) {
+  public WebhookSignalResponseJailbroken result(Boolean result) {
     this.result = result;
     return this;
   }
 
    /**
-   * Android specific emulator detection. There are 2 values: • &#x60;true&#x60; - Emulated environment detected (e.g. launch inside of AVD) • &#x60;false&#x60; - No signs of emulated environment detected or the client isn&#39;t Android. 
+   * iOS specific jailbreak detection. There are 2 values: • &#x60;true&#x60; - Jailbreak detected • &#x60;false&#x60; - No signs of jailbreak or the client is not iOS. 
    * @return result
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Android specific emulator detection. There are 2 values: • `true` - Emulated environment detected (e.g. launch inside of AVD) • `false` - No signs of emulated environment detected or the client isn't Android. ")
+  @ApiModelProperty(example = "false", value = "iOS specific jailbreak detection. There are 2 values: • `true` - Jailbreak detected • `false` - No signs of jailbreak or the client is not iOS. ")
   @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -69,7 +69,7 @@ public class WebhookSignalResponseEmulator {
 
 
   /**
-   * Return true if this WebhookSignalResponseEmulator object is equal to o.
+   * Return true if this WebhookSignalResponseJailbroken object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -79,8 +79,8 @@ public class WebhookSignalResponseEmulator {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WebhookSignalResponseEmulator webhookSignalResponseEmulator = (WebhookSignalResponseEmulator) o;
-    return Objects.equals(this.result, webhookSignalResponseEmulator.result);
+    WebhookSignalResponseJailbroken webhookSignalResponseJailbroken = (WebhookSignalResponseJailbroken) o;
+    return Objects.equals(this.result, webhookSignalResponseJailbroken.result);
   }
 
   @Override
@@ -91,7 +91,7 @@ public class WebhookSignalResponseEmulator {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class WebhookSignalResponseEmulator {\n");
+    sb.append("class WebhookSignalResponseJailbroken {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();

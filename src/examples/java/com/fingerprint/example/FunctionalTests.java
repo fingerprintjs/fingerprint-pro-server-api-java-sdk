@@ -41,7 +41,7 @@ public class FunctionalTests {
 
 
         // Create a new instance of the API client
-        ApiClient client = Configuration.getDefaultApiClient(FPJS_API_SECRET, FPJS_API_REGION != null ? FPJS_API_REGION : "eu");
+        ApiClient client = Configuration.getDefaultApiClient(FPJS_API_SECRET, FPJS_API_REGION != null ? FPJS_API_REGION : "us");
         FingerprintApi api = new FingerprintApi(client);
 
 

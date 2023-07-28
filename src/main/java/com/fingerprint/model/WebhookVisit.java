@@ -28,6 +28,7 @@ import com.fingerprint.model.Confidence;
 import com.fingerprint.model.IPLocation;
 import com.fingerprint.model.IpBlockListResult;
 import com.fingerprint.model.IpInfoResult;
+import com.fingerprint.model.RawDeviceAttributesResultValue;
 import com.fingerprint.model.SeenAt;
 import com.fingerprint.model.TamperingResult;
 import com.fingerprint.model.VpnResult;
@@ -74,6 +75,7 @@ import com.fingerprint.sdk.JSON;
   WebhookVisit.JSON_PROPERTY_VPN,
   WebhookVisit.JSON_PROPERTY_PROXY,
   WebhookVisit.JSON_PROPERTY_TAMPERING,
+  WebhookVisit.JSON_PROPERTY_RAW_DEVICE_ATTRIBUTES,
   WebhookVisit.JSON_PROPERTY_REQUEST_ID,
   WebhookVisit.JSON_PROPERTY_BROWSER_DETAILS,
   WebhookVisit.JSON_PROPERTY_IP,
@@ -146,6 +148,9 @@ public class WebhookVisit {
 
   public static final String JSON_PROPERTY_TAMPERING = "tampering";
   private TamperingResult tampering;
+
+  public static final String JSON_PROPERTY_RAW_DEVICE_ATTRIBUTES = "rawDeviceAttributes";
+  private Map<String, RawDeviceAttributesResultValue> rawDeviceAttributes = null;
 
   public static final String JSON_PROPERTY_REQUEST_ID = "requestId";
   private String requestId;
@@ -683,6 +688,40 @@ public class WebhookVisit {
   }
 
 
+  public WebhookVisit rawDeviceAttributes(Map<String, RawDeviceAttributesResultValue> rawDeviceAttributes) {
+    this.rawDeviceAttributes = rawDeviceAttributes;
+    return this;
+  }
+
+  public WebhookVisit putRawDeviceAttributesItem(String key, RawDeviceAttributesResultValue rawDeviceAttributesItem) {
+    if (this.rawDeviceAttributes == null) {
+      this.rawDeviceAttributes = new HashMap<>();
+    }
+    this.rawDeviceAttributes.put(key, rawDeviceAttributesItem);
+    return this;
+  }
+
+   /**
+   * It includes 35+ raw browser identification attributes to provide Fingerprint users with even more information than our standard visitor ID provides. This enables Fingerprint users to not have to run our open-source product in conjunction with Fingerprint Pro Plus and Enterprise to get those additional attributes. Warning: The raw signals data can change at any moment as we improve the product. We cannot guarantee the internal shape of raw device attributes to be stable, so typical semantic versioning rules do not apply here. Use this data with caution without assuming a specific structure beyond the generic type provided here. 
+   * @return rawDeviceAttributes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "It includes 35+ raw browser identification attributes to provide Fingerprint users with even more information than our standard visitor ID provides. This enables Fingerprint users to not have to run our open-source product in conjunction with Fingerprint Pro Plus and Enterprise to get those additional attributes. Warning: The raw signals data can change at any moment as we improve the product. We cannot guarantee the internal shape of raw device attributes to be stable, so typical semantic versioning rules do not apply here. Use this data with caution without assuming a specific structure beyond the generic type provided here. ")
+  @JsonProperty(JSON_PROPERTY_RAW_DEVICE_ATTRIBUTES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Map<String, RawDeviceAttributesResultValue> getRawDeviceAttributes() {
+    return rawDeviceAttributes;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RAW_DEVICE_ATTRIBUTES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRawDeviceAttributes(Map<String, RawDeviceAttributesResultValue> rawDeviceAttributes) {
+    this.rawDeviceAttributes = rawDeviceAttributes;
+  }
+
+
   public WebhookVisit requestId(String requestId) {
     this.requestId = requestId;
     return this;
@@ -1060,6 +1099,7 @@ public class WebhookVisit {
         Objects.equals(this.vpn, webhookVisit.vpn) &&
         Objects.equals(this.proxy, webhookVisit.proxy) &&
         Objects.equals(this.tampering, webhookVisit.tampering) &&
+        Objects.equals(this.rawDeviceAttributes, webhookVisit.rawDeviceAttributes) &&
         Objects.equals(this.requestId, webhookVisit.requestId) &&
         Objects.equals(this.browserDetails, webhookVisit.browserDetails) &&
         Objects.equals(this.ip, webhookVisit.ip) &&
@@ -1077,7 +1117,7 @@ public class WebhookVisit {
 
   @Override
   public int hashCode() {
-    return Objects.hash(visitorId, clientReferrer, userAgent, bot, ipInfo, incognito, rootApps, emulator, clonedApp, factoryReset, jailbroken, frida, ipBlocklist, tor, privacySettings, virtualMachine, vpn, proxy, tampering, requestId, browserDetails, ip, ipLocation, timestamp, time, url, tag, linkedId, confidence, visitorFound, firstSeenAt, lastSeenAt);
+    return Objects.hash(visitorId, clientReferrer, userAgent, bot, ipInfo, incognito, rootApps, emulator, clonedApp, factoryReset, jailbroken, frida, ipBlocklist, tor, privacySettings, virtualMachine, vpn, proxy, tampering, rawDeviceAttributes, requestId, browserDetails, ip, ipLocation, timestamp, time, url, tag, linkedId, confidence, visitorFound, firstSeenAt, lastSeenAt);
   }
 
   @Override
@@ -1103,6 +1143,7 @@ public class WebhookVisit {
     sb.append("    vpn: ").append(toIndentedString(vpn)).append("\n");
     sb.append("    proxy: ").append(toIndentedString(proxy)).append("\n");
     sb.append("    tampering: ").append(toIndentedString(tampering)).append("\n");
+    sb.append("    rawDeviceAttributes: ").append(toIndentedString(rawDeviceAttributes)).append("\n");
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
     sb.append("    browserDetails: ").append(toIndentedString(browserDetails)).append("\n");
     sb.append("    ip: ").append(toIndentedString(ip)).append("\n");

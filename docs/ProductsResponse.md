@@ -25,6 +25,7 @@ Contains all the information from each activated product - Fingerprint Pro or Bo
 |**vpn** | [**SignalResponseVpn**](SignalResponseVpn.md) |  |  [optional] |
 |**proxy** | [**SignalResponseProxy**](SignalResponseProxy.md) |  |  [optional] |
 |**tampering** | [**SignalResponseTampering**](SignalResponseTampering.md) |  |  [optional] |
+|**rawDeviceAttributes** | [**SignalResponseRawDeviceAttributes**](SignalResponseRawDeviceAttributes.md) |  |  [optional] |
 
 
 

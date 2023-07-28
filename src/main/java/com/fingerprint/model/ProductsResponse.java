@@ -34,6 +34,7 @@ import com.fingerprint.model.SignalResponseIpInfo;
 import com.fingerprint.model.SignalResponseJailbroken;
 import com.fingerprint.model.SignalResponsePrivacySettings;
 import com.fingerprint.model.SignalResponseProxy;
+import com.fingerprint.model.SignalResponseRawDeviceAttributes;
 import com.fingerprint.model.SignalResponseRootApps;
 import com.fingerprint.model.SignalResponseTampering;
 import com.fingerprint.model.SignalResponseTor;
@@ -66,7 +67,8 @@ import com.fingerprint.sdk.JSON;
   ProductsResponse.JSON_PROPERTY_VIRTUAL_MACHINE,
   ProductsResponse.JSON_PROPERTY_VPN,
   ProductsResponse.JSON_PROPERTY_PROXY,
-  ProductsResponse.JSON_PROPERTY_TAMPERING
+  ProductsResponse.JSON_PROPERTY_TAMPERING,
+  ProductsResponse.JSON_PROPERTY_RAW_DEVICE_ATTRIBUTES
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProductsResponse {
@@ -120,6 +122,9 @@ public class ProductsResponse {
 
   public static final String JSON_PROPERTY_TAMPERING = "tampering";
   private SignalResponseTampering tampering;
+
+  public static final String JSON_PROPERTY_RAW_DEVICE_ATTRIBUTES = "rawDeviceAttributes";
+  private SignalResponseRawDeviceAttributes rawDeviceAttributes;
 
   public ProductsResponse() { 
   }
@@ -566,6 +571,32 @@ public class ProductsResponse {
   }
 
 
+  public ProductsResponse rawDeviceAttributes(SignalResponseRawDeviceAttributes rawDeviceAttributes) {
+    this.rawDeviceAttributes = rawDeviceAttributes;
+    return this;
+  }
+
+   /**
+   * Get rawDeviceAttributes
+   * @return rawDeviceAttributes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_RAW_DEVICE_ATTRIBUTES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SignalResponseRawDeviceAttributes getRawDeviceAttributes() {
+    return rawDeviceAttributes;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RAW_DEVICE_ATTRIBUTES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRawDeviceAttributes(SignalResponseRawDeviceAttributes rawDeviceAttributes) {
+    this.rawDeviceAttributes = rawDeviceAttributes;
+  }
+
+
   /**
    * Return true if this ProductsResponse object is equal to o.
    */
@@ -594,12 +625,13 @@ public class ProductsResponse {
         Objects.equals(this.virtualMachine, productsResponse.virtualMachine) &&
         Objects.equals(this.vpn, productsResponse.vpn) &&
         Objects.equals(this.proxy, productsResponse.proxy) &&
-        Objects.equals(this.tampering, productsResponse.tampering);
+        Objects.equals(this.tampering, productsResponse.tampering) &&
+        Objects.equals(this.rawDeviceAttributes, productsResponse.rawDeviceAttributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(identification, botd, ipInfo, incognito, rootApps, emulator, clonedApp, factoryReset, jailbroken, frida, ipBlocklist, tor, privacySettings, virtualMachine, vpn, proxy, tampering);
+    return Objects.hash(identification, botd, ipInfo, incognito, rootApps, emulator, clonedApp, factoryReset, jailbroken, frida, ipBlocklist, tor, privacySettings, virtualMachine, vpn, proxy, tampering, rawDeviceAttributes);
   }
 
   @Override
@@ -623,6 +655,7 @@ public class ProductsResponse {
     sb.append("    vpn: ").append(toIndentedString(vpn)).append("\n");
     sb.append("    proxy: ").append(toIndentedString(proxy)).append("\n");
     sb.append("    tampering: ").append(toIndentedString(tampering)).append("\n");
+    sb.append("    rawDeviceAttributes: ").append(toIndentedString(rawDeviceAttributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

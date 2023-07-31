@@ -1,22 +1,22 @@
 package com.fingerprint.api;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.fingerprint.model.ProductError;
-import com.fingerprint.model.IdentificationError;
+import com.fingerprint.model.*;
 import com.fingerprint.sdk.*;
-import com.fingerprint.model.EventResponse;
-import com.fingerprint.model.Response;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.LinkedHashMap;
 
 import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mockito;
+import org.openapitools.jackson.nullable.JsonNullableModule;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 /**
@@ -64,6 +64,9 @@ public class FingerprintApiTest {
 
     private EventResponse fetchMockWithEventResponse(String fileName) throws IOException {
         ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        JsonNullableModule jnm = new JsonNullableModule();
+        mapper.registerModule(jnm);
 
         return mapper.readValue(getFileAsIOStream(fileName), EventResponse.class);
     }
@@ -86,7 +89,27 @@ public class FingerprintApiTest {
         assert response.getProducts() != null;
         assert response.getProducts().getIdentification() != null;
         assert response.getProducts().getIdentification().getData() != null;
-        assertEquals(response.getProducts().getIdentification().getData().getVisitorId(), "Ibk1527CUFmcnjLwIs4A9");
+        assertEquals("Ibk1527CUFmcnjLwIs4A9", response.getProducts().getIdentification().getData().getVisitorId());
+
+        assertFalse(response.getProducts().getClonedApp().getData().getResult());
+        assertFalse(response.getProducts().getEmulator().getData().getResult());
+        assertFalse(response.getProducts().getFrida().getData().getResult());
+        assertFalse(response.getProducts().getJailbroken().getData().getResult());
+        assertFalse(response.getProducts().getIpBlocklist().getData().getResult());
+        assertFalse(response.getProducts().getProxy().getData().getResult());
+        assertFalse(response.getProducts().getTampering().getData().getResult());
+        assertFalse(response.getProducts().getTor().getData().getResult());
+        assertFalse(response.getProducts().getVpn().getData().getResult());
+        assertFalse(response.getProducts().getVirtualMachine().getData().getResult());
+        assertEquals(0, response.getProducts().getFactoryReset().getData().getTimestamp());
+        SignalResponseRawDeviceAttributes signalResponseRawDeviceAttributes = response.getProducts().getRawDeviceAttributes();
+        assertEquals(127, signalResponseRawDeviceAttributes.getData().get("architecture").getValue());
+        assertEquals(35.73832903057337, signalResponseRawDeviceAttributes.getData().get("audio").getValue());
+        LinkedHashMap canvasAttribute = (LinkedHashMap)response.getProducts().getRawDeviceAttributes().getData().get("canvas").getValue();
+        assertEquals(true, canvasAttribute.get("Winding"));
+        assertEquals("4dce9d6017c3e0c052a77252f29f2b1c", canvasAttribute.get("Geometry"));
+        assertEquals("srgb", signalResponseRawDeviceAttributes.getData().get("colorGamut").getValue());
+        assertEquals(true, signalResponseRawDeviceAttributes.getData().get("cookiesEnabled").getValue());
     }
 
     /**
@@ -121,6 +144,18 @@ public class FingerprintApiTest {
         assert response.getProducts().getVpn().getError().getCode() == ProductError.CodeEnum.FAILED;
         assert response.getProducts().getProxy().getError().getCode() == ProductError.CodeEnum.FAILED;
         assert response.getProducts().getTampering().getError().getCode() == ProductError.CodeEnum.FAILED;
+        assert response.getProducts().getClonedApp().getError().getCode() == ProductError.CodeEnum.FAILED;
+        assert response.getProducts().getFactoryReset().getError().getCode() == ProductError.CodeEnum.FAILED;
+        assert response.getProducts().getJailbroken().getError().getCode() == ProductError.CodeEnum.FAILED;
+        assert response.getProducts().getFrida().getError().getCode() == ProductError.CodeEnum.FAILED;
+        assert response.getProducts().getPrivacySettings().getError().getCode() == ProductError.CodeEnum.FAILED;
+        assert response.getProducts().getVirtualMachine().getError().getCode() == ProductError.CodeEnum.FAILED;
+
+        SignalResponseRawDeviceAttributes signalResponseRawDeviceAttributes = response.getProducts().getRawDeviceAttributes();
+        assertEquals("Error", signalResponseRawDeviceAttributes.getData().get("audio").getError().getName());
+        assertEquals("internal server error", signalResponseRawDeviceAttributes.getData().get("audio").getError().getMessage());
+        assertEquals("Error", signalResponseRawDeviceAttributes.getData().get("canvas").getError().getName());
+        assertEquals("internal server error", signalResponseRawDeviceAttributes.getData().get("canvas").getError().getMessage());
     }
 
     @Test

@@ -1,6 +1,8 @@
 package com.fingerprint.example;
 
 import com.fingerprint.api.FingerprintApi;
+import com.fingerprint.model.EventResponse;
+import com.fingerprint.model.Response;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
 import com.fingerprint.sdk.Configuration;

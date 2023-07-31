@@ -6,6 +6,14 @@
 * add RawDeviceAttributes signal ([ae12318](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/ae12318beb679f4e5cbe4fa857fc007c295e3b8b))
 * add smart signals support ([adaceb6](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/adaceb69ef86b65eed0cb0f2ab2c2b4af218cdf8))
 
+## [2.1.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v2.0.0...v2.1.0) (2023-07-31)
+
+
+### Features
+
+* add RawDeviceAttributes signal ([ae12318](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/ae12318beb679f4e5cbe4fa857fc007c295e3b8b))
+* add smart signals support ([adaceb6](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/adaceb69ef86b65eed0cb0f2ab2c2b4af218cdf8))
+
 ## [2.0.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v1.1.0...v2.0.0) (2023-06-06)
 
 

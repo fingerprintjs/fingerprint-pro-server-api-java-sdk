@@ -60,7 +60,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.github.fingerprintjs</groupId>
   <artifactId>fingerprint-pro-server-api-java-sdk</artifactId>
-  <version>v2.0.0</version>
+  <version>v2.1.0</version>
 </dependency>
 ```
 
@@ -74,7 +74,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.github.fingerprintjs:fingerprint-pro-server-api-java-sdk:v2.0.0"
+     implementation "com.github.fingerprintjs:fingerprint-pro-server-api-java-sdk:v2.1.0"
   }
 ```
 
@@ -88,7 +88,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-- `target/fingerprint-pro-server-api-sdk-2.0.0.jar`
+- `target/fingerprint-pro-server-api-sdk-2.1.0.jar`
 
 ## Usage
 

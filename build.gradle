@@ -3,7 +3,7 @@ apply plugin: 'eclipse'
 apply plugin: 'com.diffplug.spotless'
 
 group = 'com.fingerprint'
-version = '2.0.0'
+version = '2.1.0'
 
 buildscript {
     repositories {
@@ -37,7 +37,7 @@ publishing {
             artifact jar
             groupId 'com.fingerprint'
             artifactId 'fingerprint-pro-server-api-sdk'
-            version '2.0.0'
+            version '2.1.0'
         }
     }
 }
@@ -71,7 +71,6 @@ dependencies {
     implementation "org.openapitools:jackson-databind-nullable:$jackson_databind_nullable_version"
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version"
     implementation "jakarta.annotation:jakarta.annotation-api:$jakarta_annotation_version"
-    implementation 'io.github.cdimascio:dotenv-java:2.1.0'
     testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_version"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_version"
     testImplementation 'org.mockito:mockito-all:1.10.19'

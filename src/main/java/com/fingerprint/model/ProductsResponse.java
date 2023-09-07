@@ -47,9 +47,9 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * Contains all the information from each activated product - Fingerprint Pro or Bot Detection
+ * Contains all information about the request identified by &#x60;requestId&#x60;, depending on the pricing plan (Pro, Pro Plus, Enterprise)
  */
-@ApiModel(description = "Contains all the information from each activated product - Fingerprint Pro or Bot Detection")
+@ApiModel(description = "Contains all information about the request identified by `requestId`, depending on the pricing plan (Pro, Pro Plus, Enterprise)")
 @JsonPropertyOrder({
   ProductsResponse.JSON_PROPERTY_IDENTIFICATION,
   ProductsResponse.JSON_PROPERTY_BOTD,

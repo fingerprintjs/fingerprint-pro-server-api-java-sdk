@@ -9,6 +9,8 @@
 |------------ | ------------- | ------------- | -------------|
 |**address** | **String** |  |  [optional] |
 |**geolocation** | [**IPLocation**](IPLocation.md) |  |  [optional] |
+|**asn** | [**ASN**](ASN.md) |  |  [optional] |
+|**dataCenter** | [**DataCenter**](DataCenter.md) |  |  [optional] |
 
 
 

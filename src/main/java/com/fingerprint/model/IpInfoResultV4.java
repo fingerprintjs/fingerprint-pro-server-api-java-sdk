@@ -22,6 +22,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fingerprint.model.ASN;
+import com.fingerprint.model.DataCenter;
 import com.fingerprint.model.IPLocation;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -34,7 +36,9 @@ import com.fingerprint.sdk.JSON;
  */
 @JsonPropertyOrder({
   IpInfoResultV4.JSON_PROPERTY_ADDRESS,
-  IpInfoResultV4.JSON_PROPERTY_GEOLOCATION
+  IpInfoResultV4.JSON_PROPERTY_GEOLOCATION,
+  IpInfoResultV4.JSON_PROPERTY_ASN,
+  IpInfoResultV4.JSON_PROPERTY_DATA_CENTER
 })
 @JsonTypeName("IpInfoResult_v4")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
@@ -44,6 +48,12 @@ public class IpInfoResultV4 {
 
   public static final String JSON_PROPERTY_GEOLOCATION = "geolocation";
   private IPLocation geolocation;
+
+  public static final String JSON_PROPERTY_ASN = "asn";
+  private ASN asn;
+
+  public static final String JSON_PROPERTY_DATA_CENTER = "dataCenter";
+  private DataCenter dataCenter;
 
   public IpInfoResultV4() { 
   }
@@ -100,6 +110,58 @@ public class IpInfoResultV4 {
   }
 
 
+  public IpInfoResultV4 asn(ASN asn) {
+    this.asn = asn;
+    return this;
+  }
+
+   /**
+   * Get asn
+   * @return asn
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_ASN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ASN getAsn() {
+    return asn;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ASN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAsn(ASN asn) {
+    this.asn = asn;
+  }
+
+
+  public IpInfoResultV4 dataCenter(DataCenter dataCenter) {
+    this.dataCenter = dataCenter;
+    return this;
+  }
+
+   /**
+   * Get dataCenter
+   * @return dataCenter
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_DATA_CENTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public DataCenter getDataCenter() {
+    return dataCenter;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DATA_CENTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDataCenter(DataCenter dataCenter) {
+    this.dataCenter = dataCenter;
+  }
+
+
   /**
    * Return true if this IpInfoResult_v4 object is equal to o.
    */
@@ -113,12 +175,14 @@ public class IpInfoResultV4 {
     }
     IpInfoResultV4 ipInfoResultV4 = (IpInfoResultV4) o;
     return Objects.equals(this.address, ipInfoResultV4.address) &&
-        Objects.equals(this.geolocation, ipInfoResultV4.geolocation);
+        Objects.equals(this.geolocation, ipInfoResultV4.geolocation) &&
+        Objects.equals(this.asn, ipInfoResultV4.asn) &&
+        Objects.equals(this.dataCenter, ipInfoResultV4.dataCenter);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, geolocation);
+    return Objects.hash(address, geolocation, asn, dataCenter);
   }
 
   @Override
@@ -127,6 +191,8 @@ public class IpInfoResultV4 {
     sb.append("class IpInfoResultV4 {\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    geolocation: ").append(toIndentedString(geolocation)).append("\n");
+    sb.append("    asn: ").append(toIndentedString(asn)).append("\n");
+    sb.append("    dataCenter: ").append(toIndentedString(dataCenter)).append("\n");
     sb.append("}");
     return sb.toString();
   }

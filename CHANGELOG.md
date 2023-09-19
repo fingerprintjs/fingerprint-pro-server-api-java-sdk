@@ -1,3 +1,11 @@
+## [2.1.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v2.1.0...v2.1.1) (2023-09-19)
+
+
+### Bug Fixes
+
+* update OpenAPI Schema with `asn` and `dataCenter` signals ([9fd2591](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/9fd2591a20fd8ad8e451624b0e880a94dd715b21))
+* update OpenAPI Schema with `auxiliaryMobile` method for VPN signal ([15ca8db](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/15ca8db508448fcfc0cee90a18f7c513b3ccde4e))
+
 ## [2.1.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v2.0.0...v2.1.0) (2023-07-31)
 
 

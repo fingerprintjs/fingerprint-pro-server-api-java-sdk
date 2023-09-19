@@ -53,11 +53,11 @@ public class VpnResult {
   }
 
    /**
-   * VPN or other anonymising service has been used when sending the request.
+   * VPN or other anonymizing service has been used when sending the request.
    * @return result
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "VPN or other anonymising service has been used when sending the request.")
+  @ApiModelProperty(example = "false", value = "VPN or other anonymizing service has been used when sending the request.")
   @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

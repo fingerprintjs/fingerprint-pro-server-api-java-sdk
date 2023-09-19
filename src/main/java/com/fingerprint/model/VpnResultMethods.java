@@ -33,7 +33,8 @@ import com.fingerprint.sdk.JSON;
  */
 @JsonPropertyOrder({
   VpnResultMethods.JSON_PROPERTY_TIMEZONE_MISMATCH,
-  VpnResultMethods.JSON_PROPERTY_PUBLIC_V_P_N
+  VpnResultMethods.JSON_PROPERTY_PUBLIC_V_P_N,
+  VpnResultMethods.JSON_PROPERTY_AUXILIARY_MOBILE
 })
 @JsonTypeName("VpnResult_methods")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
@@ -43,6 +44,9 @@ public class VpnResultMethods {
 
   public static final String JSON_PROPERTY_PUBLIC_V_P_N = "publicVPN";
   private Boolean publicVPN;
+
+  public static final String JSON_PROPERTY_AUXILIARY_MOBILE = "auxiliaryMobile";
+  private Boolean auxiliaryMobile;
 
   public VpnResultMethods() { 
   }
@@ -99,6 +103,32 @@ public class VpnResultMethods {
   }
 
 
+  public VpnResultMethods auxiliaryMobile(Boolean auxiliaryMobile) {
+    this.auxiliaryMobile = auxiliaryMobile;
+    return this;
+  }
+
+   /**
+   * This method applies to mobile devices only. Indicates the result of additional methods used to detect a VPN in mobile devices.
+   * @return auxiliaryMobile
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "This method applies to mobile devices only. Indicates the result of additional methods used to detect a VPN in mobile devices.")
+  @JsonProperty(JSON_PROPERTY_AUXILIARY_MOBILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getAuxiliaryMobile() {
+    return auxiliaryMobile;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AUXILIARY_MOBILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAuxiliaryMobile(Boolean auxiliaryMobile) {
+    this.auxiliaryMobile = auxiliaryMobile;
+  }
+
+
   /**
    * Return true if this VpnResult_methods object is equal to o.
    */
@@ -112,12 +142,13 @@ public class VpnResultMethods {
     }
     VpnResultMethods vpnResultMethods = (VpnResultMethods) o;
     return Objects.equals(this.timezoneMismatch, vpnResultMethods.timezoneMismatch) &&
-        Objects.equals(this.publicVPN, vpnResultMethods.publicVPN);
+        Objects.equals(this.publicVPN, vpnResultMethods.publicVPN) &&
+        Objects.equals(this.auxiliaryMobile, vpnResultMethods.auxiliaryMobile);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(timezoneMismatch, publicVPN);
+    return Objects.hash(timezoneMismatch, publicVPN, auxiliaryMobile);
   }
 
   @Override
@@ -126,6 +157,7 @@ public class VpnResultMethods {
     sb.append("class VpnResultMethods {\n");
     sb.append("    timezoneMismatch: ").append(toIndentedString(timezoneMismatch)).append("\n");
     sb.append("    publicVPN: ").append(toIndentedString(publicVPN)).append("\n");
+    sb.append("    auxiliaryMobile: ").append(toIndentedString(auxiliaryMobile)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -207,10 +207,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [ASN](docs/ASN.md)
  - [BotdDetectionResult](docs/BotdDetectionResult.md)
  - [BotdResult](docs/BotdResult.md)
  - [BrowserDetails](docs/BrowserDetails.md)
  - [Confidence](docs/Confidence.md)
+ - [DataCenter](docs/DataCenter.md)
  - [Error](docs/Error.md)
  - [ErrorEvent403Response](docs/ErrorEvent403Response.md)
  - [ErrorEvent403ResponseError](docs/ErrorEvent403ResponseError.md)

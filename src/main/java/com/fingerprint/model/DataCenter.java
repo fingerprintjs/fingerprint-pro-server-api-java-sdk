@@ -22,7 +22,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.VpnResultMethods;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -30,36 +29,36 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * VpnResult
+ * DataCenter
  */
 @JsonPropertyOrder({
-  VpnResult.JSON_PROPERTY_RESULT,
-  VpnResult.JSON_PROPERTY_METHODS
+  DataCenter.JSON_PROPERTY_RESULT,
+  DataCenter.JSON_PROPERTY_NAME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class VpnResult {
+public class DataCenter {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public static final String JSON_PROPERTY_METHODS = "methods";
-  private VpnResultMethods methods;
+  public static final String JSON_PROPERTY_NAME = "name";
+  private String name;
 
-  public VpnResult() { 
+  public DataCenter() { 
   }
 
-  public VpnResult result(Boolean result) {
+  public DataCenter result(Boolean result) {
     this.result = result;
     return this;
   }
 
    /**
-   * VPN or other anonymizing service has been used when sending the request.
+   * Get result
    * @return result
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "VPN or other anonymizing service has been used when sending the request.")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getResult() {
     return result;
@@ -67,40 +66,40 @@ public class VpnResult {
 
 
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setResult(Boolean result) {
     this.result = result;
   }
 
 
-  public VpnResult methods(VpnResultMethods methods) {
-    this.methods = methods;
+  public DataCenter name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * Get methods
-   * @return methods
+   * Get name
+   * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_METHODS)
+  @ApiModelProperty(example = "DediPath", value = "")
+  @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public VpnResultMethods getMethods() {
-    return methods;
+  public String getName() {
+    return name;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_METHODS)
+  @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMethods(VpnResultMethods methods) {
-    this.methods = methods;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
   /**
-   * Return true if this VpnResult object is equal to o.
+   * Return true if this DataCenter object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -110,22 +109,22 @@ public class VpnResult {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    VpnResult vpnResult = (VpnResult) o;
-    return Objects.equals(this.result, vpnResult.result) &&
-        Objects.equals(this.methods, vpnResult.methods);
+    DataCenter dataCenter = (DataCenter) o;
+    return Objects.equals(this.result, dataCenter.result) &&
+        Objects.equals(this.name, dataCenter.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(result, methods);
+    return Objects.hash(result, name);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class VpnResult {\n");
+    sb.append("class DataCenter {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
-    sb.append("    methods: ").append(toIndentedString(methods)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

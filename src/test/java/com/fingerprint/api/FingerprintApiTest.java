@@ -101,6 +101,8 @@ public class FingerprintApiTest {
         assertFalse(response.getProducts().getTor().getData().getResult());
         assertFalse(response.getProducts().getVpn().getData().getResult());
         assertFalse(response.getProducts().getVirtualMachine().getData().getResult());
+        assertFalse(response.getProducts().getHighActivity().getData().getResult());
+        assertFalse(response.getProducts().getLocationSpoofing().getData().getResult());
         assertEquals(0, response.getProducts().getFactoryReset().getData().getTimestamp());
         SignalResponseRawDeviceAttributes signalResponseRawDeviceAttributes = response.getProducts().getRawDeviceAttributes();
         assertEquals(127, signalResponseRawDeviceAttributes.getData().get("architecture").getValue());

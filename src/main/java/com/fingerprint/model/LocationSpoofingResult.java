@@ -22,7 +22,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.VpnResultMethods;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -30,38 +29,30 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * VpnResult
+ * LocationSpoofingResult
  */
 @JsonPropertyOrder({
-  VpnResult.JSON_PROPERTY_RESULT,
-  VpnResult.JSON_PROPERTY_ORIGIN_TIMEZONE,
-  VpnResult.JSON_PROPERTY_METHODS
+  LocationSpoofingResult.JSON_PROPERTY_RESULT
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class VpnResult {
+public class LocationSpoofingResult {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public static final String JSON_PROPERTY_ORIGIN_TIMEZONE = "originTimezone";
-  private String originTimezone;
-
-  public static final String JSON_PROPERTY_METHODS = "methods";
-  private VpnResultMethods methods;
-
-  public VpnResult() { 
+  public LocationSpoofingResult() { 
   }
 
-  public VpnResult result(Boolean result) {
+  public LocationSpoofingResult result(Boolean result) {
     this.result = result;
     return this;
   }
 
    /**
-   * VPN or other anonymizing service has been used when sending the request.
+   * Flag indicating whether the request came from a device with location spoofing enabled.
    * @return result
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "VPN or other anonymizing service has been used when sending the request.")
+  @ApiModelProperty(example = "false", value = "Flag indicating whether the request came from a device with location spoofing enabled.")
   @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -77,60 +68,8 @@ public class VpnResult {
   }
 
 
-  public VpnResult originTimezone(String originTimezone) {
-    this.originTimezone = originTimezone;
-    return this;
-  }
-
-   /**
-   * Local timezone which is used in timezoneMismatch method.
-   * @return originTimezone
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "Europe/Berlin", value = "Local timezone which is used in timezoneMismatch method.")
-  @JsonProperty(JSON_PROPERTY_ORIGIN_TIMEZONE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getOriginTimezone() {
-    return originTimezone;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ORIGIN_TIMEZONE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOriginTimezone(String originTimezone) {
-    this.originTimezone = originTimezone;
-  }
-
-
-  public VpnResult methods(VpnResultMethods methods) {
-    this.methods = methods;
-    return this;
-  }
-
-   /**
-   * Get methods
-   * @return methods
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_METHODS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public VpnResultMethods getMethods() {
-    return methods;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_METHODS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMethods(VpnResultMethods methods) {
-    this.methods = methods;
-  }
-
-
   /**
-   * Return true if this VpnResult object is equal to o.
+   * Return true if this LocationSpoofingResult object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -140,24 +79,20 @@ public class VpnResult {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    VpnResult vpnResult = (VpnResult) o;
-    return Objects.equals(this.result, vpnResult.result) &&
-        Objects.equals(this.originTimezone, vpnResult.originTimezone) &&
-        Objects.equals(this.methods, vpnResult.methods);
+    LocationSpoofingResult locationSpoofingResult = (LocationSpoofingResult) o;
+    return Objects.equals(this.result, locationSpoofingResult.result);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(result, originTimezone, methods);
+    return Objects.hash(result);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class VpnResult {\n");
+    sb.append("class LocationSpoofingResult {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
-    sb.append("    originTimezone: ").append(toIndentedString(originTimezone)).append("\n");
-    sb.append("    methods: ").append(toIndentedString(methods)).append("\n");
     sb.append("}");
     return sb.toString();
   }

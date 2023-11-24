@@ -22,46 +22,42 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.VpnResultMethods;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.math.BigDecimal;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fingerprint.sdk.JSON;
 
 
 /**
- * VpnResult
+ * HighActivityResult
  */
 @JsonPropertyOrder({
-  VpnResult.JSON_PROPERTY_RESULT,
-  VpnResult.JSON_PROPERTY_ORIGIN_TIMEZONE,
-  VpnResult.JSON_PROPERTY_METHODS
+  HighActivityResult.JSON_PROPERTY_RESULT,
+  HighActivityResult.JSON_PROPERTY_DAILY_REQUESTS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class VpnResult {
+public class HighActivityResult {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public static final String JSON_PROPERTY_ORIGIN_TIMEZONE = "originTimezone";
-  private String originTimezone;
+  public static final String JSON_PROPERTY_DAILY_REQUESTS = "dailyRequests";
+  private BigDecimal dailyRequests;
 
-  public static final String JSON_PROPERTY_METHODS = "methods";
-  private VpnResultMethods methods;
-
-  public VpnResult() { 
+  public HighActivityResult() { 
   }
 
-  public VpnResult result(Boolean result) {
+  public HighActivityResult result(Boolean result) {
     this.result = result;
     return this;
   }
 
    /**
-   * VPN or other anonymizing service has been used when sending the request.
+   * Flag indicating whether the request came from a high activity visitor.
    * @return result
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "VPN or other anonymizing service has been used when sending the request.")
+  @ApiModelProperty(example = "false", value = "Flag indicating whether the request came from a high activity visitor.")
   @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -77,60 +73,35 @@ public class VpnResult {
   }
 
 
-  public VpnResult originTimezone(String originTimezone) {
-    this.originTimezone = originTimezone;
+  public HighActivityResult dailyRequests(BigDecimal dailyRequests) {
+    this.dailyRequests = dailyRequests;
     return this;
   }
 
    /**
-   * Local timezone which is used in timezoneMismatch method.
-   * @return originTimezone
+   * Number of requests from the same visitor in the previous day.
+   * minimum: 1
+   * @return dailyRequests
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Europe/Berlin", value = "Local timezone which is used in timezoneMismatch method.")
-  @JsonProperty(JSON_PROPERTY_ORIGIN_TIMEZONE)
+  @ApiModelProperty(example = "10", value = "Number of requests from the same visitor in the previous day.")
+  @JsonProperty(JSON_PROPERTY_DAILY_REQUESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getOriginTimezone() {
-    return originTimezone;
+  public BigDecimal getDailyRequests() {
+    return dailyRequests;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ORIGIN_TIMEZONE)
+  @JsonProperty(JSON_PROPERTY_DAILY_REQUESTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOriginTimezone(String originTimezone) {
-    this.originTimezone = originTimezone;
-  }
-
-
-  public VpnResult methods(VpnResultMethods methods) {
-    this.methods = methods;
-    return this;
-  }
-
-   /**
-   * Get methods
-   * @return methods
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_METHODS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public VpnResultMethods getMethods() {
-    return methods;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_METHODS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMethods(VpnResultMethods methods) {
-    this.methods = methods;
+  public void setDailyRequests(BigDecimal dailyRequests) {
+    this.dailyRequests = dailyRequests;
   }
 
 
   /**
-   * Return true if this VpnResult object is equal to o.
+   * Return true if this HighActivityResult object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -140,24 +111,22 @@ public class VpnResult {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    VpnResult vpnResult = (VpnResult) o;
-    return Objects.equals(this.result, vpnResult.result) &&
-        Objects.equals(this.originTimezone, vpnResult.originTimezone) &&
-        Objects.equals(this.methods, vpnResult.methods);
+    HighActivityResult highActivityResult = (HighActivityResult) o;
+    return Objects.equals(this.result, highActivityResult.result) &&
+        Objects.equals(this.dailyRequests, highActivityResult.dailyRequests);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(result, originTimezone, methods);
+    return Objects.hash(result, dailyRequests);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class VpnResult {\n");
+    sb.append("class HighActivityResult {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
-    sb.append("    originTimezone: ").append(toIndentedString(originTimezone)).append("\n");
-    sb.append("    methods: ").append(toIndentedString(methods)).append("\n");
+    sb.append("    dailyRequests: ").append(toIndentedString(dailyRequests)).append("\n");
     sb.append("}");
     return sb.toString();
   }

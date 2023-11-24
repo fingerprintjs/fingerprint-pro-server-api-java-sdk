@@ -28,10 +28,12 @@ import com.fingerprint.model.SignalResponseClonedApp;
 import com.fingerprint.model.SignalResponseEmulator;
 import com.fingerprint.model.SignalResponseFactoryReset;
 import com.fingerprint.model.SignalResponseFrida;
+import com.fingerprint.model.SignalResponseHighActivity;
 import com.fingerprint.model.SignalResponseIncognito;
 import com.fingerprint.model.SignalResponseIpBlocklist;
 import com.fingerprint.model.SignalResponseIpInfo;
 import com.fingerprint.model.SignalResponseJailbroken;
+import com.fingerprint.model.SignalResponseLocationSpoofing;
 import com.fingerprint.model.SignalResponsePrivacySettings;
 import com.fingerprint.model.SignalResponseProxy;
 import com.fingerprint.model.SignalResponseRawDeviceAttributes;
@@ -68,6 +70,8 @@ import com.fingerprint.sdk.JSON;
   ProductsResponse.JSON_PROPERTY_VPN,
   ProductsResponse.JSON_PROPERTY_PROXY,
   ProductsResponse.JSON_PROPERTY_TAMPERING,
+  ProductsResponse.JSON_PROPERTY_HIGH_ACTIVITY,
+  ProductsResponse.JSON_PROPERTY_LOCATION_SPOOFING,
   ProductsResponse.JSON_PROPERTY_RAW_DEVICE_ATTRIBUTES
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
@@ -122,6 +126,12 @@ public class ProductsResponse {
 
   public static final String JSON_PROPERTY_TAMPERING = "tampering";
   private SignalResponseTampering tampering;
+
+  public static final String JSON_PROPERTY_HIGH_ACTIVITY = "highActivity";
+  private SignalResponseHighActivity highActivity;
+
+  public static final String JSON_PROPERTY_LOCATION_SPOOFING = "locationSpoofing";
+  private SignalResponseLocationSpoofing locationSpoofing;
 
   public static final String JSON_PROPERTY_RAW_DEVICE_ATTRIBUTES = "rawDeviceAttributes";
   private SignalResponseRawDeviceAttributes rawDeviceAttributes;
@@ -571,6 +581,58 @@ public class ProductsResponse {
   }
 
 
+  public ProductsResponse highActivity(SignalResponseHighActivity highActivity) {
+    this.highActivity = highActivity;
+    return this;
+  }
+
+   /**
+   * Get highActivity
+   * @return highActivity
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_HIGH_ACTIVITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SignalResponseHighActivity getHighActivity() {
+    return highActivity;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_HIGH_ACTIVITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setHighActivity(SignalResponseHighActivity highActivity) {
+    this.highActivity = highActivity;
+  }
+
+
+  public ProductsResponse locationSpoofing(SignalResponseLocationSpoofing locationSpoofing) {
+    this.locationSpoofing = locationSpoofing;
+    return this;
+  }
+
+   /**
+   * Get locationSpoofing
+   * @return locationSpoofing
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_LOCATION_SPOOFING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SignalResponseLocationSpoofing getLocationSpoofing() {
+    return locationSpoofing;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LOCATION_SPOOFING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLocationSpoofing(SignalResponseLocationSpoofing locationSpoofing) {
+    this.locationSpoofing = locationSpoofing;
+  }
+
+
   public ProductsResponse rawDeviceAttributes(SignalResponseRawDeviceAttributes rawDeviceAttributes) {
     this.rawDeviceAttributes = rawDeviceAttributes;
     return this;
@@ -626,12 +688,14 @@ public class ProductsResponse {
         Objects.equals(this.vpn, productsResponse.vpn) &&
         Objects.equals(this.proxy, productsResponse.proxy) &&
         Objects.equals(this.tampering, productsResponse.tampering) &&
+        Objects.equals(this.highActivity, productsResponse.highActivity) &&
+        Objects.equals(this.locationSpoofing, productsResponse.locationSpoofing) &&
         Objects.equals(this.rawDeviceAttributes, productsResponse.rawDeviceAttributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(identification, botd, ipInfo, incognito, rootApps, emulator, clonedApp, factoryReset, jailbroken, frida, ipBlocklist, tor, privacySettings, virtualMachine, vpn, proxy, tampering, rawDeviceAttributes);
+    return Objects.hash(identification, botd, ipInfo, incognito, rootApps, emulator, clonedApp, factoryReset, jailbroken, frida, ipBlocklist, tor, privacySettings, virtualMachine, vpn, proxy, tampering, highActivity, locationSpoofing, rawDeviceAttributes);
   }
 
   @Override
@@ -655,6 +719,8 @@ public class ProductsResponse {
     sb.append("    vpn: ").append(toIndentedString(vpn)).append("\n");
     sb.append("    proxy: ").append(toIndentedString(proxy)).append("\n");
     sb.append("    tampering: ").append(toIndentedString(tampering)).append("\n");
+    sb.append("    highActivity: ").append(toIndentedString(highActivity)).append("\n");
+    sb.append("    locationSpoofing: ").append(toIndentedString(locationSpoofing)).append("\n");
     sb.append("    rawDeviceAttributes: ").append(toIndentedString(rawDeviceAttributes)).append("\n");
     sb.append("}");
     return sb.toString();

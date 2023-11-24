@@ -25,9 +25,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.fingerprint.model.BotdDetectionResult;
 import com.fingerprint.model.BrowserDetails;
 import com.fingerprint.model.Confidence;
+import com.fingerprint.model.HighActivityResult;
 import com.fingerprint.model.IPLocation;
 import com.fingerprint.model.IpBlockListResult;
 import com.fingerprint.model.IpInfoResult;
+import com.fingerprint.model.LocationSpoofingResult;
 import com.fingerprint.model.RawDeviceAttributesResultValue;
 import com.fingerprint.model.SeenAt;
 import com.fingerprint.model.TamperingResult;
@@ -76,6 +78,8 @@ import com.fingerprint.sdk.JSON;
   WebhookVisit.JSON_PROPERTY_PROXY,
   WebhookVisit.JSON_PROPERTY_TAMPERING,
   WebhookVisit.JSON_PROPERTY_RAW_DEVICE_ATTRIBUTES,
+  WebhookVisit.JSON_PROPERTY_HIGH_ACTIVITY,
+  WebhookVisit.JSON_PROPERTY_LOCATION_SPOOFING,
   WebhookVisit.JSON_PROPERTY_REQUEST_ID,
   WebhookVisit.JSON_PROPERTY_BROWSER_DETAILS,
   WebhookVisit.JSON_PROPERTY_IP,
@@ -151,6 +155,12 @@ public class WebhookVisit {
 
   public static final String JSON_PROPERTY_RAW_DEVICE_ATTRIBUTES = "rawDeviceAttributes";
   private Map<String, RawDeviceAttributesResultValue> rawDeviceAttributes = null;
+
+  public static final String JSON_PROPERTY_HIGH_ACTIVITY = "highActivity";
+  private HighActivityResult highActivity;
+
+  public static final String JSON_PROPERTY_LOCATION_SPOOFING = "locationSpoofing";
+  private LocationSpoofingResult locationSpoofing;
 
   public static final String JSON_PROPERTY_REQUEST_ID = "requestId";
   private String requestId;
@@ -722,6 +732,58 @@ public class WebhookVisit {
   }
 
 
+  public WebhookVisit highActivity(HighActivityResult highActivity) {
+    this.highActivity = highActivity;
+    return this;
+  }
+
+   /**
+   * Get highActivity
+   * @return highActivity
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_HIGH_ACTIVITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public HighActivityResult getHighActivity() {
+    return highActivity;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_HIGH_ACTIVITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setHighActivity(HighActivityResult highActivity) {
+    this.highActivity = highActivity;
+  }
+
+
+  public WebhookVisit locationSpoofing(LocationSpoofingResult locationSpoofing) {
+    this.locationSpoofing = locationSpoofing;
+    return this;
+  }
+
+   /**
+   * Get locationSpoofing
+   * @return locationSpoofing
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_LOCATION_SPOOFING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public LocationSpoofingResult getLocationSpoofing() {
+    return locationSpoofing;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LOCATION_SPOOFING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLocationSpoofing(LocationSpoofingResult locationSpoofing) {
+    this.locationSpoofing = locationSpoofing;
+  }
+
+
   public WebhookVisit requestId(String requestId) {
     this.requestId = requestId;
     return this;
@@ -1100,6 +1162,8 @@ public class WebhookVisit {
         Objects.equals(this.proxy, webhookVisit.proxy) &&
         Objects.equals(this.tampering, webhookVisit.tampering) &&
         Objects.equals(this.rawDeviceAttributes, webhookVisit.rawDeviceAttributes) &&
+        Objects.equals(this.highActivity, webhookVisit.highActivity) &&
+        Objects.equals(this.locationSpoofing, webhookVisit.locationSpoofing) &&
         Objects.equals(this.requestId, webhookVisit.requestId) &&
         Objects.equals(this.browserDetails, webhookVisit.browserDetails) &&
         Objects.equals(this.ip, webhookVisit.ip) &&
@@ -1117,7 +1181,7 @@ public class WebhookVisit {
 
   @Override
   public int hashCode() {
-    return Objects.hash(visitorId, clientReferrer, userAgent, bot, ipInfo, incognito, rootApps, emulator, clonedApp, factoryReset, jailbroken, frida, ipBlocklist, tor, privacySettings, virtualMachine, vpn, proxy, tampering, rawDeviceAttributes, requestId, browserDetails, ip, ipLocation, timestamp, time, url, tag, linkedId, confidence, visitorFound, firstSeenAt, lastSeenAt);
+    return Objects.hash(visitorId, clientReferrer, userAgent, bot, ipInfo, incognito, rootApps, emulator, clonedApp, factoryReset, jailbroken, frida, ipBlocklist, tor, privacySettings, virtualMachine, vpn, proxy, tampering, rawDeviceAttributes, highActivity, locationSpoofing, requestId, browserDetails, ip, ipLocation, timestamp, time, url, tag, linkedId, confidence, visitorFound, firstSeenAt, lastSeenAt);
   }
 
   @Override
@@ -1144,6 +1208,8 @@ public class WebhookVisit {
     sb.append("    proxy: ").append(toIndentedString(proxy)).append("\n");
     sb.append("    tampering: ").append(toIndentedString(tampering)).append("\n");
     sb.append("    rawDeviceAttributes: ").append(toIndentedString(rawDeviceAttributes)).append("\n");
+    sb.append("    highActivity: ").append(toIndentedString(highActivity)).append("\n");
+    sb.append("    locationSpoofing: ").append(toIndentedString(locationSpoofing)).append("\n");
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
     sb.append("    browserDetails: ").append(toIndentedString(browserDetails)).append("\n");
     sb.append("    ip: ").append(toIndentedString(ip)).append("\n");

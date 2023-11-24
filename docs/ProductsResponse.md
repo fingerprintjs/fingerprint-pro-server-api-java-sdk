@@ -25,6 +25,8 @@ Contains all information about the request identified by `requestId`, depending 
 |**vpn** | [**SignalResponseVpn**](SignalResponseVpn.md) |  |  [optional] |
 |**proxy** | [**SignalResponseProxy**](SignalResponseProxy.md) |  |  [optional] |
 |**tampering** | [**SignalResponseTampering**](SignalResponseTampering.md) |  |  [optional] |
+|**highActivity** | [**SignalResponseHighActivity**](SignalResponseHighActivity.md) |  |  [optional] |
+|**locationSpoofing** | [**SignalResponseLocationSpoofing**](SignalResponseLocationSpoofing.md) |  |  [optional] |
 |**rawDeviceAttributes** | [**SignalResponseRawDeviceAttributes**](SignalResponseRawDeviceAttributes.md) |  |  [optional] |
 
 

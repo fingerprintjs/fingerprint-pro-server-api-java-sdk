@@ -85,12 +85,12 @@ public class IPLocation {
   }
 
    /**
-   * Get accuracyRadius
+   * The IP address is likely to be within this radius (in km) of the specified location.
    * minimum: 0
    * @return accuracyRadius
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "1000", value = "")
+  @ApiModelProperty(example = "1000", value = "The IP address is likely to be within this radius (in km) of the specified location.")
   @JsonProperty(JSON_PROPERTY_ACCURACY_RADIUS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

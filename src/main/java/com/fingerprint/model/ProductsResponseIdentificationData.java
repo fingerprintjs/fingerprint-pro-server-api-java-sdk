@@ -484,11 +484,11 @@ public class ProductsResponseIdentificationData {
   }
 
    /**
-   * String of 20 characters that uniquely identifies the visitor&#39;s browser.  **Pro Plus:** If a bot is detected (&#x60;products.botd.bot.result !&#x3D; \&quot;notDetected\&quot;&#x60;), the &#x60;visitorId&#x60; value contains a placeholder string &#x60;BotDetected000000000&#x60;. 
+   * String of 20 characters that uniquely identifies the visitor&#39;s browser. 
    * @return visitorId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "[\"Ibk1527CUFmcnjLwIs4A\",\"BotDetected000000000\"]", required = true, value = "String of 20 characters that uniquely identifies the visitor's browser.  **Pro Plus:** If a bot is detected (`products.botd.bot.result != \"notDetected\"`), the `visitorId` value contains a placeholder string `BotDetected000000000`. ")
+  @ApiModelProperty(example = "[\"Ibk1527CUFmcnjLwIs4A\"]", required = true, value = "String of 20 characters that uniquely identifies the visitor's browser. ")
   @JsonProperty(JSON_PROPERTY_VISITOR_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

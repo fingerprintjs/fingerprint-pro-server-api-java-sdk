@@ -1,3 +1,10 @@
+## [2.2.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v2.1.1...v2.2.0) (2023-11-27)
+
+
+### Features
+
+* add `highActivity` and `locationSpoofing` signals, support `originTimezone` for `vpn` signal ([1d0e19d](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/1d0e19df7a7e511f7490d48580b922f076f731fb))
+
 ## [2.1.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v2.1.0...v2.1.1) (2023-09-19)
 
 

@@ -36,15 +36,11 @@
 
 ## Requirements
 
-Building the API client library requires:
+The following versions of Java are supported
 
-1. Java 1.8+
-{{#jersey2}}
-2. Maven (3.8.3+)/Gradle (7.2+)
-{{/jersey2}}
-{{^jersey2}}
-2. Maven/Gradle
-{{/jersey2}}
+- Java 1.8
+- Java 8
+- Java 11
 
 ## Installation
 
@@ -247,7 +243,12 @@ Class | Method | HTTP request | Description
 
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
 
-## Author
+## Support
 
-{{#apiInfo}}{{#apis}}{{#-last}}{{infoEmail}}
-{{/-last}}{{/apis}}{{/apiInfo}}
+To report problems, ask questions or provide feedback, please use [Issues](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/issues).
+If you need private support, you can email us at [oss-support@fingerprint.com](mailto:oss-support@fingerprint.com).
+
+
+## License
+
+This project is licensed under the [MIT License](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/blob/main/LICENSE).

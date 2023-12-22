@@ -38,6 +38,7 @@ import com.fingerprint.sdk.JSON;
   IpInfoResultV4.JSON_PROPERTY_ADDRESS,
   IpInfoResultV4.JSON_PROPERTY_GEOLOCATION,
   IpInfoResultV4.JSON_PROPERTY_ASN,
+  IpInfoResultV4.JSON_PROPERTY_DATACENTER,
   IpInfoResultV4.JSON_PROPERTY_DATA_CENTER
 })
 @JsonTypeName("IpInfoResult_v4")
@@ -51,6 +52,9 @@ public class IpInfoResultV4 {
 
   public static final String JSON_PROPERTY_ASN = "asn";
   private ASN asn;
+
+  public static final String JSON_PROPERTY_DATACENTER = "datacenter";
+  private DataCenter datacenter;
 
   public static final String JSON_PROPERTY_DATA_CENTER = "dataCenter";
   private DataCenter dataCenter;
@@ -136,6 +140,32 @@ public class IpInfoResultV4 {
   }
 
 
+  public IpInfoResultV4 datacenter(DataCenter datacenter) {
+    this.datacenter = datacenter;
+    return this;
+  }
+
+   /**
+   * Get datacenter
+   * @return datacenter
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_DATACENTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public DataCenter getDatacenter() {
+    return datacenter;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DATACENTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDatacenter(DataCenter datacenter) {
+    this.datacenter = datacenter;
+  }
+
+
   public IpInfoResultV4 dataCenter(DataCenter dataCenter) {
     this.dataCenter = dataCenter;
     return this;
@@ -177,12 +207,13 @@ public class IpInfoResultV4 {
     return Objects.equals(this.address, ipInfoResultV4.address) &&
         Objects.equals(this.geolocation, ipInfoResultV4.geolocation) &&
         Objects.equals(this.asn, ipInfoResultV4.asn) &&
+        Objects.equals(this.datacenter, ipInfoResultV4.datacenter) &&
         Objects.equals(this.dataCenter, ipInfoResultV4.dataCenter);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, geolocation, asn, dataCenter);
+    return Objects.hash(address, geolocation, asn, datacenter, dataCenter);
   }
 
   @Override
@@ -192,6 +223,7 @@ public class IpInfoResultV4 {
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    geolocation: ").append(toIndentedString(geolocation)).append("\n");
     sb.append("    asn: ").append(toIndentedString(asn)).append("\n");
+    sb.append("    datacenter: ").append(toIndentedString(datacenter)).append("\n");
     sb.append("    dataCenter: ").append(toIndentedString(dataCenter)).append("\n");
     sb.append("}");
     return sb.toString();

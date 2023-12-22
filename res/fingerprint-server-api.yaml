@@ -158,7 +158,7 @@ paths:
                               asn: '7922'
                               name: COMCAST-7922
                               network: 73.136.0.0/13
-                            dataCenter:
+                            datacenter:
                               result: true
                               name: DediPath
                       incognito:
@@ -3701,7 +3701,7 @@ paths:
                               asn: '7922'
                               name: COMCAST-7922
                               network: 73.136.0.0/13
-                            dataCenter:
+                            datacenter:
                               result: true
                               name: DediPath
                         rootApps:
@@ -4857,6 +4857,9 @@ components:
               $ref: '#/components/schemas/IPLocation'
             asn:
               $ref: '#/components/schemas/ASN'
+            datacenter:
+              $ref: '#/components/schemas/DataCenter'
+            # `dataCenter` is deprecated in favor of `datacenter`
             dataCenter:
               $ref: '#/components/schemas/DataCenter'
         v6:
@@ -4871,6 +4874,9 @@ components:
               $ref: '#/components/schemas/IPLocation'
             asn:
               $ref: '#/components/schemas/ASN'
+            datacenter:
+              $ref: '#/components/schemas/DataCenter'
+            # `dataCenter` is deprecated in favor of `datacenter`
             dataCenter:
               $ref: '#/components/schemas/DataCenter'
     IpBlockListResult:

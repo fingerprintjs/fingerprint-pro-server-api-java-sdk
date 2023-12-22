@@ -1,3 +1,10 @@
+## [2.3.0-develop.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v2.2.0...v2.3.0-develop.1) (2023-12-22)
+
+
+### Features
+
+* introduce `datacenter` field for the `IpInfo` signal in addition to the wrong `dataCenter` ([7ba499f](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/7ba499f08a5dba88abe313ed3235516690eec508))
+
 ## [2.2.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v2.1.1...v2.2.0) (2023-11-27)
 
 

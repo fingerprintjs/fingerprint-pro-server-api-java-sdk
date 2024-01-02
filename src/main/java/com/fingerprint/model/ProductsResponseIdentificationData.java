@@ -218,7 +218,9 @@ public class ProductsResponseIdentificationData {
    /**
    * Get ipLocation
    * @return ipLocation
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_IP_LOCATION)

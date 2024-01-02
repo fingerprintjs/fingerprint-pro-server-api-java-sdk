@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fingerprint.model.ASN;
 import com.fingerprint.model.DataCenter;
+import com.fingerprint.model.DataCenterInfo;
 import com.fingerprint.model.IPLocation;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -54,7 +55,7 @@ public class IpInfoResultV4 {
   private ASN asn;
 
   public static final String JSON_PROPERTY_DATACENTER = "datacenter";
-  private DataCenter datacenter;
+  private DataCenterInfo datacenter;
 
   public static final String JSON_PROPERTY_DATA_CENTER = "dataCenter";
   private DataCenter dataCenter;
@@ -96,7 +97,9 @@ public class IpInfoResultV4 {
    /**
    * Get geolocation
    * @return geolocation
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_GEOLOCATION)
@@ -140,7 +143,7 @@ public class IpInfoResultV4 {
   }
 
 
-  public IpInfoResultV4 datacenter(DataCenter datacenter) {
+  public IpInfoResultV4 datacenter(DataCenterInfo datacenter) {
     this.datacenter = datacenter;
     return this;
   }
@@ -154,14 +157,14 @@ public class IpInfoResultV4 {
   @JsonProperty(JSON_PROPERTY_DATACENTER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public DataCenter getDatacenter() {
+  public DataCenterInfo getDatacenter() {
     return datacenter;
   }
 
 
   @JsonProperty(JSON_PROPERTY_DATACENTER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDatacenter(DataCenter datacenter) {
+  public void setDatacenter(DataCenterInfo datacenter) {
     this.datacenter = datacenter;
   }
 
@@ -174,7 +177,9 @@ public class IpInfoResultV4 {
    /**
    * Get dataCenter
    * @return dataCenter
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_DATA_CENTER)

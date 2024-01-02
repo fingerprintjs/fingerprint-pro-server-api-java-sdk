@@ -10,7 +10,7 @@
 |**address** | **String** |  |  [optional] |
 |**geolocation** | [**IPLocation**](IPLocation.md) |  |  [optional] |
 |**asn** | [**ASN**](ASN.md) |  |  [optional] |
-|**datacenter** | [**DataCenter**](DataCenter.md) |  |  [optional] |
+|**datacenter** | [**DataCenterInfo**](DataCenterInfo.md) |  |  [optional] |
 |**dataCenter** | [**DataCenter**](DataCenter.md) |  |  [optional] |
 
 

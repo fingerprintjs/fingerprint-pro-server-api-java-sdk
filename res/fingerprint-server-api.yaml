@@ -4320,8 +4320,22 @@ components:
         - asn
         - network
       title: ASN
+    DataCenterInfo:
+      type: object
+      additionalProperties: false
+      properties:
+        result:
+          type: boolean
+        name:
+          type: string
+          example: DediPath
+      required:
+        - result
+      title: DataCenterInfo
     DataCenter:
       type: object
+      deprecated: true
+      description: '`dataCenter` is deprecated in favor of `datacenter`'
       additionalProperties: false
       properties:
         result:
@@ -4335,6 +4349,12 @@ components:
     IPLocation:
       type: object
       additionalProperties: false
+      deprecated: true
+      description: >-
+        This field is **deprecated** and will not return a result for **accounts
+        created after December 18th, 2023**. Please use the [`ipInfo` Smart
+        signal](https://dev.fingerprint.com/docs/smart-signals-overview#ip-geolocation)
+        for geolocation information.
       properties:
         accuracyRadius:
           description: >-
@@ -4858,8 +4878,7 @@ components:
             asn:
               $ref: '#/components/schemas/ASN'
             datacenter:
-              $ref: '#/components/schemas/DataCenter'
-            # `dataCenter` is deprecated in favor of `datacenter`
+              $ref: '#/components/schemas/DataCenterInfo'
             dataCenter:
               $ref: '#/components/schemas/DataCenter'
         v6:
@@ -4875,8 +4894,7 @@ components:
             asn:
               $ref: '#/components/schemas/ASN'
             datacenter:
-              $ref: '#/components/schemas/DataCenter'
-            # `dataCenter` is deprecated in favor of `datacenter`
+              $ref: '#/components/schemas/DataCenterInfo'
             dataCenter:
               $ref: '#/components/schemas/DataCenter'
     IpBlockListResult:

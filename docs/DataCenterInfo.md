@@ -1,8 +1,7 @@
 
 
-# DataCenter
+# DataCenterInfo
 
-`dataCenter` is deprecated in favor of `datacenter`
 
 ## Properties
 

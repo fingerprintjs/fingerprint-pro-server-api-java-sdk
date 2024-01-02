@@ -29,27 +29,24 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * `dataCenter` is deprecated in favor of `datacenter`
- * @deprecated
+ * DataCenterInfo
  */
-@Deprecated
-@ApiModel(description = "`dataCenter` is deprecated in favor of `datacenter`")
 @JsonPropertyOrder({
-  DataCenter.JSON_PROPERTY_RESULT,
-  DataCenter.JSON_PROPERTY_NAME
+  DataCenterInfo.JSON_PROPERTY_RESULT,
+  DataCenterInfo.JSON_PROPERTY_NAME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class DataCenter {
+public class DataCenterInfo {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public DataCenter() { 
+  public DataCenterInfo() { 
   }
 
-  public DataCenter result(Boolean result) {
+  public DataCenterInfo result(Boolean result) {
     this.result = result;
     return this;
   }
@@ -75,7 +72,7 @@ public class DataCenter {
   }
 
 
-  public DataCenter name(String name) {
+  public DataCenterInfo name(String name) {
     this.name = name;
     return this;
   }
@@ -102,7 +99,7 @@ public class DataCenter {
 
 
   /**
-   * Return true if this DataCenter object is equal to o.
+   * Return true if this DataCenterInfo object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -112,9 +109,9 @@ public class DataCenter {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DataCenter dataCenter = (DataCenter) o;
-    return Objects.equals(this.result, dataCenter.result) &&
-        Objects.equals(this.name, dataCenter.name);
+    DataCenterInfo dataCenterInfo = (DataCenterInfo) o;
+    return Objects.equals(this.result, dataCenterInfo.result) &&
+        Objects.equals(this.name, dataCenterInfo.name);
   }
 
   @Override
@@ -125,7 +122,7 @@ public class DataCenter {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DataCenter {\n");
+    sb.append("class DataCenterInfo {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");

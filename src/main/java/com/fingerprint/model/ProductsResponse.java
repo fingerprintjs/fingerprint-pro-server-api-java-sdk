@@ -49,7 +49,7 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * Contains all information about the request identified by &#x60;requestId&#x60;, depending on the pricing plan (Pro, Pro Plus, Enterprise)
+ * Contains all information about the request identified by `requestId`, depending on the pricing plan (Pro, Pro Plus, Enterprise)
  */
 @ApiModel(description = "Contains all information about the request identified by `requestId`, depending on the pricing plan (Pro, Pro Plus, Enterprise)")
 @JsonPropertyOrder({

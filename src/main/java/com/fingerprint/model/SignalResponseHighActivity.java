@@ -45,7 +45,7 @@ public class SignalResponseHighActivity {
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
 
-  public SignalResponseHighActivity() { 
+  public SignalResponseHighActivity() {
   }
 
   public SignalResponseHighActivity data(HighActivityResult data) {

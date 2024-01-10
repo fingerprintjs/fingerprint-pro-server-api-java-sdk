@@ -43,7 +43,7 @@ public class Subdivision {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public Subdivision() { 
+  public Subdivision() {
   }
 
   public Subdivision isoCode(String isoCode) {

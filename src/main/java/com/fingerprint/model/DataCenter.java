@@ -43,7 +43,7 @@ public class DataCenter {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public DataCenter() { 
+  public DataCenter() {
   }
 
   public DataCenter result(Boolean result) {

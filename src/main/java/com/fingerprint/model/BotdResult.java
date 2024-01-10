@@ -62,7 +62,7 @@ public class BotdResult {
   public static final String JSON_PROPERTY_BOT = "bot";
   private BotdDetectionResult bot;
 
-  public BotdResult() { 
+  public BotdResult() {
   }
 
   public BotdResult ip(String ip) {

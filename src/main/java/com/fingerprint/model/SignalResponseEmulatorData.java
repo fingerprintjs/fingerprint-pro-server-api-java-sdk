@@ -40,7 +40,7 @@ public class SignalResponseEmulatorData {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public SignalResponseEmulatorData() { 
+  public SignalResponseEmulatorData() {
   }
 
   public SignalResponseEmulatorData result(Boolean result) {

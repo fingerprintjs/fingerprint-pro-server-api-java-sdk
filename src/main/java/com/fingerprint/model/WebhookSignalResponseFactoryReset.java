@@ -44,7 +44,7 @@ public class WebhookSignalResponseFactoryReset {
   public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
   private Long timestamp;
 
-  public WebhookSignalResponseFactoryReset() { 
+  public WebhookSignalResponseFactoryReset() {
   }
 
   public WebhookSignalResponseFactoryReset time(OffsetDateTime time) {

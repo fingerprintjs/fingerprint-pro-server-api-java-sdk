@@ -47,7 +47,7 @@ public class ASN {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public ASN() { 
+  public ASN() {
   }
 
   public ASN asn(String asn) {

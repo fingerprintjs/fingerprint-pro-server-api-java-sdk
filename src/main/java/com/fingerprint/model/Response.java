@@ -55,7 +55,7 @@ public class Response {
   public static final String JSON_PROPERTY_PAGINATION_KEY = "paginationKey";
   private String paginationKey;
 
-  public Response() { 
+  public Response() {
   }
 
   public Response visitorId(String visitorId) {

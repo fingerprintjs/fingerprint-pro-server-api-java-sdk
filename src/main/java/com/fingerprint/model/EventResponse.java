@@ -41,7 +41,7 @@ public class EventResponse {
   public static final String JSON_PROPERTY_PRODUCTS = "products";
   private ProductsResponse products;
 
-  public EventResponse() { 
+  public EventResponse() {
   }
 
   public EventResponse products(ProductsResponse products) {

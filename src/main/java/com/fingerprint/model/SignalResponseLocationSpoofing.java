@@ -45,7 +45,7 @@ public class SignalResponseLocationSpoofing {
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
 
-  public SignalResponseLocationSpoofing() { 
+  public SignalResponseLocationSpoofing() {
   }
 
   public SignalResponseLocationSpoofing data(LocationSpoofingResult data) {

@@ -39,7 +39,7 @@ public class WebhookSignalResponseProxy {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public WebhookSignalResponseProxy() { 
+  public WebhookSignalResponseProxy() {
   }
 
   public WebhookSignalResponseProxy result(Boolean result) {

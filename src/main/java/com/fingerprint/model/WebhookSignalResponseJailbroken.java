@@ -39,7 +39,7 @@ public class WebhookSignalResponseJailbroken {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public WebhookSignalResponseJailbroken() { 
+  public WebhookSignalResponseJailbroken() {
   }
 
   public WebhookSignalResponseJailbroken result(Boolean result) {

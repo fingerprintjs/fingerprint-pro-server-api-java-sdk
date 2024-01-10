@@ -45,7 +45,7 @@ public class SignalResponsePrivacySettings {
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
 
-  public SignalResponsePrivacySettings() { 
+  public SignalResponsePrivacySettings() {
   }
 
   public SignalResponsePrivacySettings data(SignalResponsePrivacySettingsData data) {

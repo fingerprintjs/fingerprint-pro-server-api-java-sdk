@@ -44,7 +44,7 @@ public class Error {
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
 
-  public Error() { 
+  public Error() {
   }
 
   public Error name(String name) {

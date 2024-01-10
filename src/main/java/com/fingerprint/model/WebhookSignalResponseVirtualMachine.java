@@ -39,7 +39,7 @@ public class WebhookSignalResponseVirtualMachine {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public WebhookSignalResponseVirtualMachine() { 
+  public WebhookSignalResponseVirtualMachine() {
   }
 
   public WebhookSignalResponseVirtualMachine result(Boolean result) {

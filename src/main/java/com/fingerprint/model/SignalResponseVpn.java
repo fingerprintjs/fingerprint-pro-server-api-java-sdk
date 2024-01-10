@@ -45,7 +45,7 @@ public class SignalResponseVpn {
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
 
-  public SignalResponseVpn() { 
+  public SignalResponseVpn() {
   }
 
   public SignalResponseVpn data(VpnResult data) {

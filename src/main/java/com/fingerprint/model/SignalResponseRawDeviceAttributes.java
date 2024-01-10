@@ -42,7 +42,7 @@ public class SignalResponseRawDeviceAttributes {
   public static final String JSON_PROPERTY_DATA = "data";
   private Map<String, RawDeviceAttributesResultValue> data = null;
 
-  public SignalResponseRawDeviceAttributes() { 
+  public SignalResponseRawDeviceAttributes() {
   }
 
   public SignalResponseRawDeviceAttributes data(Map<String, RawDeviceAttributesResultValue> data) {

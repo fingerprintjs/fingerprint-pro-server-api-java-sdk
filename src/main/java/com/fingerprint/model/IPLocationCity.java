@@ -39,7 +39,7 @@ public class IPLocationCity {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public IPLocationCity() { 
+  public IPLocationCity() {
   }
 
   public IPLocationCity name(String name) {

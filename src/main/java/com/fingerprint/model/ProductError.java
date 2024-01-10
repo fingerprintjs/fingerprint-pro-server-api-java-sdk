@@ -78,7 +78,7 @@ public class ProductError {
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
 
-  public ProductError() { 
+  public ProductError() {
   }
 
   public ProductError code(CodeEnum code) {

@@ -43,7 +43,7 @@ public class Location {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public Location() { 
+  public Location() {
   }
 
   public Location code(String code) {

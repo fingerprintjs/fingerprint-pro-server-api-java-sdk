@@ -79,7 +79,7 @@ public class IPLocation {
   public static final String JSON_PROPERTY_SUBDIVISIONS = "subdivisions";
   private List<Subdivision> subdivisions = null;
 
-  public IPLocation() { 
+  public IPLocation() {
   }
 
   public IPLocation accuracyRadius(Integer accuracyRadius) {

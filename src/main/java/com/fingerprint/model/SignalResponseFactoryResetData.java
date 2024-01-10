@@ -45,7 +45,7 @@ public class SignalResponseFactoryResetData {
   public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
   private Long timestamp;
 
-  public SignalResponseFactoryResetData() { 
+  public SignalResponseFactoryResetData() {
   }
 
   public SignalResponseFactoryResetData time(OffsetDateTime time) {

@@ -45,7 +45,7 @@ public class SignalResponseIncognito {
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
 
-  public SignalResponseIncognito() { 
+  public SignalResponseIncognito() {
   }
 
   public SignalResponseIncognito data(SignalResponseIncognitoData data) {

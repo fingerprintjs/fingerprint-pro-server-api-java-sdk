@@ -39,7 +39,7 @@ public class WebhookSignalResponseTor {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public WebhookSignalResponseTor() { 
+  public WebhookSignalResponseTor() {
   }
 
   public WebhookSignalResponseTor result(Boolean result) {

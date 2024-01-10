@@ -49,7 +49,7 @@ public class RawDeviceAttributesResultValue {
   public static final String JSON_PROPERTY_VALUE = "value";
   private JsonNullable<Object> value = JsonNullable.<Object>of(null);
 
-  public RawDeviceAttributesResultValue() { 
+  public RawDeviceAttributesResultValue() {
   }
 
   public RawDeviceAttributesResultValue error(Error error) {

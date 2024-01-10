@@ -45,7 +45,7 @@ public class SignalResponseProxy {
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
 
-  public SignalResponseProxy() { 
+  public SignalResponseProxy() {
   }
 
   public SignalResponseProxy data(SignalResponseProxyData data) {

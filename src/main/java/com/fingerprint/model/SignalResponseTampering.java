@@ -45,7 +45,7 @@ public class SignalResponseTampering {
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
 
-  public SignalResponseTampering() { 
+  public SignalResponseTampering() {
   }
 
   public SignalResponseTampering data(TamperingResult data) {

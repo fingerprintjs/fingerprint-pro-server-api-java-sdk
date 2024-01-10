@@ -44,7 +44,7 @@ public class IpBlockListResultDetails {
   public static final String JSON_PROPERTY_ATTACK_SOURCE = "attackSource";
   private Boolean attackSource;
 
-  public IpBlockListResultDetails() { 
+  public IpBlockListResultDetails() {
   }
 
   public IpBlockListResultDetails emailSpam(Boolean emailSpam) {

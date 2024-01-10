@@ -45,7 +45,7 @@ public class SignalResponseEmulator {
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
 
-  public SignalResponseEmulator() { 
+  public SignalResponseEmulator() {
   }
 
   public SignalResponseEmulator data(SignalResponseEmulatorData data) {

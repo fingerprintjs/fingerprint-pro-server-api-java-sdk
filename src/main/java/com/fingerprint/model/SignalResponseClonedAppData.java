@@ -40,7 +40,7 @@ public class SignalResponseClonedAppData {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public SignalResponseClonedAppData() { 
+  public SignalResponseClonedAppData() {
   }
 
   public SignalResponseClonedAppData result(Boolean result) {

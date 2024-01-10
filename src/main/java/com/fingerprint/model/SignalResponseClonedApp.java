@@ -45,7 +45,7 @@ public class SignalResponseClonedApp {
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
 
-  public SignalResponseClonedApp() { 
+  public SignalResponseClonedApp() {
   }
 
   public SignalResponseClonedApp data(SignalResponseClonedAppData data) {

@@ -45,7 +45,7 @@ public class SignalResponseFactoryReset {
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
 
-  public SignalResponseFactoryReset() { 
+  public SignalResponseFactoryReset() {
   }
 
   public SignalResponseFactoryReset data(SignalResponseFactoryResetData data) {

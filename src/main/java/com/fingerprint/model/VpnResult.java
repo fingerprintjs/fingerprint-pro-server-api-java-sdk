@@ -48,7 +48,7 @@ public class VpnResult {
   public static final String JSON_PROPERTY_METHODS = "methods";
   private VpnResultMethods methods;
 
-  public VpnResult() { 
+  public VpnResult() {
   }
 
   public VpnResult result(Boolean result) {

@@ -39,7 +39,7 @@ public class WebhookSignalResponseFrida {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public WebhookSignalResponseFrida() { 
+  public WebhookSignalResponseFrida() {
   }
 
   public WebhookSignalResponseFrida result(Boolean result) {

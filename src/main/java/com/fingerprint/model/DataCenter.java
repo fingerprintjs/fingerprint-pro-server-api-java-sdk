@@ -29,11 +29,8 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * `dataCenter` is deprecated in favor of `datacenter`
- * @deprecated
+ * DataCenter
  */
-@Deprecated
-@ApiModel(description = "`dataCenter` is deprecated in favor of `datacenter`")
 @JsonPropertyOrder({
   DataCenter.JSON_PROPERTY_RESULT,
   DataCenter.JSON_PROPERTY_NAME

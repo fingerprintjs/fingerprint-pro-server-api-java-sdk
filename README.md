@@ -222,7 +222,6 @@ Class | Method | HTTP request | Description
  - [BrowserDetails](docs/BrowserDetails.md)
  - [Confidence](docs/Confidence.md)
  - [DataCenter](docs/DataCenter.md)
- - [DataCenterInfo](docs/DataCenterInfo.md)
  - [Error](docs/Error.md)
  - [ErrorEvent403Response](docs/ErrorEvent403Response.md)
  - [ErrorEvent403ResponseError](docs/ErrorEvent403ResponseError.md)

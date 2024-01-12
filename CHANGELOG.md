@@ -1,3 +1,15 @@
+## [3.0.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v2.2.0...v3.0.0) (2024-01-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* `IpInfo` field `dataCenter` renamed to `datacenter`
+
+### Features
+
+* mark `IPLocation` as deprecated ([51bcc21](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/51bcc21388320a5af91dcfb0fff39db587bd21fc))
+* use `datacenter` instead of the wrong `dataCenter` ([33f7336](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/33f733677cabe7b2ec94a6aad5f5b786070576f9))
+
 ## [2.2.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v2.1.1...v2.2.0) (2023-11-27)
 
 

@@ -103,7 +103,7 @@ public class ProductsResponseIdentificationData {
   public static final String JSON_PROPERTY_VISITOR_ID = "visitorId";
   private String visitorId;
 
-  public ProductsResponseIdentificationData() { 
+  public ProductsResponseIdentificationData() {
   }
 
   public ProductsResponseIdentificationData requestId(String requestId) {

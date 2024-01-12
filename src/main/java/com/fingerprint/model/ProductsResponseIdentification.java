@@ -45,7 +45,7 @@ public class ProductsResponseIdentification {
   public static final String JSON_PROPERTY_ERROR = "error";
   private IdentificationError error;
 
-  public ProductsResponseIdentification() { 
+  public ProductsResponseIdentification() {
   }
 
   public ProductsResponseIdentification data(ProductsResponseIdentificationData data) {

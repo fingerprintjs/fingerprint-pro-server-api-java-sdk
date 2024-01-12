@@ -81,7 +81,7 @@ public class BotdDetectionResult {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type;
 
-  public BotdDetectionResult() { 
+  public BotdDetectionResult() {
   }
 
   public BotdDetectionResult result(ResultEnum result) {

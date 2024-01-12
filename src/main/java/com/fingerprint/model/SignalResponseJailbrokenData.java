@@ -40,7 +40,7 @@ public class SignalResponseJailbrokenData {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public SignalResponseJailbrokenData() { 
+  public SignalResponseJailbrokenData() {
   }
 
   public SignalResponseJailbrokenData result(Boolean result) {

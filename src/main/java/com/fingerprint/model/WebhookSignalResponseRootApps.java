@@ -39,7 +39,7 @@ public class WebhookSignalResponseRootApps {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public WebhookSignalResponseRootApps() { 
+  public WebhookSignalResponseRootApps() {
   }
 
   public WebhookSignalResponseRootApps result(Boolean result) {

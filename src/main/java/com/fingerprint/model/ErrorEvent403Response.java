@@ -40,7 +40,7 @@ public class ErrorEvent403Response {
   public static final String JSON_PROPERTY_ERROR = "error";
   private ErrorEvent403ResponseError error;
 
-  public ErrorEvent403Response() { 
+  public ErrorEvent403Response() {
   }
 
   public ErrorEvent403Response error(ErrorEvent403ResponseError error) {

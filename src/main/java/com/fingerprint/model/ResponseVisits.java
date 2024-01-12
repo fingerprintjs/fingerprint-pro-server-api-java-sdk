@@ -99,7 +99,7 @@ public class ResponseVisits {
   public static final String JSON_PROPERTY_LAST_SEEN_AT = "lastSeenAt";
   private SeenAt lastSeenAt;
 
-  public ResponseVisits() { 
+  public ResponseVisits() {
   }
 
   public ResponseVisits requestId(String requestId) {

@@ -40,7 +40,7 @@ public class SignalResponseTorData {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public SignalResponseTorData() { 
+  public SignalResponseTorData() {
   }
 
   public SignalResponseTorData result(Boolean result) {

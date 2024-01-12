@@ -44,7 +44,7 @@ public class SeenAt {
   public static final String JSON_PROPERTY_SUBSCRIPTION = "subscription";
   private OffsetDateTime subscription;
 
-  public SeenAt() { 
+  public SeenAt() {
   }
 
   public SeenAt global(OffsetDateTime global) {

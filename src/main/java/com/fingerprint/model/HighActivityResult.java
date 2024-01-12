@@ -44,7 +44,7 @@ public class HighActivityResult {
   public static final String JSON_PROPERTY_DAILY_REQUESTS = "dailyRequests";
   private BigDecimal dailyRequests;
 
-  public HighActivityResult() { 
+  public HighActivityResult() {
   }
 
   public HighActivityResult result(Boolean result) {

@@ -39,7 +39,7 @@ public class ManyRequestsResponse {
   public static final String JSON_PROPERTY_ERROR = "error";
   private String error;
 
-  public ManyRequestsResponse() { 
+  public ManyRequestsResponse() {
   }
 
   public ManyRequestsResponse error(String error) {

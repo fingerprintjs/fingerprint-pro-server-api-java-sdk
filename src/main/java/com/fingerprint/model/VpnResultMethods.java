@@ -48,7 +48,7 @@ public class VpnResultMethods {
   public static final String JSON_PROPERTY_AUXILIARY_MOBILE = "auxiliaryMobile";
   private Boolean auxiliaryMobile;
 
-  public VpnResultMethods() { 
+  public VpnResultMethods() {
   }
 
   public VpnResultMethods timezoneMismatch(Boolean timezoneMismatch) {

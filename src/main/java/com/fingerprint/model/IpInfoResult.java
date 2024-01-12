@@ -46,7 +46,7 @@ public class IpInfoResult {
   public static final String JSON_PROPERTY_V6 = "v6";
   private IpInfoResultV6 v6;
 
-  public IpInfoResult() { 
+  public IpInfoResult() {
   }
 
   public IpInfoResult v4(IpInfoResultV4 v4) {

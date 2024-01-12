@@ -39,7 +39,7 @@ public class WebhookSignalResponsePrivacySettings {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public WebhookSignalResponsePrivacySettings() { 
+  public WebhookSignalResponsePrivacySettings() {
   }
 
   public WebhookSignalResponsePrivacySettings result(Boolean result) {

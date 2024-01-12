@@ -67,7 +67,7 @@ public class BrowserDetails {
   public static final String JSON_PROPERTY_BOT_PROBABILITY = "botProbability";
   private Integer botProbability;
 
-  public BrowserDetails() { 
+  public BrowserDetails() {
   }
 
   public BrowserDetails browserName(String browserName) {

@@ -39,7 +39,7 @@ public class LocationSpoofingResult {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public LocationSpoofingResult() { 
+  public LocationSpoofingResult() {
   }
 
   public LocationSpoofingResult result(Boolean result) {

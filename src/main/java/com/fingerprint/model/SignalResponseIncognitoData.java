@@ -40,7 +40,7 @@ public class SignalResponseIncognitoData {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public SignalResponseIncognitoData() { 
+  public SignalResponseIncognitoData() {
   }
 
   public SignalResponseIncognitoData result(Boolean result) {

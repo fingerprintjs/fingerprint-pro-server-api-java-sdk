@@ -82,7 +82,7 @@ public class ErrorEvent403ResponseError {
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
 
-  public ErrorEvent403ResponseError() { 
+  public ErrorEvent403ResponseError() {
   }
 
   public ErrorEvent403ResponseError code(CodeEnum code) {

@@ -76,7 +76,7 @@ public class ErrorEvent404ResponseError {
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
 
-  public ErrorEvent404ResponseError() { 
+  public ErrorEvent404ResponseError() {
   }
 
   public ErrorEvent404ResponseError code(CodeEnum code) {

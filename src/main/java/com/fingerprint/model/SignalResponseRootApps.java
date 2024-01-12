@@ -45,7 +45,7 @@ public class SignalResponseRootApps {
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
 
-  public SignalResponseRootApps() { 
+  public SignalResponseRootApps() {
   }
 
   public SignalResponseRootApps data(SignalResponseRootAppsData data) {

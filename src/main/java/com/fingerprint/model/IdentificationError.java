@@ -78,7 +78,7 @@ public class IdentificationError {
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
 
-  public IdentificationError() { 
+  public IdentificationError() {
   }
 
   public IdentificationError code(CodeEnum code) {

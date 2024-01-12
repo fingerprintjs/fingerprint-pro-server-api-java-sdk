@@ -45,7 +45,7 @@ public class ProductsResponseBotd {
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
 
-  public ProductsResponseBotd() { 
+  public ProductsResponseBotd() {
   }
 
   public ProductsResponseBotd data(BotdResult data) {

@@ -44,7 +44,7 @@ public class TamperingResult {
   public static final String JSON_PROPERTY_ANOMALY_SCORE = "anomalyScore";
   private BigDecimal anomalyScore;
 
-  public TamperingResult() { 
+  public TamperingResult() {
   }
 
   public TamperingResult result(Boolean result) {

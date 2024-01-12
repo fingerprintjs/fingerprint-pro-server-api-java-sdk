@@ -136,7 +136,7 @@ public class ProductsResponse {
   public static final String JSON_PROPERTY_RAW_DEVICE_ATTRIBUTES = "rawDeviceAttributes";
   private SignalResponseRawDeviceAttributes rawDeviceAttributes;
 
-  public ProductsResponse() { 
+  public ProductsResponse() {
   }
 
   public ProductsResponse identification(ProductsResponseIdentification identification) {

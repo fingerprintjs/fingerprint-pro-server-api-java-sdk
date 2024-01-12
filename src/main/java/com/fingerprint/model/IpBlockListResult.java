@@ -44,7 +44,7 @@ public class IpBlockListResult {
   public static final String JSON_PROPERTY_DETAILS = "details";
   private IpBlockListResultDetails details;
 
-  public IpBlockListResult() { 
+  public IpBlockListResult() {
   }
 
   public IpBlockListResult result(Boolean result) {

@@ -55,7 +55,7 @@ public class IpInfoResultV6 {
   public static final String JSON_PROPERTY_DATACENTER = "datacenter";
   private DataCenter datacenter;
 
-  public IpInfoResultV6() { 
+  public IpInfoResultV6() {
   }
 
   public IpInfoResultV6 address(String address) {

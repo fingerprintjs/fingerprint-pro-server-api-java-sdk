@@ -45,7 +45,7 @@ public class SignalResponseIpInfo {
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
 
-  public SignalResponseIpInfo() { 
+  public SignalResponseIpInfo() {
   }
 
   public SignalResponseIpInfo data(IpInfoResult data) {

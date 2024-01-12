@@ -45,7 +45,7 @@ public class SignalResponseJailbroken {
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
 
-  public SignalResponseJailbroken() { 
+  public SignalResponseJailbroken() {
   }
 
   public SignalResponseJailbroken data(SignalResponseJailbrokenData data) {

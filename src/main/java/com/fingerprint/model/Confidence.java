@@ -39,7 +39,7 @@ public class Confidence {
   public static final String JSON_PROPERTY_SCORE = "score";
   private Float score;
 
-  public Confidence() { 
+  public Confidence() {
   }
 
   public Confidence score(Float score) {

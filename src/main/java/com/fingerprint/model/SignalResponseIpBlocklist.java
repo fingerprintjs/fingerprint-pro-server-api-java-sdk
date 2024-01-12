@@ -45,7 +45,7 @@ public class SignalResponseIpBlocklist {
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
 
-  public SignalResponseIpBlocklist() { 
+  public SignalResponseIpBlocklist() {
   }
 
   public SignalResponseIpBlocklist data(IpBlockListResult data) {

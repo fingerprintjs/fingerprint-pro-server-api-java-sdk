@@ -38,7 +38,7 @@ import com.fingerprint.sdk.JSON;
   IpInfoResultV6.JSON_PROPERTY_ADDRESS,
   IpInfoResultV6.JSON_PROPERTY_GEOLOCATION,
   IpInfoResultV6.JSON_PROPERTY_ASN,
-  IpInfoResultV6.JSON_PROPERTY_DATA_CENTER
+  IpInfoResultV6.JSON_PROPERTY_DATACENTER
 })
 @JsonTypeName("IpInfoResult_v6")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
@@ -52,8 +52,8 @@ public class IpInfoResultV6 {
   public static final String JSON_PROPERTY_ASN = "asn";
   private ASN asn;
 
-  public static final String JSON_PROPERTY_DATA_CENTER = "dataCenter";
-  private DataCenter dataCenter;
+  public static final String JSON_PROPERTY_DATACENTER = "datacenter";
+  private DataCenter datacenter;
 
   public IpInfoResultV6() { 
   }
@@ -92,7 +92,9 @@ public class IpInfoResultV6 {
    /**
    * Get geolocation
    * @return geolocation
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_GEOLOCATION)
@@ -136,29 +138,29 @@ public class IpInfoResultV6 {
   }
 
 
-  public IpInfoResultV6 dataCenter(DataCenter dataCenter) {
-    this.dataCenter = dataCenter;
+  public IpInfoResultV6 datacenter(DataCenter datacenter) {
+    this.datacenter = datacenter;
     return this;
   }
 
    /**
-   * Get dataCenter
-   * @return dataCenter
+   * Get datacenter
+   * @return datacenter
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_DATA_CENTER)
+  @JsonProperty(JSON_PROPERTY_DATACENTER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public DataCenter getDataCenter() {
-    return dataCenter;
+  public DataCenter getDatacenter() {
+    return datacenter;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DATA_CENTER)
+  @JsonProperty(JSON_PROPERTY_DATACENTER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDataCenter(DataCenter dataCenter) {
-    this.dataCenter = dataCenter;
+  public void setDatacenter(DataCenter datacenter) {
+    this.datacenter = datacenter;
   }
 
 
@@ -177,12 +179,12 @@ public class IpInfoResultV6 {
     return Objects.equals(this.address, ipInfoResultV6.address) &&
         Objects.equals(this.geolocation, ipInfoResultV6.geolocation) &&
         Objects.equals(this.asn, ipInfoResultV6.asn) &&
-        Objects.equals(this.dataCenter, ipInfoResultV6.dataCenter);
+        Objects.equals(this.datacenter, ipInfoResultV6.datacenter);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, geolocation, asn, dataCenter);
+    return Objects.hash(address, geolocation, asn, datacenter);
   }
 
   @Override
@@ -192,7 +194,7 @@ public class IpInfoResultV6 {
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    geolocation: ").append(toIndentedString(geolocation)).append("\n");
     sb.append("    asn: ").append(toIndentedString(asn)).append("\n");
-    sb.append("    dataCenter: ").append(toIndentedString(dataCenter)).append("\n");
+    sb.append("    datacenter: ").append(toIndentedString(datacenter)).append("\n");
     sb.append("}");
     return sb.toString();
   }

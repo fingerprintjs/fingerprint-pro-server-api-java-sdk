@@ -32,7 +32,7 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * Fields &#x60;lastTimestamp&#x60; and &#x60;paginationKey&#x60; added when &#x60;limit&#x60; or &#x60;before&#x60; parameter provided and there is more data to show
+ * Fields `lastTimestamp` and `paginationKey` added when `limit` or `before` parameter provided and there is more data to show
  */
 @ApiModel(description = "Fields `lastTimestamp` and `paginationKey` added when `limit` or `before` parameter provided and there is more data to show")
 @JsonPropertyOrder({

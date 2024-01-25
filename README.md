@@ -350,6 +350,11 @@ Authentication schemes defined for the API:
 - **Location**: URL query string
 
 
+## Documentation for sealed results
+
+- [Sealed](docs/Sealed.md)
+- [DecryptionKey](docs/DecryptionKey.md)
+
 ## Recommendation
 
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.

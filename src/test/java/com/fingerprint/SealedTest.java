@@ -50,6 +50,11 @@ public class SealedTest {
                                 Sealed.DecryptionAlgorithm.AES_256_GCM
                         ),
                         new Sealed.DecryptionKey(
+                                //Invalid key
+                                Base64.getDecoder().decode("aW52YWxpZA=="),
+                                Sealed.DecryptionAlgorithm.AES_256_GCM
+                        ),
+                        new Sealed.DecryptionKey(
                                 key,
                                 Sealed.DecryptionAlgorithm.AES_256_GCM
                         )
@@ -73,6 +78,10 @@ public class SealedTest {
                         ),
                         new Sealed.DecryptionKey(
                                 Base64.getDecoder().decode("p2PA7MGy5tx56cnyJacZMr96BCFwZeHjZV2EqMvTq54="),
+                                Sealed.DecryptionAlgorithm.AES_256_GCM
+                        ),
+                        new Sealed.DecryptionKey(
+                                Base64.getDecoder().decode("aW52YWxpZA=="),
                                 Sealed.DecryptionAlgorithm.AES_256_GCM
                         )
                 }

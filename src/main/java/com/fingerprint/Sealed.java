@@ -46,6 +46,18 @@ public class Sealed {
         }
     }
 
+    public static class InvalidSealedDataException extends IllegalArgumentException {
+        public InvalidSealedDataException() {
+            super("Invalid sealed data");
+        }
+    }
+
+    public static class InvalidSealedDataHeaderException extends IllegalArgumentException {
+        public InvalidSealedDataHeaderException() {
+            super("Invalid sealed data header");
+        }
+    }
+
     public static class UnsealException extends Exception {
         public final DecryptionKey decryptionKey;
 
@@ -63,7 +75,7 @@ public class Sealed {
 
     public static byte[] unseal(byte[] sealed, DecryptionKey[] keys) throws IllegalArgumentException, UnsealAggregateException {
         if (!Arrays.equals(Arrays.copyOf(sealed, SEAL_HEADER.length), SEAL_HEADER)) {
-            throw new IllegalArgumentException("Invalid sealed data header");
+            throw new InvalidSealedDataHeaderException();
         }
 
         UnsealAggregateException aggregateException = new UnsealAggregateException();
@@ -105,7 +117,13 @@ public class Sealed {
 
         ObjectMapper mapper = ObjectMapperUtil.getObjectMapper();
 
-        return mapper.readValue(unsealed, EventResponse.class);
+        EventResponse value = mapper.readValue(unsealed, EventResponse.class);
+
+        if (value.getProducts() == null) {
+            throw new InvalidSealedDataException();
+        }
+
+        return value;
     }
 
     private static byte[] decryptAes256Gcm(byte[] sealedData, byte[] decryptionKey) throws Exception {

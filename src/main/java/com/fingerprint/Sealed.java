@@ -2,7 +2,6 @@ package com.fingerprint;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fingerprint.model.EventResponse;
-import com.fingerprint.sdk.ApiClient;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.GCMParameterSpec;
@@ -10,14 +9,13 @@ import javax.crypto.spec.SecretKeySpec;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.logging.Logger;
+import java.util.List;
 import java.util.zip.Inflater;
 import java.util.zip.InflaterInputStream;
 
 public class Sealed {
-    private static final Logger log = Logger.getLogger(ApiClient.class.getName());
-
     public enum DecryptionAlgorithm {
         AES_256_GCM
     }
@@ -32,16 +30,43 @@ public class Sealed {
         }
     }
 
+    public static class UnsealAggregateException extends Exception {
+        private final List<UnsealException> unsealExceptions = new ArrayList<>();
+
+        public UnsealAggregateException() {
+            super("Failed to unseal with all decryption keys");
+        }
+
+        public void addUnsealException(UnsealException exception) {
+            unsealExceptions.add(exception);
+        }
+
+        public List<UnsealException> getUnsealExceptions() {
+            return unsealExceptions;
+        }
+    }
+
+    public static class UnsealException extends Exception {
+        public final DecryptionKey decryptionKey;
+
+        public final Exception exception;
+
+        public UnsealException(String message, DecryptionKey decryptionKey, Exception exception) {
+            super(message);
+            this.decryptionKey = decryptionKey;
+            this.exception = exception;
+        }
+    }
     private static final byte[] SEAL_HEADER = new byte[]{(byte) 0x9E, (byte) 0x85, (byte) 0xDC, (byte) 0xED};
     private static final int NONCE_LENGTH = 12;
     private static final int AUTH_TAG_LENGTH = 16;
 
-    public static byte[] unseal(byte[] sealed, DecryptionKey[] keys) throws IllegalArgumentException {
+    public static byte[] unseal(byte[] sealed, DecryptionKey[] keys) throws IllegalArgumentException, UnsealAggregateException {
         if (!Arrays.equals(Arrays.copyOf(sealed, SEAL_HEADER.length), SEAL_HEADER)) {
             throw new IllegalArgumentException("Invalid sealed data header");
         }
 
-        int index = 0;
+        UnsealAggregateException aggregateException = new UnsealAggregateException();
 
         for (DecryptionKey key : keys) {
             switch (key.algorithm) {
@@ -49,7 +74,13 @@ public class Sealed {
                     try {
                         return decryptAes256Gcm(Arrays.copyOfRange(sealed, SEAL_HEADER.length, sealed.length), key.key);
                     } catch (Exception exception) {
-                        log.warning(String.format("Failed to decrypt with key: %d error: %s", index, exception.getMessage()));
+                        aggregateException.addUnsealException(
+                                new UnsealException(
+                                        "Failed to decrypt",
+                                        key,
+                                        exception
+                                )
+                        );
                     }
 
                     break;
@@ -57,22 +88,19 @@ public class Sealed {
                 default:
                     throw new IllegalArgumentException("Invalid decryption algorithm");
             }
-
-            index++;
         }
 
-        throw new IllegalArgumentException("Invalid decryption keys");
+        throw aggregateException;
     }
 
     /**
      * decrypts the sealed response with the provided keys.
      *
      * @param sealed Base64 encoded sealed data
-     * @param keys  Decryption keys. The SDK will try to decrypt the result with each key until it succeeds.
+     * @param keys   Decryption keys. The SDK will try to decrypt the result with each key until it succeeds.
      * @return EventResponse
-     * @throws Exception if the sealed data is invalid or if the decryption keys are invalid
      */
-    public static EventResponse unsealEventResponse(byte[] sealed, DecryptionKey[] keys) throws Exception {
+    public static EventResponse unsealEventResponse(byte[] sealed, DecryptionKey[] keys) throws IllegalArgumentException, UnsealAggregateException, IOException {
         byte[] unsealed = unseal(sealed, keys);
 
         ObjectMapper mapper = ObjectMapperUtil.getObjectMapper();

@@ -193,6 +193,35 @@ public class SealedTest {
                         )
                 }
         ));
+    }
 
+    @Test
+    public void unsealEventResponseWithInvalidNonceTest() throws Exception {
+        byte[] sealedResult = new byte[]{(byte) 0x9E, (byte) 0x85, (byte) 0xDC, (byte) 0xED, (byte) 0xAA, (byte) 0xBB, (byte) 0xCC};
+        byte[] key = Base64.getDecoder().decode("p2PA7MGy5tx56cnyJaFZMr96BCFwZeHjZV2EqMvTq53=");
+
+        Sealed.UnsealAggregateException exception = assertThrows(Sealed.UnsealAggregateException.class, () -> Sealed.unsealEventResponse(
+                sealedResult,
+                new Sealed.DecryptionKey[]{
+                        new Sealed.DecryptionKey(
+                                //Invalid key
+                                Base64.getDecoder().decode("p2PA7MGy5tx56cnyJaFZMr96BCFwZeHjZV2EqMvTq54="),
+                                Sealed.DecryptionAlgorithm.AES_256_GCM
+                        ),
+                        new Sealed.DecryptionKey(
+                                //Invalid key
+                                Base64.getDecoder().decode("aW52YWxpZA=="),
+                                Sealed.DecryptionAlgorithm.AES_256_GCM
+                        ),
+                        new Sealed.DecryptionKey(
+                                key,
+                                Sealed.DecryptionAlgorithm.AES_256_GCM
+                        )
+                }
+        ));
+
+        Sealed.UnsealException unsealException = exception.getUnsealExceptions().get(2);
+
+        assertEquals(unsealException.exception.getMessage(), "12 > 3");
     }
 }

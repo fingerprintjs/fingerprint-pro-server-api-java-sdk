@@ -116,7 +116,7 @@ public class SealedTest {
 
         Sealed.UnsealException unsealException = exception.getUnsealExceptions().get(2);
 
-        assertEquals(unsealException.exception.getMessage(), "invalid distance too far back");
+        assertEquals(unsealException.getCause().getMessage(), "invalid distance too far back");
     }
 
     @Test
@@ -222,6 +222,6 @@ public class SealedTest {
 
         Sealed.UnsealException unsealException = exception.getUnsealExceptions().get(2);
 
-        assertEquals(unsealException.exception.getMessage(), "12 > 3");
+        assertEquals(unsealException.getCause().getMessage(), "12 > 3");
     }
 }

@@ -11,6 +11,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
 import java.util.zip.Inflater;
 import java.util.zip.InflaterInputStream;
@@ -27,6 +28,14 @@ public class Sealed {
         public DecryptionKey(byte[] key, DecryptionAlgorithm algorithm) {
             this.key = key;
             this.algorithm = algorithm;
+        }
+
+        @Override
+        public String toString() {
+            return "DecryptionKey{" +
+                    "key=" + Base64.getEncoder().encodeToString(key) +
+                    ", algorithm=" + algorithm +
+                    '}';
         }
     }
 
@@ -59,16 +68,23 @@ public class Sealed {
     }
 
     public static class UnsealException extends Exception {
-        public final DecryptionKey decryptionKey;
+        public final String decryptionKeyDescription;
 
-        public final Exception exception;
+        public UnsealException(String message, Throwable cause, DecryptionKey decryptionKey) {
+            super(message, cause);
+            this.decryptionKeyDescription = decryptionKey.toString();
+        }
 
-        public UnsealException(String message, DecryptionKey decryptionKey, Exception exception) {
-            super(message);
-            this.decryptionKey = decryptionKey;
-            this.exception = exception;
+        @Override
+        public String toString() {
+            return "UnsealException{" +
+                    "decryptionKey=" + decryptionKeyDescription +
+                    ", message=" + getMessage() +
+                    ", cause=" + getCause() +
+                    '}';
         }
     }
+
     private static final byte[] SEAL_HEADER = new byte[]{(byte) 0x9E, (byte) 0x85, (byte) 0xDC, (byte) 0xED};
     private static final int NONCE_LENGTH = 12;
     private static final int AUTH_TAG_LENGTH = 16;
@@ -89,8 +105,8 @@ public class Sealed {
                         aggregateException.addUnsealException(
                                 new UnsealException(
                                         "Failed to decrypt",
-                                        key,
-                                        exception
+                                        exception,
+                                        key
                                 )
                         );
                     }

@@ -9,10 +9,8 @@ import javax.crypto.spec.SecretKeySpec;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
-import java.util.List;
 import java.util.zip.Inflater;
 import java.util.zip.InflaterInputStream;
 
@@ -40,18 +38,8 @@ public class Sealed {
     }
 
     public static class UnsealAggregateException extends Exception {
-        private final List<UnsealException> unsealExceptions = new ArrayList<>();
-
         public UnsealAggregateException() {
             super("Failed to unseal with all decryption keys");
-        }
-
-        public void addUnsealException(UnsealException exception) {
-            unsealExceptions.add(exception);
-        }
-
-        public List<UnsealException> getUnsealExceptions() {
-            return unsealExceptions;
         }
     }
 
@@ -102,7 +90,7 @@ public class Sealed {
                     try {
                         return decryptAes256Gcm(Arrays.copyOfRange(sealed, SEAL_HEADER.length, sealed.length), key.key);
                     } catch (Exception exception) {
-                        aggregateException.addUnsealException(
+                        aggregateException.addSuppressed(
                                 new UnsealException(
                                         "Failed to decrypt",
                                         exception,

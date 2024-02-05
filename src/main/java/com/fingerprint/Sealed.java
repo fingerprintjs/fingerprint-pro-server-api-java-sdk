@@ -115,6 +115,10 @@ public class Sealed {
      * @param sealed Base64 encoded sealed data
      * @param keys   Decryption keys. The SDK will try to decrypt the result with each key until it succeeds.
      * @return EventResponse
+     *
+     * @throws IllegalArgumentException if invalid decryption algorithm is provided in any of the keys
+     * @throws UnsealAggregateException if the sealed data cannot be decrypted with any of the keys. The exception contains the list of exceptions thrown by each key.
+     * @throws IOException if the sealed data un-compression fails
      */
     public static EventResponse unsealEventResponse(byte[] sealed, DecryptionKey[] keys) throws IllegalArgumentException, UnsealAggregateException, IOException {
         byte[] unsealed = unseal(sealed, keys);

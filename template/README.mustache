@@ -203,6 +203,43 @@ public class FingerprintApiExample {
 }
 ```
 
+## Sealed results
+
+This SDK provides utility methods for decoding [sealed results](https://dev.fingerprint.com/docs/sealed-client-results).
+```java
+package com.fingerprint.example;
+
+import com.fingerprint.Sealed;
+import com.fingerprint.model.EventResponse;
+
+import java.util.Base64;
+
+public class SealedResults {
+    public static void main(String... args) throws Exception {
+        // Sealed result from the frontend.
+        String SEALED_RESULT = System.getenv("BASE64_SEALED_RESULT");
+
+        // Base64 encoded key generated in the dashboard.
+        String SEALED_KEY = System.getenv("BASE64_KEY");
+
+        final EventResponse event = Sealed.unsealEventResponse(
+                Base64.getDecoder().decode(SEALED_RESULT),
+                // You can provide more than one key to support key rotation. The SDK will try to decrypt the result with each key.
+                new Sealed.DecryptionKey[]{
+                        new Sealed.DecryptionKey(
+                                Base64.getDecoder().decode(SEALED_KEY),
+                                Sealed.DecryptionAlgorithm.AES_256_GCM
+                        )
+                }
+        );
+
+        // Do something with unsealed response, e.g: send it back to the frontend.
+    }
+}
+
+```
+To learn more, refer to example located in [src/examples/java/com/fingerprint/example/SealedResults.java](src/examples/java/com/fingerprint/example/SealedResults.java).
+
 ## Documentation for API Endpoints
 
 All URIs are relative to *{{basePath}}*
@@ -244,6 +281,11 @@ Class | Method | HTTP request | Description
 {{/isOAuth}}
 
 {{/authMethods}}
+
+## Documentation for sealed results
+
+- [Sealed](docs/Sealed.md)
+- [DecryptionKey](docs/DecryptionKey.md)
 
 ## Recommendation
 

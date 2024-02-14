@@ -1,3 +1,10 @@
+## [3.1.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v3.0.0...v3.1.0) (2024-02-14)
+
+
+### Features
+
+* add method for decoding sealed results ([04986dc](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/04986dc77ef730de9163415065535061ed5dbc04))
+
 ## [3.0.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v2.2.0...v3.0.0) (2024-01-12)
 
 

@@ -329,10 +329,10 @@ public class Visit {
    * A customer-provided value or an object that was sent with identification request.
    * @return tag
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "A customer-provided value or an object that was sent with identification request.")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "A customer-provided value or an object that was sent with identification request.")
   @JsonProperty(JSON_PROPERTY_TAG)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
 
   public Map<String, Object> getTag() {
     return tag;

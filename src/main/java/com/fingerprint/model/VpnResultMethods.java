@@ -60,10 +60,10 @@ public class VpnResultMethods {
    * User&#39;s browser timezone doesn&#39;t match the timezone from which the request was originally made.
    * @return timezoneMismatch
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "User's browser timezone doesn't match the timezone from which the request was originally made.")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "User's browser timezone doesn't match the timezone from which the request was originally made.")
   @JsonProperty(JSON_PROPERTY_TIMEZONE_MISMATCH)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getTimezoneMismatch() {
     return timezoneMismatch;
@@ -71,7 +71,7 @@ public class VpnResultMethods {
 
 
   @JsonProperty(JSON_PROPERTY_TIMEZONE_MISMATCH)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTimezoneMismatch(Boolean timezoneMismatch) {
     this.timezoneMismatch = timezoneMismatch;
   }
@@ -86,10 +86,10 @@ public class VpnResultMethods {
    * Request IP address is owned and used by a public VPN service provider.
    * @return publicVPN
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Request IP address is owned and used by a public VPN service provider.")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "Request IP address is owned and used by a public VPN service provider.")
   @JsonProperty(JSON_PROPERTY_PUBLIC_V_P_N)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getPublicVPN() {
     return publicVPN;
@@ -97,7 +97,7 @@ public class VpnResultMethods {
 
 
   @JsonProperty(JSON_PROPERTY_PUBLIC_V_P_N)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPublicVPN(Boolean publicVPN) {
     this.publicVPN = publicVPN;
   }
@@ -112,10 +112,10 @@ public class VpnResultMethods {
    * This method applies to mobile devices only. Indicates the result of additional methods used to detect a VPN in mobile devices.
    * @return auxiliaryMobile
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "This method applies to mobile devices only. Indicates the result of additional methods used to detect a VPN in mobile devices.")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "This method applies to mobile devices only. Indicates the result of additional methods used to detect a VPN in mobile devices.")
   @JsonProperty(JSON_PROPERTY_AUXILIARY_MOBILE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getAuxiliaryMobile() {
     return auxiliaryMobile;
@@ -123,7 +123,7 @@ public class VpnResultMethods {
 
 
   @JsonProperty(JSON_PROPERTY_AUXILIARY_MOBILE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAuxiliaryMobile(Boolean auxiliaryMobile) {
     this.auxiliaryMobile = auxiliaryMobile;
   }

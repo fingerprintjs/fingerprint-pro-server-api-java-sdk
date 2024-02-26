@@ -48,13 +48,13 @@ public class LocationSpoofingResult {
   }
 
    /**
-   * Flag indicating whether the request came from a device with location spoofing enabled.
+   * Flag indicating whether the request came from a mobile device with location spoofing enabled.
    * @return result
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Flag indicating whether the request came from a device with location spoofing enabled.")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "Flag indicating whether the request came from a mobile device with location spoofing enabled.")
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getResult() {
     return result;
@@ -62,7 +62,7 @@ public class LocationSpoofingResult {
 
 
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setResult(Boolean result) {
     this.result = result;
   }

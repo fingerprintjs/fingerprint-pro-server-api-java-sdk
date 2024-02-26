@@ -60,10 +60,10 @@ public class VpnResult {
    * VPN or other anonymizing service has been used when sending the request.
    * @return result
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "VPN or other anonymizing service has been used when sending the request.")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "VPN or other anonymizing service has been used when sending the request.")
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getResult() {
     return result;
@@ -71,7 +71,7 @@ public class VpnResult {
 
 
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setResult(Boolean result) {
     this.result = result;
   }
@@ -86,10 +86,10 @@ public class VpnResult {
    * Local timezone which is used in timezoneMismatch method.
    * @return originTimezone
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "Europe/Berlin", value = "Local timezone which is used in timezoneMismatch method.")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "Europe/Berlin", required = true, value = "Local timezone which is used in timezoneMismatch method.")
   @JsonProperty(JSON_PROPERTY_ORIGIN_TIMEZONE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getOriginTimezone() {
     return originTimezone;
@@ -97,7 +97,7 @@ public class VpnResult {
 
 
   @JsonProperty(JSON_PROPERTY_ORIGIN_TIMEZONE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setOriginTimezone(String originTimezone) {
     this.originTimezone = originTimezone;
   }
@@ -112,10 +112,10 @@ public class VpnResult {
    * Get methods
    * @return methods
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_METHODS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public VpnResultMethods getMethods() {
     return methods;
@@ -123,7 +123,7 @@ public class VpnResult {
 
 
   @JsonProperty(JSON_PROPERTY_METHODS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setMethods(VpnResultMethods methods) {
     this.methods = methods;
   }

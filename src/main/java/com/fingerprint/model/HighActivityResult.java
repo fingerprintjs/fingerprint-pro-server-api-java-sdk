@@ -56,10 +56,10 @@ public class HighActivityResult {
    * Flag indicating whether the request came from a high activity visitor.
    * @return result
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Flag indicating whether the request came from a high activity visitor.")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "Flag indicating whether the request came from a high activity visitor.")
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getResult() {
     return result;
@@ -67,7 +67,7 @@ public class HighActivityResult {
 
 
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setResult(Boolean result) {
     this.result = result;
   }

@@ -56,10 +56,10 @@ public class TamperingResult {
    * Flag indicating whether browser tampering was detected according to our internal thresholds.
    * @return result
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Flag indicating whether browser tampering was detected according to our internal thresholds.")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "Flag indicating whether browser tampering was detected according to our internal thresholds.")
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getResult() {
     return result;
@@ -67,7 +67,7 @@ public class TamperingResult {
 
 
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setResult(Boolean result) {
     this.result = result;
   }
@@ -84,10 +84,10 @@ public class TamperingResult {
    * maximum: 1
    * @return anomalyScore
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "0", value = "Confidence score (`0.0 - 1.0`) for the tampering detection. Values above `0.5` suggest that we're reasonably sure there was a tampering attempt. Values below `0.5` are genuine browsers.")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "0", required = true, value = "Confidence score (`0.0 - 1.0`) for the tampering detection. Values above `0.5` suggest that we're reasonably sure there was a tampering attempt. Values below `0.5` are genuine browsers.")
   @JsonProperty(JSON_PROPERTY_ANOMALY_SCORE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getAnomalyScore() {
     return anomalyScore;
@@ -95,7 +95,7 @@ public class TamperingResult {
 
 
   @JsonProperty(JSON_PROPERTY_ANOMALY_SCORE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAnomalyScore(BigDecimal anomalyScore) {
     this.anomalyScore = anomalyScore;
   }

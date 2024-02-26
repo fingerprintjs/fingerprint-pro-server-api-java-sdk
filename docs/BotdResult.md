@@ -11,8 +11,9 @@ Contains all the information from Bot Detection product
 |**ip** | **String** | IP address of the requesting browser or bot. |  |
 |**time** | **OffsetDateTime** | Time in UTC when the request from the JS agent was made. We recommend to treat requests that are older than 2 minutes as malicious. Otherwise, request replay attacks are possible |  |
 |**url** | **String** | Page URL from which identification request was sent. |  |
-|**userAgent** | **String** |  |  [optional] |
-|**requestId** | **String** |  |  [optional] |
+|**userAgent** | **String** |  |  |
+|**requestId** | **String** |  |  |
+|**linkedId** | **String** |  |  [optional] |
 |**bot** | [**BotdDetectionResult**](BotdDetectionResult.md) |  |  |
 
 

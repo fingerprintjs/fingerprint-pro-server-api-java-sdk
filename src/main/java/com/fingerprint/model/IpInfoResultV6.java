@@ -67,10 +67,10 @@ public class IpInfoResultV6 {
    * Get address
    * @return address
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "2001:0db8:85a3:0000:0000:8a2e:0370:7334", value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "2001:0db8:85a3:0000:0000:8a2e:0370:7334", required = true, value = "")
   @JsonProperty(JSON_PROPERTY_ADDRESS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getAddress() {
     return address;
@@ -78,7 +78,7 @@ public class IpInfoResultV6 {
 
 
   @JsonProperty(JSON_PROPERTY_ADDRESS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAddress(String address) {
     this.address = address;
   }
@@ -94,11 +94,10 @@ public class IpInfoResultV6 {
    * @return geolocation
    * @deprecated
   **/
-  @Deprecated
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_GEOLOCATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public IPLocation getGeolocation() {
     return geolocation;
@@ -106,7 +105,7 @@ public class IpInfoResultV6 {
 
 
   @JsonProperty(JSON_PROPERTY_GEOLOCATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setGeolocation(IPLocation geolocation) {
     this.geolocation = geolocation;
   }

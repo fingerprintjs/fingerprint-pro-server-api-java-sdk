@@ -152,10 +152,10 @@ public class BotdResult {
    * Get userAgent
    * @return userAgent
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36", value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36", required = true, value = "")
   @JsonProperty(JSON_PROPERTY_USER_AGENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getUserAgent() {
     return userAgent;
@@ -178,10 +178,10 @@ public class BotdResult {
    * Get requestId
    * @return requestId
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "1681392853693.lRiBBD", value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "1681392853693.lRiBBD", required = true, value = "")
   @JsonProperty(JSON_PROPERTY_REQUEST_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getRequestId() {
     return requestId;

@@ -56,10 +56,10 @@ public class IpBlockListResult {
    * &#x60;true&#x60; if request IP address is part of any database that we use to search for known malicious actors, &#x60;false&#x60; otherwise. 
    * @return result
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "`true` if request IP address is part of any database that we use to search for known malicious actors, `false` otherwise. ")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "`true` if request IP address is part of any database that we use to search for known malicious actors, `false` otherwise. ")
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getResult() {
     return result;
@@ -67,7 +67,7 @@ public class IpBlockListResult {
 
 
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setResult(Boolean result) {
     this.result = result;
   }
@@ -82,10 +82,10 @@ public class IpBlockListResult {
    * Get details
    * @return details
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_DETAILS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public IpBlockListResultDetails getDetails() {
     return details;
@@ -93,7 +93,7 @@ public class IpBlockListResult {
 
 
   @JsonProperty(JSON_PROPERTY_DETAILS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDetails(IpBlockListResultDetails details) {
     this.details = details;
   }

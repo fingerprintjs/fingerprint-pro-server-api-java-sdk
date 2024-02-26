@@ -92,7 +92,6 @@ public class IpInfoResultV4 {
    /**
    * Get geolocation
    * @return geolocation
-   * @deprecated
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")

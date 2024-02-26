@@ -3802,7 +3802,53 @@ components:
                 format: ipv4
                 example: 8.8.8.8
               ipLocation:
-                $ref: '#/components/schemas/IPLocation'
+                type: object
+                additionalProperties: false
+                deprecated: true
+                description: >-
+                  This field is **deprecated** and will not return a result for
+                  **applications created after January 23rd, 2024**. Please use
+                  the [IP Geolocation Smart
+                  signal](https://dev.fingerprint.com/docs/smart-signals-overview#ip-geolocation)
+                  for geolocation information.
+                properties:
+                  accuracyRadius:
+                    description: >-
+                      The IP address is likely to be within this radius (in km)
+                      of the specified location.
+                    type: integer
+                    minimum: 0
+                  latitude:
+                    type: number
+                    format: double
+                    minimum: -90
+                    maximum: 90
+                  longitude:
+                    type: number
+                    format: double
+                    minimum: -180
+                    maximum: 180
+                  postalCode:
+                    type: string
+                  timezone:
+                    type: string
+                    format: timezone
+                  city:
+                    type: object
+                    additionalProperties: false
+                    title: DeprecatedIPLocationCity
+                    properties:
+                      name:
+                        type: string
+                  country:
+                    $ref: '#/components/schemas/Location'
+                  continent:
+                    $ref: '#/components/schemas/Location'
+                  subdivisions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Subdivision'
+                title: DeprecatedIPLocation
               timestamp:
                 description: >-
                   Timestamp of the event with millisecond precision in Unix
@@ -4113,7 +4159,53 @@ components:
           format: ipv4
           example: 8.8.8.8
         ipLocation:
-          $ref: '#/components/schemas/IPLocation'
+          type: object
+          additionalProperties: false
+          deprecated: true
+          description: >-
+            This field is **deprecated** and will not return a result for
+            **applications created after January 23rd, 2024**. Please use the
+            [IP Geolocation Smart
+            signal](https://dev.fingerprint.com/docs/smart-signals-overview#ip-geolocation)
+            for geolocation information.
+          properties:
+            accuracyRadius:
+              description: >-
+                The IP address is likely to be within this radius (in km) of the
+                specified location.
+              type: integer
+              minimum: 0
+            latitude:
+              type: number
+              format: double
+              minimum: -90
+              maximum: 90
+            longitude:
+              type: number
+              format: double
+              minimum: -180
+              maximum: 180
+            postalCode:
+              type: string
+            timezone:
+              type: string
+              format: timezone
+            city:
+              type: object
+              additionalProperties: false
+              title: DeprecatedIPLocationCity
+              properties:
+                name:
+                  type: string
+            country:
+              $ref: '#/components/schemas/Location'
+            continent:
+              $ref: '#/components/schemas/Location'
+            subdivisions:
+              type: array
+              items:
+                $ref: '#/components/schemas/Subdivision'
+          title: DeprecatedIPLocation
         timestamp:
           description: Timestamp of the event with millisecond precision in Unix time.
           type: integer
@@ -4180,7 +4272,53 @@ components:
           format: ipv4
           example: 8.8.8.8
         ipLocation:
-          $ref: '#/components/schemas/IPLocation'
+          type: object
+          additionalProperties: false
+          deprecated: true
+          description: >-
+            This field is **deprecated** and will not return a result for
+            **applications created after January 23rd, 2024**. Please use the
+            [IP Geolocation Smart
+            signal](https://dev.fingerprint.com/docs/smart-signals-overview#ip-geolocation)
+            for geolocation information.
+          properties:
+            accuracyRadius:
+              description: >-
+                The IP address is likely to be within this radius (in km) of the
+                specified location.
+              type: integer
+              minimum: 0
+            latitude:
+              type: number
+              format: double
+              minimum: -90
+              maximum: 90
+            longitude:
+              type: number
+              format: double
+              minimum: -180
+              maximum: 180
+            postalCode:
+              type: string
+            timezone:
+              type: string
+              format: timezone
+            city:
+              type: object
+              additionalProperties: false
+              title: DeprecatedIPLocationCity
+              properties:
+                name:
+                  type: string
+            country:
+              $ref: '#/components/schemas/Location'
+            continent:
+              $ref: '#/components/schemas/Location'
+            subdivisions:
+              type: array
+              items:
+                $ref: '#/components/schemas/Subdivision'
+          title: DeprecatedIPLocation
         timestamp:
           description: Timestamp of the event with millisecond precision in Unix time.
           type: integer
@@ -4335,12 +4473,6 @@ components:
     IPLocation:
       type: object
       additionalProperties: false
-      deprecated: true
-      description: >-
-        This field is **deprecated** and will not return a result for **accounts
-        created after December 18th, 2023**. Please use the [`ipInfo` Smart
-        signal](https://dev.fingerprint.com/docs/smart-signals-overview#ip-geolocation)
-        for geolocation information.
       properties:
         accuracyRadius:
           description: >-
@@ -4441,7 +4573,53 @@ components:
                   format: ipv4
                   example: 8.8.8.8
                 ipLocation:
-                  $ref: '#/components/schemas/IPLocation'
+                  type: object
+                  additionalProperties: false
+                  deprecated: true
+                  description: >-
+                    This field is **deprecated** and will not return a result
+                    for **applications created after January 23rd, 2024**.
+                    Please use the [IP Geolocation Smart
+                    signal](https://dev.fingerprint.com/docs/smart-signals-overview#ip-geolocation)
+                    for geolocation information.
+                  properties:
+                    accuracyRadius:
+                      description: >-
+                        The IP address is likely to be within this radius (in
+                        km) of the specified location.
+                      type: integer
+                      minimum: 0
+                    latitude:
+                      type: number
+                      format: double
+                      minimum: -90
+                      maximum: 90
+                    longitude:
+                      type: number
+                      format: double
+                      minimum: -180
+                      maximum: 180
+                    postalCode:
+                      type: string
+                    timezone:
+                      type: string
+                      format: timezone
+                    city:
+                      type: object
+                      additionalProperties: false
+                      title: DeprecatedIPLocationCity
+                      properties:
+                        name:
+                          type: string
+                    country:
+                      $ref: '#/components/schemas/Location'
+                    continent:
+                      $ref: '#/components/schemas/Location'
+                    subdivisions:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/Subdivision'
+                  title: DeprecatedIPLocation
                 timestamp:
                   description: >-
                     Timestamp of the event with millisecond precision in Unix

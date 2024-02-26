@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.IPLocationCity;
+import com.fingerprint.model.DeprecatedIPLocationCity;
 import com.fingerprint.model.Location;
 import com.fingerprint.model.Subdivision;
 import io.swagger.annotations.ApiModel;
@@ -34,21 +34,24 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * IPLocation
+ * This field is **deprecated** and will not return a result for **applications created after January 23rd, 2024**. Please use the [IP Geolocation Smart signal](https://dev.fingerprint.com/docs/smart-signals-overview#ip-geolocation) for geolocation information.
+ * @deprecated
  */
+@Deprecated
+@ApiModel(description = "This field is **deprecated** and will not return a result for **applications created after January 23rd, 2024**. Please use the [IP Geolocation Smart signal](https://dev.fingerprint.com/docs/smart-signals-overview#ip-geolocation) for geolocation information.")
 @JsonPropertyOrder({
-  IPLocation.JSON_PROPERTY_ACCURACY_RADIUS,
-  IPLocation.JSON_PROPERTY_LATITUDE,
-  IPLocation.JSON_PROPERTY_LONGITUDE,
-  IPLocation.JSON_PROPERTY_POSTAL_CODE,
-  IPLocation.JSON_PROPERTY_TIMEZONE,
-  IPLocation.JSON_PROPERTY_CITY,
-  IPLocation.JSON_PROPERTY_COUNTRY,
-  IPLocation.JSON_PROPERTY_CONTINENT,
-  IPLocation.JSON_PROPERTY_SUBDIVISIONS
+  DeprecatedIPLocation.JSON_PROPERTY_ACCURACY_RADIUS,
+  DeprecatedIPLocation.JSON_PROPERTY_LATITUDE,
+  DeprecatedIPLocation.JSON_PROPERTY_LONGITUDE,
+  DeprecatedIPLocation.JSON_PROPERTY_POSTAL_CODE,
+  DeprecatedIPLocation.JSON_PROPERTY_TIMEZONE,
+  DeprecatedIPLocation.JSON_PROPERTY_CITY,
+  DeprecatedIPLocation.JSON_PROPERTY_COUNTRY,
+  DeprecatedIPLocation.JSON_PROPERTY_CONTINENT,
+  DeprecatedIPLocation.JSON_PROPERTY_SUBDIVISIONS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class IPLocation {
+public class DeprecatedIPLocation {
   public static final String JSON_PROPERTY_ACCURACY_RADIUS = "accuracyRadius";
   private Integer accuracyRadius;
 
@@ -65,7 +68,7 @@ public class IPLocation {
   private String timezone;
 
   public static final String JSON_PROPERTY_CITY = "city";
-  private IPLocationCity city;
+  private DeprecatedIPLocationCity city;
 
   public static final String JSON_PROPERTY_COUNTRY = "country";
   private Location country;
@@ -76,10 +79,10 @@ public class IPLocation {
   public static final String JSON_PROPERTY_SUBDIVISIONS = "subdivisions";
   private List<Subdivision> subdivisions = null;
 
-  public IPLocation() {
+  public DeprecatedIPLocation() {
   }
 
-  public IPLocation accuracyRadius(Integer accuracyRadius) {
+  public DeprecatedIPLocation accuracyRadius(Integer accuracyRadius) {
     this.accuracyRadius = accuracyRadius;
     return this;
   }
@@ -90,7 +93,7 @@ public class IPLocation {
    * @return accuracyRadius
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "1000", value = "The IP address is likely to be within this radius (in km) of the specified location.")
+  @ApiModelProperty(value = "The IP address is likely to be within this radius (in km) of the specified location.")
   @JsonProperty(JSON_PROPERTY_ACCURACY_RADIUS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -106,7 +109,7 @@ public class IPLocation {
   }
 
 
-  public IPLocation latitude(Double latitude) {
+  public DeprecatedIPLocation latitude(Double latitude) {
     this.latitude = latitude;
     return this;
   }
@@ -118,7 +121,7 @@ public class IPLocation {
    * @return latitude
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "37.75", value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_LATITUDE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -134,7 +137,7 @@ public class IPLocation {
   }
 
 
-  public IPLocation longitude(Double longitude) {
+  public DeprecatedIPLocation longitude(Double longitude) {
     this.longitude = longitude;
     return this;
   }
@@ -146,7 +149,7 @@ public class IPLocation {
    * @return longitude
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "-97.82", value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_LONGITUDE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -162,7 +165,7 @@ public class IPLocation {
   }
 
 
-  public IPLocation postalCode(String postalCode) {
+  public DeprecatedIPLocation postalCode(String postalCode) {
     this.postalCode = postalCode;
     return this;
   }
@@ -172,7 +175,7 @@ public class IPLocation {
    * @return postalCode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "130 00", value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_POSTAL_CODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -188,7 +191,7 @@ public class IPLocation {
   }
 
 
-  public IPLocation timezone(String timezone) {
+  public DeprecatedIPLocation timezone(String timezone) {
     this.timezone = timezone;
     return this;
   }
@@ -198,7 +201,7 @@ public class IPLocation {
    * @return timezone
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "America/Chicago", value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_TIMEZONE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -214,7 +217,7 @@ public class IPLocation {
   }
 
 
-  public IPLocation city(IPLocationCity city) {
+  public DeprecatedIPLocation city(DeprecatedIPLocationCity city) {
     this.city = city;
     return this;
   }
@@ -228,19 +231,19 @@ public class IPLocation {
   @JsonProperty(JSON_PROPERTY_CITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public IPLocationCity getCity() {
+  public DeprecatedIPLocationCity getCity() {
     return city;
   }
 
 
   @JsonProperty(JSON_PROPERTY_CITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCity(IPLocationCity city) {
+  public void setCity(DeprecatedIPLocationCity city) {
     this.city = city;
   }
 
 
-  public IPLocation country(Location country) {
+  public DeprecatedIPLocation country(Location country) {
     this.country = country;
     return this;
   }
@@ -266,7 +269,7 @@ public class IPLocation {
   }
 
 
-  public IPLocation continent(Location continent) {
+  public DeprecatedIPLocation continent(Location continent) {
     this.continent = continent;
     return this;
   }
@@ -292,12 +295,12 @@ public class IPLocation {
   }
 
 
-  public IPLocation subdivisions(List<Subdivision> subdivisions) {
+  public DeprecatedIPLocation subdivisions(List<Subdivision> subdivisions) {
     this.subdivisions = subdivisions;
     return this;
   }
 
-  public IPLocation addSubdivisionsItem(Subdivision subdivisionsItem) {
+  public DeprecatedIPLocation addSubdivisionsItem(Subdivision subdivisionsItem) {
     if (this.subdivisions == null) {
       this.subdivisions = new ArrayList<>();
     }
@@ -327,7 +330,7 @@ public class IPLocation {
 
 
   /**
-   * Return true if this IPLocation object is equal to o.
+   * Return true if this DeprecatedIPLocation object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -337,16 +340,16 @@ public class IPLocation {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    IPLocation ipLocation = (IPLocation) o;
-    return Objects.equals(this.accuracyRadius, ipLocation.accuracyRadius) &&
-        Objects.equals(this.latitude, ipLocation.latitude) &&
-        Objects.equals(this.longitude, ipLocation.longitude) &&
-        Objects.equals(this.postalCode, ipLocation.postalCode) &&
-        Objects.equals(this.timezone, ipLocation.timezone) &&
-        Objects.equals(this.city, ipLocation.city) &&
-        Objects.equals(this.country, ipLocation.country) &&
-        Objects.equals(this.continent, ipLocation.continent) &&
-        Objects.equals(this.subdivisions, ipLocation.subdivisions);
+    DeprecatedIPLocation deprecatedIPLocation = (DeprecatedIPLocation) o;
+    return Objects.equals(this.accuracyRadius, deprecatedIPLocation.accuracyRadius) &&
+        Objects.equals(this.latitude, deprecatedIPLocation.latitude) &&
+        Objects.equals(this.longitude, deprecatedIPLocation.longitude) &&
+        Objects.equals(this.postalCode, deprecatedIPLocation.postalCode) &&
+        Objects.equals(this.timezone, deprecatedIPLocation.timezone) &&
+        Objects.equals(this.city, deprecatedIPLocation.city) &&
+        Objects.equals(this.country, deprecatedIPLocation.country) &&
+        Objects.equals(this.continent, deprecatedIPLocation.continent) &&
+        Objects.equals(this.subdivisions, deprecatedIPLocation.subdivisions);
   }
 
   @Override
@@ -357,7 +360,7 @@ public class IPLocation {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class IPLocation {\n");
+    sb.append("class DeprecatedIPLocation {\n");
     sb.append("    accuracyRadius: ").append(toIndentedString(accuracyRadius)).append("\n");
     sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
     sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");

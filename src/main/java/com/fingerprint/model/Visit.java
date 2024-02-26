@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fingerprint.model.BrowserDetails;
 import com.fingerprint.model.Confidence;
-import com.fingerprint.model.IPLocation;
+import com.fingerprint.model.DeprecatedIPLocation;
 import com.fingerprint.model.SeenAt;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -70,7 +70,7 @@ public class Visit {
   private String ip;
 
   public static final String JSON_PROPERTY_IP_LOCATION = "ipLocation";
-  private IPLocation ipLocation;
+  private DeprecatedIPLocation ipLocation;
 
   public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
   private Long timestamp;
@@ -206,7 +206,7 @@ public class Visit {
   }
 
 
-  public Visit ipLocation(IPLocation ipLocation) {
+  public Visit ipLocation(DeprecatedIPLocation ipLocation) {
     this.ipLocation = ipLocation;
     return this;
   }
@@ -222,14 +222,14 @@ public class Visit {
   @JsonProperty(JSON_PROPERTY_IP_LOCATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public IPLocation getIpLocation() {
+  public DeprecatedIPLocation getIpLocation() {
     return ipLocation;
   }
 
 
   @JsonProperty(JSON_PROPERTY_IP_LOCATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIpLocation(IPLocation ipLocation) {
+  public void setIpLocation(DeprecatedIPLocation ipLocation) {
     this.ipLocation = ipLocation;
   }
 

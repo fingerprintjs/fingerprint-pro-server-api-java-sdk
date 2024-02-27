@@ -292,11 +292,11 @@ public class ResponseVisits {
   }
 
    /**
-   * Page URL from which identification request was sent.
+   * Page URL from which the identification request was sent.
    * @return url
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "https://some.website/path?query=params", required = true, value = "Page URL from which identification request was sent.")
+  @ApiModelProperty(example = "https://some.website/path?query=params", required = true, value = "Page URL from which the identification request was sent.")
   @JsonProperty(JSON_PROPERTY_URL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -378,10 +378,10 @@ public class ResponseVisits {
    * Get confidence
    * @return confidence
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_CONFIDENCE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Confidence getConfidence() {
     return confidence;
@@ -389,7 +389,7 @@ public class ResponseVisits {
 
 
   @JsonProperty(JSON_PROPERTY_CONFIDENCE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setConfidence(Confidence confidence) {
     this.confidence = confidence;
   }

@@ -193,7 +193,7 @@ public class WebhookVisit {
   private URI url;
 
   public static final String JSON_PROPERTY_TAG = "tag";
-  private Map<String, Object> tag = null;
+  private Map<String, Object> tag = new HashMap<>();
 
   public static final String JSON_PROPERTY_LINKED_ID = "linkedId";
   private String linkedId;
@@ -983,11 +983,11 @@ public class WebhookVisit {
   }
 
    /**
-   * Page URL from which identification request was sent.
+   * Page URL from which the identification request was sent.
    * @return url
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "https://some.website/path?query=params", required = true, value = "Page URL from which identification request was sent.")
+  @ApiModelProperty(example = "https://some.website/path?query=params", required = true, value = "Page URL from which the identification request was sent.")
   @JsonProperty(JSON_PROPERTY_URL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -1009,9 +1009,6 @@ public class WebhookVisit {
   }
 
   public WebhookVisit putTagItem(String key, Object tagItem) {
-    if (this.tag == null) {
-      this.tag = new HashMap<>();
-    }
     this.tag.put(key, tagItem);
     return this;
   }
@@ -1020,10 +1017,10 @@ public class WebhookVisit {
    * A customer-provided value or an object that was sent with identification request.
    * @return tag
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "A customer-provided value or an object that was sent with identification request.")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "A customer-provided value or an object that was sent with identification request.")
   @JsonProperty(JSON_PROPERTY_TAG)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
 
   public Map<String, Object> getTag() {
     return tag;
@@ -1031,7 +1028,7 @@ public class WebhookVisit {
 
 
   @JsonProperty(JSON_PROPERTY_TAG)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
   public void setTag(Map<String, Object> tag) {
     this.tag = tag;
   }
@@ -1072,10 +1069,10 @@ public class WebhookVisit {
    * Get confidence
    * @return confidence
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_CONFIDENCE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Confidence getConfidence() {
     return confidence;
@@ -1083,7 +1080,7 @@ public class WebhookVisit {
 
 
   @JsonProperty(JSON_PROPERTY_CONFIDENCE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setConfidence(Confidence confidence) {
     this.confidence = confidence;
   }

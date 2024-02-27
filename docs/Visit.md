@@ -17,7 +17,7 @@
 |**url** | **URI** | Page URL from which the identification request was sent. |  |
 |**tag** | **Map&lt;String, Object&gt;** | A customer-provided value or an object that was sent with identification request. |  |
 |**linkedId** | **String** | A customer-provided id that was sent with identification request. |  [optional] |
-|**confidence** | [**Confidence**](Confidence.md) |  |  |
+|**confidence** | [**Confidence**](Confidence.md) |  |  [optional] |
 |**visitorFound** | **Boolean** | Attribute represents if a visitor had been identified before. |  |
 |**firstSeenAt** | [**SeenAt**](SeenAt.md) |  |  |
 |**lastSeenAt** | [**SeenAt**](SeenAt.md) |  |  |

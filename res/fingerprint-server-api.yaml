@@ -3762,6 +3762,8 @@ paths:
                           result: false
                         locationSpoofing:
                           result: true
+                        suspectScore:
+                          result: 0
               responses:
                 default:
                   description: The server doesn't validate the answer.
@@ -4148,6 +4150,8 @@ components:
           $ref: '#/components/schemas/HighActivityResult'
         locationSpoofing:
           $ref: '#/components/schemas/LocationSpoofingResult'
+        suspectScore:
+          $ref: '#/components/schemas/SuspectScoreResult'
         requestId:
           description: Unique identifier of the user's identification request.
           type: string
@@ -4927,6 +4931,15 @@ components:
               $ref: '#/components/schemas/LocationSpoofingResult'
             error:
               $ref: '#/components/schemas/ProductError'
+        suspectScore:
+          title: SignalResponseSuspectScore
+          type: object
+          additionalProperties: false
+          properties:
+            data:
+              $ref: '#/components/schemas/SuspectScoreResult'
+            error:
+              $ref: '#/components/schemas/ProductError'
         rawDeviceAttributes:
           title: SignalResponseRawDeviceAttributes
           type: object
@@ -5155,6 +5168,24 @@ components:
             Flag indicating whether the request came from a device with location
             spoofing enabled.
           example: false
+      required:
+        - result
+    SuspectScoreResult:
+      type: object
+      additionalProperties: false
+      properties:
+        result:
+          type: integer
+          description: >
+            Suspect Score is an easy way to integrate Smart Signals into your
+            fraud protection work flow.  It is a weighted representation of all
+            Smart Signals present in the payload that helps identify suspicious
+            activity. The value range is [0; S] where S is sum of all Smart
+            Signals weights.  See more details here:
+            https://dev.fingerprint.com/docs/suspect-score
+          example: 0
+      required:
+        - result
     RawDeviceAttributesResult:
       type: object
       description: >

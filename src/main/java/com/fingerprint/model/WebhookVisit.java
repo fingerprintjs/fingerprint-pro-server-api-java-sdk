@@ -36,6 +36,7 @@ import com.fingerprint.model.IpInfoResult;
 import com.fingerprint.model.LocationSpoofingResult;
 import com.fingerprint.model.RawDeviceAttributesResultValue;
 import com.fingerprint.model.SeenAt;
+import com.fingerprint.model.SuspectScoreResult;
 import com.fingerprint.model.TamperingResult;
 import com.fingerprint.model.VpnResult;
 import com.fingerprint.model.WebhookSignalResponseClonedApp;
@@ -84,6 +85,7 @@ import com.fingerprint.sdk.JSON;
   WebhookVisit.JSON_PROPERTY_RAW_DEVICE_ATTRIBUTES,
   WebhookVisit.JSON_PROPERTY_HIGH_ACTIVITY,
   WebhookVisit.JSON_PROPERTY_LOCATION_SPOOFING,
+  WebhookVisit.JSON_PROPERTY_SUSPECT_SCORE,
   WebhookVisit.JSON_PROPERTY_REQUEST_ID,
   WebhookVisit.JSON_PROPERTY_BROWSER_DETAILS,
   WebhookVisit.JSON_PROPERTY_IP,
@@ -165,6 +167,9 @@ public class WebhookVisit {
 
   public static final String JSON_PROPERTY_LOCATION_SPOOFING = "locationSpoofing";
   private LocationSpoofingResult locationSpoofing;
+
+  public static final String JSON_PROPERTY_SUSPECT_SCORE = "suspectScore";
+  private SuspectScoreResult suspectScore;
 
   public static final String JSON_PROPERTY_REQUEST_ID = "requestId";
   private String requestId;
@@ -788,6 +793,32 @@ public class WebhookVisit {
   }
 
 
+  public WebhookVisit suspectScore(SuspectScoreResult suspectScore) {
+    this.suspectScore = suspectScore;
+    return this;
+  }
+
+   /**
+   * Get suspectScore
+   * @return suspectScore
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_SUSPECT_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SuspectScoreResult getSuspectScore() {
+    return suspectScore;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SUSPECT_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSuspectScore(SuspectScoreResult suspectScore) {
+    this.suspectScore = suspectScore;
+  }
+
+
   public WebhookVisit requestId(String requestId) {
     this.requestId = requestId;
     return this;
@@ -1170,6 +1201,7 @@ public class WebhookVisit {
         Objects.equals(this.rawDeviceAttributes, webhookVisit.rawDeviceAttributes) &&
         Objects.equals(this.highActivity, webhookVisit.highActivity) &&
         Objects.equals(this.locationSpoofing, webhookVisit.locationSpoofing) &&
+        Objects.equals(this.suspectScore, webhookVisit.suspectScore) &&
         Objects.equals(this.requestId, webhookVisit.requestId) &&
         Objects.equals(this.browserDetails, webhookVisit.browserDetails) &&
         Objects.equals(this.ip, webhookVisit.ip) &&
@@ -1187,7 +1219,7 @@ public class WebhookVisit {
 
   @Override
   public int hashCode() {
-    return Objects.hash(visitorId, clientReferrer, userAgent, bot, ipInfo, incognito, rootApps, emulator, clonedApp, factoryReset, jailbroken, frida, ipBlocklist, tor, privacySettings, virtualMachine, vpn, proxy, tampering, rawDeviceAttributes, highActivity, locationSpoofing, requestId, browserDetails, ip, ipLocation, timestamp, time, url, tag, linkedId, confidence, visitorFound, firstSeenAt, lastSeenAt);
+    return Objects.hash(visitorId, clientReferrer, userAgent, bot, ipInfo, incognito, rootApps, emulator, clonedApp, factoryReset, jailbroken, frida, ipBlocklist, tor, privacySettings, virtualMachine, vpn, proxy, tampering, rawDeviceAttributes, highActivity, locationSpoofing, suspectScore, requestId, browserDetails, ip, ipLocation, timestamp, time, url, tag, linkedId, confidence, visitorFound, firstSeenAt, lastSeenAt);
   }
 
   @Override
@@ -1216,6 +1248,7 @@ public class WebhookVisit {
     sb.append("    rawDeviceAttributes: ").append(toIndentedString(rawDeviceAttributes)).append("\n");
     sb.append("    highActivity: ").append(toIndentedString(highActivity)).append("\n");
     sb.append("    locationSpoofing: ").append(toIndentedString(locationSpoofing)).append("\n");
+    sb.append("    suspectScore: ").append(toIndentedString(suspectScore)).append("\n");
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
     sb.append("    browserDetails: ").append(toIndentedString(browserDetails)).append("\n");
     sb.append("    ip: ").append(toIndentedString(ip)).append("\n");

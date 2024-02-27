@@ -110,7 +110,7 @@ public class FingerprintApiTest {
         LinkedHashMap canvasAttribute = (LinkedHashMap)response.getProducts().getRawDeviceAttributes().getData().get("canvas").getValue();
         assertEquals(true, canvasAttribute.get("Winding"));
         assertEquals("4dce9d6017c3e0c052a77252f29f2b1c", canvasAttribute.get("Geometry"));
-        assertEquals("srgb", signalResponseRawDeviceAttributes.getData().get("colorGamut").getValue());
+        assertEquals("p3", signalResponseRawDeviceAttributes.getData().get("colorGamut").getValue());
         assertEquals(true, signalResponseRawDeviceAttributes.getData().get("cookiesEnabled").getValue());
     }
 

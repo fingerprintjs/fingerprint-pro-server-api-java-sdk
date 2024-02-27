@@ -4993,6 +4993,9 @@ components:
         requestId:
           type: string
           example: 1681392853693.lRiBBD
+        linkedId:
+          type: string
+          example: Automatic tests bot
         bot:
           $ref: '#/components/schemas/BotdDetectionResult'
       required:

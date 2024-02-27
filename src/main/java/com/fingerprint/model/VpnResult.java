@@ -35,6 +35,7 @@ import com.fingerprint.sdk.JSON;
 @JsonPropertyOrder({
   VpnResult.JSON_PROPERTY_RESULT,
   VpnResult.JSON_PROPERTY_ORIGIN_TIMEZONE,
+  VpnResult.JSON_PROPERTY_ORIGIN_COUNTRY,
   VpnResult.JSON_PROPERTY_METHODS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
@@ -44,6 +45,9 @@ public class VpnResult {
 
   public static final String JSON_PROPERTY_ORIGIN_TIMEZONE = "originTimezone";
   private String originTimezone;
+
+  public static final String JSON_PROPERTY_ORIGIN_COUNTRY = "originCountry";
+  private String originCountry;
 
   public static final String JSON_PROPERTY_METHODS = "methods";
   private VpnResultMethods methods;
@@ -103,6 +107,32 @@ public class VpnResult {
   }
 
 
+  public VpnResult originCountry(String originCountry) {
+    this.originCountry = originCountry;
+    return this;
+  }
+
+   /**
+   * Country of the request (only for Android SDK version &gt;&#x3D; 2.4.0, ISO 3166 format or unknown).
+   * @return originCountry
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "unknown", value = "Country of the request (only for Android SDK version >= 2.4.0, ISO 3166 format or unknown).")
+  @JsonProperty(JSON_PROPERTY_ORIGIN_COUNTRY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getOriginCountry() {
+    return originCountry;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ORIGIN_COUNTRY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOriginCountry(String originCountry) {
+    this.originCountry = originCountry;
+  }
+
+
   public VpnResult methods(VpnResultMethods methods) {
     this.methods = methods;
     return this;
@@ -143,12 +173,13 @@ public class VpnResult {
     VpnResult vpnResult = (VpnResult) o;
     return Objects.equals(this.result, vpnResult.result) &&
         Objects.equals(this.originTimezone, vpnResult.originTimezone) &&
+        Objects.equals(this.originCountry, vpnResult.originCountry) &&
         Objects.equals(this.methods, vpnResult.methods);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(result, originTimezone, methods);
+    return Objects.hash(result, originTimezone, originCountry, methods);
   }
 
   @Override
@@ -157,6 +188,7 @@ public class VpnResult {
     sb.append("class VpnResult {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("    originTimezone: ").append(toIndentedString(originTimezone)).append("\n");
+    sb.append("    originCountry: ").append(toIndentedString(originCountry)).append("\n");
     sb.append("    methods: ").append(toIndentedString(methods)).append("\n");
     sb.append("}");
     return sb.toString();

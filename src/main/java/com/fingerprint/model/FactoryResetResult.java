@@ -30,36 +30,36 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * WebhookSignalResponseFactoryReset
+ * FactoryResetResult
  */
 @JsonPropertyOrder({
-  WebhookSignalResponseFactoryReset.JSON_PROPERTY_TIME,
-  WebhookSignalResponseFactoryReset.JSON_PROPERTY_TIMESTAMP
+  FactoryResetResult.JSON_PROPERTY_TIME,
+  FactoryResetResult.JSON_PROPERTY_TIMESTAMP
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class WebhookSignalResponseFactoryReset {
+public class FactoryResetResult {
   public static final String JSON_PROPERTY_TIME = "time";
   private OffsetDateTime time;
 
   public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
   private Long timestamp;
 
-  public WebhookSignalResponseFactoryReset() {
+  public FactoryResetResult() {
   }
 
-  public WebhookSignalResponseFactoryReset time(OffsetDateTime time) {
+  public FactoryResetResult time(OffsetDateTime time) {
     this.time = time;
     return this;
   }
 
    /**
-   * Time in UTC for the Android client when recent factory reset was done.  If there is no sign of factory reset or the client isn&#39;t Android, the field will be epoch time. 
+   * Time in UTC when the most recent factory reset of the Android or iOS device was done.  If there is no sign of factory reset or the client is not a mobile device, the field will contain the epoch time (1 January 1970) in UTC. 
    * @return time
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "2022-06-09T22:58:36Z", value = "Time in UTC for the Android client when recent factory reset was done.  If there is no sign of factory reset or the client isn't Android, the field will be epoch time. ")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "2022-06-09T22:58:36Z", required = true, value = "Time in UTC when the most recent factory reset of the Android or iOS device was done.  If there is no sign of factory reset or the client is not a mobile device, the field will contain the epoch time (1 January 1970) in UTC. ")
   @JsonProperty(JSON_PROPERTY_TIME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public OffsetDateTime getTime() {
     return time;
@@ -67,13 +67,13 @@ public class WebhookSignalResponseFactoryReset {
 
 
   @JsonProperty(JSON_PROPERTY_TIME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTime(OffsetDateTime time) {
     this.time = time;
   }
 
 
-  public WebhookSignalResponseFactoryReset timestamp(Long timestamp) {
+  public FactoryResetResult timestamp(Long timestamp) {
     this.timestamp = timestamp;
     return this;
   }
@@ -82,10 +82,10 @@ public class WebhookSignalResponseFactoryReset {
    * Same value as it&#39;s in the &#x60;time&#x60; field but represented in timestamp format.
    * @return timestamp
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "1654815517198", value = "Same value as it's in the `time` field but represented in timestamp format.")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "1654815517198", required = true, value = "Same value as it's in the `time` field but represented in timestamp format.")
   @JsonProperty(JSON_PROPERTY_TIMESTAMP)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Long getTimestamp() {
     return timestamp;
@@ -93,14 +93,14 @@ public class WebhookSignalResponseFactoryReset {
 
 
   @JsonProperty(JSON_PROPERTY_TIMESTAMP)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTimestamp(Long timestamp) {
     this.timestamp = timestamp;
   }
 
 
   /**
-   * Return true if this WebhookSignalResponseFactoryReset object is equal to o.
+   * Return true if this FactoryResetResult object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -110,9 +110,9 @@ public class WebhookSignalResponseFactoryReset {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WebhookSignalResponseFactoryReset webhookSignalResponseFactoryReset = (WebhookSignalResponseFactoryReset) o;
-    return Objects.equals(this.time, webhookSignalResponseFactoryReset.time) &&
-        Objects.equals(this.timestamp, webhookSignalResponseFactoryReset.timestamp);
+    FactoryResetResult factoryResetResult = (FactoryResetResult) o;
+    return Objects.equals(this.time, factoryResetResult.time) &&
+        Objects.equals(this.timestamp, factoryResetResult.timestamp);
   }
 
   @Override
@@ -123,7 +123,7 @@ public class WebhookSignalResponseFactoryReset {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class WebhookSignalResponseFactoryReset {\n");
+    sb.append("class FactoryResetResult {\n");
     sb.append("    time: ").append(toIndentedString(time)).append("\n");
     sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
     sb.append("}");

@@ -29,33 +29,32 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * SignalResponseEmulatorData
+ * FridaResult
  */
 @JsonPropertyOrder({
-  SignalResponseEmulatorData.JSON_PROPERTY_RESULT
+  FridaResult.JSON_PROPERTY_RESULT
 })
-@JsonTypeName("SignalResponseEmulator_data")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class SignalResponseEmulatorData {
+public class FridaResult {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public SignalResponseEmulatorData() {
+  public FridaResult() {
   }
 
-  public SignalResponseEmulatorData result(Boolean result) {
+  public FridaResult result(Boolean result) {
     this.result = result;
     return this;
   }
 
    /**
-   * Android specific emulator detection. There are 2 values: • &#x60;true&#x60; - Emulated environment detected (e.g. launch inside of AVD) • &#x60;false&#x60; - No signs of emulated environment detected or the client is not Android. 
+   * [Frida](https://frida.re/docs/) detection for Android and iOS devices. There are 2 values: • &#x60;true&#x60; - Frida detected • &#x60;false&#x60; - No signs of Frida or the client is not a mobile device. 
    * @return result
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Android specific emulator detection. There are 2 values: • `true` - Emulated environment detected (e.g. launch inside of AVD) • `false` - No signs of emulated environment detected or the client is not Android. ")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "[Frida](https://frida.re/docs/) detection for Android and iOS devices. There are 2 values: • `true` - Frida detected • `false` - No signs of Frida or the client is not a mobile device. ")
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getResult() {
     return result;
@@ -63,14 +62,14 @@ public class SignalResponseEmulatorData {
 
 
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setResult(Boolean result) {
     this.result = result;
   }
 
 
   /**
-   * Return true if this SignalResponseEmulator_data object is equal to o.
+   * Return true if this FridaResult object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -80,8 +79,8 @@ public class SignalResponseEmulatorData {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SignalResponseEmulatorData signalResponseEmulatorData = (SignalResponseEmulatorData) o;
-    return Objects.equals(this.result, signalResponseEmulatorData.result);
+    FridaResult fridaResult = (FridaResult) o;
+    return Objects.equals(this.result, fridaResult.result);
   }
 
   @Override
@@ -92,7 +91,7 @@ public class SignalResponseEmulatorData {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SignalResponseEmulatorData {\n");
+    sb.append("class FridaResult {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -29,33 +29,32 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * SignalResponseJailbrokenData
+ * IncognitoResult
  */
 @JsonPropertyOrder({
-  SignalResponseJailbrokenData.JSON_PROPERTY_RESULT
+  IncognitoResult.JSON_PROPERTY_RESULT
 })
-@JsonTypeName("SignalResponseJailbroken_data")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class SignalResponseJailbrokenData {
+public class IncognitoResult {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public SignalResponseJailbrokenData() {
+  public IncognitoResult() {
   }
 
-  public SignalResponseJailbrokenData result(Boolean result) {
+  public IncognitoResult result(Boolean result) {
     this.result = result;
     return this;
   }
 
    /**
-   * iOS specific jailbreak detection. There are 2 values: • &#x60;true&#x60; - Jailbreak detected • &#x60;false&#x60; - No signs of jailbreak or the client is not iOS. 
+   * &#x60;true&#x60; if we detected incognito mode used in the browser, &#x60;false&#x60; otherwise. 
    * @return result
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "iOS specific jailbreak detection. There are 2 values: • `true` - Jailbreak detected • `false` - No signs of jailbreak or the client is not iOS. ")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "`true` if we detected incognito mode used in the browser, `false` otherwise. ")
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getResult() {
     return result;
@@ -63,14 +62,14 @@ public class SignalResponseJailbrokenData {
 
 
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setResult(Boolean result) {
     this.result = result;
   }
 
 
   /**
-   * Return true if this SignalResponseJailbroken_data object is equal to o.
+   * Return true if this IncognitoResult object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -80,8 +79,8 @@ public class SignalResponseJailbrokenData {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SignalResponseJailbrokenData signalResponseJailbrokenData = (SignalResponseJailbrokenData) o;
-    return Objects.equals(this.result, signalResponseJailbrokenData.result);
+    IncognitoResult incognitoResult = (IncognitoResult) o;
+    return Objects.equals(this.result, incognitoResult.result);
   }
 
   @Override
@@ -92,7 +91,7 @@ public class SignalResponseJailbrokenData {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SignalResponseJailbrokenData {\n");
+    sb.append("class IncognitoResult {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();

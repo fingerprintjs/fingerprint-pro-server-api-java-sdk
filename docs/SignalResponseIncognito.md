@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**SignalResponseIncognitoData**](SignalResponseIncognitoData.md) |  |  [optional] |
+|**data** | [**IncognitoResult**](IncognitoResult.md) |  |  [optional] |
 |**error** | [**ProductError**](ProductError.md) |  |  [optional] |
 
 

@@ -29,33 +29,32 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * SignalResponseProxyData
+ * EmulatorResult
  */
 @JsonPropertyOrder({
-  SignalResponseProxyData.JSON_PROPERTY_RESULT
+  EmulatorResult.JSON_PROPERTY_RESULT
 })
-@JsonTypeName("SignalResponseProxy_data")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class SignalResponseProxyData {
+public class EmulatorResult {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public SignalResponseProxyData() {
+  public EmulatorResult() {
   }
 
-  public SignalResponseProxyData result(Boolean result) {
+  public EmulatorResult result(Boolean result) {
     this.result = result;
     return this;
   }
 
    /**
-   * &#x60;true&#x60; if the request IP address is used by a public proxy provider, &#x60;false&#x60; otherwise. 
+   * Android specific emulator detection. There are 2 values: • &#x60;true&#x60; - Emulated environment detected (e.g. launch inside of AVD) • &#x60;false&#x60; - No signs of emulated environment detected or the client is not Android. 
    * @return result
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "`true` if the request IP address is used by a public proxy provider, `false` otherwise. ")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "Android specific emulator detection. There are 2 values: • `true` - Emulated environment detected (e.g. launch inside of AVD) • `false` - No signs of emulated environment detected or the client is not Android. ")
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getResult() {
     return result;
@@ -63,14 +62,14 @@ public class SignalResponseProxyData {
 
 
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setResult(Boolean result) {
     this.result = result;
   }
 
 
   /**
-   * Return true if this SignalResponseProxy_data object is equal to o.
+   * Return true if this EmulatorResult object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -80,8 +79,8 @@ public class SignalResponseProxyData {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SignalResponseProxyData signalResponseProxyData = (SignalResponseProxyData) o;
-    return Objects.equals(this.result, signalResponseProxyData.result);
+    EmulatorResult emulatorResult = (EmulatorResult) o;
+    return Objects.equals(this.result, emulatorResult.result);
   }
 
   @Override
@@ -92,7 +91,7 @@ public class SignalResponseProxyData {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SignalResponseProxyData {\n");
+    sb.append("class EmulatorResult {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();

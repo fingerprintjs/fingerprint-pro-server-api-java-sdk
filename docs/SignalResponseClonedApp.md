@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**SignalResponseClonedAppData**](SignalResponseClonedAppData.md) |  |  [optional] |
+|**data** | [**ClonedAppResult**](ClonedAppResult.md) |  |  [optional] |
 |**error** | [**ProductError**](ProductError.md) |  |  [optional] |
 
 

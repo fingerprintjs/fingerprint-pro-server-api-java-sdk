@@ -29,33 +29,32 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * SignalResponseTorData
+ * PrivacySettingsResult
  */
 @JsonPropertyOrder({
-  SignalResponseTorData.JSON_PROPERTY_RESULT
+  PrivacySettingsResult.JSON_PROPERTY_RESULT
 })
-@JsonTypeName("SignalResponseTor_data")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class SignalResponseTorData {
+public class PrivacySettingsResult {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public SignalResponseTorData() {
+  public PrivacySettingsResult() {
   }
 
-  public SignalResponseTorData result(Boolean result) {
+  public PrivacySettingsResult result(Boolean result) {
     this.result = result;
     return this;
   }
 
    /**
-   * &#x60;true&#x60; if the request IP address is a known tor exit node, &#x60;false&#x60; otherwise. 
+   * &#x60;true&#x60; if the request is from a privacy aware browser (e.g. Tor) or from a browser in which fingerprinting is blocked. Otherwise &#x60;false&#x60;. 
    * @return result
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "`true` if the request IP address is a known tor exit node, `false` otherwise. ")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "`true` if the request is from a privacy aware browser (e.g. Tor) or from a browser in which fingerprinting is blocked. Otherwise `false`. ")
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getResult() {
     return result;
@@ -63,14 +62,14 @@ public class SignalResponseTorData {
 
 
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setResult(Boolean result) {
     this.result = result;
   }
 
 
   /**
-   * Return true if this SignalResponseTor_data object is equal to o.
+   * Return true if this PrivacySettingsResult object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -80,8 +79,8 @@ public class SignalResponseTorData {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SignalResponseTorData signalResponseTorData = (SignalResponseTorData) o;
-    return Objects.equals(this.result, signalResponseTorData.result);
+    PrivacySettingsResult privacySettingsResult = (PrivacySettingsResult) o;
+    return Objects.equals(this.result, privacySettingsResult.result);
   }
 
   @Override
@@ -92,7 +91,7 @@ public class SignalResponseTorData {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SignalResponseTorData {\n");
+    sb.append("class PrivacySettingsResult {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();

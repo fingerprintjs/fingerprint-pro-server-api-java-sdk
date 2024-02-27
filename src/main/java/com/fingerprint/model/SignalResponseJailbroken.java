@@ -22,8 +22,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fingerprint.model.JailbrokenResult;
 import com.fingerprint.model.ProductError;
-import com.fingerprint.model.SignalResponseJailbrokenData;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -40,7 +40,7 @@ import com.fingerprint.sdk.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SignalResponseJailbroken {
   public static final String JSON_PROPERTY_DATA = "data";
-  private SignalResponseJailbrokenData data;
+  private JailbrokenResult data;
 
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
@@ -48,7 +48,7 @@ public class SignalResponseJailbroken {
   public SignalResponseJailbroken() {
   }
 
-  public SignalResponseJailbroken data(SignalResponseJailbrokenData data) {
+  public SignalResponseJailbroken data(JailbrokenResult data) {
     this.data = data;
     return this;
   }
@@ -62,14 +62,14 @@ public class SignalResponseJailbroken {
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponseJailbrokenData getData() {
+  public JailbrokenResult getData() {
     return data;
   }
 
 
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(SignalResponseJailbrokenData data) {
+  public void setData(JailbrokenResult data) {
     this.data = data;
   }
 

@@ -29,32 +29,32 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * WebhookSignalResponseJailbroken
+ * RootAppsResult
  */
 @JsonPropertyOrder({
-  WebhookSignalResponseJailbroken.JSON_PROPERTY_RESULT
+  RootAppsResult.JSON_PROPERTY_RESULT
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class WebhookSignalResponseJailbroken {
+public class RootAppsResult {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public WebhookSignalResponseJailbroken() {
+  public RootAppsResult() {
   }
 
-  public WebhookSignalResponseJailbroken result(Boolean result) {
+  public RootAppsResult result(Boolean result) {
     this.result = result;
     return this;
   }
 
    /**
-   * iOS specific jailbreak detection. There are 2 values: • &#x60;true&#x60; - Jailbreak detected • &#x60;false&#x60; - No signs of jailbreak or the client is not iOS. 
+   * Android specific root management apps detection. There are 2 values: • &#x60;true&#x60; - Root Management Apps detected (e.g. Magisk) • &#x60;false&#x60; - No Root Management Apps detected or the client isn&#39;t Android. 
    * @return result
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "iOS specific jailbreak detection. There are 2 values: • `true` - Jailbreak detected • `false` - No signs of jailbreak or the client is not iOS. ")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "Android specific root management apps detection. There are 2 values: • `true` - Root Management Apps detected (e.g. Magisk) • `false` - No Root Management Apps detected or the client isn't Android. ")
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getResult() {
     return result;
@@ -62,14 +62,14 @@ public class WebhookSignalResponseJailbroken {
 
 
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setResult(Boolean result) {
     this.result = result;
   }
 
 
   /**
-   * Return true if this WebhookSignalResponseJailbroken object is equal to o.
+   * Return true if this RootAppsResult object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -79,8 +79,8 @@ public class WebhookSignalResponseJailbroken {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WebhookSignalResponseJailbroken webhookSignalResponseJailbroken = (WebhookSignalResponseJailbroken) o;
-    return Objects.equals(this.result, webhookSignalResponseJailbroken.result);
+    RootAppsResult rootAppsResult = (RootAppsResult) o;
+    return Objects.equals(this.result, rootAppsResult.result);
   }
 
   @Override
@@ -91,7 +91,7 @@ public class WebhookSignalResponseJailbroken {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class WebhookSignalResponseJailbroken {\n");
+    sb.append("class RootAppsResult {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -13,18 +13,18 @@
 |**bot** | [**BotdDetectionResult**](BotdDetectionResult.md) |  |  [optional] |
 |**ipInfo** | [**IpInfoResult**](IpInfoResult.md) |  |  [optional] |
 |**incognito** | **Boolean** | Flag if user used incognito session. |  |
-|**rootApps** | [**WebhookSignalResponseRootApps**](WebhookSignalResponseRootApps.md) |  |  [optional] |
-|**emulator** | [**WebhookSignalResponseEmulator**](WebhookSignalResponseEmulator.md) |  |  [optional] |
-|**clonedApp** | [**WebhookSignalResponseClonedApp**](WebhookSignalResponseClonedApp.md) |  |  [optional] |
-|**factoryReset** | [**WebhookSignalResponseFactoryReset**](WebhookSignalResponseFactoryReset.md) |  |  [optional] |
-|**jailbroken** | [**WebhookSignalResponseJailbroken**](WebhookSignalResponseJailbroken.md) |  |  [optional] |
-|**frida** | [**WebhookSignalResponseFrida**](WebhookSignalResponseFrida.md) |  |  [optional] |
+|**rootApps** | [**RootAppsResult**](RootAppsResult.md) |  |  [optional] |
+|**emulator** | [**EmulatorResult**](EmulatorResult.md) |  |  [optional] |
+|**clonedApp** | [**ClonedAppResult**](ClonedAppResult.md) |  |  [optional] |
+|**factoryReset** | [**FactoryResetResult**](FactoryResetResult.md) |  |  [optional] |
+|**jailbroken** | [**JailbrokenResult**](JailbrokenResult.md) |  |  [optional] |
+|**frida** | [**FridaResult**](FridaResult.md) |  |  [optional] |
 |**ipBlocklist** | [**IpBlockListResult**](IpBlockListResult.md) |  |  [optional] |
-|**tor** | [**WebhookSignalResponseTor**](WebhookSignalResponseTor.md) |  |  [optional] |
-|**privacySettings** | [**WebhookSignalResponsePrivacySettings**](WebhookSignalResponsePrivacySettings.md) |  |  [optional] |
-|**virtualMachine** | [**WebhookSignalResponseVirtualMachine**](WebhookSignalResponseVirtualMachine.md) |  |  [optional] |
+|**tor** | [**TorResult**](TorResult.md) |  |  [optional] |
+|**privacySettings** | [**PrivacySettingsResult**](PrivacySettingsResult.md) |  |  [optional] |
+|**virtualMachine** | [**VirtualMachineResult**](VirtualMachineResult.md) |  |  [optional] |
 |**vpn** | [**VpnResult**](VpnResult.md) |  |  [optional] |
-|**proxy** | [**WebhookSignalResponseProxy**](WebhookSignalResponseProxy.md) |  |  [optional] |
+|**proxy** | [**ProxyResult**](ProxyResult.md) |  |  [optional] |
 |**tampering** | [**TamperingResult**](TamperingResult.md) |  |  [optional] |
 |**rawDeviceAttributes** | [**Map&lt;String, RawDeviceAttributesResultValue&gt;**](RawDeviceAttributesResultValue.md) | It includes 35+ raw browser identification attributes to provide Fingerprint users with even more information than our standard visitor ID provides. This enables Fingerprint users to not have to run our open-source product in conjunction with Fingerprint Pro Plus and Enterprise to get those additional attributes. Warning: The raw signals data can change at any moment as we improve the product. We cannot guarantee the internal shape of raw device attributes to be stable, so typical semantic versioning rules do not apply here. Use this data with caution without assuming a specific structure beyond the generic type provided here.  |  [optional] |
 |**highActivity** | [**HighActivityResult**](HighActivityResult.md) |  |  [optional] |

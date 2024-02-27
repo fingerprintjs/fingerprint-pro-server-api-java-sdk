@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**SignalResponseVirtualMachineData**](SignalResponseVirtualMachineData.md) |  |  [optional] |
+|**data** | [**VirtualMachineResult**](VirtualMachineResult.md) |  |  [optional] |
 |**error** | [**ProductError**](ProductError.md) |  |  [optional] |
 
 

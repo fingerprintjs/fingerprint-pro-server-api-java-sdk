@@ -29,21 +29,20 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * SignalResponseClonedAppData
+ * ClonedAppResult
  */
 @JsonPropertyOrder({
-  SignalResponseClonedAppData.JSON_PROPERTY_RESULT
+  ClonedAppResult.JSON_PROPERTY_RESULT
 })
-@JsonTypeName("SignalResponseClonedApp_data")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class SignalResponseClonedAppData {
+public class ClonedAppResult {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public SignalResponseClonedAppData() {
+  public ClonedAppResult() {
   }
 
-  public SignalResponseClonedAppData result(Boolean result) {
+  public ClonedAppResult result(Boolean result) {
     this.result = result;
     return this;
   }
@@ -52,10 +51,10 @@ public class SignalResponseClonedAppData {
    * Android specific cloned application detection. There are 2 values: • &#x60;true&#x60; - Presence of app cloners work detected (e.g. fully cloned application found or launch of it inside of a not main working profile detected). • &#x60;false&#x60; - No signs of cloned application detected or the client is not Android. 
    * @return result
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Android specific cloned application detection. There are 2 values: • `true` - Presence of app cloners work detected (e.g. fully cloned application found or launch of it inside of a not main working profile detected). • `false` - No signs of cloned application detected or the client is not Android. ")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "Android specific cloned application detection. There are 2 values: • `true` - Presence of app cloners work detected (e.g. fully cloned application found or launch of it inside of a not main working profile detected). • `false` - No signs of cloned application detected or the client is not Android. ")
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getResult() {
     return result;
@@ -63,14 +62,14 @@ public class SignalResponseClonedAppData {
 
 
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setResult(Boolean result) {
     this.result = result;
   }
 
 
   /**
-   * Return true if this SignalResponseClonedApp_data object is equal to o.
+   * Return true if this ClonedAppResult object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -80,8 +79,8 @@ public class SignalResponseClonedAppData {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SignalResponseClonedAppData signalResponseClonedAppData = (SignalResponseClonedAppData) o;
-    return Objects.equals(this.result, signalResponseClonedAppData.result);
+    ClonedAppResult clonedAppResult = (ClonedAppResult) o;
+    return Objects.equals(this.result, clonedAppResult.result);
   }
 
   @Override
@@ -92,7 +91,7 @@ public class SignalResponseClonedAppData {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SignalResponseClonedAppData {\n");
+    sb.append("class ClonedAppResult {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();

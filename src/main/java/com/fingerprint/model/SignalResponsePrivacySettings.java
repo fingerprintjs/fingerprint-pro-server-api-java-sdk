@@ -22,8 +22,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fingerprint.model.PrivacySettingsResult;
 import com.fingerprint.model.ProductError;
-import com.fingerprint.model.SignalResponsePrivacySettingsData;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -40,7 +40,7 @@ import com.fingerprint.sdk.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SignalResponsePrivacySettings {
   public static final String JSON_PROPERTY_DATA = "data";
-  private SignalResponsePrivacySettingsData data;
+  private PrivacySettingsResult data;
 
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
@@ -48,7 +48,7 @@ public class SignalResponsePrivacySettings {
   public SignalResponsePrivacySettings() {
   }
 
-  public SignalResponsePrivacySettings data(SignalResponsePrivacySettingsData data) {
+  public SignalResponsePrivacySettings data(PrivacySettingsResult data) {
     this.data = data;
     return this;
   }
@@ -62,14 +62,14 @@ public class SignalResponsePrivacySettings {
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponsePrivacySettingsData getData() {
+  public PrivacySettingsResult getData() {
     return data;
   }
 
 
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(SignalResponsePrivacySettingsData data) {
+  public void setData(PrivacySettingsResult data) {
     this.data = data;
   }
 

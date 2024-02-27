@@ -29,33 +29,32 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * SignalResponsePrivacySettingsData
+ * JailbrokenResult
  */
 @JsonPropertyOrder({
-  SignalResponsePrivacySettingsData.JSON_PROPERTY_RESULT
+  JailbrokenResult.JSON_PROPERTY_RESULT
 })
-@JsonTypeName("SignalResponsePrivacySettings_data")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class SignalResponsePrivacySettingsData {
+public class JailbrokenResult {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public SignalResponsePrivacySettingsData() {
+  public JailbrokenResult() {
   }
 
-  public SignalResponsePrivacySettingsData result(Boolean result) {
+  public JailbrokenResult result(Boolean result) {
     this.result = result;
     return this;
   }
 
    /**
-   * &#x60;true&#x60; if the request is from a privacy aware browser (e.g. Tor) or from a browser in which fingerprinting is blocked. Otherwise &#x60;false&#x60;. 
+   * iOS specific jailbreak detection. There are 2 values: • &#x60;true&#x60; - Jailbreak detected • &#x60;false&#x60; - No signs of jailbreak or the client is not iOS. 
    * @return result
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "`true` if the request is from a privacy aware browser (e.g. Tor) or from a browser in which fingerprinting is blocked. Otherwise `false`. ")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "iOS specific jailbreak detection. There are 2 values: • `true` - Jailbreak detected • `false` - No signs of jailbreak or the client is not iOS. ")
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getResult() {
     return result;
@@ -63,14 +62,14 @@ public class SignalResponsePrivacySettingsData {
 
 
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setResult(Boolean result) {
     this.result = result;
   }
 
 
   /**
-   * Return true if this SignalResponsePrivacySettings_data object is equal to o.
+   * Return true if this JailbrokenResult object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -80,8 +79,8 @@ public class SignalResponsePrivacySettingsData {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SignalResponsePrivacySettingsData signalResponsePrivacySettingsData = (SignalResponsePrivacySettingsData) o;
-    return Objects.equals(this.result, signalResponsePrivacySettingsData.result);
+    JailbrokenResult jailbrokenResult = (JailbrokenResult) o;
+    return Objects.equals(this.result, jailbrokenResult.result);
   }
 
   @Override
@@ -92,7 +91,7 @@ public class SignalResponsePrivacySettingsData {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SignalResponsePrivacySettingsData {\n");
+    sb.append("class JailbrokenResult {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();

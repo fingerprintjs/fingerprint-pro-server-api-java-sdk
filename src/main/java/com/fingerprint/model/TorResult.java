@@ -29,32 +29,32 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * WebhookSignalResponseEmulator
+ * TorResult
  */
 @JsonPropertyOrder({
-  WebhookSignalResponseEmulator.JSON_PROPERTY_RESULT
+  TorResult.JSON_PROPERTY_RESULT
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class WebhookSignalResponseEmulator {
+public class TorResult {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public WebhookSignalResponseEmulator() {
+  public TorResult() {
   }
 
-  public WebhookSignalResponseEmulator result(Boolean result) {
+  public TorResult result(Boolean result) {
     this.result = result;
     return this;
   }
 
    /**
-   * Android specific emulator detection. There are 2 values: • &#x60;true&#x60; - Emulated environment detected (e.g. launch inside of AVD) • &#x60;false&#x60; - No signs of emulated environment detected or the client isn&#39;t Android. 
+   * &#x60;true&#x60; if the request IP address is a known tor exit node, &#x60;false&#x60; otherwise. 
    * @return result
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Android specific emulator detection. There are 2 values: • `true` - Emulated environment detected (e.g. launch inside of AVD) • `false` - No signs of emulated environment detected or the client isn't Android. ")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "`true` if the request IP address is a known tor exit node, `false` otherwise. ")
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getResult() {
     return result;
@@ -62,14 +62,14 @@ public class WebhookSignalResponseEmulator {
 
 
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setResult(Boolean result) {
     this.result = result;
   }
 
 
   /**
-   * Return true if this WebhookSignalResponseEmulator object is equal to o.
+   * Return true if this TorResult object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -79,8 +79,8 @@ public class WebhookSignalResponseEmulator {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WebhookSignalResponseEmulator webhookSignalResponseEmulator = (WebhookSignalResponseEmulator) o;
-    return Objects.equals(this.result, webhookSignalResponseEmulator.result);
+    TorResult torResult = (TorResult) o;
+    return Objects.equals(this.result, torResult.result);
   }
 
   @Override
@@ -91,7 +91,7 @@ public class WebhookSignalResponseEmulator {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class WebhookSignalResponseEmulator {\n");
+    sb.append("class TorResult {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();

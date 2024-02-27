@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fingerprint.model.ProductError;
-import com.fingerprint.model.SignalResponseRootAppsData;
+import com.fingerprint.model.RootAppsResult;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -40,7 +40,7 @@ import com.fingerprint.sdk.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SignalResponseRootApps {
   public static final String JSON_PROPERTY_DATA = "data";
-  private SignalResponseRootAppsData data;
+  private RootAppsResult data;
 
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
@@ -48,7 +48,7 @@ public class SignalResponseRootApps {
   public SignalResponseRootApps() {
   }
 
-  public SignalResponseRootApps data(SignalResponseRootAppsData data) {
+  public SignalResponseRootApps data(RootAppsResult data) {
     this.data = data;
     return this;
   }
@@ -62,14 +62,14 @@ public class SignalResponseRootApps {
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponseRootAppsData getData() {
+  public RootAppsResult getData() {
     return data;
   }
 
 
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(SignalResponseRootAppsData data) {
+  public void setData(RootAppsResult data) {
     this.data = data;
   }
 

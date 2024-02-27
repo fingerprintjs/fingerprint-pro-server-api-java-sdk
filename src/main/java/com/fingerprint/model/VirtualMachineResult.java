@@ -29,21 +29,20 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * SignalResponseVirtualMachineData
+ * VirtualMachineResult
  */
 @JsonPropertyOrder({
-  SignalResponseVirtualMachineData.JSON_PROPERTY_RESULT
+  VirtualMachineResult.JSON_PROPERTY_RESULT
 })
-@JsonTypeName("SignalResponseVirtualMachine_data")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class SignalResponseVirtualMachineData {
+public class VirtualMachineResult {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public SignalResponseVirtualMachineData() {
+  public VirtualMachineResult() {
   }
 
-  public SignalResponseVirtualMachineData result(Boolean result) {
+  public VirtualMachineResult result(Boolean result) {
     this.result = result;
     return this;
   }
@@ -52,10 +51,10 @@ public class SignalResponseVirtualMachineData {
    * &#x60;true&#x60; if the request came from a browser running inside a virtual machine (e.g. VMWare), &#x60;false&#x60; otherwise. 
    * @return result
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "`true` if the request came from a browser running inside a virtual machine (e.g. VMWare), `false` otherwise. ")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "`true` if the request came from a browser running inside a virtual machine (e.g. VMWare), `false` otherwise. ")
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getResult() {
     return result;
@@ -63,14 +62,14 @@ public class SignalResponseVirtualMachineData {
 
 
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setResult(Boolean result) {
     this.result = result;
   }
 
 
   /**
-   * Return true if this SignalResponseVirtualMachine_data object is equal to o.
+   * Return true if this VirtualMachineResult object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -80,8 +79,8 @@ public class SignalResponseVirtualMachineData {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SignalResponseVirtualMachineData signalResponseVirtualMachineData = (SignalResponseVirtualMachineData) o;
-    return Objects.equals(this.result, signalResponseVirtualMachineData.result);
+    VirtualMachineResult virtualMachineResult = (VirtualMachineResult) o;
+    return Objects.equals(this.result, virtualMachineResult.result);
   }
 
   @Override
@@ -92,7 +91,7 @@ public class SignalResponseVirtualMachineData {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SignalResponseVirtualMachineData {\n");
+    sb.append("class VirtualMachineResult {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();

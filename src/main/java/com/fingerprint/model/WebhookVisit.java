@@ -24,31 +24,27 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fingerprint.model.BotdDetectionResult;
 import com.fingerprint.model.BrowserDetails;
+import com.fingerprint.model.ClonedAppResult;
 import com.fingerprint.model.Confidence;
 import com.fingerprint.model.DeprecatedIPLocation;
 import com.fingerprint.model.EmulatorResult;
 import com.fingerprint.model.FactoryResetResult;
 import com.fingerprint.model.FridaResult;
 import com.fingerprint.model.HighActivityResult;
-import com.fingerprint.model.IPLocation;
 import com.fingerprint.model.IpBlockListResult;
 import com.fingerprint.model.IpInfoResult;
+import com.fingerprint.model.JailbrokenResult;
 import com.fingerprint.model.LocationSpoofingResult;
+import com.fingerprint.model.PrivacySettingsResult;
+import com.fingerprint.model.ProxyResult;
 import com.fingerprint.model.RawDeviceAttributesResultValue;
+import com.fingerprint.model.RootAppsResult;
 import com.fingerprint.model.SeenAt;
 import com.fingerprint.model.SuspectScoreResult;
 import com.fingerprint.model.TamperingResult;
+import com.fingerprint.model.TorResult;
+import com.fingerprint.model.VirtualMachineResult;
 import com.fingerprint.model.VpnResult;
-import com.fingerprint.model.WebhookSignalResponseClonedApp;
-import com.fingerprint.model.WebhookSignalResponseEmulator;
-import com.fingerprint.model.WebhookSignalResponseFactoryReset;
-import com.fingerprint.model.WebhookSignalResponseFrida;
-import com.fingerprint.model.WebhookSignalResponseJailbroken;
-import com.fingerprint.model.WebhookSignalResponsePrivacySettings;
-import com.fingerprint.model.WebhookSignalResponseProxy;
-import com.fingerprint.model.WebhookSignalResponseRootApps;
-import com.fingerprint.model.WebhookSignalResponseTor;
-import com.fingerprint.model.WebhookSignalResponseVirtualMachine;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.net.URI;
@@ -121,40 +117,40 @@ public class WebhookVisit {
   private Boolean incognito;
 
   public static final String JSON_PROPERTY_ROOT_APPS = "rootApps";
-  private WebhookSignalResponseRootApps rootApps;
+  private RootAppsResult rootApps;
 
   public static final String JSON_PROPERTY_EMULATOR = "emulator";
-  private WebhookSignalResponseEmulator emulator;
+  private EmulatorResult emulator;
 
   public static final String JSON_PROPERTY_CLONED_APP = "clonedApp";
-  private WebhookSignalResponseClonedApp clonedApp;
+  private ClonedAppResult clonedApp;
 
   public static final String JSON_PROPERTY_FACTORY_RESET = "factoryReset";
-  private WebhookSignalResponseFactoryReset factoryReset;
+  private FactoryResetResult factoryReset;
 
   public static final String JSON_PROPERTY_JAILBROKEN = "jailbroken";
-  private WebhookSignalResponseJailbroken jailbroken;
+  private JailbrokenResult jailbroken;
 
   public static final String JSON_PROPERTY_FRIDA = "frida";
-  private WebhookSignalResponseFrida frida;
+  private FridaResult frida;
 
   public static final String JSON_PROPERTY_IP_BLOCKLIST = "ipBlocklist";
   private IpBlockListResult ipBlocklist;
 
   public static final String JSON_PROPERTY_TOR = "tor";
-  private WebhookSignalResponseTor tor;
+  private TorResult tor;
 
   public static final String JSON_PROPERTY_PRIVACY_SETTINGS = "privacySettings";
-  private WebhookSignalResponsePrivacySettings privacySettings;
+  private PrivacySettingsResult privacySettings;
 
   public static final String JSON_PROPERTY_VIRTUAL_MACHINE = "virtualMachine";
-  private WebhookSignalResponseVirtualMachine virtualMachine;
+  private VirtualMachineResult virtualMachine;
 
   public static final String JSON_PROPERTY_VPN = "vpn";
   private VpnResult vpn;
 
   public static final String JSON_PROPERTY_PROXY = "proxy";
-  private WebhookSignalResponseProxy proxy;
+  private ProxyResult proxy;
 
   public static final String JSON_PROPERTY_TAMPERING = "tampering";
   private TamperingResult tampering;
@@ -369,7 +365,7 @@ public class WebhookVisit {
   }
 
 
-  public WebhookVisit rootApps(WebhookSignalResponseRootApps rootApps) {
+  public WebhookVisit rootApps(RootAppsResult rootApps) {
     this.rootApps = rootApps;
     return this;
   }
@@ -383,19 +379,19 @@ public class WebhookVisit {
   @JsonProperty(JSON_PROPERTY_ROOT_APPS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public WebhookSignalResponseRootApps getRootApps() {
+  public RootAppsResult getRootApps() {
     return rootApps;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ROOT_APPS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRootApps(WebhookSignalResponseRootApps rootApps) {
+  public void setRootApps(RootAppsResult rootApps) {
     this.rootApps = rootApps;
   }
 
 
-  public WebhookVisit emulator(WebhookSignalResponseEmulator emulator) {
+  public WebhookVisit emulator(EmulatorResult emulator) {
     this.emulator = emulator;
     return this;
   }
@@ -409,19 +405,19 @@ public class WebhookVisit {
   @JsonProperty(JSON_PROPERTY_EMULATOR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public WebhookSignalResponseEmulator getEmulator() {
+  public EmulatorResult getEmulator() {
     return emulator;
   }
 
 
   @JsonProperty(JSON_PROPERTY_EMULATOR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEmulator(WebhookSignalResponseEmulator emulator) {
+  public void setEmulator(EmulatorResult emulator) {
     this.emulator = emulator;
   }
 
 
-  public WebhookVisit clonedApp(WebhookSignalResponseClonedApp clonedApp) {
+  public WebhookVisit clonedApp(ClonedAppResult clonedApp) {
     this.clonedApp = clonedApp;
     return this;
   }
@@ -435,19 +431,19 @@ public class WebhookVisit {
   @JsonProperty(JSON_PROPERTY_CLONED_APP)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public WebhookSignalResponseClonedApp getClonedApp() {
+  public ClonedAppResult getClonedApp() {
     return clonedApp;
   }
 
 
   @JsonProperty(JSON_PROPERTY_CLONED_APP)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClonedApp(WebhookSignalResponseClonedApp clonedApp) {
+  public void setClonedApp(ClonedAppResult clonedApp) {
     this.clonedApp = clonedApp;
   }
 
 
-  public WebhookVisit factoryReset(WebhookSignalResponseFactoryReset factoryReset) {
+  public WebhookVisit factoryReset(FactoryResetResult factoryReset) {
     this.factoryReset = factoryReset;
     return this;
   }
@@ -461,19 +457,19 @@ public class WebhookVisit {
   @JsonProperty(JSON_PROPERTY_FACTORY_RESET)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public WebhookSignalResponseFactoryReset getFactoryReset() {
+  public FactoryResetResult getFactoryReset() {
     return factoryReset;
   }
 
 
   @JsonProperty(JSON_PROPERTY_FACTORY_RESET)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFactoryReset(WebhookSignalResponseFactoryReset factoryReset) {
+  public void setFactoryReset(FactoryResetResult factoryReset) {
     this.factoryReset = factoryReset;
   }
 
 
-  public WebhookVisit jailbroken(WebhookSignalResponseJailbroken jailbroken) {
+  public WebhookVisit jailbroken(JailbrokenResult jailbroken) {
     this.jailbroken = jailbroken;
     return this;
   }
@@ -487,19 +483,19 @@ public class WebhookVisit {
   @JsonProperty(JSON_PROPERTY_JAILBROKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public WebhookSignalResponseJailbroken getJailbroken() {
+  public JailbrokenResult getJailbroken() {
     return jailbroken;
   }
 
 
   @JsonProperty(JSON_PROPERTY_JAILBROKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setJailbroken(WebhookSignalResponseJailbroken jailbroken) {
+  public void setJailbroken(JailbrokenResult jailbroken) {
     this.jailbroken = jailbroken;
   }
 
 
-  public WebhookVisit frida(WebhookSignalResponseFrida frida) {
+  public WebhookVisit frida(FridaResult frida) {
     this.frida = frida;
     return this;
   }
@@ -513,14 +509,14 @@ public class WebhookVisit {
   @JsonProperty(JSON_PROPERTY_FRIDA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public WebhookSignalResponseFrida getFrida() {
+  public FridaResult getFrida() {
     return frida;
   }
 
 
   @JsonProperty(JSON_PROPERTY_FRIDA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFrida(WebhookSignalResponseFrida frida) {
+  public void setFrida(FridaResult frida) {
     this.frida = frida;
   }
 
@@ -551,7 +547,7 @@ public class WebhookVisit {
   }
 
 
-  public WebhookVisit tor(WebhookSignalResponseTor tor) {
+  public WebhookVisit tor(TorResult tor) {
     this.tor = tor;
     return this;
   }
@@ -565,19 +561,19 @@ public class WebhookVisit {
   @JsonProperty(JSON_PROPERTY_TOR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public WebhookSignalResponseTor getTor() {
+  public TorResult getTor() {
     return tor;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TOR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTor(WebhookSignalResponseTor tor) {
+  public void setTor(TorResult tor) {
     this.tor = tor;
   }
 
 
-  public WebhookVisit privacySettings(WebhookSignalResponsePrivacySettings privacySettings) {
+  public WebhookVisit privacySettings(PrivacySettingsResult privacySettings) {
     this.privacySettings = privacySettings;
     return this;
   }
@@ -591,19 +587,19 @@ public class WebhookVisit {
   @JsonProperty(JSON_PROPERTY_PRIVACY_SETTINGS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public WebhookSignalResponsePrivacySettings getPrivacySettings() {
+  public PrivacySettingsResult getPrivacySettings() {
     return privacySettings;
   }
 
 
   @JsonProperty(JSON_PROPERTY_PRIVACY_SETTINGS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPrivacySettings(WebhookSignalResponsePrivacySettings privacySettings) {
+  public void setPrivacySettings(PrivacySettingsResult privacySettings) {
     this.privacySettings = privacySettings;
   }
 
 
-  public WebhookVisit virtualMachine(WebhookSignalResponseVirtualMachine virtualMachine) {
+  public WebhookVisit virtualMachine(VirtualMachineResult virtualMachine) {
     this.virtualMachine = virtualMachine;
     return this;
   }
@@ -617,14 +613,14 @@ public class WebhookVisit {
   @JsonProperty(JSON_PROPERTY_VIRTUAL_MACHINE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public WebhookSignalResponseVirtualMachine getVirtualMachine() {
+  public VirtualMachineResult getVirtualMachine() {
     return virtualMachine;
   }
 
 
   @JsonProperty(JSON_PROPERTY_VIRTUAL_MACHINE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVirtualMachine(WebhookSignalResponseVirtualMachine virtualMachine) {
+  public void setVirtualMachine(VirtualMachineResult virtualMachine) {
     this.virtualMachine = virtualMachine;
   }
 
@@ -655,7 +651,7 @@ public class WebhookVisit {
   }
 
 
-  public WebhookVisit proxy(WebhookSignalResponseProxy proxy) {
+  public WebhookVisit proxy(ProxyResult proxy) {
     this.proxy = proxy;
     return this;
   }
@@ -669,14 +665,14 @@ public class WebhookVisit {
   @JsonProperty(JSON_PROPERTY_PROXY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public WebhookSignalResponseProxy getProxy() {
+  public ProxyResult getProxy() {
     return proxy;
   }
 
 
   @JsonProperty(JSON_PROPERTY_PROXY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProxy(WebhookSignalResponseProxy proxy) {
+  public void setProxy(ProxyResult proxy) {
     this.proxy = proxy;
   }
 

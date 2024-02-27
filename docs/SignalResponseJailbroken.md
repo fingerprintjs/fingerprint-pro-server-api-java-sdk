@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**SignalResponseJailbrokenData**](SignalResponseJailbrokenData.md) |  |  [optional] |
+|**data** | [**JailbrokenResult**](JailbrokenResult.md) |  |  [optional] |
 |**error** | [**ProductError**](ProductError.md) |  |  [optional] |
 
 

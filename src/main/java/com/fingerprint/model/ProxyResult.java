@@ -29,32 +29,32 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * WebhookSignalResponseVirtualMachine
+ * ProxyResult
  */
 @JsonPropertyOrder({
-  WebhookSignalResponseVirtualMachine.JSON_PROPERTY_RESULT
+  ProxyResult.JSON_PROPERTY_RESULT
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class WebhookSignalResponseVirtualMachine {
+public class ProxyResult {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
-  public WebhookSignalResponseVirtualMachine() {
+  public ProxyResult() {
   }
 
-  public WebhookSignalResponseVirtualMachine result(Boolean result) {
+  public ProxyResult result(Boolean result) {
     this.result = result;
     return this;
   }
 
    /**
-   * &#x60;true&#x60; if the request came from a browser running inside a virtual machine (e.g. VMWare), &#x60;false&#x60; otherwise. 
+   * &#x60;true&#x60; if the request IP address is used by a public proxy provider, &#x60;false&#x60; otherwise. 
    * @return result
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "`true` if the request came from a browser running inside a virtual machine (e.g. VMWare), `false` otherwise. ")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "`true` if the request IP address is used by a public proxy provider, `false` otherwise. ")
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getResult() {
     return result;
@@ -62,14 +62,14 @@ public class WebhookSignalResponseVirtualMachine {
 
 
   @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setResult(Boolean result) {
     this.result = result;
   }
 
 
   /**
-   * Return true if this WebhookSignalResponseVirtualMachine object is equal to o.
+   * Return true if this ProxyResult object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -79,8 +79,8 @@ public class WebhookSignalResponseVirtualMachine {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WebhookSignalResponseVirtualMachine webhookSignalResponseVirtualMachine = (WebhookSignalResponseVirtualMachine) o;
-    return Objects.equals(this.result, webhookSignalResponseVirtualMachine.result);
+    ProxyResult proxyResult = (ProxyResult) o;
+    return Objects.equals(this.result, proxyResult.result);
   }
 
   @Override
@@ -91,7 +91,7 @@ public class WebhookSignalResponseVirtualMachine {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class WebhookSignalResponseVirtualMachine {\n");
+    sb.append("class ProxyResult {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();

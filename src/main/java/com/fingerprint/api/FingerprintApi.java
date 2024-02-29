@@ -23,7 +23,7 @@ import java.util.Map;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FingerprintApi {
-  public static final String INTEGRATION_INFO = "fingerprint-pro-server-java-sdk/3.1.0";
+  public static final String INTEGRATION_INFO = "fingerprint-pro-server-java-sdk/4.0.0";
   private ApiClient apiClient;
 
   public FingerprintApi() {

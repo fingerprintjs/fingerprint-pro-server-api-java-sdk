@@ -1,3 +1,27 @@
+## [4.0.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v3.1.0...v4.0.0) (2024-02-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* change models for the most smart signals
+* make identification field `confidence` optional
+* deprecated `ipLocation` field uses `DeprecatedIpLocation` model
+
+### Features
+
+* add `linkedId` field to the `BotdResult` type ([044109e](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/044109e37b77b37c9be489e457af874f79bd8a31))
+* add `SuspectScore` smart signal support ([c66373e](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/c66373e5ff3ee194d1fea05329ab10f1c21544cf))
+* add missed errors structures ([efb8fd6](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/efb8fd65ceb210b0b9113f38ef99e20e731078c6))
+* fix `ipLocation` deprecation ([f61a78d](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/f61a78d61e69b8abaf3f92f0c8174bc857ec1c81))
+* make identification field `tag` required ([069d9c5](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/069d9c506311e1bd0bd835ba46a4809658b107ab))
+* update `originCountry` field to the `vpn` signal ([1a7451b](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/1a7451b872d2725b0fe16a788f3f665e70c2c10b))
+* use shared structures for webhooks and event ([69bfd84](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/69bfd84b6d834c9957a584d7e6b1151172fa1930))
+
+
+### Bug Fixes
+
+* make fields required according to real API response ([a94fd56](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/a94fd56417f5de340215f15eb0806006e157e4e6))
+
 ## [3.1.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v3.0.0...v3.1.0) (2024-02-14)
 
 

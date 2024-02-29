@@ -4,7 +4,6 @@ curl -o ./res/fingerprint-server-api.yaml https://fingerprintjs.github.io/finger
 
 examplesList=(
   'get_visits_200_limit_500.json'
-  'visits_403_error.json'
   'get_visits_429_too_many_requests_error.json'
   'get_event_200_extra_fields.json'
   'get_event_200.json'

@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**SignalResponseProxyData**](SignalResponseProxyData.md) |  |  [optional] |
+|**data** | [**ProxyResult**](ProxyResult.md) |  |  [optional] |
 |**error** | [**ProductError**](ProductError.md) |  |  [optional] |
 
 

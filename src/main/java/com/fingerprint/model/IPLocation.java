@@ -34,11 +34,8 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * This field is **deprecated** and will not return a result for **accounts created after December 18th, 2023**. Please use the [`ipInfo` Smart signal](https://dev.fingerprint.com/docs/smart-signals-overview#ip-geolocation) for geolocation information.
- * @deprecated
+ * IPLocation
  */
-@Deprecated
-@ApiModel(description = "This field is **deprecated** and will not return a result for **accounts created after December 18th, 2023**. Please use the [`ipInfo` Smart signal](https://dev.fingerprint.com/docs/smart-signals-overview#ip-geolocation) for geolocation information.")
 @JsonPropertyOrder({
   IPLocation.JSON_PROPERTY_ACCURACY_RADIUS,
   IPLocation.JSON_PROPERTY_LATITUDE,

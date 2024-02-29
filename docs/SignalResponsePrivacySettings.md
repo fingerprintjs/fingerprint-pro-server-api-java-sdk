@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**SignalResponsePrivacySettingsData**](SignalResponsePrivacySettingsData.md) |  |  [optional] |
+|**data** | [**PrivacySettingsResult**](PrivacySettingsResult.md) |  |  [optional] |
 |**error** | [**ProductError**](ProductError.md) |  |  [optional] |
 
 

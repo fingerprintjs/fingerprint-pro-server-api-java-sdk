@@ -40,6 +40,7 @@ import com.fingerprint.sdk.JSON;
   BotdResult.JSON_PROPERTY_URL,
   BotdResult.JSON_PROPERTY_USER_AGENT,
   BotdResult.JSON_PROPERTY_REQUEST_ID,
+  BotdResult.JSON_PROPERTY_LINKED_ID,
   BotdResult.JSON_PROPERTY_BOT
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
@@ -58,6 +59,9 @@ public class BotdResult {
 
   public static final String JSON_PROPERTY_REQUEST_ID = "requestId";
   private String requestId;
+
+  public static final String JSON_PROPERTY_LINKED_ID = "linkedId";
+  private String linkedId;
 
   public static final String JSON_PROPERTY_BOT = "bot";
   private BotdDetectionResult bot;
@@ -152,10 +156,10 @@ public class BotdResult {
    * Get userAgent
    * @return userAgent
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36", value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36", required = true, value = "")
   @JsonProperty(JSON_PROPERTY_USER_AGENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getUserAgent() {
     return userAgent;
@@ -163,7 +167,7 @@ public class BotdResult {
 
 
   @JsonProperty(JSON_PROPERTY_USER_AGENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setUserAgent(String userAgent) {
     this.userAgent = userAgent;
   }
@@ -178,10 +182,10 @@ public class BotdResult {
    * Get requestId
    * @return requestId
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "1681392853693.lRiBBD", value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "1681392853693.lRiBBD", required = true, value = "")
   @JsonProperty(JSON_PROPERTY_REQUEST_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getRequestId() {
     return requestId;
@@ -189,9 +193,35 @@ public class BotdResult {
 
 
   @JsonProperty(JSON_PROPERTY_REQUEST_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setRequestId(String requestId) {
     this.requestId = requestId;
+  }
+
+
+  public BotdResult linkedId(String linkedId) {
+    this.linkedId = linkedId;
+    return this;
+  }
+
+   /**
+   * Get linkedId
+   * @return linkedId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Automatic tests bot", value = "")
+  @JsonProperty(JSON_PROPERTY_LINKED_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getLinkedId() {
+    return linkedId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LINKED_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLinkedId(String linkedId) {
+    this.linkedId = linkedId;
   }
 
 
@@ -238,12 +268,13 @@ public class BotdResult {
         Objects.equals(this.url, botdResult.url) &&
         Objects.equals(this.userAgent, botdResult.userAgent) &&
         Objects.equals(this.requestId, botdResult.requestId) &&
+        Objects.equals(this.linkedId, botdResult.linkedId) &&
         Objects.equals(this.bot, botdResult.bot);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ip, time, url, userAgent, requestId, bot);
+    return Objects.hash(ip, time, url, userAgent, requestId, linkedId, bot);
   }
 
   @Override
@@ -255,6 +286,7 @@ public class BotdResult {
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    userAgent: ").append(toIndentedString(userAgent)).append("\n");
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
+    sb.append("    linkedId: ").append(toIndentedString(linkedId)).append("\n");
     sb.append("    bot: ").append(toIndentedString(bot)).append("\n");
     sb.append("}");
     return sb.toString();

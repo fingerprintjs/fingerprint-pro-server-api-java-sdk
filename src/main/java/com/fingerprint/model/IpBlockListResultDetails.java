@@ -56,10 +56,10 @@ public class IpBlockListResultDetails {
    * IP address was part of a known email spam attack (SMTP).
    * @return emailSpam
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "IP address was part of a known email spam attack (SMTP).")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "IP address was part of a known email spam attack (SMTP).")
   @JsonProperty(JSON_PROPERTY_EMAIL_SPAM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getEmailSpam() {
     return emailSpam;
@@ -67,7 +67,7 @@ public class IpBlockListResultDetails {
 
 
   @JsonProperty(JSON_PROPERTY_EMAIL_SPAM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setEmailSpam(Boolean emailSpam) {
     this.emailSpam = emailSpam;
   }
@@ -82,10 +82,10 @@ public class IpBlockListResultDetails {
    * IP address was part of a known network attack (SSH/HTTPS).
    * @return attackSource
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "IP address was part of a known network attack (SSH/HTTPS).")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "IP address was part of a known network attack (SSH/HTTPS).")
   @JsonProperty(JSON_PROPERTY_ATTACK_SOURCE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getAttackSource() {
     return attackSource;
@@ -93,7 +93,7 @@ public class IpBlockListResultDetails {
 
 
   @JsonProperty(JSON_PROPERTY_ATTACK_SOURCE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAttackSource(Boolean attackSource) {
     this.attackSource = attackSource;
   }

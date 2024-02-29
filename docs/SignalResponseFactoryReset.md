@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**SignalResponseFactoryResetData**](SignalResponseFactoryResetData.md) |  |  [optional] |
+|**data** | [**FactoryResetResult**](FactoryResetResult.md) |  |  [optional] |
 |**error** | [**ProductError**](ProductError.md) |  |  [optional] |
 
 

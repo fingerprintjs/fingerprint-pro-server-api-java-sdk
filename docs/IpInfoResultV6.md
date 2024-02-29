@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**address** | **String** |  |  [optional] |
-|**geolocation** | [**IPLocation**](IPLocation.md) |  |  [optional] |
+|**address** | **String** |  |  |
+|**geolocation** | [**IPLocation**](IPLocation.md) |  |  |
 |**asn** | [**ASN**](ASN.md) |  |  [optional] |
 |**datacenter** | [**DataCenter**](DataCenter.md) |  |  [optional] |
 

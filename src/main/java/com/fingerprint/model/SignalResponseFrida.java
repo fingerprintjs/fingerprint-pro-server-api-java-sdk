@@ -22,8 +22,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fingerprint.model.FridaResult;
 import com.fingerprint.model.ProductError;
-import com.fingerprint.model.SignalResponseFridaData;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -40,7 +40,7 @@ import com.fingerprint.sdk.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SignalResponseFrida {
   public static final String JSON_PROPERTY_DATA = "data";
-  private SignalResponseFridaData data;
+  private FridaResult data;
 
   public static final String JSON_PROPERTY_ERROR = "error";
   private ProductError error;
@@ -48,7 +48,7 @@ public class SignalResponseFrida {
   public SignalResponseFrida() {
   }
 
-  public SignalResponseFrida data(SignalResponseFridaData data) {
+  public SignalResponseFrida data(FridaResult data) {
     this.data = data;
     return this;
   }
@@ -62,14 +62,14 @@ public class SignalResponseFrida {
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SignalResponseFridaData getData() {
+  public FridaResult getData() {
     return data;
   }
 
 
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(SignalResponseFridaData data) {
+  public void setData(FridaResult data) {
     this.data = data;
   }
 

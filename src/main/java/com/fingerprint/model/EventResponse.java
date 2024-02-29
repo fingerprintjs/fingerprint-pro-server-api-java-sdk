@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fingerprint.model.ProductError;
 import com.fingerprint.model.ProductsResponse;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -34,12 +35,16 @@ import com.fingerprint.sdk.JSON;
  */
 @ApiModel(description = "Contains results from all activated products - Fingerprint Pro, Bot Detection, and others.")
 @JsonPropertyOrder({
-  EventResponse.JSON_PROPERTY_PRODUCTS
+  EventResponse.JSON_PROPERTY_PRODUCTS,
+  EventResponse.JSON_PROPERTY_ERROR
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class EventResponse {
   public static final String JSON_PROPERTY_PRODUCTS = "products";
   private ProductsResponse products;
+
+  public static final String JSON_PROPERTY_ERROR = "error";
+  private ProductError error;
 
   public EventResponse() {
   }
@@ -53,10 +58,10 @@ public class EventResponse {
    * Get products
    * @return products
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_PRODUCTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public ProductsResponse getProducts() {
     return products;
@@ -64,9 +69,35 @@ public class EventResponse {
 
 
   @JsonProperty(JSON_PROPERTY_PRODUCTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProducts(ProductsResponse products) {
     this.products = products;
+  }
+
+
+  public EventResponse error(ProductError error) {
+    this.error = error;
+    return this;
+  }
+
+   /**
+   * Get error
+   * @return error
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ProductError getError() {
+    return error;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setError(ProductError error) {
+    this.error = error;
   }
 
 
@@ -82,12 +113,13 @@ public class EventResponse {
       return false;
     }
     EventResponse eventResponse = (EventResponse) o;
-    return Objects.equals(this.products, eventResponse.products);
+    return Objects.equals(this.products, eventResponse.products) &&
+        Objects.equals(this.error, eventResponse.error);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(products);
+    return Objects.hash(products, error);
   }
 
   @Override
@@ -95,6 +127,7 @@ public class EventResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class EventResponse {\n");
     sb.append("    products: ").append(toIndentedString(products)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();
   }

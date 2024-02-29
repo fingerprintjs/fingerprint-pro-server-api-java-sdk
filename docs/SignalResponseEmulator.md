@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**SignalResponseEmulatorData**](SignalResponseEmulatorData.md) |  |  [optional] |
+|**data** | [**EmulatorResult**](EmulatorResult.md) |  |  [optional] |
 |**error** | [**ProductError**](ProductError.md) |  |  [optional] |
 
 

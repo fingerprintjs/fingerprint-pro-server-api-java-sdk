@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fingerprint.model.BrowserDetails;
 import com.fingerprint.model.Confidence;
-import com.fingerprint.model.IPLocation;
+import com.fingerprint.model.DeprecatedIPLocation;
 import com.fingerprint.model.SeenAt;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -70,7 +70,7 @@ public class ResponseVisits {
   private String ip;
 
   public static final String JSON_PROPERTY_IP_LOCATION = "ipLocation";
-  private IPLocation ipLocation;
+  private DeprecatedIPLocation ipLocation;
 
   public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
   private Long timestamp;
@@ -206,7 +206,7 @@ public class ResponseVisits {
   }
 
 
-  public ResponseVisits ipLocation(IPLocation ipLocation) {
+  public ResponseVisits ipLocation(DeprecatedIPLocation ipLocation) {
     this.ipLocation = ipLocation;
     return this;
   }
@@ -222,14 +222,14 @@ public class ResponseVisits {
   @JsonProperty(JSON_PROPERTY_IP_LOCATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public IPLocation getIpLocation() {
+  public DeprecatedIPLocation getIpLocation() {
     return ipLocation;
   }
 
 
   @JsonProperty(JSON_PROPERTY_IP_LOCATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIpLocation(IPLocation ipLocation) {
+  public void setIpLocation(DeprecatedIPLocation ipLocation) {
     this.ipLocation = ipLocation;
   }
 
@@ -292,11 +292,11 @@ public class ResponseVisits {
   }
 
    /**
-   * Page URL from which identification request was sent.
+   * Page URL from which the identification request was sent.
    * @return url
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "https://some.website/path?query=params", required = true, value = "Page URL from which identification request was sent.")
+  @ApiModelProperty(example = "https://some.website/path?query=params", required = true, value = "Page URL from which the identification request was sent.")
   @JsonProperty(JSON_PROPERTY_URL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -378,10 +378,10 @@ public class ResponseVisits {
    * Get confidence
    * @return confidence
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_CONFIDENCE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Confidence getConfidence() {
     return confidence;
@@ -389,7 +389,7 @@ public class ResponseVisits {
 
 
   @JsonProperty(JSON_PROPERTY_CONFIDENCE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setConfidence(Confidence confidence) {
     this.confidence = confidence;
   }

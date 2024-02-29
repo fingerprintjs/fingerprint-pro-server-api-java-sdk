@@ -38,6 +38,7 @@ import com.fingerprint.model.SignalResponsePrivacySettings;
 import com.fingerprint.model.SignalResponseProxy;
 import com.fingerprint.model.SignalResponseRawDeviceAttributes;
 import com.fingerprint.model.SignalResponseRootApps;
+import com.fingerprint.model.SignalResponseSuspectScore;
 import com.fingerprint.model.SignalResponseTampering;
 import com.fingerprint.model.SignalResponseTor;
 import com.fingerprint.model.SignalResponseVirtualMachine;
@@ -72,6 +73,7 @@ import com.fingerprint.sdk.JSON;
   ProductsResponse.JSON_PROPERTY_TAMPERING,
   ProductsResponse.JSON_PROPERTY_HIGH_ACTIVITY,
   ProductsResponse.JSON_PROPERTY_LOCATION_SPOOFING,
+  ProductsResponse.JSON_PROPERTY_SUSPECT_SCORE,
   ProductsResponse.JSON_PROPERTY_RAW_DEVICE_ATTRIBUTES
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
@@ -132,6 +134,9 @@ public class ProductsResponse {
 
   public static final String JSON_PROPERTY_LOCATION_SPOOFING = "locationSpoofing";
   private SignalResponseLocationSpoofing locationSpoofing;
+
+  public static final String JSON_PROPERTY_SUSPECT_SCORE = "suspectScore";
+  private SignalResponseSuspectScore suspectScore;
 
   public static final String JSON_PROPERTY_RAW_DEVICE_ATTRIBUTES = "rawDeviceAttributes";
   private SignalResponseRawDeviceAttributes rawDeviceAttributes;
@@ -633,6 +638,32 @@ public class ProductsResponse {
   }
 
 
+  public ProductsResponse suspectScore(SignalResponseSuspectScore suspectScore) {
+    this.suspectScore = suspectScore;
+    return this;
+  }
+
+   /**
+   * Get suspectScore
+   * @return suspectScore
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_SUSPECT_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SignalResponseSuspectScore getSuspectScore() {
+    return suspectScore;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SUSPECT_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSuspectScore(SignalResponseSuspectScore suspectScore) {
+    this.suspectScore = suspectScore;
+  }
+
+
   public ProductsResponse rawDeviceAttributes(SignalResponseRawDeviceAttributes rawDeviceAttributes) {
     this.rawDeviceAttributes = rawDeviceAttributes;
     return this;
@@ -690,12 +721,13 @@ public class ProductsResponse {
         Objects.equals(this.tampering, productsResponse.tampering) &&
         Objects.equals(this.highActivity, productsResponse.highActivity) &&
         Objects.equals(this.locationSpoofing, productsResponse.locationSpoofing) &&
+        Objects.equals(this.suspectScore, productsResponse.suspectScore) &&
         Objects.equals(this.rawDeviceAttributes, productsResponse.rawDeviceAttributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(identification, botd, ipInfo, incognito, rootApps, emulator, clonedApp, factoryReset, jailbroken, frida, ipBlocklist, tor, privacySettings, virtualMachine, vpn, proxy, tampering, highActivity, locationSpoofing, rawDeviceAttributes);
+    return Objects.hash(identification, botd, ipInfo, incognito, rootApps, emulator, clonedApp, factoryReset, jailbroken, frida, ipBlocklist, tor, privacySettings, virtualMachine, vpn, proxy, tampering, highActivity, locationSpoofing, suspectScore, rawDeviceAttributes);
   }
 
   @Override
@@ -721,6 +753,7 @@ public class ProductsResponse {
     sb.append("    tampering: ").append(toIndentedString(tampering)).append("\n");
     sb.append("    highActivity: ").append(toIndentedString(highActivity)).append("\n");
     sb.append("    locationSpoofing: ").append(toIndentedString(locationSpoofing)).append("\n");
+    sb.append("    suspectScore: ").append(toIndentedString(suspectScore)).append("\n");
     sb.append("    rawDeviceAttributes: ").append(toIndentedString(rawDeviceAttributes)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -8,7 +8,8 @@ Contains results from all activated products - Fingerprint Pro, Bot Detection, a
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**products** | [**ProductsResponse**](ProductsResponse.md) |  |  [optional] |
+|**products** | [**ProductsResponse**](ProductsResponse.md) |  |  |
+|**error** | [**ProductError**](ProductError.md) |  |  [optional] |
 
 
 

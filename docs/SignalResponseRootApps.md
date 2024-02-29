@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**SignalResponseRootAppsData**](SignalResponseRootAppsData.md) |  |  [optional] |
+|**data** | [**RootAppsResult**](RootAppsResult.md) |  |  [optional] |
 |**error** | [**ProductError**](ProductError.md) |  |  [optional] |
 
 

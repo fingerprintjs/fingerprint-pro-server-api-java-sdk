@@ -27,6 +27,7 @@ Contains all information about the request identified by `requestId`, depending 
 |**tampering** | [**SignalResponseTampering**](SignalResponseTampering.md) |  |  [optional] |
 |**highActivity** | [**SignalResponseHighActivity**](SignalResponseHighActivity.md) |  |  [optional] |
 |**locationSpoofing** | [**SignalResponseLocationSpoofing**](SignalResponseLocationSpoofing.md) |  |  [optional] |
+|**suspectScore** | [**SignalResponseSuspectScore**](SignalResponseSuspectScore.md) |  |  [optional] |
 |**rawDeviceAttributes** | [**SignalResponseRawDeviceAttributes**](SignalResponseRawDeviceAttributes.md) |  |  [optional] |
 
 

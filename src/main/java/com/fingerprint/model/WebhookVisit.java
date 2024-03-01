@@ -47,7 +47,6 @@ import com.fingerprint.model.VirtualMachineResult;
 import com.fingerprint.model.VpnResult;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -186,7 +185,7 @@ public class WebhookVisit {
   private OffsetDateTime time;
 
   public static final String JSON_PROPERTY_URL = "url";
-  private URI url;
+  private String url;
 
   public static final String JSON_PROPERTY_TAG = "tag";
   private Map<String, Object> tag = new HashMap<>();
@@ -973,7 +972,7 @@ public class WebhookVisit {
   }
 
 
-  public WebhookVisit url(URI url) {
+  public WebhookVisit url(String url) {
     this.url = url;
     return this;
   }
@@ -987,14 +986,14 @@ public class WebhookVisit {
   @JsonProperty(JSON_PROPERTY_URL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public URI getUrl() {
+  public String getUrl() {
     return url;
   }
 
 
   @JsonProperty(JSON_PROPERTY_URL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUrl(URI url) {
+  public void setUrl(String url) {
     this.url = url;
   }
 

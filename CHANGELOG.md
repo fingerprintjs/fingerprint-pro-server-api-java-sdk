@@ -1,3 +1,14 @@
+## [5.0.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v4.0.0...v5.0.0) (2024-03-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* change `url` field type from URI to String
+
+### Features
+
+* change `url` field format to String ([700fa96](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/700fa96e179be9f005466606887c8f8a6d832fc9))
+
 ## [4.0.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v3.1.0...v4.0.0) (2024-02-29)
 
 

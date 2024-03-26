@@ -34,6 +34,3 @@ jobs:
           APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
         env:
           HUSKY: 0
-
-      - name: Publish
-        run: ./gradlew publishToMavenLocal

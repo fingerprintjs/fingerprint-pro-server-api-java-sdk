@@ -26,7 +26,7 @@ jobs:
         with:          
           appId: ${{ vars.APP_ID }}
           language: java
-          java-version: 1.8
+          java-version: '8'
           prepare-command: |
             ./gradlew jar --no-daemon
             ./gradlew publishToMavenLocal

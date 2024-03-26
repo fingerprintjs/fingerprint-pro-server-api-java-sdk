@@ -29,9 +29,12 @@ jobs:
         run: yarn install --cwd=release
 
       - name: Release
-        run: ./release/node_modules/.bin/semantic-release --extends ./release/.releaserc.js
+        with:
+          appId: ${{ vars.APP_ID }}
+        run: ./release/node_modules/.bin/semantic-release --extends ./release/.releaserc.js        
+        secrets:
+          APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}
           HUSKY: 0
 
       - name: Publish

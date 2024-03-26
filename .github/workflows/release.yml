@@ -30,7 +30,6 @@ jobs:
           prepare-command: |
             ./gradlew jar --no-daemon
             ./gradlew publishToMavenLocal
-        run: ./release/node_modules/.bin/semantic-release --extends ./release/.releaserc.js        
         secrets:
           APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
         env:

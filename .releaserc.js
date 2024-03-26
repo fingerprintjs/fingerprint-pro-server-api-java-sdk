@@ -109,7 +109,8 @@ module.exports = {
         [
             "@semantic-release/exec",
             {
-                "prepareCmd": "bash ./scripts/generate.sh -v ${nextRelease.version}"
+                "prepareCmd": "bash ./scripts/generate.sh -v ${nextRelease.version}",
+                "publishCmd": "bash ./gradlew publishToMavenLocal"
             }
         ],
         [

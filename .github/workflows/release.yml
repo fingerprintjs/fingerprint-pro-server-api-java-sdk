@@ -27,9 +27,6 @@ jobs:
           appId: ${{ vars.APP_ID }}
           language: java
           java-version: '8'
-          prepare-command: |
-            ./gradlew jar --no-daemon
-            ./gradlew publishToMavenLocal
         secrets:
           APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
         env:

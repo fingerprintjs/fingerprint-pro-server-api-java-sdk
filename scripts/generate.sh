@@ -30,3 +30,5 @@ find ./docs -type f ! -name "DecryptionKey.md" ! -name "Sealed.md" -exec rm {} +
 java -jar ./bin/generator.jar generate -c config.yaml -g java --library jersey2 -i res/fingerprint-server-api.yaml --skip-validate-spec -o . -t template
 
 ./gradlew removeWrongDocumentationLinks
+
+./gradlew jar

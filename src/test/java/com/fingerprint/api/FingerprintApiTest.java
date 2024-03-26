@@ -34,6 +34,8 @@ public class FingerprintApiTest {
     private final String MOCK_REQUEST_IDENTIFICATION_MANY_REQUEST = "MOCK_REQUEST_IDENTIFICATION_MANY_REQUEST";
     private final String MOCK_VISITOR_ID = "AcxioeQKffpXF8iGQK3P";
     private final String MOCK_VISITOR_REQUEST_ID = "1655373780901.HhjRFX";
+    private final String MOCK_WEBHOOK_VISITOR_ID = "3HNey93AkBW6CRbxV6xP";
+    private final String MOCK_WEBHOOK_REQUEST_ID = "Px6VxbRC6WBkA39yeNH3";
 
 
     private InputStream getFileAsIOStream(final String fileName) {
@@ -218,6 +220,25 @@ public class FingerprintApiTest {
     public void getVisitsTest() throws ApiException {
         Response response = api.getVisits(MOCK_VISITOR_ID, MOCK_VISITOR_REQUEST_ID, null, 50, "1683900801733.Ogvu1j", null);
         assertEquals(response.getVisitorId(), MOCK_VISITOR_ID);
+    }
+
+    /**
+     * Webhook
+     * Check that webhook correctly deserializes the JSON payload to the WebhookVisit object.
+     *
+     * @throws Exception if the file reading or deserialization fails.
+     */
+    @Test
+    public void webhookTest() throws Exception {
+        ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        JsonNullableModule jnm = new JsonNullableModule();
+        mapper.registerModule(jnm);
+
+        WebhookVisit visit =  mapper.readValue(getFileAsIOStream("mocks/webhook.json"), WebhookVisit.class);
+
+        assert visit.getVisitorId().equals(MOCK_WEBHOOK_VISITOR_ID);
+        assert visit.getRequestId().equals(MOCK_WEBHOOK_REQUEST_ID);
     }
 
 }

@@ -55,6 +55,7 @@ ext {
     jakarta_annotation_version = "1.3.5"
     jersey_version = "2.42"
     junit_version = "5.10.2"
+    mockito_version = "3.12.4"
 }
 
 dependencies {
@@ -74,7 +75,7 @@ dependencies {
     implementation 'io.github.cdimascio:dotenv-java:2.1.0'
     testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_version"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_version"
-    testImplementation 'org.mockito:mockito-all:1.10.19'
+    testImplementation "org.mockito:mockito-core:$mockito_version"
 }
 
 test {

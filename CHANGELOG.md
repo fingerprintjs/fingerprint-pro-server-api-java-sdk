@@ -1,3 +1,10 @@
+## [5.1.0-develop.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v5.0.0...v5.1.0-develop.1) (2024-03-27)
+
+
+### Features
+
+* support java versions 17 and 21 ([6398cfc](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/6398cfc001cd59a188f867094fbaadf78e0881ce))
+
 ## [5.0.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v4.0.0...v5.0.0) (2024-03-04)
 
 

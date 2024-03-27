@@ -12,8 +12,8 @@
     <a href="https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/actions/workflows/release.yml"><img src="https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/actions/workflows/release.yml/badge.svg" alt="CI badge" /></a>
     <a href="https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/actions/workflows/test.yml"><img src="https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/actions/workflows/test.yml/badge.svg" alt="CI badge" /></a>
     <a href="https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/actions/workflows/functional.yml"><img src="https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/actions/workflows/functional.yml/badge.svg" alt="CI badge" /></a>
-    <a href="https://opensource.org/licenses/MIT" style="display: inline-block"><img src="https://img.shields.io/:license-mit-blue.svg?style=flat" alt="MIT License"/></a>
-    <a href="https://discord.gg/39EpE2neBg" style="display: inline-block"><img src="https://img.shields.io/discord/852099967190433792?style=logo&label=Discord&logo=Discord&logoColor=white" alt="Discord server"></a>
+    <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/:license-mit-blue.svg?style=flat"/></a>
+    <a href="https://discord.gg/39EpE2neBg"><img src="https://img.shields.io/discord/852099967190433792?style=logo&label=Discord&logo=Discord&logoColor=white" alt="Discord server"></a>
 </p>
 
 # Fingerprint Pro Server API Java SDK
@@ -56,7 +56,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.github.fingerprintjs</groupId>
   <artifactId>fingerprint-pro-server-api-java-sdk</artifactId>
-  <version>v5.0.0</version>
+  <version>vdev-5.1.0-1</version>
 </dependency>
 ```
 
@@ -70,7 +70,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.github.fingerprintjs:fingerprint-pro-server-api-java-sdk:v5.0.0"
+     implementation "com.github.fingerprintjs:fingerprint-pro-server-api-java-sdk:vdev-5.1.0-1"
   }
 ```
 
@@ -84,7 +84,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-- `target/fingerprint-pro-server-api-sdk-5.0.0.jar`
+- `target/fingerprint-pro-server-api-sdk-dev-5.1.0-1.jar`
 
 ## Usage
 

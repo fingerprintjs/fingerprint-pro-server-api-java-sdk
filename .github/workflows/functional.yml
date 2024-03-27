@@ -33,7 +33,7 @@ jobs:
           FPJS_REQUEST_ID: "${{ secrets.FPJS_REQUEST_ID }}"
 
 
-     report_status:
+    report_status:
       needs: functional_tests
       if: always()
       uses: fingerprintjs/dx-team-toolkit/.github/workflows/report-workflow-status.yml@v1

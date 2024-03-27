@@ -8,24 +8,12 @@
     </a>
 </p>
 <p align="center">
-    <a href="https://jitpack.io/#fingerprintjs/fingerprint-pro-server-api-java-sdk" style="display: inline-block">
-        <img src="https://jitpack.io/v/fingerprintjs/fingerprint-pro-server-api-java-sdk.svg" alt="Jitpack Release" />
-    </a>
-    <a href="https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/actions/workflows/release.yml" style="display: inline-block">
-        <img src="https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/actions/workflows/release.yml/badge.svg" alt="CI badge" />
-    </a>
-    <a href="https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/actions/workflows/test.yml" style="display: inline-block">
-        <img src="https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/actions/workflows/test.yml/badge.svg" alt="CI badge" />
-    </a>
-    <a href="https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/actions/workflows/functional.yml" style="display: inline-block">
-        <img src="https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/actions/workflows/functional.yml/badge.svg" alt="CI badge" />
-    </a>
-    <a href="https://opensource.org/licenses/MIT" style="display: inline-block">
-        <img src="https://img.shields.io/:license-mit-blue.svg?style=flat" alt="MIT License"/>
-    </a>
-    <a href="https://discord.gg/39EpE2neBg" style="display: inline-block">
-        <img src="https://img.shields.io/discord/852099967190433792?style=logo&label=Discord&logo=Discord&logoColor=white" alt="Discord server">
-    </a>
+    <a href="https://jitpack.io/#fingerprintjs/fingerprint-pro-server-api-java-sdk"><img src="https://jitpack.io/v/fingerprintjs/fingerprint-pro-server-api-java-sdk.svg" alt="Jitpack Release" /></a>
+    <a href="https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/actions/workflows/release.yml"><img src="https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/actions/workflows/release.yml/badge.svg" alt="CI badge" /></a>
+    <a href="https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/actions/workflows/test.yml"><img src="https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/actions/workflows/test.yml/badge.svg" alt="CI badge" /></a>
+    <a href="https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/actions/workflows/functional.yml"><img src="https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/actions/workflows/functional.yml/badge.svg" alt="CI badge" /></a>
+    <a href="https://opensource.org/licenses/MIT" style="display: inline-block"><img src="https://img.shields.io/:license-mit-blue.svg?style=flat" alt="MIT License"/></a>
+    <a href="https://discord.gg/39EpE2neBg" style="display: inline-block"><img src="https://img.shields.io/discord/852099967190433792?style=logo&label=Discord&logo=Discord&logoColor=white" alt="Discord server"></a>
 </p>
 
 # Fingerprint Pro Server API Java SDK

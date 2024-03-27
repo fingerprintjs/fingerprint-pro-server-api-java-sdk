@@ -13,6 +13,7 @@ jobs:
     with:          
       appId: ${{ vars.APP_ID }}
       language: java
+      language-version: '8'
       java-version: '8'
     secrets:
       APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}

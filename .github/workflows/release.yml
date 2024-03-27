@@ -8,25 +8,13 @@ on:
 
 jobs:
   release:
-    name: Release Version
-    runs-on: ubuntu-latest
-    environment: production
+    name: 'Build project, run CI checks and publish new release'
+    uses: fingerprintjs/dx-team-toolkit/.github/workflows/release-typescript-project.yml@v1
+    with:          
+      appId: ${{ vars.APP_ID }}
+      language: java
+      java-version: '8'
+    secrets:
+      APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-
-      - name: Install Yarn dependencies
-        run: yarn install --cwd=release
-
-      - name: Release
-        uses: fingerprintjs/dx-team-toolkit/.github/workflows/release-server-sdk.yml@v1
-        with:          
-          appId: ${{ vars.APP_ID }}
-          language: java
-          java-version: '8'
-        secrets:
-          APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
         

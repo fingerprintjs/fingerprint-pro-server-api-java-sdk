@@ -10,7 +10,7 @@ while getopts "v:" arg; do
   esac
 done
 
-# jar was downloaded from here https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.34/
+# jar was downloaded from here https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.54/
 
 if [[ $VERSION == *"develop"* ]]; then
   SANITIZED_VERSION=$(sed 's/-develop//g' <<< $VERSION)

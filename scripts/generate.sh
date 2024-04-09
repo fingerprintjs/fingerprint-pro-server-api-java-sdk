@@ -27,7 +27,7 @@ sed -i "s/^VERSION=.*/VERSION='$VERSION'/g" ./scripts/generate.sh
 rm -f README.md build.gradle settings.gradle gradle.properties ./src/main/java/com/fingerprint/model/*
 find ./docs -type f ! -name "DecryptionKey.md" ! -name "Sealed.md" -exec rm {} +
 
-java -jar ./bin/generator.jar generate -c config.yaml -g java --library jersey2 -i res/fingerprint-server-api.yaml --skip-validate-spec -o . -t template
+java -jar ./bin/generator.jar generate -c config.yaml -l java --library jersey2 -i res/fingerprint-server-api.yaml --skip-validate-spec -o . -t template
 
 ./gradlew removeWrongDocumentationLinks
 

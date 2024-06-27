@@ -22,7 +22,7 @@ repositories {
     mavenCentral()
 }
 
-apply plugin: 'java'
+apply plugin: 'java-library'
 apply plugin: 'maven-publish'
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
@@ -69,29 +69,29 @@ ext {
 dependencies {
     implementation "io.swagger:swagger-annotations:$swagger_annotations_version"
     implementation "com.google.code.findbugs:jsr305:3.0.2"
-    implementation "org.glassfish.jersey.core:jersey-client:$jersey_version"
-    implementation "org.glassfish.jersey.inject:jersey-hk2:$jersey_version"
-    implementation "org.glassfish.jersey.media:jersey-media-multipart:$jersey_version"
-    implementation "org.glassfish.jersey.media:jersey-media-json-jackson:$jersey_version"
-    implementation "org.glassfish.jersey.connectors:jersey-apache-connector:$jersey_version"
-    implementation "com.fasterxml.jackson.core:jackson-core:$jackson_version"
-    implementation "com.fasterxml.jackson.core:jackson-annotations:$jackson_version"
-    implementation "com.fasterxml.jackson.core:jackson-databind:$jackson_databind_version"
+    api "org.glassfish.jersey.core:jersey-client:$jersey_version"
+    api "org.glassfish.jersey.inject:jersey-hk2:$jersey_version"
+    api "org.glassfish.jersey.media:jersey-media-multipart:$jersey_version"
+    api "org.glassfish.jersey.media:jersey-media-json-jackson:$jersey_version"
+    api "org.glassfish.jersey.connectors:jersey-apache-connector:$jersey_version"
+    api "com.fasterxml.jackson.core:jackson-core:$jackson_version"
+    api "com.fasterxml.jackson.core:jackson-annotations:$jackson_version"
+    api "com.fasterxml.jackson.core:jackson-databind:$jackson_databind_version"
     {{#openApiNullable}}
-    implementation "org.openapitools:jackson-databind-nullable:$jackson_databind_nullable_version"
+    api "org.openapitools:jackson-databind-nullable:$jackson_databind_nullable_version"
     {{/openApiNullable}}
     {{#joda}}
-    implementation "com.fasterxml.jackson.datatype:jackson-datatype-joda:$jackson_version"
+    api "com.fasterxml.jackson.datatype:jackson-datatype-joda:$jackson_version"
     {{/joda}}
-    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version"
+    api "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version"
     {{#hasOAuthMethods}}
-    implementation "com.github.scribejava:scribejava-apis:$scribejava_apis_version"
+    api "com.github.scribejava:scribejava-apis:$scribejava_apis_version"
     {{/hasOAuthMethods}}
     {{#hasHttpSignatureMethods}}
-    implementation "org.tomitribe:tomitribe-http-signatures:$tomitribe_http_signatures_version"
+    api "org.tomitribe:tomitribe-http-signatures:$tomitribe_http_signatures_version"
     {{/hasHttpSignatureMethods}}
-    implementation "jakarta.annotation:jakarta.annotation-api:$jakarta_annotation_version"
-    implementation 'io.github.cdimascio:dotenv-java:2.1.0'
+    api "jakarta.annotation:jakarta.annotation-api:$jakarta_annotation_version"
+    api 'io.github.cdimascio:dotenv-java:2.1.0'
     testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_version"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_version"
     testImplementation "org.mockito:mockito-core:$mockito_version"
@@ -141,7 +141,6 @@ spotless {
 jar {
     exclude 'com/fingerprint/example/**'
     duplicatesStrategy 'exclude'
-    from configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
 }
 
 tasks.register('runFunctionalTests', JavaExec) {

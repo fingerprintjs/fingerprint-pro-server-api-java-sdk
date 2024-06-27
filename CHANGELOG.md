@@ -1,3 +1,10 @@
+## [5.1.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v5.1.0...v5.1.1) (2024-06-27)
+
+
+### Bug Fixes
+
+* assemble the jar as a library not a fat jar ([b2a33d4](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/b2a33d46228b9082435f05c9f67bd8586500b95b))
+
 ## [5.1.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v5.0.0...v5.1.0) (2024-03-27)
 
 

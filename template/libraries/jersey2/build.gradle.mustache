@@ -50,36 +50,22 @@ tasks.register('execute', JavaExec) {
    classpath = sourceSets.main.runtimeClasspath
 }
 
-ext {
-    swagger_annotations_version = "1.6.14"
-    jackson_version = "2.17.2"
-    jackson_databind_version = "2.17.2"
-    {{#openApiNullable}}
-    jackson_databind_nullable_version = "0.2.6"
-    {{/openApiNullable}}
-    jersey_version = "2.43"
-    junit_version = "5.10.2"
-    mockito_version = "3.12.4"
-}
-
 dependencies {
-    implementation "io.swagger:swagger-annotations:$swagger_annotations_version"
-    implementation "com.google.code.findbugs:jsr305:3.0.2"
-    api "org.glassfish.jersey.core:jersey-client:$jersey_version"
-    api "org.glassfish.jersey.inject:jersey-hk2:$jersey_version"
-    api "org.glassfish.jersey.media:jersey-media-multipart:$jersey_version"
-    api "org.glassfish.jersey.media:jersey-media-json-jackson:$jersey_version"
-    api "org.glassfish.jersey.connectors:jersey-apache-connector:$jersey_version"
-    api "com.fasterxml.jackson.core:jackson-core:$jackson_version"
-    api "com.fasterxml.jackson.core:jackson-annotations:$jackson_version"
-    api "com.fasterxml.jackson.core:jackson-databind:$jackson_databind_version"
-    {{#openApiNullable}}
-    api "org.openapitools:jackson-databind-nullable:$jackson_databind_nullable_version"
-    {{/openApiNullable}}
-    api "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version"
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_version"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_version"
-    testImplementation "org.mockito:mockito-core:$mockito_version"
+    implementation libs.swagger.annotations
+    implementation libs.jsr305
+    api libs.jersey.client
+    api libs.jersey.hk2
+    api libs.jersey.media.json
+    api libs.jersey.media.multipart
+    api libs.jersey.apache.connector
+    api libs.jackson.core
+    api libs.jackson.annotations
+    api libs.jackson.databind
+    api libs.jackson.databind.nullable
+    api libs.jackson.jsr310
+    testImplementation libs.junit.jupiter.api
+    testRuntimeOnly libs.junit.jupiter.engine
+    testImplementation libs.mockito
 }
 
 test {

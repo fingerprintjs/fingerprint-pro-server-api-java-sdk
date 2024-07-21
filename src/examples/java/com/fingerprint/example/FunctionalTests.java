@@ -7,12 +7,10 @@ import com.fingerprint.sdk.Configuration;
 
 public class FunctionalTests {
     public static void main(String... args) {
-        EnvUtil envUtil = new EnvUtil();
-
-        String FPJS_API_SECRET = envUtil.getEnv("FPJS_API_SECRET");
-        String FPJS_VISITOR_ID = envUtil.getEnv("FPJS_VISITOR_ID");
-        String FPJS_REQUEST_ID = envUtil.getEnv("FPJS_REQUEST_ID");
-        String FPJS_API_REGION = envUtil.getEnv("FPJS_API_REGION");
+        String FPJS_API_SECRET = System.getenv("FPJS_API_SECRET");
+        String FPJS_VISITOR_ID = System.getenv("FPJS_VISITOR_ID");
+        String FPJS_REQUEST_ID = System.getenv("FPJS_REQUEST_ID");
+        String FPJS_API_REGION = System.getenv("FPJS_API_REGION");
 
         // Create a new instance of the API client
         ApiClient client = Configuration.getDefaultApiClient(FPJS_API_SECRET, FPJS_API_REGION != null ? FPJS_API_REGION : "us");

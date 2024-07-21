@@ -67,9 +67,6 @@ dependencies {
 }
 
 test {
-    dependsOn jar
-    classpath = project.sourceSets.test.output + configurations.testRuntimeClasspath + files(jar.archiveFile)
-
     useJUnitPlatform()
 }
 

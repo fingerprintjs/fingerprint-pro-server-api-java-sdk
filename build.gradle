@@ -1,5 +1,4 @@
 apply plugin: 'org.openapi.generator'
-apply plugin: 'com.diffplug.spotless'
 
 group = 'com.fingerprint'
 version = '5.1.1'
@@ -12,8 +11,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.+'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-        classpath 'com.diffplug.spotless:spotless-plugin-gradle:6.3.0'
-        classpath "org.openapitools:openapi-generator-gradle-plugin:6.6.0"
+        classpath "org.openapitools:openapi-generator-gradle-plugin:6.2.0"
     }
 }
 
@@ -69,6 +67,9 @@ dependencies {
 }
 
 test {
+    dependsOn jar
+    classpath = project.sourceSets.test.output + configurations.testRuntimeClasspath + files(jar.archiveFile)
+
     useJUnitPlatform()
 }
 
@@ -86,30 +87,6 @@ sourceSets {
     }
 }
 
-// Use spotless plugin to automatically format code, remove unused import, etc
-// To apply changes directly to the file, run `gradlew spotlessApply`
-// Ref: https://github.com/diffplug/spotless/tree/main/plugin-gradle
-spotless {
-    // comment out below to run spotless as part of the `check` task
-    enforceCheck false
-
-    format 'misc', {
-        // define the files (e.g. '*.gradle', '*.md') to apply `misc` to
-        target '.gitignore'
-        // define the steps to apply to those files
-        trimTrailingWhitespace()
-        indentWithSpaces() // Takes an integer argument if you don't like 4
-        endWithNewline()
-    }
-    java {
-        // don't need to set target, it is inferred from java
-        // apply a specific flavor of google-java-format
-        googleJavaFormat('1.8').aosp().reflowLongStrings()
-        removeUnusedImports()
-        importOrder()
-    }
-}
-
 openApiGenerate {
     generatorName.set("java")
     inputSpec.set("$rootDir/res/fingerprint-server-api.yaml")
@@ -121,6 +98,7 @@ openApiGenerate {
     modelPackage.set("com.fingerprint.model")
     invokerPackage.set("com.fingerprint.sdk")
     library.set("jersey2")
+    templateDir.set("template")
 
     gitHost.set("github.com")
     gitRepoId.set("fingerprint-pro-server-api-java-sdk")
@@ -139,13 +117,7 @@ tasks.register('copyDocs', Copy) {
     into "docs"
     from layout.buildDirectory.dir("api/docs")
 }
-
-tasks.register('runFunctionalTests', JavaExec) {
-    group = "execute"
-    description = "Run the Functional Tests"
-    classpath = sourceSets.main.runtimeClasspath
-    main = 'com.fingerprint.example.FunctionalTests'
-}
+copyDocs.dependsOn tasks.openApiGenerate
 
 tasks.register('removeWrongDocumentationLinks') {
     doLast {
@@ -159,3 +131,4 @@ tasks.register('removeWrongDocumentationLinks') {
         }
     }
 }
+removeWrongDocumentationLinks.dependsOn tasks.copyDocs

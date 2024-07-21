@@ -7,14 +7,15 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**code** | [**CodeEnum**](#CodeEnum) | Error code: * `TooManyRequests` - The request is throttled.  |  |
+|**code** | [**CodeEnum**](#CodeEnum) | Error code: * &#x60;TooManyRequests&#x60; - The request is throttled.  |  |
 |**message** | **String** |  |  |
+
 
 
 ## Enum: CodeEnum
 
 | Name | Value |
-|---- | ----- |
+|---- | -----|
 | TOOMANYREQUESTS | &quot;TooManyRequests&quot; |
 
 

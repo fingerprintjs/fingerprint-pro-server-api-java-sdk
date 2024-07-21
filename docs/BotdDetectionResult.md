@@ -8,15 +8,14 @@ Stores bot detection result
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**result** | [**ResultEnum**](#ResultEnum) | Bot detection result:  * &#x60;notDetected&#x60; - the visitor is not a bot  * &#x60;good&#x60; - good bot detected, such as Google bot, Baidu Spider, AlexaBot and so on  * &#x60;bad&#x60; - bad bot detected, such as Selenium, Puppeteer, Playwright, headless browsers, and so on  |  |
+|**result** | [**ResultEnum**](#ResultEnum) | Bot detection result:  * `notDetected` - the visitor is not a bot  * `good` - good bot detected, such as Google bot, Baidu Spider, AlexaBot and so on  * `bad` - bad bot detected, such as Selenium, Puppeteer, Playwright, headless browsers, and so on  |  |
 |**type** | **String** |  |  [optional] |
-
 
 
 ## Enum: ResultEnum
 
 | Name | Value |
-|---- | -----|
+|---- | ----- |
 | NOTDETECTED | &quot;notDetected&quot; |
 | GOOD | &quot;good&quot; |
 | BAD | &quot;bad&quot; |

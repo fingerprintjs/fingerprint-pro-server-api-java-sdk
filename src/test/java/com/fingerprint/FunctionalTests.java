@@ -1,12 +1,16 @@
-package com.fingerprint.example;
+package com.fingerprint;
 
 import com.fingerprint.api.FingerprintApi;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
 import com.fingerprint.sdk.Configuration;
+import org.junit.jupiter.api.Test;
 
 public class FunctionalTests {
-    public static void main(String... args) {
+
+
+    @Test
+    public void test() {
         String FPJS_API_SECRET = System.getenv("FPJS_API_SECRET");
         String FPJS_VISITOR_ID = System.getenv("FPJS_VISITOR_ID");
         String FPJS_REQUEST_ID = System.getenv("FPJS_REQUEST_ID");

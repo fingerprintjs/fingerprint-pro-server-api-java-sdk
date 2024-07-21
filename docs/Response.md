@@ -10,8 +10,8 @@ Fields `lastTimestamp` and `paginationKey` added when `limit` or `before` parame
 |------------ | ------------- | ------------- | -------------|
 |**visitorId** | **String** |  |  |
 |**visits** | [**List&lt;ResponseVisits&gt;**](ResponseVisits.md) |  |  |
-|**lastTimestamp** | **Long** | ⚠️ Deprecated paging attribute, please use &#x60;paginationKey&#x60; instead. Timestamp of the last visit in the current page of results.  |  [optional] |
-|**paginationKey** | **String** | Request ID of the last visit in the current page of results. Use this value in the following request as the &#x60;paginationKey&#x60; parameter to get the next page of results. |  [optional] |
+|**lastTimestamp** | **Long** | ⚠️ Deprecated paging attribute, please use `paginationKey` instead. Timestamp of the last visit in the current page of results.  |  [optional] |
+|**paginationKey** | **String** | Request ID of the last visit in the current page of results. Use this value in the following request as the `paginationKey` parameter to get the next page of results. |  [optional] |
 
 
 

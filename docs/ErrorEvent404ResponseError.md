@@ -7,15 +7,14 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**code** | [**CodeEnum**](#CodeEnum) | Error code:  * &#x60;RequestNotFound&#x60; - The specified request ID was not found. It never existed, expired, or it has been deleted.  |  |
+|**code** | [**CodeEnum**](#CodeEnum) | Error code:  * `RequestNotFound` - The specified request ID was not found. It never existed, expired, or it has been deleted.  |  |
 |**message** | **String** |  |  |
-
 
 
 ## Enum: CodeEnum
 
 | Name | Value |
-|---- | -----|
+|---- | ----- |
 | REQUESTNOTFOUND | &quot;RequestNotFound&quot; |
 
 

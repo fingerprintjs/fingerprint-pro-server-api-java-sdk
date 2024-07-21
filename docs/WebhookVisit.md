@@ -30,7 +30,7 @@
 |**highActivity** | [**HighActivityResult**](HighActivityResult.md) |  |  [optional] |
 |**locationSpoofing** | [**LocationSpoofingResult**](LocationSpoofingResult.md) |  |  [optional] |
 |**suspectScore** | [**SuspectScoreResult**](SuspectScoreResult.md) |  |  [optional] |
-|**requestId** | **String** | Unique identifier of the user's identification request. |  |
+|**requestId** | **String** | Unique identifier of the user&#39;s identification request. |  |
 |**browserDetails** | [**BrowserDetails**](BrowserDetails.md) |  |  |
 |**ip** | **String** |  |  |
 |**ipLocation** | [**DeprecatedIPLocation**](DeprecatedIPLocation.md) |  |  [optional] |

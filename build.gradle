@@ -110,11 +110,6 @@ spotless {
     }
 }
 
-jar {
-    exclude 'com/fingerprint/example/**'
-    duplicatesStrategy 'exclude'
-}
-
 openApiGenerate {
     generatorName.set("java")
     inputSpec.set("$rootDir/res/fingerprint-server-api.yaml")
@@ -131,6 +126,18 @@ openApiGenerate {
     gitRepoId.set("fingerprint-pro-server-api-java-sdk")
     gitUserId.set("fingerprintjs")
     configOptions.put("hideGenerationTimestamp", "true")
+}
+compileJava.dependsOn tasks.openApiGenerate
+processResources.dependsOn tasks.openApiGenerate
+
+jar {
+    exclude 'com/fingerprint/example/**'
+    duplicatesStrategy 'exclude'
+}
+
+tasks.register('copyDocs', Copy) {
+    into "docs"
+    from layout.buildDirectory.dir("api/docs")
 }
 
 tasks.register('runFunctionalTests', JavaExec) {

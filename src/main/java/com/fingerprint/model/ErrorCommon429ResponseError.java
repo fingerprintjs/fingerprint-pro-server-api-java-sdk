@@ -29,19 +29,20 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * ErrorEvent404ResponseError
+ * ErrorCommon429ResponseError
  */
 @JsonPropertyOrder({
-  ErrorEvent404ResponseError.JSON_PROPERTY_CODE,
-  ErrorEvent404ResponseError.JSON_PROPERTY_MESSAGE
+  ErrorCommon429ResponseError.JSON_PROPERTY_CODE,
+  ErrorCommon429ResponseError.JSON_PROPERTY_MESSAGE
 })
+@JsonTypeName("ErrorCommon429Response_error")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ErrorEvent404ResponseError {
+public class ErrorCommon429ResponseError {
   /**
-   * Error code:  * `RequestNotFound` - The specified request ID was not found. It never existed, expired, or it has been deleted. 
+   * Error code: * `TooManyRequests` - The request is throttled. 
    */
   public enum CodeEnum {
-    REQUESTNOTFOUND("RequestNotFound");
+    TOOMANYREQUESTS("TooManyRequests");
 
     private String value;
 
@@ -76,20 +77,20 @@ public class ErrorEvent404ResponseError {
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
 
-  public ErrorEvent404ResponseError() {
+  public ErrorCommon429ResponseError() {
   }
 
-  public ErrorEvent404ResponseError code(CodeEnum code) {
+  public ErrorCommon429ResponseError code(CodeEnum code) {
     this.code = code;
     return this;
   }
 
    /**
-   * Error code:  * &#x60;RequestNotFound&#x60; - The specified request ID was not found. It never existed, expired, or it has been deleted. 
+   * Error code: * &#x60;TooManyRequests&#x60; - The request is throttled. 
    * @return code
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "RequestNotFound", required = true, value = "Error code:  * `RequestNotFound` - The specified request ID was not found. It never existed, expired, or it has been deleted. ")
+  @ApiModelProperty(example = "TooManyRequests", required = true, value = "Error code: * `TooManyRequests` - The request is throttled. ")
   @JsonProperty(JSON_PROPERTY_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -105,7 +106,7 @@ public class ErrorEvent404ResponseError {
   }
 
 
-  public ErrorEvent404ResponseError message(String message) {
+  public ErrorCommon429ResponseError message(String message) {
     this.message = message;
     return this;
   }
@@ -115,7 +116,7 @@ public class ErrorEvent404ResponseError {
    * @return message
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "request id is not found", required = true, value = "")
+  @ApiModelProperty(example = "request throttled", required = true, value = "")
   @JsonProperty(JSON_PROPERTY_MESSAGE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -132,7 +133,7 @@ public class ErrorEvent404ResponseError {
 
 
   /**
-   * Return true if this ErrorEvent404ResponseError object is equal to o.
+   * Return true if this ErrorCommon429Response_error object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -142,9 +143,9 @@ public class ErrorEvent404ResponseError {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ErrorEvent404ResponseError errorEvent404ResponseError = (ErrorEvent404ResponseError) o;
-    return Objects.equals(this.code, errorEvent404ResponseError.code) &&
-        Objects.equals(this.message, errorEvent404ResponseError.message);
+    ErrorCommon429ResponseError errorCommon429ResponseError = (ErrorCommon429ResponseError) o;
+    return Objects.equals(this.code, errorCommon429ResponseError.code) &&
+        Objects.equals(this.message, errorCommon429ResponseError.message);
   }
 
   @Override
@@ -155,7 +156,7 @@ public class ErrorEvent404ResponseError {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ErrorEvent404ResponseError {\n");
+    sb.append("class ErrorCommon429ResponseError {\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");

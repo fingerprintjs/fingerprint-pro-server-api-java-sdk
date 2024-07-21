@@ -140,14 +140,14 @@ public class FingerprintApiTest {
         assert response.getProducts().getIdentification().getError().getCode() == IdentificationError.CodeEnum.FAILED;
         assert response.getProducts().getBotd().getError().getCode() == ProductError.CodeEnum.FAILED;
         assert response.getProducts().getIpInfo().getError().getCode() == ProductError.CodeEnum.FAILED;
-        assert response.getProducts().getIncognito().getError().getCode() == ProductError.CodeEnum.FAILED;
+        assert response.getProducts().getIncognito().getError().getCode() == IdentificationError.CodeEnum.FAILED;
         assert response.getProducts().getRootApps().getError().getCode() == ProductError.CodeEnum.FAILED;
         assert response.getProducts().getEmulator().getError().getCode() == ProductError.CodeEnum.FAILED;
         assert response.getProducts().getIpBlocklist().getError().getCode() == ProductError.CodeEnum.FAILED;
         assert response.getProducts().getTor().getError().getCode() == ProductError.CodeEnum.FAILED;
         assert response.getProducts().getVpn().getError().getCode() == ProductError.CodeEnum.FAILED;
         assert response.getProducts().getProxy().getError().getCode() == ProductError.CodeEnum.FAILED;
-        assert response.getProducts().getTampering().getError().getCode() == ProductError.CodeEnum.FAILED;
+        assert response.getProducts().getTampering().getError().getCode() == IdentificationError.CodeEnum.FAILED;
         assert response.getProducts().getClonedApp().getError().getCode() == ProductError.CodeEnum.FAILED;
         assert response.getProducts().getFactoryReset().getError().getCode() == ProductError.CodeEnum.FAILED;
         assert response.getProducts().getJailbroken().getError().getCode() == ProductError.CodeEnum.FAILED;

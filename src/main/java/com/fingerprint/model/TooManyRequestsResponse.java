@@ -22,8 +22,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.IdentificationError;
-import com.fingerprint.model.IncognitoResult;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -31,77 +29,47 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * SignalResponseIncognito
+ * TooManyRequestsResponse
  */
 @JsonPropertyOrder({
-  SignalResponseIncognito.JSON_PROPERTY_DATA,
-  SignalResponseIncognito.JSON_PROPERTY_ERROR
+  TooManyRequestsResponse.JSON_PROPERTY_ERROR
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class SignalResponseIncognito {
-  public static final String JSON_PROPERTY_DATA = "data";
-  private IncognitoResult data;
-
+public class TooManyRequestsResponse {
   public static final String JSON_PROPERTY_ERROR = "error";
-  private IdentificationError error;
+  private String error;
 
-  public SignalResponseIncognito() {
+  public TooManyRequestsResponse() {
   }
 
-  public SignalResponseIncognito data(IncognitoResult data) {
-    this.data = data;
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_DATA)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public IncognitoResult getData() {
-    return data;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DATA)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(IncognitoResult data) {
-    this.data = data;
-  }
-
-
-  public SignalResponseIncognito error(IdentificationError error) {
+  public TooManyRequestsResponse error(String error) {
     this.error = error;
     return this;
   }
 
    /**
-   * Get error
+   * Error text.
    * @return error
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "request throttled", required = true, value = "Error text.")
   @JsonProperty(JSON_PROPERTY_ERROR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public IdentificationError getError() {
+  public String getError() {
     return error;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ERROR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(IdentificationError error) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setError(String error) {
     this.error = error;
   }
 
 
   /**
-   * Return true if this SignalResponseIncognito object is equal to o.
+   * Return true if this TooManyRequestsResponse object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -111,21 +79,19 @@ public class SignalResponseIncognito {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SignalResponseIncognito signalResponseIncognito = (SignalResponseIncognito) o;
-    return Objects.equals(this.data, signalResponseIncognito.data) &&
-        Objects.equals(this.error, signalResponseIncognito.error);
+    TooManyRequestsResponse tooManyRequestsResponse = (TooManyRequestsResponse) o;
+    return Objects.equals(this.error, tooManyRequestsResponse.error);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, error);
+    return Objects.hash(error);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SignalResponseIncognito {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("class TooManyRequestsResponse {\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();

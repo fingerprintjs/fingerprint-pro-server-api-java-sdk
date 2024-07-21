@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.ProductError;
+import com.fingerprint.model.IdentificationError;
 import com.fingerprint.model.RawDeviceAttributesResultValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -45,7 +45,7 @@ public class SignalResponseRawDeviceAttributes {
   private Map<String, RawDeviceAttributesResultValue> data = null;
 
   public static final String JSON_PROPERTY_ERROR = "error";
-  private ProductError error;
+  private IdentificationError error;
 
   public SignalResponseRawDeviceAttributes() {
   }
@@ -84,7 +84,7 @@ public class SignalResponseRawDeviceAttributes {
   }
 
 
-  public SignalResponseRawDeviceAttributes error(ProductError error) {
+  public SignalResponseRawDeviceAttributes error(IdentificationError error) {
     this.error = error;
     return this;
   }
@@ -98,14 +98,14 @@ public class SignalResponseRawDeviceAttributes {
   @JsonProperty(JSON_PROPERTY_ERROR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public ProductError getError() {
+  public IdentificationError getError() {
     return error;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ERROR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(ProductError error) {
+  public void setError(IdentificationError error) {
     this.error = error;
   }
 

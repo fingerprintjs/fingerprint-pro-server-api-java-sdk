@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fingerprint.model.Common403ErrorResponse;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -29,47 +30,47 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * ManyRequestsResponse
+ * ErrorCommon403Response
  */
 @JsonPropertyOrder({
-  ManyRequestsResponse.JSON_PROPERTY_ERROR
+  ErrorCommon403Response.JSON_PROPERTY_ERROR
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ManyRequestsResponse {
+public class ErrorCommon403Response {
   public static final String JSON_PROPERTY_ERROR = "error";
-  private String error;
+  private Common403ErrorResponse error;
 
-  public ManyRequestsResponse() {
+  public ErrorCommon403Response() {
   }
 
-  public ManyRequestsResponse error(String error) {
+  public ErrorCommon403Response error(Common403ErrorResponse error) {
     this.error = error;
     return this;
   }
 
    /**
-   * Error text.
+   * Get error
    * @return error
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "request throttled", required = true, value = "Error text.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_ERROR)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getError() {
+  public Common403ErrorResponse getError() {
     return error;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ERROR)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setError(String error) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setError(Common403ErrorResponse error) {
     this.error = error;
   }
 
 
   /**
-   * Return true if this ManyRequestsResponse object is equal to o.
+   * Return true if this ErrorCommon403Response object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -79,8 +80,8 @@ public class ManyRequestsResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ManyRequestsResponse manyRequestsResponse = (ManyRequestsResponse) o;
-    return Objects.equals(this.error, manyRequestsResponse.error);
+    ErrorCommon403Response errorCommon403Response = (ErrorCommon403Response) o;
+    return Objects.equals(this.error, errorCommon403Response.error);
   }
 
   @Override
@@ -91,7 +92,7 @@ public class ManyRequestsResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ManyRequestsResponse {\n");
+    sb.append("class ErrorCommon403Response {\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();

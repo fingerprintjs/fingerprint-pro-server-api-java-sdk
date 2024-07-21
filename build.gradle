@@ -24,8 +24,11 @@ repositories {
 
 apply plugin: 'java-library'
 apply plugin: 'maven-publish'
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+
+compileJava {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
 
 publishing {
     publications {

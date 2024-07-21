@@ -1,13 +1,13 @@
 
 
-# ErrorEvent403Response
+# TooManyRequestsResponse
 
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**error** | [**ErrorEvent403ResponseError**](ErrorEvent403ResponseError.md) |  |  [optional] |
+|**error** | **String** | Error text. |  |
 
 
 

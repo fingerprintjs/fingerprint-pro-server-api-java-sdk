@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.ErrorEvent403ResponseError;
+import com.fingerprint.model.ErrorVisitsDelete400ResponseError;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -30,20 +30,20 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * ErrorEvent403Response
+ * ErrorVisitsDelete400Response
  */
 @JsonPropertyOrder({
-  ErrorEvent403Response.JSON_PROPERTY_ERROR
+  ErrorVisitsDelete400Response.JSON_PROPERTY_ERROR
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ErrorEvent403Response {
+public class ErrorVisitsDelete400Response {
   public static final String JSON_PROPERTY_ERROR = "error";
-  private ErrorEvent403ResponseError error;
+  private ErrorVisitsDelete400ResponseError error;
 
-  public ErrorEvent403Response() {
+  public ErrorVisitsDelete400Response() {
   }
 
-  public ErrorEvent403Response error(ErrorEvent403ResponseError error) {
+  public ErrorVisitsDelete400Response error(ErrorVisitsDelete400ResponseError error) {
     this.error = error;
     return this;
   }
@@ -57,20 +57,20 @@ public class ErrorEvent403Response {
   @JsonProperty(JSON_PROPERTY_ERROR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public ErrorEvent403ResponseError getError() {
+  public ErrorVisitsDelete400ResponseError getError() {
     return error;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ERROR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(ErrorEvent403ResponseError error) {
+  public void setError(ErrorVisitsDelete400ResponseError error) {
     this.error = error;
   }
 
 
   /**
-   * Return true if this ErrorEvent403Response object is equal to o.
+   * Return true if this ErrorVisitsDelete400Response object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -80,8 +80,8 @@ public class ErrorEvent403Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ErrorEvent403Response errorEvent403Response = (ErrorEvent403Response) o;
-    return Objects.equals(this.error, errorEvent403Response.error);
+    ErrorVisitsDelete400Response errorVisitsDelete400Response = (ErrorVisitsDelete400Response) o;
+    return Objects.equals(this.error, errorVisitsDelete400Response.error);
   }
 
   @Override
@@ -92,7 +92,7 @@ public class ErrorEvent403Response {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ErrorEvent403Response {\n");
+    sb.append("class ErrorVisitsDelete400Response {\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();

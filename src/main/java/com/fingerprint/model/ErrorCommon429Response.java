@@ -22,8 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fingerprint.model.IdentificationError;
-import com.fingerprint.model.IncognitoResult;
+import com.fingerprint.model.ErrorCommon429ResponseError;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -31,50 +30,20 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * SignalResponseIncognito
+ * ErrorCommon429Response
  */
 @JsonPropertyOrder({
-  SignalResponseIncognito.JSON_PROPERTY_DATA,
-  SignalResponseIncognito.JSON_PROPERTY_ERROR
+  ErrorCommon429Response.JSON_PROPERTY_ERROR
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class SignalResponseIncognito {
-  public static final String JSON_PROPERTY_DATA = "data";
-  private IncognitoResult data;
-
+public class ErrorCommon429Response {
   public static final String JSON_PROPERTY_ERROR = "error";
-  private IdentificationError error;
+  private ErrorCommon429ResponseError error;
 
-  public SignalResponseIncognito() {
+  public ErrorCommon429Response() {
   }
 
-  public SignalResponseIncognito data(IncognitoResult data) {
-    this.data = data;
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_DATA)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public IncognitoResult getData() {
-    return data;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DATA)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(IncognitoResult data) {
-    this.data = data;
-  }
-
-
-  public SignalResponseIncognito error(IdentificationError error) {
+  public ErrorCommon429Response error(ErrorCommon429ResponseError error) {
     this.error = error;
     return this;
   }
@@ -88,20 +57,20 @@ public class SignalResponseIncognito {
   @JsonProperty(JSON_PROPERTY_ERROR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public IdentificationError getError() {
+  public ErrorCommon429ResponseError getError() {
     return error;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ERROR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(IdentificationError error) {
+  public void setError(ErrorCommon429ResponseError error) {
     this.error = error;
   }
 
 
   /**
-   * Return true if this SignalResponseIncognito object is equal to o.
+   * Return true if this ErrorCommon429Response object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -111,21 +80,19 @@ public class SignalResponseIncognito {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SignalResponseIncognito signalResponseIncognito = (SignalResponseIncognito) o;
-    return Objects.equals(this.data, signalResponseIncognito.data) &&
-        Objects.equals(this.error, signalResponseIncognito.error);
+    ErrorCommon429Response errorCommon429Response = (ErrorCommon429Response) o;
+    return Objects.equals(this.error, errorCommon429Response.error);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, error);
+    return Objects.hash(error);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SignalResponseIncognito {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("class ErrorCommon429Response {\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -32,12 +32,16 @@ import com.fingerprint.sdk.JSON;
  * Confidence
  */
 @JsonPropertyOrder({
-  Confidence.JSON_PROPERTY_SCORE
+  Confidence.JSON_PROPERTY_SCORE,
+  Confidence.JSON_PROPERTY_REVISION
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Confidence {
   public static final String JSON_PROPERTY_SCORE = "score";
   private Float score;
+
+  public static final String JSON_PROPERTY_REVISION = "revision";
+  private String revision;
 
   public Confidence() {
   }
@@ -70,6 +74,32 @@ public class Confidence {
   }
 
 
+  public Confidence revision(String revision) {
+    this.revision = revision;
+    return this;
+  }
+
+   /**
+   * The revision name of the method used to calculate the Confidence score. This field is only present for customers who opted in to an alternative calculation method.
+   * @return revision
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The revision name of the method used to calculate the Confidence score. This field is only present for customers who opted in to an alternative calculation method.")
+  @JsonProperty(JSON_PROPERTY_REVISION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getRevision() {
+    return revision;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_REVISION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRevision(String revision) {
+    this.revision = revision;
+  }
+
+
   /**
    * Return true if this Confidence object is equal to o.
    */
@@ -82,12 +112,13 @@ public class Confidence {
       return false;
     }
     Confidence confidence = (Confidence) o;
-    return Objects.equals(this.score, confidence.score);
+    return Objects.equals(this.score, confidence.score) &&
+        Objects.equals(this.revision, confidence.revision);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(score);
+    return Objects.hash(score, revision);
   }
 
   @Override
@@ -95,6 +126,7 @@ public class Confidence {
     StringBuilder sb = new StringBuilder();
     sb.append("class Confidence {\n");
     sb.append("    score: ").append(toIndentedString(score)).append("\n");
+    sb.append("    revision: ").append(toIndentedString(revision)).append("\n");
     sb.append("}");
     return sb.toString();
   }

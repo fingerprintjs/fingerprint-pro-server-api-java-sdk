@@ -7,10 +7,8 @@ import java.util.Base64;
 
 public class SealedResults {
     public static void main(String... args) throws Exception {
-        EnvUtil envUtil = new EnvUtil();
-
-        String SEALED_RESULT = envUtil.getEnv("BASE64_SEALED_RESULT");
-        String SEALED_KEY = envUtil.getEnv("BASE64_KEY");
+        String SEALED_RESULT = System.getenv("BASE64_SEALED_RESULT");
+        String SEALED_KEY = System.getenv("BASE64_KEY");
 
         final EventResponse event = Sealed.unsealEventResponse(
                 Base64.getDecoder().decode(SEALED_RESULT),

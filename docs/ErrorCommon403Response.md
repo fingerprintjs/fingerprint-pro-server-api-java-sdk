@@ -1,13 +1,13 @@
 
 
-# ManyRequestsResponse
+# ErrorCommon403Response
 
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**error** | **String** | Error text. |  |
+|**error** | [**Common403ErrorResponse**](Common403ErrorResponse.md) |  |  [optional] |
 
 
 

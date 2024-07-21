@@ -29,16 +29,16 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * ErrorEvent403ResponseError
+ * Common403ErrorResponse
  */
 @JsonPropertyOrder({
-  ErrorEvent403ResponseError.JSON_PROPERTY_CODE,
-  ErrorEvent403ResponseError.JSON_PROPERTY_MESSAGE
+  Common403ErrorResponse.JSON_PROPERTY_CODE,
+  Common403ErrorResponse.JSON_PROPERTY_MESSAGE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ErrorEvent403ResponseError {
+public class Common403ErrorResponse {
   /**
-   * Error code:  * `TokenRequired` - `Auth-API-Key` header is missing or empty  * `TokenNotFound` - subscription not found for specified secret key  * `SubscriptionNotActive` - subscription is not active  * `WrongRegion` - server and subscription region differ 
+   * Error code:  * `TokenRequired` - `Auth-API-Key` header is missing or empty  * `TokenNotFound` - No Fingerprint application found for specified secret key  * `SubscriptionNotActive` - Fingerprint application is not active  * `WrongRegion` - server and application region differ  * `FeatureNotEnabled` - this feature (for example, Delete API) is not enabled for your application 
    */
   public enum CodeEnum {
     TOKENREQUIRED("TokenRequired"),
@@ -47,7 +47,9 @@ public class ErrorEvent403ResponseError {
     
     SUBSCRIPTIONNOTACTIVE("SubscriptionNotActive"),
     
-    WRONGREGION("WrongRegion");
+    WRONGREGION("WrongRegion"),
+    
+    FEATURENOTENABLED("FeatureNotEnabled");
 
     private String value;
 
@@ -82,20 +84,20 @@ public class ErrorEvent403ResponseError {
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
 
-  public ErrorEvent403ResponseError() {
+  public Common403ErrorResponse() {
   }
 
-  public ErrorEvent403ResponseError code(CodeEnum code) {
+  public Common403ErrorResponse code(CodeEnum code) {
     this.code = code;
     return this;
   }
 
    /**
-   * Error code:  * &#x60;TokenRequired&#x60; - &#x60;Auth-API-Key&#x60; header is missing or empty  * &#x60;TokenNotFound&#x60; - subscription not found for specified secret key  * &#x60;SubscriptionNotActive&#x60; - subscription is not active  * &#x60;WrongRegion&#x60; - server and subscription region differ 
+   * Error code:  * &#x60;TokenRequired&#x60; - &#x60;Auth-API-Key&#x60; header is missing or empty  * &#x60;TokenNotFound&#x60; - No Fingerprint application found for specified secret key  * &#x60;SubscriptionNotActive&#x60; - Fingerprint application is not active  * &#x60;WrongRegion&#x60; - server and application region differ  * &#x60;FeatureNotEnabled&#x60; - this feature (for example, Delete API) is not enabled for your application 
    * @return code
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "TokenRequired", required = true, value = "Error code:  * `TokenRequired` - `Auth-API-Key` header is missing or empty  * `TokenNotFound` - subscription not found for specified secret key  * `SubscriptionNotActive` - subscription is not active  * `WrongRegion` - server and subscription region differ ")
+  @ApiModelProperty(example = "TokenRequired", required = true, value = "Error code:  * `TokenRequired` - `Auth-API-Key` header is missing or empty  * `TokenNotFound` - No Fingerprint application found for specified secret key  * `SubscriptionNotActive` - Fingerprint application is not active  * `WrongRegion` - server and application region differ  * `FeatureNotEnabled` - this feature (for example, Delete API) is not enabled for your application ")
   @JsonProperty(JSON_PROPERTY_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -111,7 +113,7 @@ public class ErrorEvent403ResponseError {
   }
 
 
-  public ErrorEvent403ResponseError message(String message) {
+  public Common403ErrorResponse message(String message) {
     this.message = message;
     return this;
   }
@@ -138,7 +140,7 @@ public class ErrorEvent403ResponseError {
 
 
   /**
-   * Return true if this ErrorEvent403ResponseError object is equal to o.
+   * Return true if this Common403ErrorResponse object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -148,9 +150,9 @@ public class ErrorEvent403ResponseError {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ErrorEvent403ResponseError errorEvent403ResponseError = (ErrorEvent403ResponseError) o;
-    return Objects.equals(this.code, errorEvent403ResponseError.code) &&
-        Objects.equals(this.message, errorEvent403ResponseError.message);
+    Common403ErrorResponse common403ErrorResponse = (Common403ErrorResponse) o;
+    return Objects.equals(this.code, common403ErrorResponse.code) &&
+        Objects.equals(this.message, common403ErrorResponse.message);
   }
 
   @Override
@@ -161,7 +163,7 @@ public class ErrorEvent403ResponseError {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ErrorEvent403ResponseError {\n");
+    sb.append("class Common403ErrorResponse {\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");

@@ -29,19 +29,19 @@ import com.fingerprint.sdk.JSON;
 
 
 /**
- * ErrorEvent404ResponseError
+ * ErrorVisitsDelete404ResponseError
  */
 @JsonPropertyOrder({
-  ErrorEvent404ResponseError.JSON_PROPERTY_CODE,
-  ErrorEvent404ResponseError.JSON_PROPERTY_MESSAGE
+  ErrorVisitsDelete404ResponseError.JSON_PROPERTY_CODE,
+  ErrorVisitsDelete404ResponseError.JSON_PROPERTY_MESSAGE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ErrorEvent404ResponseError {
+public class ErrorVisitsDelete404ResponseError {
   /**
-   * Error code:  * `RequestNotFound` - The specified request ID was not found. It never existed, expired, or it has been deleted. 
+   * Error code: * `VisitorNotFound` - The specified visitor ID was not found. It never existed or it may have already been deleted. 
    */
   public enum CodeEnum {
-    REQUESTNOTFOUND("RequestNotFound");
+    VISITORNOTFOUND("VisitorNotFound");
 
     private String value;
 
@@ -76,20 +76,20 @@ public class ErrorEvent404ResponseError {
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
 
-  public ErrorEvent404ResponseError() {
+  public ErrorVisitsDelete404ResponseError() {
   }
 
-  public ErrorEvent404ResponseError code(CodeEnum code) {
+  public ErrorVisitsDelete404ResponseError code(CodeEnum code) {
     this.code = code;
     return this;
   }
 
    /**
-   * Error code:  * &#x60;RequestNotFound&#x60; - The specified request ID was not found. It never existed, expired, or it has been deleted. 
+   * Error code: * &#x60;VisitorNotFound&#x60; - The specified visitor ID was not found. It never existed or it may have already been deleted. 
    * @return code
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "RequestNotFound", required = true, value = "Error code:  * `RequestNotFound` - The specified request ID was not found. It never existed, expired, or it has been deleted. ")
+  @ApiModelProperty(example = "VisitorNotFound", required = true, value = "Error code: * `VisitorNotFound` - The specified visitor ID was not found. It never existed or it may have already been deleted. ")
   @JsonProperty(JSON_PROPERTY_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -105,7 +105,7 @@ public class ErrorEvent404ResponseError {
   }
 
 
-  public ErrorEvent404ResponseError message(String message) {
+  public ErrorVisitsDelete404ResponseError message(String message) {
     this.message = message;
     return this;
   }
@@ -115,7 +115,7 @@ public class ErrorEvent404ResponseError {
    * @return message
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "request id is not found", required = true, value = "")
+  @ApiModelProperty(example = "visitor not found", required = true, value = "")
   @JsonProperty(JSON_PROPERTY_MESSAGE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -132,7 +132,7 @@ public class ErrorEvent404ResponseError {
 
 
   /**
-   * Return true if this ErrorEvent404ResponseError object is equal to o.
+   * Return true if this ErrorVisitsDelete404ResponseError object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -142,9 +142,9 @@ public class ErrorEvent404ResponseError {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ErrorEvent404ResponseError errorEvent404ResponseError = (ErrorEvent404ResponseError) o;
-    return Objects.equals(this.code, errorEvent404ResponseError.code) &&
-        Objects.equals(this.message, errorEvent404ResponseError.message);
+    ErrorVisitsDelete404ResponseError errorVisitsDelete404ResponseError = (ErrorVisitsDelete404ResponseError) o;
+    return Objects.equals(this.code, errorVisitsDelete404ResponseError.code) &&
+        Objects.equals(this.message, errorVisitsDelete404ResponseError.message);
   }
 
   @Override
@@ -155,7 +155,7 @@ public class ErrorEvent404ResponseError {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ErrorEvent404ResponseError {\n");
+    sb.append("class ErrorVisitsDelete404ResponseError {\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");

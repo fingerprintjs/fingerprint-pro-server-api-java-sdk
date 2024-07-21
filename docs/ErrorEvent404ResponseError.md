@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**code** | [**CodeEnum**](#CodeEnum) | Error code:  * `RequestNotFound` - request not found for specified id  |  |
+|**code** | [**CodeEnum**](#CodeEnum) | Error code:  * `RequestNotFound` - The specified request ID was not found. It never existed, expired, or it has been deleted.  |  |
 |**message** | **String** |  |  |
 
 

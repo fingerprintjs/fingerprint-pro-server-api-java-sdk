@@ -34,7 +34,8 @@ import com.fingerprint.sdk.JSON;
 @JsonPropertyOrder({
   VpnResultMethods.JSON_PROPERTY_TIMEZONE_MISMATCH,
   VpnResultMethods.JSON_PROPERTY_PUBLIC_V_P_N,
-  VpnResultMethods.JSON_PROPERTY_AUXILIARY_MOBILE
+  VpnResultMethods.JSON_PROPERTY_AUXILIARY_MOBILE,
+  VpnResultMethods.JSON_PROPERTY_OS_MISMATCH
 })
 @JsonTypeName("VpnResult_methods")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
@@ -48,6 +49,9 @@ public class VpnResultMethods {
   public static final String JSON_PROPERTY_AUXILIARY_MOBILE = "auxiliaryMobile";
   private Boolean auxiliaryMobile;
 
+  public static final String JSON_PROPERTY_OS_MISMATCH = "osMismatch";
+  private Boolean osMismatch;
+
   public VpnResultMethods() {
   }
 
@@ -57,11 +61,11 @@ public class VpnResultMethods {
   }
 
    /**
-   * User&#39;s browser timezone doesn&#39;t match the timezone from which the request was originally made.
+   * The browser timezone doesn&#39;t match the timezone inferred from the request IP address.
    * @return timezoneMismatch
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "false", required = true, value = "User's browser timezone doesn't match the timezone from which the request was originally made.")
+  @ApiModelProperty(example = "false", required = true, value = "The browser timezone doesn't match the timezone inferred from the request IP address.")
   @JsonProperty(JSON_PROPERTY_TIMEZONE_MISMATCH)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -129,6 +133,32 @@ public class VpnResultMethods {
   }
 
 
+  public VpnResultMethods osMismatch(Boolean osMismatch) {
+    this.osMismatch = osMismatch;
+    return this;
+  }
+
+   /**
+   * The browser runs on a different operating system than the operating system inferred from the  request network signature.
+   * @return osMismatch
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "false", required = true, value = "The browser runs on a different operating system than the operating system inferred from the  request network signature.")
+  @JsonProperty(JSON_PROPERTY_OS_MISMATCH)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Boolean getOsMismatch() {
+    return osMismatch;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_OS_MISMATCH)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setOsMismatch(Boolean osMismatch) {
+    this.osMismatch = osMismatch;
+  }
+
+
   /**
    * Return true if this VpnResult_methods object is equal to o.
    */
@@ -143,12 +173,13 @@ public class VpnResultMethods {
     VpnResultMethods vpnResultMethods = (VpnResultMethods) o;
     return Objects.equals(this.timezoneMismatch, vpnResultMethods.timezoneMismatch) &&
         Objects.equals(this.publicVPN, vpnResultMethods.publicVPN) &&
-        Objects.equals(this.auxiliaryMobile, vpnResultMethods.auxiliaryMobile);
+        Objects.equals(this.auxiliaryMobile, vpnResultMethods.auxiliaryMobile) &&
+        Objects.equals(this.osMismatch, vpnResultMethods.osMismatch);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(timezoneMismatch, publicVPN, auxiliaryMobile);
+    return Objects.hash(timezoneMismatch, publicVPN, auxiliaryMobile, osMismatch);
   }
 
   @Override
@@ -158,6 +189,7 @@ public class VpnResultMethods {
     sb.append("    timezoneMismatch: ").append(toIndentedString(timezoneMismatch)).append("\n");
     sb.append("    publicVPN: ").append(toIndentedString(publicVPN)).append("\n");
     sb.append("    auxiliaryMobile: ").append(toIndentedString(auxiliaryMobile)).append("\n");
+    sb.append("    osMismatch: ").append(toIndentedString(osMismatch)).append("\n");
     sb.append("}");
     return sb.toString();
   }

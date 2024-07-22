@@ -1,7 +1,5 @@
 import org.gradle.internal.declarativedsl.parsing.main
 import org.gradle.jvm.tasks.Jar
-import org.openapitools.codegen.languages.OpenAPIGenerator
-import java.nio.file.Files
 
 val projectVersion: String by project
 
@@ -98,12 +96,6 @@ openApiGenerate {
     gitRepoId.set("fingerprint-pro-server-api-java-sdk")
     gitUserId.set("fingerprintjs")
     configOptions.put("hideGenerationTimestamp", "true")
-}
-
-
-tasks.withType<Jar>{
-    exclude("com/fingerprint/example/**")
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 tasks.register<Copy>("copyDocs") {

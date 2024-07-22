@@ -1,5 +1,5 @@
 rootProject.name = "fingerprint-pro-server-api-sdk"
-include("library")
+include("sdk")
 include("examples")
 
 rootProject.children.forEach { project ->

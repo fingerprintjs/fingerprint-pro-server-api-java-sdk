@@ -85,7 +85,7 @@ tasks.register<Copy>("copyClasses") {
 
 tasks.register("removeWrongDocumentationLinks") {
     doLast {
-        fileTree("./docs").files
+        fileTree("$rootDir/docs").files
             .filter { it.isFile }
             .forEach {
                 val content = it.readText()

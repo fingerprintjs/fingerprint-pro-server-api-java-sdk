@@ -24,7 +24,6 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '${{ matrix.java }}'
-          cache: 'gradle'
       - run: ./gradlew runFunctionalTests
         env:
           FPJS_API_SECRET: "${{ secrets.FPJS_API_SECRET }}"

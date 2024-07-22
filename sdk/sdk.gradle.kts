@@ -60,7 +60,7 @@ openApiGenerate {
     outputDir.set("$buildDir/generated")
     groupId.set("com.fingerprint")
     id.set("fingerprint-pro-server-api-sdk")
-    version.set("5.1.1")
+    version.set(projectVersion)
     apiPackage.set("com.fingerprint.api")
     modelPackage.set("com.fingerprint.model")
     invokerPackage.set("com.fingerprint.sdk")

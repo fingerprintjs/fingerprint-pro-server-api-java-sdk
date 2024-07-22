@@ -4,7 +4,6 @@ group = "com.fingerprint"
 version = projectVersion
 
 plugins {
-    alias(libs.plugins.jvm)
     alias(libs.plugins.openapi.generator)
 	`java-library`
     `maven-publish`
@@ -13,11 +12,6 @@ plugins {
 repositories {
     mavenLocal()
     mavenCentral()
-}
-
-tasks.withType<JavaCompile> {
-    sourceCompatibility = "1.8"
-    targetCompatibility = "1.8"
 }
 
 publishing {
@@ -55,6 +49,7 @@ sourceSets {
     main {
         java {
             srcDir("src/main/java")
+            srcDir(layout.buildDirectory.dir("generates/src/main/java"))
         }
     }
 }

@@ -5,7 +5,7 @@ version = projectVersion
 
 plugins {
     alias(libs.plugins.openapi.generator)
-	`java-library`
+    `java-library`
     `maven-publish`
 }
 
@@ -49,7 +49,6 @@ sourceSets {
     main {
         java {
             srcDir("src/main/java")
-            srcDir(layout.buildDirectory.dir("generates/src/main/java"))
         }
     }
 }
@@ -60,7 +59,7 @@ openApiGenerate {
     outputDir.set("$buildDir/generated")
     groupId.set("com.fingerprint")
     id.set("fingerprint-pro-server-api-sdk")
-    version.set("5.1.1")
+    version.set(projectVersion)
     apiPackage.set("com.fingerprint.api")
     modelPackage.set("com.fingerprint.model")
     invokerPackage.set("com.fingerprint.sdk")

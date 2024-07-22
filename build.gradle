@@ -135,3 +135,11 @@ tasks.register('removeWrongDocumentationLinks') {
     }
 }
 removeWrongDocumentationLinks.dependsOn tasks.copyDocs
+
+tasks.register('runFunctionalTests', JavaExec) {
+    group = "execute"
+    description = "Run the Functional Tests"
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'com.fingerprint.example.FunctionalTests'
+}
+runFunctionalTests.dependsOn tasks.compileJava

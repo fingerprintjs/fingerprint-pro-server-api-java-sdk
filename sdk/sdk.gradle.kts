@@ -4,7 +4,6 @@ group = "com.fingerprint"
 version = projectVersion
 
 plugins {
-    alias(libs.plugins.jvm)
     alias(libs.plugins.openapi.generator)
 	`java-library`
     `maven-publish`

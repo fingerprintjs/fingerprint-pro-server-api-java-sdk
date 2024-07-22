@@ -79,7 +79,6 @@ sourceSets {
         java {
             srcDir 'src/main/java'
             srcDir 'src/examples/java'
-            srcDir "$buildDir/api/src/main/java"
         }
     }
 }
@@ -87,7 +86,7 @@ sourceSets {
 openApiGenerate {
     generatorName.set("java")
     inputSpec.set("$rootDir/res/fingerprint-server-api.yaml")
-    outputDir.set("$buildDir/api")
+    outputDir.set("$buildDir/generated")
     groupId.set("com.fingerprint")
     id.set("fingerprint-pro-server-api-sdk")
     version.set("5.1.1")
@@ -112,9 +111,16 @@ jar {
 
 tasks.register('copyDocs', Copy) {
     into "docs"
-    from layout.buildDirectory.dir("api/docs")
+    from layout.buildDirectory.dir("generated/docs")
 }
 copyDocs.dependsOn tasks.openApiGenerate
+
+tasks.register('copyClasses', Copy) {
+    into "src/main/java"
+    from layout.buildDirectory.dir("generated/src/main/java")
+}
+copyClasses.dependsOn tasks.openApiGenerate
+compileJava.dependsOn tasks.copyClasses
 
 tasks.register('removeWrongDocumentationLinks') {
     doLast {

@@ -1,6 +1,3 @@
-import org.gradle.internal.declarativedsl.parsing.main
-import org.gradle.jvm.tasks.Jar
-
 val projectVersion: String by project
 
 group = "com.fingerprint"
@@ -11,13 +8,6 @@ plugins {
     alias(libs.plugins.openapi.generator)
 	`java-library`
     `maven-publish`
-}
-
-buildscript {
-    repositories {
-        mavenLocal()
-        mavenCentral()
-    }
 }
 
 repositories {
@@ -60,21 +50,11 @@ dependencies {
     testRuntimeOnly(libs.junit.jupiter.engine)
     testImplementation(libs.mockito)
 }
-//
-//test {
-//    useJUnitPlatform()
-//}
-//
-//javadoc {
-//    options.tags = [ "http.response.details:a:Http Response Details" ]
-//}
-//
 
 sourceSets {
     main {
         java {
             srcDir("src/main/java")
-            srcDir("src/examples/java")
         }
     }
 }
@@ -99,20 +79,16 @@ openApiGenerate {
 }
 
 tasks.register<Copy>("copyDocs") {
-    //dependsOn(openApiGenerate)
-    dependencies { openApiGenerate }
     from(layout.buildDirectory.dir("generated/docs"))
     into("docs")
 }
 
 tasks.register<Copy>("copyClasses") {
-    dependsOn(openApiGenerate)
     from(layout.buildDirectory.dir("generated/src/main/java"))
     into("src/main/java")
 }
 
 tasks.register("removeWrongDocumentationLinks") {
-    dependsOn("copyDocs")
     doLast {
         fileTree("./docs").files
             .filter { it.isFile }
@@ -125,26 +101,19 @@ tasks.register("removeWrongDocumentationLinks") {
     }
 }
 
-//compileJava.dependsOn tasks.openApiGenerate
-//        processResources.dependsOn tasks.openApiGenerate
-//
+tasks.named("copyDocs") {
+    dependsOn(tasks.openApiGenerate)
+}
+tasks.named("copyClasses") {
+    dependsOn(tasks.openApiGenerate)
+}
+tasks.named("removeWrongDocumentationLinks") {
+    dependsOn("copyDocs")
+}
+tasks.named("build") {
+    finalizedBy("removeWrongDocumentationLinks")
+}
 
-//
-//tasks.register('copyDocs', Copy) {
-//    into "docs"
-//    from layout.buildDirectory.dir("generated/docs")
-//}
-//copyDocs.dependsOn tasks.openApiGenerate
-//
-//copyClasses.dependsOn tasks.openApiGenerate
-//        compileJava.dependsOn tasks.copyClasses
-
-//removeWrongDocumentationLinks.dependsOn tasks.copyDocs
-//
-//        tasks.register('runFunctionalTests', JavaExec) {
-//            group = "execute"
-//            description = "Run the Functional Tests"
-//            classpath = sourceSets.main.runtimeClasspath
-//            main = 'com.fingerprint.example.FunctionalTests'
-//        }
-//runFunctionalTests.dependsOn tasks.compileJava
+tasks.compileJava {
+    dependsOn(tasks.withType<Copy>())
+}

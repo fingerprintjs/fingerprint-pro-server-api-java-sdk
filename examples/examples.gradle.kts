@@ -1,14 +1,11 @@
-import org.gradle.internal.declarativedsl.parsing.main
-import org.gradle.jvm.tasks.Jar
-
 val projectVersion: String by project
 
 group = "com.fingerprint"
 version = projectVersion
 
 plugins {
-    alias(libs.plugins.jvm)
-    `java-library`
+    application
+    java
 }
 
 repositories {
@@ -23,4 +20,23 @@ tasks.withType<JavaCompile> {
 
 dependencies {
     implementation(project(":sdk"))
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir("src/main/java")
+        }
+    }
+}
+
+tasks.register<JavaExec>("runFunctionalTests") {
+    group = "execute"
+    description = "Run the Functional Tests"
+    mainClass = "com.fingerprint.example.FunctionalTests"
+    classpath = sourceSets["main"].runtimeClasspath
+}
+
+tasks.named("runFunctionalTests") {
+    dependsOn("build")
 }

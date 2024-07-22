@@ -30,7 +30,7 @@ module.exports = {
         [
             "@semantic-release/exec",
             {
-                "prepareCmd": "bash ./gradlew openApiGenerate copyDocs removeWrongDocumentationLinks jar test",
+                "prepareCmd": "bash ./generate.sh",
                 "publishCmd": "bash ./gradlew publishToMavenLocal"
             }
         ],

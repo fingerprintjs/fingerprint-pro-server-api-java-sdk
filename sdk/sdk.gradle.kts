@@ -5,7 +5,7 @@ version = projectVersion
 
 plugins {
     alias(libs.plugins.openapi.generator)
-	`java-library`
+    `java-library`
     `maven-publish`
 }
 
@@ -49,7 +49,6 @@ sourceSets {
     main {
         java {
             srcDir("src/main/java")
-            srcDir(layout.buildDirectory.dir("generates/src/main/java"))
         }
     }
 }

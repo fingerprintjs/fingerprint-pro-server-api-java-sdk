@@ -15,11 +15,6 @@ repositories {
     mavenCentral()
 }
 
-tasks.withType<JavaCompile> {
-    sourceCompatibility = "1.8"
-    targetCompatibility = "1.8"
-}
-
 publishing {
     publications {
         register("mavenJava", MavenPublication::class) {

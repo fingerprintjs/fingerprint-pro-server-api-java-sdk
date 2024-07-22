@@ -65,7 +65,7 @@ openApiGenerate {
     modelPackage.set("com.fingerprint.model")
     invokerPackage.set("com.fingerprint.sdk")
     library.set("jersey2")
-    templateDir.set("template")
+    templateDir.set("$rootDir/template")
 
     gitHost.set("github.com")
     gitRepoId.set("fingerprint-pro-server-api-java-sdk")
@@ -75,7 +75,7 @@ openApiGenerate {
 
 tasks.register<Copy>("copyDocs") {
     from(layout.buildDirectory.dir("generated/docs"))
-    into("docs")
+    into("$rootDir/docs")
 }
 
 tasks.register<Copy>("copyClasses") {
@@ -85,7 +85,7 @@ tasks.register<Copy>("copyClasses") {
 
 tasks.register("removeWrongDocumentationLinks") {
     doLast {
-        fileTree("./docs").files
+        fileTree("$rootDir/docs").files
             .filter { it.isFile }
             .forEach {
                 val content = it.readText()

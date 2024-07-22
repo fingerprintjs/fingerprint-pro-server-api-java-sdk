@@ -50,6 +50,7 @@ sourceSets {
     main {
         java {
             srcDir("src/main/java")
+            srcDir(layout.buildDirectory.dir("generates/src/main/java"))
         }
     }
 }

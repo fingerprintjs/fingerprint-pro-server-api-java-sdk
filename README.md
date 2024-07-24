@@ -233,8 +233,9 @@ All URIs are relative to *https://api.fpjs.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*FingerprintApi* | [**getEvent**](docs/FingerprintApi.md#getEvent) | **GET** /events/{request_id} | Get event by requestId
-*FingerprintApi* | [**getVisits**](docs/FingerprintApi.md#getVisits) | **GET** /visitors/{visitor_id} | Get visits by visitorId
+*FingerprintApi* | [**deleteVisitorData**](docs/FingerprintApi.md#deleteVisitorData) | **DELETE** /visitors/{visitor_id} | Delete data by visitor ID
+*FingerprintApi* | [**getEvent**](docs/FingerprintApi.md#getEvent) | **GET** /events/{request_id} | Get event by request ID
+*FingerprintApi* | [**getVisits**](docs/FingerprintApi.md#getVisits) | **GET** /visitors/{visitor_id} | Get visits by visitor ID
 *FingerprintApi* | [**webhookTrace**](docs/FingerprintApi.md#webhookTrace) | **TRACE** /webhook | 
 
 
@@ -245,17 +246,23 @@ Class | Method | HTTP request | Description
  - [BotdResult](docs/BotdResult.md)
  - [BrowserDetails](docs/BrowserDetails.md)
  - [ClonedAppResult](docs/ClonedAppResult.md)
+ - [Common403ErrorResponse](docs/Common403ErrorResponse.md)
  - [Confidence](docs/Confidence.md)
  - [DataCenter](docs/DataCenter.md)
  - [DeprecatedIPLocation](docs/DeprecatedIPLocation.md)
  - [DeprecatedIPLocationCity](docs/DeprecatedIPLocationCity.md)
  - [EmulatorResult](docs/EmulatorResult.md)
  - [Error](docs/Error.md)
- - [ErrorEvent403Response](docs/ErrorEvent403Response.md)
- - [ErrorEvent403ResponseError](docs/ErrorEvent403ResponseError.md)
+ - [ErrorCommon403Response](docs/ErrorCommon403Response.md)
+ - [ErrorCommon429Response](docs/ErrorCommon429Response.md)
+ - [ErrorCommon429ResponseError](docs/ErrorCommon429ResponseError.md)
  - [ErrorEvent404Response](docs/ErrorEvent404Response.md)
  - [ErrorEvent404ResponseError](docs/ErrorEvent404ResponseError.md)
  - [ErrorVisits403](docs/ErrorVisits403.md)
+ - [ErrorVisitsDelete400Response](docs/ErrorVisitsDelete400Response.md)
+ - [ErrorVisitsDelete400ResponseError](docs/ErrorVisitsDelete400ResponseError.md)
+ - [ErrorVisitsDelete404Response](docs/ErrorVisitsDelete404Response.md)
+ - [ErrorVisitsDelete404ResponseError](docs/ErrorVisitsDelete404ResponseError.md)
  - [EventResponse](docs/EventResponse.md)
  - [FactoryResetResult](docs/FactoryResetResult.md)
  - [FridaResult](docs/FridaResult.md)
@@ -272,7 +279,6 @@ Class | Method | HTTP request | Description
  - [JailbrokenResult](docs/JailbrokenResult.md)
  - [Location](docs/Location.md)
  - [LocationSpoofingResult](docs/LocationSpoofingResult.md)
- - [ManyRequestsResponse](docs/ManyRequestsResponse.md)
  - [PrivacySettingsResult](docs/PrivacySettingsResult.md)
  - [ProductError](docs/ProductError.md)
  - [ProductsResponse](docs/ProductsResponse.md)
@@ -307,6 +313,7 @@ Class | Method | HTTP request | Description
  - [Subdivision](docs/Subdivision.md)
  - [SuspectScoreResult](docs/SuspectScoreResult.md)
  - [TamperingResult](docs/TamperingResult.md)
+ - [TooManyRequestsResponse](docs/TooManyRequestsResponse.md)
  - [TorResult](docs/TorResult.md)
  - [VirtualMachineResult](docs/VirtualMachineResult.md)
  - [Visit](docs/Visit.md)

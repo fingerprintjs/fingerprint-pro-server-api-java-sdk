@@ -16,7 +16,6 @@ jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", ver
 jackson-databind-nullable = { module = "org.openapitools:jackson-databind-nullable", version.ref = "jackson-databind-nullable" }
 jackson-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson" }
 jakarta-annotation-api = { module = "jakarta.annotation:jakarta.annotation-api", version.ref = "jakarta-annotation-api" }
-jsr305 = { module = "com.google.code.findbugs:jsr305", version.ref = "jsr305" }
 jersey-apache-connector = { module = "org.glassfish.jersey.connectors:jersey-apache-connector", version.ref = "jersey" }
 jersey-client = { module = "org.glassfish.jersey.core:jersey-client", version.ref = "jersey" }
 jersey-hk2 = { module = "org.glassfish.jersey.inject:jersey-hk2", version.ref = "jersey" }

@@ -7,7 +7,7 @@ import com.fingerprint.sdk.Configuration;
 import com.fingerprint.sdk.Pair;
 import com.fingerprint.sdk.Region;
 
-import javax.ws.rs.core.GenericType;
+import jakarta.ws.rs.core.GenericType;
 
 import com.fingerprint.model.ErrorCommon403Response;
 import com.fingerprint.model.ErrorCommon429Response;
@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class FingerprintApi {
   public static final String INTEGRATION_INFO = "fingerprint-pro-server-java-sdk/5.1.1";
   private ApiClient apiClient;

@@ -15,7 +15,7 @@
 
 | Name | Value |
 |---- | ----- |
-| TOOMANYREQUESTS | &quot;TooManyRequests&quot; |
+| TOO_MANY_REQUESTS | &quot;TooManyRequests&quot; |
 
 
 

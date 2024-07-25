@@ -16,7 +16,7 @@ Stores bot detection result
 
 | Name | Value |
 |---- | ----- |
-| NOTDETECTED | &quot;notDetected&quot; |
+| NOT_DETECTED | &quot;notDetected&quot; |
 | GOOD | &quot;good&quot; |
 | BAD | &quot;bad&quot; |
 

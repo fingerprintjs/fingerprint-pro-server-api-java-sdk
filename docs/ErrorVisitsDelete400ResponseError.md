@@ -15,7 +15,7 @@
 
 | Name | Value |
 |---- | ----- |
-| REQUESTCANNOTBEPARSED | &quot;RequestCannotBeParsed&quot; |
+| REQUEST_CANNOT_BE_PARSED | &quot;RequestCannotBeParsed&quot; |
 
 
 

@@ -21,4 +21,4 @@ echo "VERSION: $VERSION"
 
 sed -i "s/projectVersion: .*/projectVersion: $VERSION/g" gradle.properties
 sed -i "s/^VERSION=.*/VERSION='$VERSION'/g" ./scripts/generate.sh
-./gradlew openApiGenerate copyDocs removeWrongDocumentationLinks jar test
+./gradlew build test

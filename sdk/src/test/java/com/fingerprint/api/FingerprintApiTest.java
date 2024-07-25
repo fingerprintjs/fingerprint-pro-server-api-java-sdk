@@ -183,7 +183,7 @@ public class FingerprintApiTest {
         assertEquals(response.getProducts().getIdentification().getData().getVisitorId(), "Ibk1527CUFmcnjLwIs4A9");
         assert response.getProducts().getBotd().getData() == null;
         assert response.getProducts().getBotd().getError() != null;
-        assert response.getProducts().getBotd().getError().getCode() == ProductError.CodeEnum.TOOMANYREQUESTS;
+        assert response.getProducts().getBotd().getError().getCode() == ProductError.CodeEnum.TOO_MANY_REQUESTS;
     }
 
     @Test

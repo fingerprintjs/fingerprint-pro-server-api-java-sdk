@@ -15,7 +15,7 @@
 
 | Name | Value |
 |---- | ----- |
-| REQUESTNOTFOUND | &quot;RequestNotFound&quot; |
+| REQUEST_NOT_FOUND | &quot;RequestNotFound&quot; |
 
 
 

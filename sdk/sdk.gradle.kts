@@ -29,7 +29,7 @@ publishing {
 
 dependencies {
     implementation(libs.swagger.annotations)
-    implementation(libs.jsr305)
+    //implementation(libs.jsr305)
     api(libs.jersey.client)
     api(libs.jersey.hk2)
     api(libs.jersey.media.json)
@@ -40,6 +40,7 @@ dependencies {
     api(libs.jackson.databind)
     api(libs.jackson.databind.nullable)
     api(libs.jackson.jsr310)
+    api(libs.jakarta.annotation.api)
     testImplementation(libs.junit.jupiter.api)
     testRuntimeOnly(libs.junit.jupiter.engine)
     testImplementation(libs.mockito)

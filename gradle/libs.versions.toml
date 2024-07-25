@@ -1,11 +1,11 @@
 [versions]
 jackson = "2.17.2"
 jackson-databind-nullable = "0.2.6"
-jersey = "2.43"
+jersey = "3.1.7"
 jsr305 = "3.0.2"
 junit = "5.10.2"
 mockito = "3.12.4"
-openapi = "6.2.0"
+openapi = "7.7.0"
 swagger-annotations = "1.6.14"
 
 [libraries]

@@ -63,7 +63,7 @@ openApiGenerate {
     apiPackage.set("com.fingerprint.api")
     modelPackage.set("com.fingerprint.model")
     invokerPackage.set("com.fingerprint.sdk")
-    library.set("jersey2")
+    library.set("jersey3")
     templateDir.set("$rootDir/template")
 
     gitHost.set("github.com")

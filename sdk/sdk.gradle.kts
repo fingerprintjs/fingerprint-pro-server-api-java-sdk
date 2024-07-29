@@ -29,7 +29,6 @@ publishing {
 
 dependencies {
     implementation(libs.swagger.annotations)
-    implementation(libs.jsr305)
     api(libs.jersey.client)
     api(libs.jersey.hk2)
     api(libs.jersey.media.json)
@@ -40,6 +39,7 @@ dependencies {
     api(libs.jackson.databind)
     api(libs.jackson.databind.nullable)
     api(libs.jackson.jsr310)
+    api(libs.jakarta.annotation.api)
     testImplementation(libs.junit.jupiter.api)
     testRuntimeOnly(libs.junit.jupiter.engine)
     testImplementation(libs.mockito)
@@ -63,7 +63,7 @@ openApiGenerate {
     apiPackage.set("com.fingerprint.api")
     modelPackage.set("com.fingerprint.model")
     invokerPackage.set("com.fingerprint.sdk")
-    library.set("jersey2")
+    library.set("jersey3")
     templateDir.set("$rootDir/template")
 
     gitHost.set("github.com")

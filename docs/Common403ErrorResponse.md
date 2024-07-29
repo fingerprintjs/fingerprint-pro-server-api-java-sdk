@@ -15,11 +15,11 @@
 
 | Name | Value |
 |---- | ----- |
-| TOKENREQUIRED | &quot;TokenRequired&quot; |
-| TOKENNOTFOUND | &quot;TokenNotFound&quot; |
-| SUBSCRIPTIONNOTACTIVE | &quot;SubscriptionNotActive&quot; |
-| WRONGREGION | &quot;WrongRegion&quot; |
-| FEATURENOTENABLED | &quot;FeatureNotEnabled&quot; |
+| TOKEN_REQUIRED | &quot;TokenRequired&quot; |
+| TOKEN_NOT_FOUND | &quot;TokenNotFound&quot; |
+| SUBSCRIPTION_NOT_ACTIVE | &quot;SubscriptionNotActive&quot; |
+| WRONG_REGION | &quot;WrongRegion&quot; |
+| FEATURE_NOT_ENABLED | &quot;FeatureNotEnabled&quot; |
 
 
 

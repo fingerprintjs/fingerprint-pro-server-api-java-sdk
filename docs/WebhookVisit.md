@@ -30,6 +30,9 @@
 |**highActivity** | [**HighActivityResult**](HighActivityResult.md) |  |  [optional] |
 |**locationSpoofing** | [**LocationSpoofingResult**](LocationSpoofingResult.md) |  |  [optional] |
 |**suspectScore** | [**SuspectScoreResult**](SuspectScoreResult.md) |  |  [optional] |
+|**remoteControl** | [**RemoteControlResult**](RemoteControlResult.md) |  |  [optional] |
+|**velocity** | [**VelocityResult**](VelocityResult.md) |  |  [optional] |
+|**developerTools** | [**DeveloperToolsResult**](DeveloperToolsResult.md) |  |  [optional] |
 |**requestId** | **String** | Unique identifier of the user's identification request. |  |
 |**browserDetails** | [**BrowserDetails**](BrowserDetails.md) |  |  |
 |**ip** | **String** |  |  |

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.fingerprint.model.ProductsResponseBotd;
 import com.fingerprint.model.ProductsResponseIdentification;
 import com.fingerprint.model.SignalResponseClonedApp;
+import com.fingerprint.model.SignalResponseDeveloperTools;
 import com.fingerprint.model.SignalResponseEmulator;
 import com.fingerprint.model.SignalResponseFactoryReset;
 import com.fingerprint.model.SignalResponseFrida;
@@ -21,10 +22,12 @@ import com.fingerprint.model.SignalResponseLocationSpoofing;
 import com.fingerprint.model.SignalResponsePrivacySettings;
 import com.fingerprint.model.SignalResponseProxy;
 import com.fingerprint.model.SignalResponseRawDeviceAttributes;
+import com.fingerprint.model.SignalResponseRemoteControl;
 import com.fingerprint.model.SignalResponseRootApps;
 import com.fingerprint.model.SignalResponseSuspectScore;
 import com.fingerprint.model.SignalResponseTampering;
 import com.fingerprint.model.SignalResponseTor;
+import com.fingerprint.model.SignalResponseVelocity;
 import com.fingerprint.model.SignalResponseVirtualMachine;
 import com.fingerprint.model.SignalResponseVpn;
 import java.util.Arrays;
@@ -58,7 +61,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
   ProductsResponse.JSON_PROPERTY_HIGH_ACTIVITY,
   ProductsResponse.JSON_PROPERTY_LOCATION_SPOOFING,
   ProductsResponse.JSON_PROPERTY_SUSPECT_SCORE,
-  ProductsResponse.JSON_PROPERTY_RAW_DEVICE_ATTRIBUTES
+  ProductsResponse.JSON_PROPERTY_RAW_DEVICE_ATTRIBUTES,
+  ProductsResponse.JSON_PROPERTY_REMOTE_CONTROL,
+  ProductsResponse.JSON_PROPERTY_VELOCITY,
+  ProductsResponse.JSON_PROPERTY_DEVELOPER_TOOLS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class ProductsResponse {
@@ -124,6 +130,15 @@ public class ProductsResponse {
 
   public static final String JSON_PROPERTY_RAW_DEVICE_ATTRIBUTES = "rawDeviceAttributes";
   private SignalResponseRawDeviceAttributes rawDeviceAttributes;
+
+  public static final String JSON_PROPERTY_REMOTE_CONTROL = "remoteControl";
+  private SignalResponseRemoteControl remoteControl;
+
+  public static final String JSON_PROPERTY_VELOCITY = "velocity";
+  private SignalResponseVelocity velocity;
+
+  public static final String JSON_PROPERTY_DEVELOPER_TOOLS = "developerTools";
+  private SignalResponseDeveloperTools developerTools;
 
   public ProductsResponse() {
   }
@@ -674,6 +689,84 @@ public class ProductsResponse {
   }
 
 
+  public ProductsResponse remoteControl(SignalResponseRemoteControl remoteControl) {
+    this.remoteControl = remoteControl;
+    return this;
+  }
+
+   /**
+   * Get remoteControl
+   * @return remoteControl
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "")
+  @JsonProperty(JSON_PROPERTY_REMOTE_CONTROL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SignalResponseRemoteControl getRemoteControl() {
+    return remoteControl;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_REMOTE_CONTROL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRemoteControl(SignalResponseRemoteControl remoteControl) {
+    this.remoteControl = remoteControl;
+  }
+
+
+  public ProductsResponse velocity(SignalResponseVelocity velocity) {
+    this.velocity = velocity;
+    return this;
+  }
+
+   /**
+   * Get velocity
+   * @return velocity
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "")
+  @JsonProperty(JSON_PROPERTY_VELOCITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SignalResponseVelocity getVelocity() {
+    return velocity;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VELOCITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVelocity(SignalResponseVelocity velocity) {
+    this.velocity = velocity;
+  }
+
+
+  public ProductsResponse developerTools(SignalResponseDeveloperTools developerTools) {
+    this.developerTools = developerTools;
+    return this;
+  }
+
+   /**
+   * Get developerTools
+   * @return developerTools
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "")
+  @JsonProperty(JSON_PROPERTY_DEVELOPER_TOOLS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SignalResponseDeveloperTools getDeveloperTools() {
+    return developerTools;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DEVELOPER_TOOLS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDeveloperTools(SignalResponseDeveloperTools developerTools) {
+    this.developerTools = developerTools;
+  }
+
+
   /**
    * Return true if this ProductsResponse object is equal to o.
    */
@@ -706,12 +799,15 @@ public class ProductsResponse {
         Objects.equals(this.highActivity, productsResponse.highActivity) &&
         Objects.equals(this.locationSpoofing, productsResponse.locationSpoofing) &&
         Objects.equals(this.suspectScore, productsResponse.suspectScore) &&
-        Objects.equals(this.rawDeviceAttributes, productsResponse.rawDeviceAttributes);
+        Objects.equals(this.rawDeviceAttributes, productsResponse.rawDeviceAttributes) &&
+        Objects.equals(this.remoteControl, productsResponse.remoteControl) &&
+        Objects.equals(this.velocity, productsResponse.velocity) &&
+        Objects.equals(this.developerTools, productsResponse.developerTools);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(identification, botd, ipInfo, incognito, rootApps, emulator, clonedApp, factoryReset, jailbroken, frida, ipBlocklist, tor, privacySettings, virtualMachine, vpn, proxy, tampering, highActivity, locationSpoofing, suspectScore, rawDeviceAttributes);
+    return Objects.hash(identification, botd, ipInfo, incognito, rootApps, emulator, clonedApp, factoryReset, jailbroken, frida, ipBlocklist, tor, privacySettings, virtualMachine, vpn, proxy, tampering, highActivity, locationSpoofing, suspectScore, rawDeviceAttributes, remoteControl, velocity, developerTools);
   }
 
   @Override
@@ -739,6 +835,9 @@ public class ProductsResponse {
     sb.append("    locationSpoofing: ").append(toIndentedString(locationSpoofing)).append("\n");
     sb.append("    suspectScore: ").append(toIndentedString(suspectScore)).append("\n");
     sb.append("    rawDeviceAttributes: ").append(toIndentedString(rawDeviceAttributes)).append("\n");
+    sb.append("    remoteControl: ").append(toIndentedString(remoteControl)).append("\n");
+    sb.append("    velocity: ").append(toIndentedString(velocity)).append("\n");
+    sb.append("    developerTools: ").append(toIndentedString(developerTools)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -38,11 +38,11 @@ public class FactoryResetResult {
   }
 
    /**
-   * Time in UTC when the most recent factory reset of the Android or iOS device was done.  If there is no sign of factory reset or the client is not a mobile device, the field will contain the epoch time (1 January 1970) in UTC. 
+   * Indicates the time (in UTC) of the most recent factory reset that happened on the **mobile device**.  When a factory reset cannot be detected on the mobile device or when the request is initiated from a browser, this field will correspond to the *epoch* time (i.e 1 Jan 1970 UTC). See [Factory Reset Detection](https://dev.fingerprint.com/docs/smart-signals-overview#factory-reset-detection) to learn more about this Smart Signal. 
    * @return time
   **/
   @jakarta.annotation.Nonnull
-  @Schema(example = "2022-06-09T22:58:36Z", required = true, description = "Time in UTC when the most recent factory reset of the Android or iOS device was done.  If there is no sign of factory reset or the client is not a mobile device, the field will contain the epoch time (1 January 1970) in UTC. ")
+  @Schema(example = "2022-06-09T22:58:36Z", required = true, description = "Indicates the time (in UTC) of the most recent factory reset that happened on the **mobile device**.  When a factory reset cannot be detected on the mobile device or when the request is initiated from a browser, this field will correspond to the *epoch* time (i.e 1 Jan 1970 UTC). See [Factory Reset Detection](https://dev.fingerprint.com/docs/smart-signals-overview#factory-reset-detection) to learn more about this Smart Signal. ")
   @JsonProperty(JSON_PROPERTY_TIME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -64,11 +64,11 @@ public class FactoryResetResult {
   }
 
    /**
-   * Same value as it&#39;s in the &#x60;time&#x60; field but represented in timestamp format.
+   * This field is just another representation of the value in the &#x60;time&#x60; field. The time of the most recent factory reset that happened on the **mobile device** is expressed as Unix epoch time.        
    * @return timestamp
   **/
   @jakarta.annotation.Nonnull
-  @Schema(example = "1654815517198", required = true, description = "Same value as it's in the `time` field but represented in timestamp format.")
+  @Schema(example = "1654815517198", required = true, description = "This field is just another representation of the value in the `time` field. The time of the most recent factory reset that happened on the **mobile device** is expressed as Unix epoch time.        ")
   @JsonProperty(JSON_PROPERTY_TIMESTAMP)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

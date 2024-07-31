@@ -18,7 +18,7 @@ examplesList=(
 )
 
 for example in ${examplesList[*]}; do
-  curl -o ./src/test/resources/mocks/"$example" https://fingerprintjs.github.io/fingerprint-pro-server-api-openapi/examples/"$example"
+  curl -o ./sdk/src/test/resources/mocks/"$example" https://fingerprintjs.github.io/fingerprint-pro-server-api-openapi/examples/"$example"
 done
 
 ./scripts/generate.sh

@@ -6,13 +6,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fingerprint.model.*;
 import com.fingerprint.sdk.*;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.junit.jupiter.api.TestInstance;
@@ -29,6 +27,7 @@ import static org.mockito.Mockito.when;
 public class FingerprintApiTest {
     private FingerprintApi api;
     private static final String MOCK_REQUEST_ID = "0KSh65EnVoB85JBmloQK";
+    private static final String MOCK_REQUEST_FOR_UPDATE = "1722878691275.6RRrbn";
     private static final String MOCK_REQUEST_WITH_EXTRA_FIELDS_ID = "EXTRA_FIELDS";
     private static final String MOCK_REQUEST_WITH_ALL_FAILED_SIGNALS = "ALL_FAILED_SIGNALS";
     private static final String MOCK_REQUEST_BOTD_FAILED = "MOCK_REQUEST_BOTD_FAILED";
@@ -40,6 +39,7 @@ public class FingerprintApiTest {
     private static final String MOCK_WEBHOOK_VISITOR_ID = "3HNey93AkBW6CRbxV6xP";
     private static final String MOCK_WEBHOOK_REQUEST_ID = "Px6VxbRC6WBkA39yeNH3";
 
+    private static final ObjectMapper MAPPER = getMapper();
 
     private InputStream getFileAsIOStream(final String fileName) {
         InputStream ioStream = this.getClass()
@@ -56,6 +56,7 @@ public class FingerprintApiTest {
     public void before() throws ApiException, IOException {
         api = Mockito.mock(FingerprintApi.class);
         when(api.getEvent(MOCK_REQUEST_ID)).thenReturn(fetchMockWithEventResponse("mocks/get_event_200.json"));
+        //when(api.getEvent(MOCK_REQUEST_ID)).thenReturn(fetchMockWithEventResponse("mocks/update_event_400_error.json"));
         when(api.getEvent(MOCK_REQUEST_WITH_EXTRA_FIELDS_ID)).thenReturn(fetchMockWithEventResponse("mocks/get_event_200_extra_fields.json"));
         when(api.getEvent(MOCK_REQUEST_WITH_ALL_FAILED_SIGNALS)).thenReturn(fetchMockWithEventResponse("mocks/get_event_200_all_errors.json"));
         when(api.getEvent(MOCK_REQUEST_BOTD_FAILED)).thenReturn(fetchMockWithEventResponse("mocks/get_event_200_botd_failed_error.json"));
@@ -66,14 +67,21 @@ public class FingerprintApiTest {
         when(api.getVisits(MOCK_VISITOR_ID, MOCK_VISITOR_REQUEST_ID, null, 50, "1683900801733.Ogvu1j", null)).thenReturn(fetchMockVisit());
     }
 
-    private EventResponse fetchMockWithEventResponse(String fileName) throws IOException {
+    private static ObjectMapper getMapper() {
         ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         JsonNullableModule jnm = new JsonNullableModule();
         mapper.registerModule(jnm);
+        return mapper;
+    }
 
-        return mapper.readValue(getFileAsIOStream(fileName), EventResponse.class);
+    private EventResponse fetchMockWithEventResponse(String fileName) throws IOException {
+        return MAPPER.readValue(getFileAsIOStream(fileName), EventResponse.class);
+    }
+
+    private <T> T fetchMock(String filename, Class<T> type) throws IOException {
+        return MAPPER.readValue(getFileAsIOStream(filename), type);
     }
 
     private Response fetchMockVisit() throws IOException {
@@ -117,6 +125,18 @@ public class FingerprintApiTest {
         assertEquals("4dce9d6017c3e0c052a77252f29f2b1c", canvasAttribute.get("Geometry"));
         assertEquals("p3", signalResponseRawDeviceAttributes.getData().get("colorGamut").getValue());
         assertEquals(true, signalResponseRawDeviceAttributes.getData().get("cookiesEnabled").getValue());
+    }
+
+    @Test
+    public void updateOneFieldEventRequest() throws ApiException, IOException {
+        EventUpdateRequest request = fetchMock("mocks/update_event_one_field_request.json", EventUpdateRequest.class);
+        api.updateEvent(MOCK_REQUEST_FOR_UPDATE, request);
+    }
+
+    @Test
+    public void updateMultipleFieldsEventRequest() throws ApiException, IOException {
+        EventUpdateRequest request = fetchMock("mocks/update_event_multiple_fields_request.json", EventUpdateRequest.class);
+        api.updateEvent(MOCK_REQUEST_FOR_UPDATE, request);
     }
 
     /**

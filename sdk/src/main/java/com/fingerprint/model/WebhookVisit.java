@@ -188,7 +188,7 @@ public class WebhookVisit {
   private String url;
 
   public static final String JSON_PROPERTY_TAG = "tag";
-  private Map<String, Object> tag = new HashMap<>();
+  private Map<String, Object> tag = null;
 
   public static final String JSON_PROPERTY_LINKED_ID = "linkedId";
   private String linkedId;
@@ -1082,6 +1082,9 @@ public class WebhookVisit {
   }
 
   public WebhookVisit puttagItem(String key, Object tagItem) {
+    if (this.tag == null) {
+      this.tag = new HashMap<>();
+    }
     this.tag.put(key, tagItem);
     return this;
   }
@@ -1090,10 +1093,10 @@ public class WebhookVisit {
    * A customer-provided value or an object that was sent with identification request.
    * @return tag
   **/
-  @jakarta.annotation.Nonnull
-  @Schema(required = true, description = "A customer-provided value or an object that was sent with identification request.")
+  @jakarta.annotation.Nullable
+  @Schema(description = "A customer-provided value or an object that was sent with identification request.")
   @JsonProperty(JSON_PROPERTY_TAG)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
 
   public Map<String, Object> getTag() {
     return tag;
@@ -1101,7 +1104,7 @@ public class WebhookVisit {
 
 
   @JsonProperty(JSON_PROPERTY_TAG)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
   public void setTag(Map<String, Object> tag) {
     this.tag = tag;
   }

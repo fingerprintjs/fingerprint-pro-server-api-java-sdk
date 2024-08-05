@@ -27,7 +27,6 @@ import static org.mockito.Mockito.when;
 public class FingerprintApiTest {
     private FingerprintApi api;
     private static final String MOCK_REQUEST_ID = "0KSh65EnVoB85JBmloQK";
-    private static final String MOCK_REQUEST_FOR_UPDATE = "1722878691275.6RRrbn";
     private static final String MOCK_REQUEST_WITH_EXTRA_FIELDS_ID = "EXTRA_FIELDS";
     private static final String MOCK_REQUEST_WITH_ALL_FAILED_SIGNALS = "ALL_FAILED_SIGNALS";
     private static final String MOCK_REQUEST_BOTD_FAILED = "MOCK_REQUEST_BOTD_FAILED";
@@ -56,7 +55,6 @@ public class FingerprintApiTest {
     public void before() throws ApiException, IOException {
         api = Mockito.mock(FingerprintApi.class);
         when(api.getEvent(MOCK_REQUEST_ID)).thenReturn(fetchMockWithEventResponse("mocks/get_event_200.json"));
-        //when(api.getEvent(MOCK_REQUEST_ID)).thenReturn(fetchMockWithEventResponse("mocks/update_event_400_error.json"));
         when(api.getEvent(MOCK_REQUEST_WITH_EXTRA_FIELDS_ID)).thenReturn(fetchMockWithEventResponse("mocks/get_event_200_extra_fields.json"));
         when(api.getEvent(MOCK_REQUEST_WITH_ALL_FAILED_SIGNALS)).thenReturn(fetchMockWithEventResponse("mocks/get_event_200_all_errors.json"));
         when(api.getEvent(MOCK_REQUEST_BOTD_FAILED)).thenReturn(fetchMockWithEventResponse("mocks/get_event_200_botd_failed_error.json"));
@@ -128,15 +126,20 @@ public class FingerprintApiTest {
     }
 
     @Test
-    public void updateOneFieldEventRequest() throws ApiException, IOException {
+    public void updateOneFieldEventRequest() throws IOException {
         EventUpdateRequest request = fetchMock("mocks/update_event_one_field_request.json", EventUpdateRequest.class);
-        api.updateEvent(MOCK_REQUEST_FOR_UPDATE, request);
+        assertDoesNotThrow(() -> api.updateEvent(MOCK_REQUEST_ID, request));
     }
 
     @Test
-    public void updateMultipleFieldsEventRequest() throws ApiException, IOException {
+    public void updateMultipleFieldsEventRequest() throws IOException {
         EventUpdateRequest request = fetchMock("mocks/update_event_multiple_fields_request.json", EventUpdateRequest.class);
-        api.updateEvent(MOCK_REQUEST_FOR_UPDATE, request);
+        assertDoesNotThrow(() -> api.updateEvent(MOCK_REQUEST_ID, request));
+    }
+
+    @Test
+    public void deleteVisitorDataTest() {
+        assertDoesNotThrow(() -> api.deleteVisitorData(MOCK_VISITOR_ID));
     }
 
     /**

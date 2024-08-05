@@ -19,7 +19,14 @@ fi
 
 echo "VERSION: $VERSION"
 
-sed -i '' -e "s/projectVersion = .*$/projectVersion = $VERSION/g" ./gradle.properties
-sed -i '' -e "s/^VERSION=.*$/VERSION='$VERSION'/g" ./scripts/generate.sh
-
+platform=$(uname)
+(
+  if [ "$platform" = "Darwin" ]; then
+    sed -i '' -e "s/projectVersion = .*$/projectVersion = $VERSION/g" ./gradle.properties
+    sed -i '' -e "s/^VERSION=.*$/VERSION='$VERSION'/g" ./scripts/generate.sh
+  else
+    sed -i "s/projectVersion = .*$/projectVersion = $VERSION/g" ./gradle.properties
+    sed -i "s/^VERSION=.*$/VERSION='$VERSION'/g" ./scripts/generate.sh
+  fi 
+)
 ./gradlew build test

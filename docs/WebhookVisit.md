@@ -40,7 +40,7 @@
 |**timestamp** | **Long** | Timestamp of the event with millisecond precision in Unix time. |  |
 |**time** | **OffsetDateTime** | Time expressed according to ISO 8601 in UTC format. |  |
 |**url** | **String** | Page URL from which the identification request was sent. |  |
-|**tag** | **Map&lt;String, Object&gt;** | A customer-provided value or an object that was sent with identification request. |  |
+|**tag** | **Map&lt;String, Object&gt;** | A customer-provided value or an object that was sent with identification request. |  [optional] |
 |**linkedId** | **String** | A customer-provided id that was sent with identification request. |  [optional] |
 |**confidence** | [**Confidence**](Confidence.md) |  |  [optional] |
 |**visitorFound** | **Boolean** | Attribute represents if a visitor had been identified before. |  |

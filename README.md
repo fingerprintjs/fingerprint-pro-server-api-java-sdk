@@ -202,6 +202,37 @@ public class SealedResults {
 ```
 To learn more, refer to example located in [src/examples/java/com/fingerprint/example/SealedResults.java](src/examples/java/com/fingerprint/example/SealedResults.java).
 
+## Webhook signature validation
+This SDK provides utility method for verifying the HMAC signature of the incoming webhook request.
+```java
+
+@RestController
+class WebhookController {
+
+    @PostMapping("/api/webhook")
+    @ResponseBody
+    public String webhookHandler(@RequestBody String webhook, @RequestHeader HttpHeaders headers) {
+        final String secret = System.getenv("WEBHOOK_SIGNATURE_SECRET");
+        if (secret == null || secret.isEmpty()) {
+            return new ResponseEntity<String>("Secret key is not configured", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        final String header = headers.get("fpjs-event-signature");
+        if (header == null || header.size == 0) {
+            return new ResponseEntity<String>("Missing fpjs-event-signature header", HttpStatus.BAD_REQUEST);
+        }
+        final String signature = header[0];
+
+        final boolean isValidSignature = Webhook.isValidWebhookSignature(signature, data.getBytes(StandardCharsets.UTF_8), secret);
+        if (!isValidSignature) {
+            return new ResponseEntity<String>("Webhook signature is not valid", HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<String>("Webhook received", HttpStatus.OK);
+    }
+}
+```
+
 ## Documentation for API Endpoints
 
 All URIs are relative to *https://api.fpjs.io*

@@ -56,7 +56,7 @@ sourceSets {
 openApiGenerate {
     generatorName.set("java")
     inputSpec.set("$rootDir/res/fingerprint-server-api.yaml")
-    outputDir.set("$buildDir/generated")
+    outputDir.set("${layout.buildDirectory}/generated")
     groupId.set("com.fingerprint")
     id.set("fingerprint-pro-server-api-sdk")
     version.set(projectVersion)

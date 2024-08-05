@@ -86,31 +86,6 @@ Then manually install the following JARs:
 
 - `target/fingerprint-pro-server-api-sdk-5.1.1.jar`
 
-## Usage
-
-To add a HTTP proxy for the API client, use `ClientConfig`:
-```java
-
-import org.glassfish.jersey.apache.connector.ApacheConnectorProvider;
-import org.glassfish.jersey.client.ClientConfig;
-import org.glassfish.jersey.client.ClientProperties;
-import com.fingerprint.sdk.*;
-import com.fingerprint.api.FingerprintApi;
-
-...
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ClientConfig clientConfig = defaultClient.getClientConfig();
-clientConfig.connectorProvider(new ApacheConnectorProvider());
-clientConfig.property(ClientProperties.PROXY_URI, "http://proxy_url_here");
-clientConfig.property(ClientProperties.PROXY_USERNAME, "proxy_username");
-clientConfig.property(ClientProperties.PROXY_PASSWORD, "proxy_password");
-defaultClient.setClientConfig(clientConfig);
-
-FingerprintApi apiInstance = new FingerprintApi(defaultClient);
-
-```
-
 ## Getting Started
 
 Please follow the [installation](#installation) instruction and execute the following Java code:
@@ -236,6 +211,7 @@ Class | Method | HTTP request | Description
 *FingerprintApi* | [**deleteVisitorData**](docs/FingerprintApi.md#deleteVisitorData) | **DELETE** /visitors/{visitor_id} | Delete data by visitor ID
 *FingerprintApi* | [**getEvent**](docs/FingerprintApi.md#getEvent) | **GET** /events/{request_id} | Get event by request ID
 *FingerprintApi* | [**getVisits**](docs/FingerprintApi.md#getVisits) | **GET** /visitors/{visitor_id} | Get visits by visitor ID
+*FingerprintApi* | [**updateEvent**](docs/FingerprintApi.md#updateEvent) | **PUT** /events/{request_id} | Update an event with a given request ID
 *FingerprintApi* | [**webhookTrace**](docs/FingerprintApi.md#webhookTrace) | **TRACE** /webhook | 
 
 
@@ -251,6 +227,7 @@ Class | Method | HTTP request | Description
  - [DataCenter](docs/DataCenter.md)
  - [DeprecatedIPLocation](docs/DeprecatedIPLocation.md)
  - [DeprecatedIPLocationCity](docs/DeprecatedIPLocationCity.md)
+ - [DeveloperToolsResult](docs/DeveloperToolsResult.md)
  - [EmulatorResult](docs/EmulatorResult.md)
  - [Error](docs/Error.md)
  - [ErrorCommon403Response](docs/ErrorCommon403Response.md)
@@ -258,12 +235,17 @@ Class | Method | HTTP request | Description
  - [ErrorCommon429ResponseError](docs/ErrorCommon429ResponseError.md)
  - [ErrorEvent404Response](docs/ErrorEvent404Response.md)
  - [ErrorEvent404ResponseError](docs/ErrorEvent404ResponseError.md)
+ - [ErrorUpdateEvent400Response](docs/ErrorUpdateEvent400Response.md)
+ - [ErrorUpdateEvent400ResponseError](docs/ErrorUpdateEvent400ResponseError.md)
+ - [ErrorUpdateEvent409Response](docs/ErrorUpdateEvent409Response.md)
+ - [ErrorUpdateEvent409ResponseError](docs/ErrorUpdateEvent409ResponseError.md)
+ - [ErrorVisitor400Response](docs/ErrorVisitor400Response.md)
+ - [ErrorVisitor400ResponseError](docs/ErrorVisitor400ResponseError.md)
+ - [ErrorVisitor404Response](docs/ErrorVisitor404Response.md)
+ - [ErrorVisitor404ResponseError](docs/ErrorVisitor404ResponseError.md)
  - [ErrorVisits403](docs/ErrorVisits403.md)
- - [ErrorVisitsDelete400Response](docs/ErrorVisitsDelete400Response.md)
- - [ErrorVisitsDelete400ResponseError](docs/ErrorVisitsDelete400ResponseError.md)
- - [ErrorVisitsDelete404Response](docs/ErrorVisitsDelete404Response.md)
- - [ErrorVisitsDelete404ResponseError](docs/ErrorVisitsDelete404ResponseError.md)
  - [EventResponse](docs/EventResponse.md)
+ - [EventUpdateRequest](docs/EventUpdateRequest.md)
  - [FactoryResetResult](docs/FactoryResetResult.md)
  - [FridaResult](docs/FridaResult.md)
  - [HighActivityResult](docs/HighActivityResult.md)
@@ -287,11 +269,13 @@ Class | Method | HTTP request | Description
  - [ProductsResponseIdentificationData](docs/ProductsResponseIdentificationData.md)
  - [ProxyResult](docs/ProxyResult.md)
  - [RawDeviceAttributesResultValue](docs/RawDeviceAttributesResultValue.md)
+ - [RemoteControlResult](docs/RemoteControlResult.md)
  - [Response](docs/Response.md)
  - [ResponseVisits](docs/ResponseVisits.md)
  - [RootAppsResult](docs/RootAppsResult.md)
  - [SeenAt](docs/SeenAt.md)
  - [SignalResponseClonedApp](docs/SignalResponseClonedApp.md)
+ - [SignalResponseDeveloperTools](docs/SignalResponseDeveloperTools.md)
  - [SignalResponseEmulator](docs/SignalResponseEmulator.md)
  - [SignalResponseFactoryReset](docs/SignalResponseFactoryReset.md)
  - [SignalResponseFrida](docs/SignalResponseFrida.md)
@@ -304,10 +288,12 @@ Class | Method | HTTP request | Description
  - [SignalResponsePrivacySettings](docs/SignalResponsePrivacySettings.md)
  - [SignalResponseProxy](docs/SignalResponseProxy.md)
  - [SignalResponseRawDeviceAttributes](docs/SignalResponseRawDeviceAttributes.md)
+ - [SignalResponseRemoteControl](docs/SignalResponseRemoteControl.md)
  - [SignalResponseRootApps](docs/SignalResponseRootApps.md)
  - [SignalResponseSuspectScore](docs/SignalResponseSuspectScore.md)
  - [SignalResponseTampering](docs/SignalResponseTampering.md)
  - [SignalResponseTor](docs/SignalResponseTor.md)
+ - [SignalResponseVelocity](docs/SignalResponseVelocity.md)
  - [SignalResponseVirtualMachine](docs/SignalResponseVirtualMachine.md)
  - [SignalResponseVpn](docs/SignalResponseVpn.md)
  - [Subdivision](docs/Subdivision.md)
@@ -315,6 +301,9 @@ Class | Method | HTTP request | Description
  - [TamperingResult](docs/TamperingResult.md)
  - [TooManyRequestsResponse](docs/TooManyRequestsResponse.md)
  - [TorResult](docs/TorResult.md)
+ - [VelocityIntervalResult](docs/VelocityIntervalResult.md)
+ - [VelocityIntervals](docs/VelocityIntervals.md)
+ - [VelocityResult](docs/VelocityResult.md)
  - [VirtualMachineResult](docs/VirtualMachineResult.md)
  - [Visit](docs/Visit.md)
  - [VpnResult](docs/VpnResult.md)

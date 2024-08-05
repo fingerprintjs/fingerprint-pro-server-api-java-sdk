@@ -33,7 +33,7 @@ public class SealedTest {
                 }
         );
 
-        assert eventResponse.equals(expectedResponse);
+        assertEquals(expectedResponse, eventResponse);
     }
 
     @Test

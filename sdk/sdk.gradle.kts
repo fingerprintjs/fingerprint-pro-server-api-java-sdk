@@ -119,3 +119,7 @@ tasks.named("build") {
 tasks.compileJava {
     dependsOn("copyClasses")
 }
+
+tasks.test {
+    useJUnitPlatform()
+}

@@ -82,6 +82,11 @@ tasks.register<Copy>("copyClasses") {
     into("src/main/java")
 }
 
+tasks.register<Copy>("copyReadme") {
+    from(layout.buildDirectory.file("generated/README.md"))
+    into(rootDir)
+}
+
 tasks.register("removeWrongDocumentationLinks") {
     doLast {
         fileTree("$rootDir/docs").files
@@ -101,13 +106,16 @@ tasks.named("copyDocs") {
 tasks.named("copyClasses") {
     dependsOn(tasks.openApiGenerate)
 }
+
 tasks.named("removeWrongDocumentationLinks") {
     dependsOn("copyDocs")
+    finalizedBy("copyReadme")
 }
+
 tasks.named("build") {
     finalizedBy("removeWrongDocumentationLinks")
 }
 
 tasks.compileJava {
-    dependsOn(tasks.withType<Copy>())
+    dependsOn("copyClasses")
 }

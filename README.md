@@ -135,6 +135,16 @@ public class FingerprintApiExample {
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());
         }
+
+        // Update an event with a given requestId
+        try {
+            EventUpdateRequest request = new EventUpdateRequest();
+            request.setLinkedId("myNewLinkedId");
+            api.updateEvent(FPJS_REQUEST_ID, request);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FingerprintApi.updateEvent:" + e.getMessage());
+        }
+
         // Get a specific visitor's all visits
         try {
             // Fetch all visits with a given visitorId, with a page limit
@@ -160,6 +170,13 @@ public class FingerprintApiExample {
             System.out.println(response.getVisits().toString());
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getVisits:" + e.getMessage());
+        }
+
+        // Delete visitor data with a given visitorID
+        try {
+            api.deleteVisitorData(FPJS_VISITOR_ID);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FingerprintApi.deleteVisitorData:" + e.getMessage());
         }
     }
 }

@@ -56,7 +56,7 @@ sourceSets {
 openApiGenerate {
     generatorName.set("java")
     inputSpec.set("$rootDir/res/fingerprint-server-api.yaml")
-    outputDir.set("$buildDir/generated")
+    outputDir.set(layout.buildDirectory.dir("generated").get().asFile.path)
     groupId.set("com.fingerprint")
     id.set("fingerprint-pro-server-api-sdk")
     version.set(projectVersion)
@@ -82,6 +82,11 @@ tasks.register<Copy>("copyClasses") {
     into("src/main/java")
 }
 
+tasks.register<Copy>("copyReadme") {
+    from(file(layout.buildDirectory.file("generated/README.md")))
+    into(file("$rootDir/"))
+}
+
 tasks.register("removeWrongDocumentationLinks") {
     doLast {
         fileTree("$rootDir/docs").files
@@ -101,13 +106,20 @@ tasks.named("copyDocs") {
 tasks.named("copyClasses") {
     dependsOn(tasks.openApiGenerate)
 }
+
 tasks.named("removeWrongDocumentationLinks") {
     dependsOn("copyDocs")
+    finalizedBy("copyReadme")
 }
+
 tasks.named("build") {
     finalizedBy("removeWrongDocumentationLinks")
 }
 
 tasks.compileJava {
-    dependsOn(tasks.withType<Copy>())
+    dependsOn("copyClasses")
+}
+
+tasks.test {
+    useJUnitPlatform()
 }

@@ -11,6 +11,7 @@ import com.fingerprint.model.BrowserDetails;
 import com.fingerprint.model.ClonedAppResult;
 import com.fingerprint.model.Confidence;
 import com.fingerprint.model.DeprecatedIPLocation;
+import com.fingerprint.model.DeveloperToolsResult;
 import com.fingerprint.model.EmulatorResult;
 import com.fingerprint.model.FactoryResetResult;
 import com.fingerprint.model.FridaResult;
@@ -22,11 +23,13 @@ import com.fingerprint.model.LocationSpoofingResult;
 import com.fingerprint.model.PrivacySettingsResult;
 import com.fingerprint.model.ProxyResult;
 import com.fingerprint.model.RawDeviceAttributesResultValue;
+import com.fingerprint.model.RemoteControlResult;
 import com.fingerprint.model.RootAppsResult;
 import com.fingerprint.model.SeenAt;
 import com.fingerprint.model.SuspectScoreResult;
 import com.fingerprint.model.TamperingResult;
 import com.fingerprint.model.TorResult;
+import com.fingerprint.model.VelocityResult;
 import com.fingerprint.model.VirtualMachineResult;
 import com.fingerprint.model.VpnResult;
 import java.time.OffsetDateTime;
@@ -66,6 +69,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
   WebhookVisit.JSON_PROPERTY_HIGH_ACTIVITY,
   WebhookVisit.JSON_PROPERTY_LOCATION_SPOOFING,
   WebhookVisit.JSON_PROPERTY_SUSPECT_SCORE,
+  WebhookVisit.JSON_PROPERTY_REMOTE_CONTROL,
+  WebhookVisit.JSON_PROPERTY_VELOCITY,
+  WebhookVisit.JSON_PROPERTY_DEVELOPER_TOOLS,
   WebhookVisit.JSON_PROPERTY_REQUEST_ID,
   WebhookVisit.JSON_PROPERTY_BROWSER_DETAILS,
   WebhookVisit.JSON_PROPERTY_IP,
@@ -151,6 +157,15 @@ public class WebhookVisit {
   public static final String JSON_PROPERTY_SUSPECT_SCORE = "suspectScore";
   private SuspectScoreResult suspectScore;
 
+  public static final String JSON_PROPERTY_REMOTE_CONTROL = "remoteControl";
+  private RemoteControlResult remoteControl;
+
+  public static final String JSON_PROPERTY_VELOCITY = "velocity";
+  private VelocityResult velocity;
+
+  public static final String JSON_PROPERTY_DEVELOPER_TOOLS = "developerTools";
+  private DeveloperToolsResult developerTools;
+
   public static final String JSON_PROPERTY_REQUEST_ID = "requestId";
   private String requestId;
 
@@ -173,7 +188,7 @@ public class WebhookVisit {
   private String url;
 
   public static final String JSON_PROPERTY_TAG = "tag";
-  private Map<String, Object> tag = new HashMap<>();
+  private Map<String, Object> tag = null;
 
   public static final String JSON_PROPERTY_LINKED_ID = "linkedId";
   private String linkedId;
@@ -799,6 +814,84 @@ public class WebhookVisit {
   }
 
 
+  public WebhookVisit remoteControl(RemoteControlResult remoteControl) {
+    this.remoteControl = remoteControl;
+    return this;
+  }
+
+   /**
+   * Get remoteControl
+   * @return remoteControl
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "")
+  @JsonProperty(JSON_PROPERTY_REMOTE_CONTROL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public RemoteControlResult getRemoteControl() {
+    return remoteControl;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_REMOTE_CONTROL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRemoteControl(RemoteControlResult remoteControl) {
+    this.remoteControl = remoteControl;
+  }
+
+
+  public WebhookVisit velocity(VelocityResult velocity) {
+    this.velocity = velocity;
+    return this;
+  }
+
+   /**
+   * Get velocity
+   * @return velocity
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "")
+  @JsonProperty(JSON_PROPERTY_VELOCITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public VelocityResult getVelocity() {
+    return velocity;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VELOCITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVelocity(VelocityResult velocity) {
+    this.velocity = velocity;
+  }
+
+
+  public WebhookVisit developerTools(DeveloperToolsResult developerTools) {
+    this.developerTools = developerTools;
+    return this;
+  }
+
+   /**
+   * Get developerTools
+   * @return developerTools
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "")
+  @JsonProperty(JSON_PROPERTY_DEVELOPER_TOOLS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public DeveloperToolsResult getDeveloperTools() {
+    return developerTools;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DEVELOPER_TOOLS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDeveloperTools(DeveloperToolsResult developerTools) {
+    this.developerTools = developerTools;
+  }
+
+
   public WebhookVisit requestId(String requestId) {
     this.requestId = requestId;
     return this;
@@ -989,6 +1082,9 @@ public class WebhookVisit {
   }
 
   public WebhookVisit puttagItem(String key, Object tagItem) {
+    if (this.tag == null) {
+      this.tag = new HashMap<>();
+    }
     this.tag.put(key, tagItem);
     return this;
   }
@@ -997,10 +1093,10 @@ public class WebhookVisit {
    * A customer-provided value or an object that was sent with identification request.
    * @return tag
   **/
-  @jakarta.annotation.Nonnull
-  @Schema(required = true, description = "A customer-provided value or an object that was sent with identification request.")
+  @jakarta.annotation.Nullable
+  @Schema(description = "A customer-provided value or an object that was sent with identification request.")
   @JsonProperty(JSON_PROPERTY_TAG)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
 
   public Map<String, Object> getTag() {
     return tag;
@@ -1008,7 +1104,7 @@ public class WebhookVisit {
 
 
   @JsonProperty(JSON_PROPERTY_TAG)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
   public void setTag(Map<String, Object> tag) {
     this.tag = tag;
   }
@@ -1179,6 +1275,9 @@ public class WebhookVisit {
         Objects.equals(this.highActivity, webhookVisit.highActivity) &&
         Objects.equals(this.locationSpoofing, webhookVisit.locationSpoofing) &&
         Objects.equals(this.suspectScore, webhookVisit.suspectScore) &&
+        Objects.equals(this.remoteControl, webhookVisit.remoteControl) &&
+        Objects.equals(this.velocity, webhookVisit.velocity) &&
+        Objects.equals(this.developerTools, webhookVisit.developerTools) &&
         Objects.equals(this.requestId, webhookVisit.requestId) &&
         Objects.equals(this.browserDetails, webhookVisit.browserDetails) &&
         Objects.equals(this.ip, webhookVisit.ip) &&
@@ -1196,7 +1295,7 @@ public class WebhookVisit {
 
   @Override
   public int hashCode() {
-    return Objects.hash(visitorId, clientReferrer, userAgent, bot, ipInfo, incognito, rootApps, emulator, clonedApp, factoryReset, jailbroken, frida, ipBlocklist, tor, privacySettings, virtualMachine, vpn, proxy, tampering, rawDeviceAttributes, highActivity, locationSpoofing, suspectScore, requestId, browserDetails, ip, ipLocation, timestamp, time, url, tag, linkedId, confidence, visitorFound, firstSeenAt, lastSeenAt);
+    return Objects.hash(visitorId, clientReferrer, userAgent, bot, ipInfo, incognito, rootApps, emulator, clonedApp, factoryReset, jailbroken, frida, ipBlocklist, tor, privacySettings, virtualMachine, vpn, proxy, tampering, rawDeviceAttributes, highActivity, locationSpoofing, suspectScore, remoteControl, velocity, developerTools, requestId, browserDetails, ip, ipLocation, timestamp, time, url, tag, linkedId, confidence, visitorFound, firstSeenAt, lastSeenAt);
   }
 
   @Override
@@ -1226,6 +1325,9 @@ public class WebhookVisit {
     sb.append("    highActivity: ").append(toIndentedString(highActivity)).append("\n");
     sb.append("    locationSpoofing: ").append(toIndentedString(locationSpoofing)).append("\n");
     sb.append("    suspectScore: ").append(toIndentedString(suspectScore)).append("\n");
+    sb.append("    remoteControl: ").append(toIndentedString(remoteControl)).append("\n");
+    sb.append("    velocity: ").append(toIndentedString(velocity)).append("\n");
+    sb.append("    developerTools: ").append(toIndentedString(developerTools)).append("\n");
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
     sb.append("    browserDetails: ").append(toIndentedString(browserDetails)).append("\n");
     sb.append("    ip: ").append(toIndentedString(ip)).append("\n");

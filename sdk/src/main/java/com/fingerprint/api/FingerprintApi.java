@@ -12,10 +12,13 @@ import jakarta.ws.rs.core.GenericType;
 import com.fingerprint.model.ErrorCommon403Response;
 import com.fingerprint.model.ErrorCommon429Response;
 import com.fingerprint.model.ErrorEvent404Response;
+import com.fingerprint.model.ErrorUpdateEvent400Response;
+import com.fingerprint.model.ErrorUpdateEvent409Response;
+import com.fingerprint.model.ErrorVisitor400Response;
+import com.fingerprint.model.ErrorVisitor404Response;
 import com.fingerprint.model.ErrorVisits403;
-import com.fingerprint.model.ErrorVisitsDelete400Response;
-import com.fingerprint.model.ErrorVisitsDelete404Response;
 import com.fingerprint.model.EventResponse;
+import com.fingerprint.model.EventUpdateRequest;
 import com.fingerprint.model.Response;
 import com.fingerprint.model.TooManyRequestsResponse;
 
@@ -65,7 +68,7 @@ public class FingerprintApi {
 
   /**
    * Delete data by visitor ID
-   * Request deleting all data associated with the specified visitor ID. This API is useful for compliance with privacy regulations. All delete requests are queued:   * Recent data (10 days or newer) belonging to the specified visitor will be deleted within 24 hours. * Data from older (11 days or more) identification events  will be deleted after 90 days.  If you are interested in using this API, please [contact our support team](https://fingerprint.com/support/) to activate it for you. Otherwise, you will receive a 403. 
+   * Request deleting all data associated with the specified visitor ID. This API is useful for compliance with privacy regulations. All delete requests are queued:   * Recent data (10 days or newer) belonging to the specified visitor will be deleted within 24 hours. * Data from older (11 days or more) identification events  will be deleted after 90 days.  If you are interested in using this API, please [contact our support team](https://fingerprint.com/support/) to enable it for you. Otherwise, you will receive a 403. 
    * @param visitorId The [visitor ID](https://dev.fingerprint.com/docs/js-agent#visitorid) you want to delete. (required)
    * @throws ApiException if fails to make API call
    * @http.response.details
@@ -84,7 +87,7 @@ public class FingerprintApi {
 
   /**
    * Delete data by visitor ID
-   * Request deleting all data associated with the specified visitor ID. This API is useful for compliance with privacy regulations. All delete requests are queued:   * Recent data (10 days or newer) belonging to the specified visitor will be deleted within 24 hours. * Data from older (11 days or more) identification events  will be deleted after 90 days.  If you are interested in using this API, please [contact our support team](https://fingerprint.com/support/) to activate it for you. Otherwise, you will receive a 403. 
+   * Request deleting all data associated with the specified visitor ID. This API is useful for compliance with privacy regulations. All delete requests are queued:   * Recent data (10 days or newer) belonging to the specified visitor will be deleted within 24 hours. * Data from older (11 days or more) identification events  will be deleted after 90 days.  If you are interested in using this API, please [contact our support team](https://fingerprint.com/support/) to enable it for you. Otherwise, you will receive a 403. 
    * @param visitorId The [visitor ID](https://dev.fingerprint.com/docs/js-agent#visitorid) you want to delete. (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
@@ -140,7 +143,7 @@ public class FingerprintApi {
   }
   /**
    * Get event by request ID
-   * Get a detailed analysis of an individual identification event, including Smart Signals.  **Only for Enterprise customers:** Please note that the response includes mobile signals (e.g. `rootApps`) even if the request originated from a non-mobile platform. It is highly recommended that you **ignore** the mobile signals for such requests.   Use `requestId` as the URL path parameter. This API method is scoped to a request, i.e. all returned information is by `requestId`. 
+   * Get a detailed analysis of an individual identification event, including Smart Signals.  Please note that the response includes mobile signals (e.g. `rootApps`) even if the request originated from a non-mobile platform. It is highly recommended that you **ignore** the mobile signals for such requests.   Use `requestId` as the URL path parameter. This API method is scoped to a request, i.e. all returned information is by `requestId`. 
    * @param requestId The unique [identifier](https://dev.fingerprint.com/docs/js-agent#requestid) of each identification request. (required)
    * @return EventResponse
    * @throws ApiException if fails to make API call
@@ -158,7 +161,7 @@ public class FingerprintApi {
 
   /**
    * Get event by request ID
-   * Get a detailed analysis of an individual identification event, including Smart Signals.  **Only for Enterprise customers:** Please note that the response includes mobile signals (e.g. `rootApps`) even if the request originated from a non-mobile platform. It is highly recommended that you **ignore** the mobile signals for such requests.   Use `requestId` as the URL path parameter. This API method is scoped to a request, i.e. all returned information is by `requestId`. 
+   * Get a detailed analysis of an individual identification event, including Smart Signals.  Please note that the response includes mobile signals (e.g. `rootApps`) even if the request originated from a non-mobile platform. It is highly recommended that you **ignore** the mobile signals for such requests.   Use `requestId` as the URL path parameter. This API method is scoped to a request, i.e. all returned information is by `requestId`. 
    * @param requestId The unique [identifier](https://dev.fingerprint.com/docs/js-agent#requestid) of each identification request. (required)
    * @return ApiResponse&lt;EventResponse&gt;
    * @throws ApiException if fails to make API call
@@ -300,6 +303,88 @@ public class FingerprintApi {
     return apiClient.invokeAPI("FingerprintApi.getVisits", localVarPath, "GET", localVarQueryParams, localVarPostBody,
                                localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType,
                                localVarAuthNames, localVarReturnType, false);
+  }
+  /**
+   * Update an event with a given request ID
+   * Change information in existing events specified by `requestId` or *flag suspicious events*.  When an event is created, it is assigned `linkedId` and `tag` submitted through the JS agent parameters. This information might not be available on the client so the Server API allows for updating the attributes after the fact.  **Warning** It's not possible to update events older than 10 days. 
+   * @param requestId The unique event [identifier](https://dev.fingerprint.com/docs/js-agent#requestid). (required)
+   * @param eventUpdateRequest  (required)
+   * @throws ApiException if fails to make API call
+   * @http.response.details
+     <table summary="Response Details" border="1">
+       <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+       <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+       <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+       <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+       <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+       <tr><td> 409 </td><td> Conflict </td><td>  -  </td></tr>
+     </table>
+   */
+  public void updateEvent(String requestId, EventUpdateRequest eventUpdateRequest) throws ApiException {
+    updateEventWithHttpInfo(requestId, eventUpdateRequest);
+  }
+
+  /**
+   * Update an event with a given request ID
+   * Change information in existing events specified by `requestId` or *flag suspicious events*.  When an event is created, it is assigned `linkedId` and `tag` submitted through the JS agent parameters. This information might not be available on the client so the Server API allows for updating the attributes after the fact.  **Warning** It's not possible to update events older than 10 days. 
+   * @param requestId The unique event [identifier](https://dev.fingerprint.com/docs/js-agent#requestid). (required)
+   * @param eventUpdateRequest  (required)
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   * @http.response.details
+     <table summary="Response Details" border="1">
+       <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+       <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+       <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+       <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+       <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+       <tr><td> 409 </td><td> Conflict </td><td>  -  </td></tr>
+     </table>
+   */
+  public ApiResponse<Void> updateEventWithHttpInfo(String requestId, EventUpdateRequest eventUpdateRequest) throws ApiException {
+    Object localVarPostBody = eventUpdateRequest;
+    
+    // verify the required parameter 'requestId' is set
+    if (requestId == null) {
+      throw new ApiException(400, "Missing the required parameter 'requestId' when calling updateEvent");
+    }
+    
+    // verify the required parameter 'eventUpdateRequest' is set
+    if (eventUpdateRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'eventUpdateRequest' when calling updateEvent");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/events/{request_id}"
+      .replaceAll("\\{" + "request_id" + "\\}", apiClient.escapeString(requestId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.add(new Pair("ii", INTEGRATION_INFO));
+
+
+    
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ApiKeyHeader", "ApiKeyQuery" };
+
+    return apiClient.invokeAPI("FingerprintApi.updateEvent", localVarPath, "PUT", localVarQueryParams, localVarPostBody,
+                               localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType,
+                               localVarAuthNames, null, false);
   }
   /**
    * 

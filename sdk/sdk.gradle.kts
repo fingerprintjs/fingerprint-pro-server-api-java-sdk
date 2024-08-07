@@ -123,3 +123,7 @@ tasks.compileJava {
 tasks.test {
     useJUnitPlatform()
 }
+
+tasks.jar {
+    archiveBaseName = "fingerprint-pro-server-api-sdk"
+}

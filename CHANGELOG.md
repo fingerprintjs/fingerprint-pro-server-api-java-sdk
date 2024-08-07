@@ -1,3 +1,35 @@
+## [6.0.0-develop.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v5.1.1...v6.0.0-develop.1) (2024-08-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* use Jakarta EE 9
+* use java 11 as minimal supported version
+
+### Features
+
+* add `remoteControl`, `velocity` and `developerTools` signals ([f46e242](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/f46e2428884059b1535d72589c8c23b4b61a2282))
+* add `Webhook.IsValidWebhookSignature` function for validating webhook signature ([0922380](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/09223809229dba20897dd6eb0e516af99802d763))
+* add DELETE API ([0b8d7b5](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/0b8d7b5cb6a90d42b07a94d2cfb6ad4f062a95c9))
+* regenerate project according to new schema ([a8ab497](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/a8ab497adfaa589f7d40a7081e10bdc75395e53e))
+* rewrite build script to kotlin ([6f25c8d](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/6f25c8d4db94012fa730acd65823a1551446023e))
+* separate modules ([67cbdcf](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/67cbdcfd8a03f2fd36ef2b9adc9cd46099e0d369))
+* update schema ([ef44ffb](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/ef44ffb85b0833c3ba4ee7439c00b83527d56bdf))
+* use generated sources for build ([a59948b](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/a59948b21677585c5b1203d8794bd205ecc788ac))
+* use java 11 for release build ([d186e3d](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/d186e3d334a2cd8c2dd3f006a2fb5c14ad9936af))
+
+
+### Bug Fixes
+
+* dependency management ([e787ff6](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/e787ff6919b1ff91caadbe9bb096e02a59ddad0b))
+* functional tests ([be7e1cf](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/be7e1cfe92575a9e0bb01bc13362598996f42a52))
+* tests ([ff912c6](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/ff912c63de390f818575ee27f9b4d9cfcd6fffa5))
+
+
+### Miscellaneous Chores
+
+* update jakarta annotation api to 2.0.0 ([5c30ce2](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/5c30ce2e9b9596352520fea688cf731e31f6c02b))
+
 ## [5.1.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v5.1.0...v5.1.1) (2024-06-27)
 
 

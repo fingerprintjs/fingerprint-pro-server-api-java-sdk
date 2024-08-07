@@ -16,13 +16,11 @@ repositories {
 
 publishing {
     publications {
-        register("mavenJava", MavenPublication::class) {
-            artifactId = "fingerprint-pro-server-api-sdk"
-        }
         register("localMavenJava", MavenPublication::class) {
             groupId = "com.fingerprint"
             artifactId = "fingerprint-pro-server-api-sdk"
             version = projectVersion
+            from(components["java"])
         }
     }
 }

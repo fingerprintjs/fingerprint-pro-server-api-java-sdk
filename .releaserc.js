@@ -40,11 +40,10 @@ module.exports = {
                 "assets": [
                     "CHANGELOG.md",
                     "README.md",
-                    "config.json",
-                    "build.gradle",
-                    "config.yaml",
+                    "gradle.properties",
                     "docs/**/*",
-                    "src/**/*"
+                    "sdk/**/*",
+                    "scripts/generate.sh",
                 ]
             }
         ],

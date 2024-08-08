@@ -70,6 +70,16 @@ openApiGenerate {
     configOptions.put("hideGenerationTimestamp", "true")
 }
 
+tasks.register("removeDocs") {
+    doLast {
+        fileTree("$rootDir/docs").files
+            .filter { it.isFile && it.name != "DecryptionKey.md" && it.name != "Sealed.md" }
+            .forEach {
+                it.delete()
+            }
+    }
+}
+
 tasks.register<Copy>("copyDocs") {
     from(layout.buildDirectory.dir("generated/docs"))
     into("$rootDir/docs")
@@ -100,6 +110,7 @@ tasks.register("removeWrongDocumentationLinks") {
 
 tasks.named("copyDocs") {
     dependsOn(tasks.openApiGenerate)
+    dependsOn("removeDocs")
 }
 tasks.named("copyClasses") {
     dependsOn(tasks.openApiGenerate)

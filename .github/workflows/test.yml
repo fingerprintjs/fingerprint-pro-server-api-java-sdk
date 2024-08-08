@@ -20,4 +20,3 @@ jobs:
           distribution: 'zulu'
           java-version: '${{ matrix.java }}'
       - run: ./gradlew test
-

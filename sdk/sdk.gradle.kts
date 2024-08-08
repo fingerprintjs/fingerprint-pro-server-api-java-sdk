@@ -80,6 +80,13 @@ tasks.register("removeDocs") {
     }
 }
 
+tasks.register("removeClasses") {
+    doLast {
+        File("$rootDir/sdk/src/main/java/com/fingerprint/model").deleteRecursively()
+        File("$rootDir/sdk/src/main/java/com/fingerprint/api").deleteRecursively()
+    }
+}
+
 tasks.register<Copy>("copyDocs") {
     from(layout.buildDirectory.dir("generated/docs"))
     into("$rootDir/docs")
@@ -114,6 +121,7 @@ tasks.named("copyDocs") {
 }
 tasks.named("copyClasses") {
     dependsOn(tasks.openApiGenerate)
+    dependsOn("removeClasses")
 }
 
 tasks.named("removeWrongDocumentationLinks") {

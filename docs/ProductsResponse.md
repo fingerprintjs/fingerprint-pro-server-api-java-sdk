@@ -29,6 +29,9 @@ Contains all information about the request identified by `requestId`, depending 
 |**locationSpoofing** | [**SignalResponseLocationSpoofing**](SignalResponseLocationSpoofing.md) |  |  [optional] |
 |**suspectScore** | [**SignalResponseSuspectScore**](SignalResponseSuspectScore.md) |  |  [optional] |
 |**rawDeviceAttributes** | [**SignalResponseRawDeviceAttributes**](SignalResponseRawDeviceAttributes.md) |  |  [optional] |
+|**remoteControl** | [**SignalResponseRemoteControl**](SignalResponseRemoteControl.md) |  |  [optional] |
+|**velocity** | [**SignalResponseVelocity**](SignalResponseVelocity.md) |  |  [optional] |
+|**developerTools** | [**SignalResponseDeveloperTools**](SignalResponseDeveloperTools.md) |  |  [optional] |
 
 
 

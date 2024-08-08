@@ -1,3 +1,23 @@
+## [6.0.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v5.1.1...v6.0.0) (2024-08-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* use Jakarta EE 9
+* use java 11 as minimal supported version
+
+### Features
+
+* add `remoteControl`, `velocity` and `developerTools` signals ([5648a7f](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/5648a7faf93ee046f877a91c6b3400cf95b2401f))
+* add `Webhook.IsValidWebhookSignature` function for validating webhook signature ([033a98f](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/033a98f0a770fe7665ca2268e09b9d6292e07f47))
+* add DELETE API ([db4832f](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/db4832f724a76b0259c5a1144b0ab78692675ea0))
+
+
+### Continuous Integration
+
+* update jakarta annotation api to 2.0.0 ([ac41c7a](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/ac41c7afa5673ce252eb74c07fdd902ef358a9dc))
+* use java 11 for release build ([b9e9a00](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/b9e9a001adf152186525142e5052aaa80cb7a3fe))
+
 ## [5.1.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v5.1.0...v5.1.1) (2024-06-27)
 
 

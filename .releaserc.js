@@ -12,7 +12,7 @@ module.exports = {
             "@semantic-release/commit-analyzer",
             {
                 "config": "@fingerprintjs/conventional-changelog-dx-team",
-                "releaseRules": "@fingerprintjs/conventional-changelog-dx-team/release-rules"            
+                "releaseRules": "@fingerprintjs/conventional-changelog-dx-team/release-rules"
             }
         ],
         [
@@ -42,7 +42,7 @@ module.exports = {
                     "README.md",
                     "gradle.properties",
                     "docs/**/*",
-                    "sdk/**/*",
+                    "sdk/src/**/*",
                     "scripts/generate.sh",
                 ]
             }

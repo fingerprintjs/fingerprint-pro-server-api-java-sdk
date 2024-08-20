@@ -1,3 +1,10 @@
+## [6.0.1-develop.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v6.0.0...v6.0.1-develop.1) (2024-08-20)
+
+
+### Bug Fixes
+
+* fix supported Java versions in the readme ([f889f03](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/f889f03918f26df3e83767a70f00bf147869875e))
+
 ## [6.0.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v5.1.1...v6.0.0) (2024-08-08)
 
 

@@ -32,7 +32,6 @@ The following versions of Gradle/Maven are supported
 
 The following versions of Java are supported
 
-- Java 1.8
 - Java 11
 - Java 17
 - Java 21

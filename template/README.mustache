@@ -254,19 +254,18 @@ class WebhookController {
 
     @PostMapping("/api/webhook")
     @ResponseBody
-    public String webhookHandler(@RequestBody String webhook, @RequestHeader HttpHeaders headers) {
+    public ResponseEntity<String> webhookHandler(@RequestBody String webhook, @RequestHeader HttpHeaders headers) {
         final String secret = System.getenv("WEBHOOK_SIGNATURE_SECRET");
         if (secret == null || secret.isEmpty()) {
             return new ResponseEntity<String>("Secret key is not configured", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        final String header = headers.get("fpjs-event-signature");
-        if (header == null || header.size == 0) {
+        final String signature = headers.getFirst("fpjs-event-signature");
+        if (signature == null || signature.isEmpty()) {
             return new ResponseEntity<String>("Missing fpjs-event-signature header", HttpStatus.BAD_REQUEST);
         }
-        final String signature = header[0];
 
-        final boolean isValidSignature = Webhook.isValidWebhookSignature(signature, data.getBytes(StandardCharsets.UTF_8), secret);
+        final boolean isValidSignature = Webhook.isValidWebhookSignature(signature, webhook.getBytes(StandardCharsets.UTF_8), secret);
         if (!isValidSignature) {
             return new ResponseEntity<String>("Webhook signature is not valid", HttpStatus.BAD_REQUEST);
         }

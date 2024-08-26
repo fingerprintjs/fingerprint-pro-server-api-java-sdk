@@ -61,16 +61,32 @@ Add this dependency to your project's POM:
 
 ### Gradle users
 
-Add this dependency to your project's build file:
+Add this dependency to your project's build file(`build.gradle` or `build.gradle.kts`):
 
 ```groovy
-  repositories {
-     maven { url 'https://jitpack.io' }
-  }
+// build.gradle
+repositories {
+  maven { url 'https://jitpack.io' }
+}
 
-  dependencies {
-     implementation "com.github.fingerprintjs:fingerprint-pro-server-api-java-sdk:v6.0.1"
+dependencies {
+  implementation "com.github.fingerprintjs:fingerprint-pro-server-api-java-sdk:v6.0.1"
+}
+```
+
+
+```kotlin
+// build.gradle.kts
+
+repositories {
+  maven {
+    url = uri("https://jitpack.io")
   }
+}
+
+dependencies {
+  implementation("com.github.fingerprintjs:fingerprint-pro-server-api-java-sdk:v6.0.1")
+}
 ```
 
 ### Others

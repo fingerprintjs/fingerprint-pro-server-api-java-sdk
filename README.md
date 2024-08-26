@@ -242,24 +242,23 @@ This SDK provides utility method for verifying the HMAC signature of the incomin
 class WebhookController {
 
     @PostMapping("/api/webhook")
-    @ResponseBody
-    public ResponseEntity<String> webhookHandler(@RequestBody String webhook, @RequestHeader HttpHeaders headers) {
+    public ResponseEntity<String> webhookHandler(@RequestBody byte[] webhook, @RequestHeader HttpHeaders headers) {
         final String secret = System.getenv("WEBHOOK_SIGNATURE_SECRET");
         if (secret == null || secret.isEmpty()) {
-            return new ResponseEntity<String>("Secret key is not configured", HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Secret key is not configured");
         }
 
         final String signature = headers.getFirst("fpjs-event-signature");
         if (signature == null || signature.isEmpty()) {
-            return new ResponseEntity<String>("Missing fpjs-event-signature header", HttpStatus.BAD_REQUEST);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Missing fpjs-event-signature header");
         }
 
-        final boolean isValidSignature = Webhook.isValidWebhookSignature(signature, webhook.getBytes(StandardCharsets.UTF_8), secret);
+        final boolean isValidSignature = Webhook.isValidWebhookSignature(signature, webhook, secret);
         if (!isValidSignature) {
-            return new ResponseEntity<String>("Webhook signature is not valid", HttpStatus.BAD_REQUEST);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Webhook signature is not valid");
         }
 
-        return new ResponseEntity<String>("Webhook received", HttpStatus.OK);
+        return ResponseEntity.ok("Webhook received");
     }
 }
 ```

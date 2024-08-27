@@ -61,7 +61,7 @@ Add this dependency to your project's POM:
 
 ### Gradle users
 
-Add this dependency to your project's build file(`build.gradle` or `build.gradle.kts`):
+Add this dependency to your project's build file (`build.gradle` or `build.gradle.kts`):
 
 ```groovy
 // build.gradle
@@ -236,6 +236,8 @@ To learn more, refer to example located in [src/examples/java/com/fingerprint/ex
 
 ## Webhook signature validation
 This SDK provides utility method for verifying the HMAC signature of the incoming webhook request.
+
+Here is an example how to made it using Spring Boot.
 ```java
 
 @RestController

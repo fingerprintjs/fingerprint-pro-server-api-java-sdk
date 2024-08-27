@@ -237,7 +237,7 @@ To learn more, refer to example located in [src/examples/java/com/fingerprint/ex
 ## Webhook signature validation
 This SDK provides utility method for verifying the HMAC signature of the incoming webhook request.
 
-Here is an example how to made it using Spring Boot.
+Here is an example implementation using Spring Boot: 
 ```java
 import com.fingerprint.sdk.Webhook;
 

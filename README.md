@@ -61,16 +61,32 @@ Add this dependency to your project's POM:
 
 ### Gradle users
 
-Add this dependency to your project's build file:
+Add this dependency to your project's build file (`build.gradle` or `build.gradle.kts`):
 
 ```groovy
-  repositories {
-     maven { url 'https://jitpack.io' }
-  }
+// build.gradle
+repositories {
+  maven { url 'https://jitpack.io' }
+}
 
-  dependencies {
-     implementation "com.github.fingerprintjs:fingerprint-pro-server-api-java-sdk:v6.0.1"
+dependencies {
+  implementation "com.github.fingerprintjs:fingerprint-pro-server-api-java-sdk:v6.0.1"
+}
+```
+
+
+```kotlin
+// build.gradle.kts
+
+repositories {
+  maven {
+    url = uri("https://jitpack.io")
   }
+}
+
+dependencies {
+  implementation("com.github.fingerprintjs:fingerprint-pro-server-api-java-sdk:v6.0.1")
+}
 ```
 
 ### Others
@@ -93,8 +109,8 @@ Please follow the [installation](#installation) instruction and execute the foll
 package main;
 
 import com.fingerprint.api.FingerprintApi;
-import com.fingerprint.models.EventResponse;
-import com.fingerprint.models.Response;
+import com.fingerprint.model.EventResponse;
+import com.fingerprint.model.Response;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
 import com.fingerprint.sdk.Configuration;
@@ -220,31 +236,32 @@ To learn more, refer to example located in [src/examples/java/com/fingerprint/ex
 
 ## Webhook signature validation
 This SDK provides utility method for verifying the HMAC signature of the incoming webhook request.
+
+Here is an example how to made it using Spring Boot.
 ```java
+import com.fingerprint.sdk.Webhook;
 
 @RestController
 class WebhookController {
 
     @PostMapping("/api/webhook")
-    @ResponseBody
-    public String webhookHandler(@RequestBody String webhook, @RequestHeader HttpHeaders headers) {
+    public ResponseEntity<String> webhookHandler(@RequestBody byte[] webhook, @RequestHeader HttpHeaders headers) {
         final String secret = System.getenv("WEBHOOK_SIGNATURE_SECRET");
         if (secret == null || secret.isEmpty()) {
-            return new ResponseEntity<String>("Secret key is not configured", HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Secret key is not configured");
         }
 
-        final String header = headers.get("fpjs-event-signature");
-        if (header == null || header.size == 0) {
-            return new ResponseEntity<String>("Missing fpjs-event-signature header", HttpStatus.BAD_REQUEST);
+        final String signature = headers.getFirst("fpjs-event-signature");
+        if (signature == null || signature.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Missing fpjs-event-signature header");
         }
-        final String signature = header[0];
 
-        final boolean isValidSignature = Webhook.isValidWebhookSignature(signature, data.getBytes(StandardCharsets.UTF_8), secret);
+        final boolean isValidSignature = Webhook.isValidWebhookSignature(signature, webhook, secret);
         if (!isValidSignature) {
-            return new ResponseEntity<String>("Webhook signature is not valid", HttpStatus.BAD_REQUEST);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Webhook signature is not valid");
         }
 
-        return new ResponseEntity<String>("Webhook received", HttpStatus.OK);
+        return ResponseEntity.ok("Webhook received");
     }
 }
 ```

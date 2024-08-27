@@ -239,6 +239,7 @@ This SDK provides utility method for verifying the HMAC signature of the incomin
 
 Here is an example how to made it using Spring Boot.
 ```java
+import com.fingerprint.sdk.Webhook;
 
 @RestController
 class WebhookController {

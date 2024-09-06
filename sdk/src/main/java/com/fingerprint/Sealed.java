@@ -2,6 +2,7 @@ package com.fingerprint;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fingerprint.model.EventResponse;
+import com.fingerprint.sdk.JSON;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.GCMParameterSpec;
@@ -123,7 +124,7 @@ public class Sealed {
     public static EventResponse unsealEventResponse(byte[] sealed, DecryptionKey[] keys) throws IllegalArgumentException, UnsealAggregateException, IOException {
         byte[] unsealed = unseal(sealed, keys);
 
-        ObjectMapper mapper = ObjectMapperUtil.getObjectMapper();
+        ObjectMapper mapper = JSON.getDefault().getMapper();
 
         EventResponse value = mapper.readValue(unsealed, EventResponse.class);
 

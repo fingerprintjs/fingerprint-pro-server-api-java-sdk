@@ -22,6 +22,7 @@
 
 ### Features
 
+* add [Confidence Score v1.1](https://dev.fingerprint.com/docs/understanding-your-confidence-score-v11)
 * add `remoteControl`, `velocity` and `developerTools` signals ([5648a7f](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/5648a7faf93ee046f877a91c6b3400cf95b2401f))
 * add `Webhook.IsValidWebhookSignature` function for validating webhook signature ([033a98f](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/033a98f0a770fe7665ca2268e09b9d6292e07f47))
 * add DELETE API ([db4832f](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/db4832f724a76b0259c5a1144b0ab78692675ea0))

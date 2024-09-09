@@ -1,3 +1,10 @@
+## [6.0.2](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v6.0.1...v6.0.2) (2024-09-09)
+
+
+### Bug Fixes
+
+* for `Sealed` use same `ObjectMapper` as for `FingerprintApi` ([7343655](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/734365587dbc52a504d17c051ef03cd85f6c2d34))
+
 ## [6.0.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v6.0.0...v6.0.1) (2024-08-20)
 
 

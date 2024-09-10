@@ -1,3 +1,10 @@
+## [6.1.0-develop.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v6.0.2...v6.1.0-develop.1) (2024-09-10)
+
+
+### Features
+
+* don't use `jackson-databind-nullable` to fix serialization problems with `Jackson` default configuration ([979b800](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/979b800c89d6ff9a44325043f99ec7fb7040f94a))
+
 ## [6.0.2](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v6.0.1...v6.0.2) (2024-09-09)
 
 

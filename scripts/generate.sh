@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION='6.0.2'
+VERSION='6.1.0'
 
 while getopts "v:" arg; do
   case $arg in

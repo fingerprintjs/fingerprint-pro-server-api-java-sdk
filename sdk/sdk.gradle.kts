@@ -35,7 +35,6 @@ dependencies {
     api(libs.jackson.core)
     api(libs.jackson.annotations)
     api(libs.jackson.databind)
-    api(libs.jackson.databind.nullable)
     api(libs.jackson.jsr310)
     api(libs.jakarta.annotation.api)
     testImplementation(libs.junit.jupiter.api)
@@ -68,6 +67,7 @@ openApiGenerate {
     gitRepoId.set("fingerprint-pro-server-api-java-sdk")
     gitUserId.set("fingerprintjs")
     configOptions.put("hideGenerationTimestamp", "true")
+    configOptions.put("openApiNullable", "false")
 }
 
 tasks.register("removeDocs") {

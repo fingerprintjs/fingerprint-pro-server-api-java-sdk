@@ -15,7 +15,6 @@ import java.util.Map;
 
 import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mockito;
-import org.openapitools.jackson.nullable.JsonNullableModule;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -69,8 +68,6 @@ public class FingerprintApiTest {
         ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        JsonNullableModule jnm = new JsonNullableModule();
-        mapper.registerModule(jnm);
         return mapper;
     }
 
@@ -263,8 +260,6 @@ public class FingerprintApiTest {
     public void webhookTest() throws Exception {
         ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        JsonNullableModule jnm = new JsonNullableModule();
-        mapper.registerModule(jnm);
 
         WebhookVisit visit =  mapper.readValue(getFileAsIOStream("mocks/webhook.json"), WebhookVisit.class);
 

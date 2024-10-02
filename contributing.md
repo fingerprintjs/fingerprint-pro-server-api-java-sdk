@@ -33,3 +33,7 @@ Project configuration is described in `config.yaml` file. To read about availabl
 ```shell
 java -jar ./bin/generator.jar config-help -l java
 ```
+
+### How to publish
+
+We use [changesets](https://github.com/changesets/changesets) for handling release notes. If there are relevant changes, please add them to changeset via `pnpm exec changeset`. You need to run `pnpm install` before doing so.

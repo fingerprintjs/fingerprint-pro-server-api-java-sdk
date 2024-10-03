@@ -1,3 +1,5 @@
+# Fingerprint Pro Server Java SDK
+
 ## [6.1.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v6.0.2...v6.1.0) (2024-09-11)
 
 

@@ -4,14 +4,15 @@ on:
   push:
     branches:
       - main
-      - develop
 
 jobs:
   release:
-    name: 'Build project, run CI checks and publish new release'
-    uses: fingerprintjs/dx-team-toolkit/.github/workflows/release-server-sdk.yml@v1
-    with:          
+    name: 'Release project'
+    uses: fingerprintjs/dx-team-toolkit/.github/workflows/release-sdk-changesets.yml@v1
+    with:
       appId: ${{ vars.APP_ID }}
+      version-command: bash ./changeset-version.sh
+      publish-command: bash ./changeset-publish.sh
       language: java
       language-version: '11'
       java-version: '11'

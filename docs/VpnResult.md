@@ -11,6 +11,16 @@
 |**originTimezone** | **String** | Local timezone which is used in timezoneMismatch method. |  |
 |**originCountry** | **String** | Country of the request (only for Android SDK version >= 2.4.0, ISO 3166 format or unknown). |  [optional] |
 |**methods** | [**VpnResultMethods**](VpnResultMethods.md) |  |  |
+|**confidence** | [**ConfidenceEnum**](#ConfidenceEnum) | A confidence rating for the VPN detection result — \"low\", \"medium\", or \"high\". Depends on the combination of results returned from all VPN detection methods. |  |
+
+
+## Enum: ConfidenceEnum
+
+| Name | Value |
+|---- | ----- |
+| LOW | &quot;low&quot; |
+| MEDIUM | &quot;medium&quot; |
+| HIGH | &quot;high&quot; |
 
 
 

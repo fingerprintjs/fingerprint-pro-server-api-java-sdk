@@ -21,7 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
   VpnResult.JSON_PROPERTY_RESULT,
   VpnResult.JSON_PROPERTY_ORIGIN_TIMEZONE,
   VpnResult.JSON_PROPERTY_ORIGIN_COUNTRY,
-  VpnResult.JSON_PROPERTY_METHODS
+  VpnResult.JSON_PROPERTY_METHODS,
+  VpnResult.JSON_PROPERTY_CONFIDENCE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class VpnResult {
@@ -36,6 +37,46 @@ public class VpnResult {
 
   public static final String JSON_PROPERTY_METHODS = "methods";
   private VpnResultMethods methods;
+
+  /**
+   * A confidence rating for the VPN detection result — \"low\", \"medium\", or \"high\". Depends on the combination of results returned from all VPN detection methods.
+   */
+  public enum ConfidenceEnum {
+    LOW("low"),
+    
+    MEDIUM("medium"),
+    
+    HIGH("high");
+
+    private String value;
+
+    ConfidenceEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ConfidenceEnum fromValue(String value) {
+      for (ConfidenceEnum b : ConfidenceEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  public static final String JSON_PROPERTY_CONFIDENCE = "confidence";
+  private ConfidenceEnum confidence;
 
   public VpnResult() {
   }
@@ -144,6 +185,32 @@ public class VpnResult {
   }
 
 
+  public VpnResult confidence(ConfidenceEnum confidence) {
+    this.confidence = confidence;
+    return this;
+  }
+
+   /**
+   * A confidence rating for the VPN detection result — \&quot;low\&quot;, \&quot;medium\&quot;, or \&quot;high\&quot;. Depends on the combination of results returned from all VPN detection methods.
+   * @return confidence
+  **/
+  @jakarta.annotation.Nonnull
+  @Schema(example = "low", required = true, description = "A confidence rating for the VPN detection result — \"low\", \"medium\", or \"high\". Depends on the combination of results returned from all VPN detection methods.")
+  @JsonProperty(JSON_PROPERTY_CONFIDENCE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public ConfidenceEnum getConfidence() {
+    return confidence;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CONFIDENCE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setConfidence(ConfidenceEnum confidence) {
+    this.confidence = confidence;
+  }
+
+
   /**
    * Return true if this VpnResult object is equal to o.
    */
@@ -159,12 +226,13 @@ public class VpnResult {
     return Objects.equals(this.result, vpnResult.result) &&
         Objects.equals(this.originTimezone, vpnResult.originTimezone) &&
         Objects.equals(this.originCountry, vpnResult.originCountry) &&
-        Objects.equals(this.methods, vpnResult.methods);
+        Objects.equals(this.methods, vpnResult.methods) &&
+        Objects.equals(this.confidence, vpnResult.confidence);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(result, originTimezone, originCountry, methods);
+    return Objects.hash(result, originTimezone, originCountry, methods, confidence);
   }
 
   @Override
@@ -175,6 +243,7 @@ public class VpnResult {
     sb.append("    originTimezone: ").append(toIndentedString(originTimezone)).append("\n");
     sb.append("    originCountry: ").append(toIndentedString(originCountry)).append("\n");
     sb.append("    methods: ").append(toIndentedString(methods)).append("\n");
+    sb.append("    confidence: ").append(toIndentedString(confidence)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,5 +1,11 @@
 # Fingerprint Pro Server Java SDK
 
+## 6.2.0
+
+### Minor Changes
+
+- **visitors**: Add the confidence field to the VPN Detection Smart Signal ([aec1770](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/aec1770034f91bef7fcd0775b99eb6baa74241de))
+
 ## 6.2.0-develop.0
 
 ### Minor Changes

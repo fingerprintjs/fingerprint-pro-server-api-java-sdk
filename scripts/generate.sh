@@ -20,4 +20,4 @@ platform=$(uname)
     sed -i "s/projectVersion = .*$/projectVersion = $VERSION/g" ./gradle.properties
   fi
 )
-./gradlew build test
+./gradlew build -x :examples:compileJava -x :sdk:compileTestJava

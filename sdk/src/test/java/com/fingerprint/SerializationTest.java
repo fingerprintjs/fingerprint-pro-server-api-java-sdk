@@ -3,9 +3,8 @@ package com.fingerprint;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.fingerprint.model.EventResponse;
-import com.fingerprint.model.RawDeviceAttributesResultValue;
-import com.fingerprint.model.SignalResponseRawDeviceAttributes;
+import com.fingerprint.model.EventsGetResponse;
+import com.fingerprint.model.ProductRawDeviceAttributes;
 import com.fingerprint.sdk.ApiException;
 import com.fingerprint.sdk.JSON;
 import org.junit.jupiter.api.Test;
@@ -42,15 +41,15 @@ public class SerializationTest {
     @Test
     public void serializeRawDeviceAttributesTest() throws IOException {
         ObjectMapper sdkObjectMapper = JSON.getDefault().getMapper();
-        EventResponse eventResponse = sdkObjectMapper.readValue(getFileAsIOStream("mocks/get_event_200.json"), EventResponse.class);
+        EventsGetResponse eventResponse = sdkObjectMapper.readValue(getFileAsIOStream("mocks/get_event_200.json"), EventsGetResponse.class);
 
-        SignalResponseRawDeviceAttributes signalResponseRawDeviceAttributes = eventResponse.getProducts().getRawDeviceAttributes();
+        ProductRawDeviceAttributes signalResponseRawDeviceAttributes = eventResponse.getProducts().getRawDeviceAttributes();
         String sdkResult = sdkObjectMapper.writeValueAsString(signalResponseRawDeviceAttributes);
 
         ObjectMapper springLikeObjectMapper = getMapper();
         String springResult = springLikeObjectMapper.writeValueAsString(signalResponseRawDeviceAttributes);
 
         assertTrue(sdkResult.contains("\"architecture\":{\"value\":127}"));
-        assertTrue(springResult.contains("\"architecture\":{\"error\":null,\"value\":127}"));
+        assertTrue(springResult.contains("\"architecture\":{\"value\":127,\"error\":null}"));
     }
 }

@@ -14,7 +14,6 @@
 |**osVersion** | **String** |  |  |
 |**device** | **String** |  |  |
 |**userAgent** | **String** |  |  |
-|**botProbability** | **Integer** |  |  [optional] |
 
 
 

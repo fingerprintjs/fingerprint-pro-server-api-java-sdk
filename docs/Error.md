@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** |  |  |
+|**code** | [**ErrorCode**](ErrorCode.md) |  |  |
 |**message** | **String** |  |  |
 
 

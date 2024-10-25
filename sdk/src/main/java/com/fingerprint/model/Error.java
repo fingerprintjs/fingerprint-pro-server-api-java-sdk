@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fingerprint.model.ErrorCode;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fingerprint.sdk.JSON;
@@ -17,14 +18,13 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 
 @JsonPropertyOrder({
-  Error.JSON_PROPERTY_NAME,
+  Error.JSON_PROPERTY_CODE,
   Error.JSON_PROPERTY_MESSAGE
 })
-@JsonTypeName("error")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class Error {
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+  public static final String JSON_PROPERTY_CODE = "code";
+  private ErrorCode code;
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
@@ -32,29 +32,29 @@ public class Error {
   public Error() {
   }
 
-  public Error name(String name) {
-    this.name = name;
+  public Error code(ErrorCode code) {
+    this.code = code;
     return this;
   }
 
    /**
-   * Get name
-   * @return name
+   * Get code
+   * @return code
   **/
   @jakarta.annotation.Nonnull
   @Schema(required = true, description = "")
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(JSON_PROPERTY_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getName() {
-    return name;
+  public ErrorCode getCode() {
+    return code;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(JSON_PROPERTY_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
-    this.name = name;
+  public void setCode(ErrorCode code) {
+    this.code = code;
   }
 
 
@@ -85,7 +85,7 @@ public class Error {
 
 
   /**
-   * Return true if this error object is equal to o.
+   * Return true if this Error object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -96,20 +96,20 @@ public class Error {
       return false;
     }
     Error error = (Error) o;
-    return Objects.equals(this.name, error.name) &&
+    return Objects.equals(this.code, error.code) &&
         Objects.equals(this.message, error.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, message);
+    return Objects.hash(code, message);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Error {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();

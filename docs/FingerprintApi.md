@@ -71,7 +71,7 @@ public class FingerprintApiExample {
         */
         ApiClient client = Configuration.getDefaultApiClient(FPJS_API_SECRET, Region.EUROPE);
         FingerprintApi api = new FingerprintApi(client);
-        String visitorId = "visitorId_example"; // String | The [visitor ID](https://dev.fingerprint.com/docs/js-agent#visitorid) you want to delete.
+        String visitorId = "visitorId_example"; // String | The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) you want to delete.
         try {
             apiInstance.deleteVisitorData(visitorId);
         } catch (ApiException e) {
@@ -87,7 +87,7 @@ public class FingerprintApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **visitorId** | **String**| The [visitor ID](https://dev.fingerprint.com/docs/js-agent#visitorid) you want to delete. | |
+| **visitorId** | **String**| The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) you want to delete. | |
 
 ### Return type
 
@@ -114,7 +114,7 @@ null (empty response body)
 
 ## getEvent
 
-> EventResponse getEvent(requestId)
+> EventsGetResponse getEvent(requestId)
 
 Get event by request ID
 
@@ -153,9 +153,9 @@ public class FingerprintApiExample {
         */
         ApiClient client = Configuration.getDefaultApiClient(FPJS_API_SECRET, Region.EUROPE);
         FingerprintApi api = new FingerprintApi(client);
-        String requestId = "requestId_example"; // String | The unique [identifier](https://dev.fingerprint.com/docs/js-agent#requestid) of each identification request.
+        String requestId = "requestId_example"; // String | The unique [identifier](https://dev.fingerprint.com/reference/get-function#requestid) of each identification request.
         try {
-            EventResponse result = apiInstance.getEvent(requestId);
+            EventsGetResponse result = apiInstance.getEvent(requestId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());
@@ -170,11 +170,11 @@ public class FingerprintApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **requestId** | **String**| The unique [identifier](https://dev.fingerprint.com/docs/js-agent#requestid) of each identification request. | |
+| **requestId** | **String**| The unique [identifier](https://dev.fingerprint.com/reference/get-function#requestid) of each identification request. | |
 
 ### Return type
 
-[**EventResponse**](EventResponse.md)
+[**EventsGetResponse**](EventsGetResponse.md)
 
 ### Authorization
 
@@ -188,14 +188,14 @@ public class FingerprintApiExample {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not found |  -  |
+| **200** | OK. |  -  |
+| **403** | Forbidden. Access to this API is denied. |  -  |
+| **404** | Not found. The request ID cannot be found in this application&#39;s data. |  -  |
 
 
 ## getVisits
 
-> Response getVisits(visitorId, requestId, linkedId, limit, paginationKey, before)
+> VisitorsGetResponse getVisits(visitorId, requestId, linkedId, limit, paginationKey, before)
 
 Get visits by visitor ID
 
@@ -235,14 +235,14 @@ public class FingerprintApiExample {
         */
         ApiClient client = Configuration.getDefaultApiClient(FPJS_API_SECRET, Region.EUROPE);
         FingerprintApi api = new FingerprintApi(client);
-        String visitorId = "uYIm7Ksp5rf00SllPhFp"; // String | Unique [visitor identifier](https://dev.fingerprint.com/docs/js-agent#visitorid) issued by Fingerprint Pro.
-        String requestId = "requestId_example"; // String | Filter visits by `requestId`.   Every identification request has a unique identifier associated with it called `requestId`. This identifier is returned to the client in the identification [result](https://dev.fingerprint.com/docs/js-agent#requestid). When you filter visits by `requestId`, only one visit will be returned. 
-        String linkedId = "linkedId_example"; // String | Filter visits by your custom identifier.   You can use [`linkedId`](https://dev.fingerprint.com/docs/js-agent#linkedid) to associate identification requests with your own identifier, for example: session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier. 
+        String visitorId = "visitorId_example"; // String | Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro.
+        String requestId = "requestId_example"; // String | Filter visits by `requestId`.   Every identification request has a unique identifier associated with it called `requestId`. This identifier is returned to the client in the identification [result](https://dev.fingerprint.com/reference/get-function#requestid). When you filter visits by `requestId`, only one visit will be returned. 
+        String linkedId = "linkedId_example"; // String | Filter visits by your custom identifier.   You can use [`linkedId`](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example: session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier. 
         Integer limit = 56; // Integer | Limit scanned results.   For performance reasons, the API first scans some number of events before filtering them. Use `limit` to specify how many events are scanned before they are filtered by `requestId` or `linkedId`. Results are always returned sorted by the timestamp (most recent first). By default, the most recent 100 visits are scanned, the maximum is 500. 
         String paginationKey = "paginationKey_example"; // String | Use `paginationKey` to get the next page of results.   When more results are available (e.g., you requested 200 results using `limit` parameter, but a total of 600 results are available), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `requestId` of the last returned event. In the following request, use that value in the `paginationKey` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/visitors/:visitorId?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/visitors/:visitorId?limit=200&paginationKey=1683900801733.Ogvu1j`  Pagination happens during scanning and before filtering, so you can get less visits than the `limit` you specified with more available on the next page. When there are no more results available for scanning, the `paginationKey` attribute is not returned. 
         Long before = 56L; // Long | ⚠️ Deprecated pagination method, please use `paginationKey` instead. Timestamp (in milliseconds since epoch) used to paginate results. 
         try {
-            Response result = apiInstance.getVisits(visitorIdrequestIdlinkedIdlimitpaginationKeybefore);
+            VisitorsGetResponse result = apiInstance.getVisits(visitorIdrequestIdlinkedIdlimitpaginationKeybefore);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getVisits:" + e.getMessage());
@@ -257,16 +257,16 @@ public class FingerprintApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **visitorId** | **String**| Unique [visitor identifier](https://dev.fingerprint.com/docs/js-agent#visitorid) issued by Fingerprint Pro. | |
-| **requestId** | **String**| Filter visits by `requestId`.   Every identification request has a unique identifier associated with it called `requestId`. This identifier is returned to the client in the identification [result](https://dev.fingerprint.com/docs/js-agent#requestid). When you filter visits by `requestId`, only one visit will be returned.  | [optional] |
-| **linkedId** | **String**| Filter visits by your custom identifier.   You can use [`linkedId`](https://dev.fingerprint.com/docs/js-agent#linkedid) to associate identification requests with your own identifier, for example: session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier.  | [optional] |
+| **visitorId** | **String**| Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. | |
+| **requestId** | **String**| Filter visits by `requestId`.   Every identification request has a unique identifier associated with it called `requestId`. This identifier is returned to the client in the identification [result](https://dev.fingerprint.com/reference/get-function#requestid). When you filter visits by `requestId`, only one visit will be returned.  | [optional] |
+| **linkedId** | **String**| Filter visits by your custom identifier.   You can use [`linkedId`](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example: session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier.  | [optional] |
 | **limit** | **Integer**| Limit scanned results.   For performance reasons, the API first scans some number of events before filtering them. Use `limit` to specify how many events are scanned before they are filtered by `requestId` or `linkedId`. Results are always returned sorted by the timestamp (most recent first). By default, the most recent 100 visits are scanned, the maximum is 500.  | [optional] |
 | **paginationKey** | **String**| Use `paginationKey` to get the next page of results.   When more results are available (e.g., you requested 200 results using `limit` parameter, but a total of 600 results are available), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `requestId` of the last returned event. In the following request, use that value in the `paginationKey` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/visitors/:visitorId?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/visitors/:visitorId?limit=200&paginationKey=1683900801733.Ogvu1j`  Pagination happens during scanning and before filtering, so you can get less visits than the `limit` you specified with more available on the next page. When there are no more results available for scanning, the `paginationKey` attribute is not returned.  | [optional] |
 | **before** | **Long**| ⚠️ Deprecated pagination method, please use `paginationKey` instead. Timestamp (in milliseconds since epoch) used to paginate results.  | [optional] |
 
 ### Return type
 
-[**Response**](Response.md)
+[**VisitorsGetResponse**](VisitorsGetResponse.md)
 
 ### Authorization
 
@@ -280,14 +280,15 @@ public class FingerprintApiExample {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **403** | Forbidden. The API Key is probably missing or incorrect. |  -  |
-| **429** | Too Many Requests |  * Retry-After - Indicates how many seconds you should wait before attempting the next request. <br>  |
+| **200** | OK. |  -  |
+| **400** | Bad request. The visitor ID or query parameters are missing or in the wrong format. |  -  |
+| **403** | Forbidden. Access to this API is denied. |  -  |
+| **429** | Too Many Requests. The request is throttled. |  * Retry-After - Indicates how many seconds you should wait before attempting the next request. <br>  |
 
 
 ## updateEvent
 
-> updateEvent(requestId, eventUpdateRequest)
+> updateEvent(requestId, eventsUpdateRequest)
 
 Update an event with a given request ID
 
@@ -326,10 +327,10 @@ public class FingerprintApiExample {
         */
         ApiClient client = Configuration.getDefaultApiClient(FPJS_API_SECRET, Region.EUROPE);
         FingerprintApi api = new FingerprintApi(client);
-        String requestId = "requestId_example"; // String | The unique event [identifier](https://dev.fingerprint.com/docs/js-agent#requestid).
-        EventUpdateRequest eventUpdateRequest = new EventUpdateRequest(); // EventUpdateRequest | 
+        String requestId = "requestId_example"; // String | The unique event [identifier](https://dev.fingerprint.com/reference/get-function#requestid).
+        EventsUpdateRequest eventsUpdateRequest = new EventsUpdateRequest(); // EventsUpdateRequest | 
         try {
-            apiInstance.updateEvent(requestIdeventUpdateRequest);
+            apiInstance.updateEvent(requestIdeventsUpdateRequest);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.updateEvent:" + e.getMessage());
         }
@@ -343,8 +344,8 @@ public class FingerprintApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **requestId** | **String**| The unique event [identifier](https://dev.fingerprint.com/docs/js-agent#requestid). | |
-| **eventUpdateRequest** | [**EventUpdateRequest**](EventUpdateRequest.md)|  | |
+| **requestId** | **String**| The unique event [identifier](https://dev.fingerprint.com/reference/get-function#requestid). | |
+| **eventsUpdateRequest** | [**EventsUpdateRequest**](EventsUpdateRequest.md)|  | |
 
 ### Return type
 
@@ -362,16 +363,16 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad request |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not found |  -  |
-| **409** | Conflict |  -  |
+| **200** | OK. |  -  |
+| **400** | Bad request. The request payload is not valid. |  -  |
+| **403** | Forbidden. Access to this API is denied. |  -  |
+| **404** | Not found. The request ID cannot be found in this application&#39;s data. |  -  |
+| **409** | Conflict. The event is not mutable yet. |  -  |
 
 
 ## webhookTrace
 
-> webhookTrace()
+> webhookTrace(webhook)
 
 
 
@@ -405,8 +406,9 @@ public class FingerprintApiExample {
         */
         ApiClient client = Configuration.getDefaultApiClient(FPJS_API_SECRET, Region.EUROPE);
         FingerprintApi api = new FingerprintApi(client);
+        Webhook webhook = new Webhook(); // Webhook | 
         try {
-            apiInstance.webhookTrace();
+            apiInstance.webhookTrace(webhook);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.webhookTrace:" + e.getMessage());
         }
@@ -417,7 +419,10 @@ public class FingerprintApiExample {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **webhook** | [**Webhook**](Webhook.md)|  | [optional] |
 
 ### Return type
 
@@ -429,7 +434,7 @@ null (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: Not defined
 
 ### HTTP response details

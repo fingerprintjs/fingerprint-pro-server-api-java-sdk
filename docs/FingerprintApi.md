@@ -242,7 +242,7 @@ public class FingerprintApiExample {
         String paginationKey = "paginationKey_example"; // String | Use `paginationKey` to get the next page of results.   When more results are available (e.g., you requested 200 results using `limit` parameter, but a total of 600 results are available), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `requestId` of the last returned event. In the following request, use that value in the `paginationKey` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/visitors/:visitorId?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/visitors/:visitorId?limit=200&paginationKey=1683900801733.Ogvu1j`  Pagination happens during scanning and before filtering, so you can get less visits than the `limit` you specified with more available on the next page. When there are no more results available for scanning, the `paginationKey` attribute is not returned. 
         Long before = 56L; // Long | ⚠️ Deprecated pagination method, please use `paginationKey` instead. Timestamp (in milliseconds since epoch) used to paginate results. 
         try {
-            VisitorsGetResponse result = apiInstance.getVisits(visitorIdrequestIdlinkedIdlimitpaginationKeybefore);
+            VisitorsGetResponse result = apiInstance.getVisits(visitorId, requestId, linkedId, limit, paginationKey, before);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getVisits:" + e.getMessage());
@@ -330,7 +330,7 @@ public class FingerprintApiExample {
         String requestId = "requestId_example"; // String | The unique event [identifier](https://dev.fingerprint.com/reference/get-function#requestid).
         EventsUpdateRequest eventsUpdateRequest = new EventsUpdateRequest(); // EventsUpdateRequest | 
         try {
-            apiInstance.updateEvent(requestIdeventsUpdateRequest);
+            apiInstance.updateEvent(requestId, eventsUpdateRequest);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.updateEvent:" + e.getMessage());
         }

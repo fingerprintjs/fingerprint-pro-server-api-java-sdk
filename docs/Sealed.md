@@ -1,7 +1,7 @@
 # Sealed
 
 ## **UnsealEventsResponse**
-> EventResponse unsealEventResponse(sealed []byte, keys DecryptionKey[])
+> EventsGetResponse unsealEventResponse(sealed []byte, keys DecryptionKey[])
 
 Decrypts the sealed response with provided keys.
 ### Required Parameters

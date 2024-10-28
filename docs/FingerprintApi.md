@@ -49,8 +49,9 @@ Please [contact our support team](https://fingerprint.com/support/) to enable it
 package main;
 
 import com.fingerprint.api.FingerprintApi;
-import com.fingerprint.model.EventResponse;
-import com.fingerprint.model.Response;
+import com.fingerprint.model.EventsGetResponse;
+import com.fingerprint.model.EventsUpdateRequest;
+import com.fingerprint.model.VisitorsGetResponse;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
 import com.fingerprint.sdk.Configuration;
@@ -131,8 +132,9 @@ Use `requestId` as the URL path parameter. This API method is scoped to a reques
 package main;
 
 import com.fingerprint.api.FingerprintApi;
-import com.fingerprint.model.EventResponse;
-import com.fingerprint.model.Response;
+import com.fingerprint.model.EventsGetResponse;
+import com.fingerprint.model.EventsUpdateRequest;
+import com.fingerprint.model.VisitorsGetResponse;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
 import com.fingerprint.sdk.Configuration;
@@ -213,8 +215,9 @@ Only information from the _Identification_ product is returned.
 package main;
 
 import com.fingerprint.api.FingerprintApi;
-import com.fingerprint.model.EventResponse;
-import com.fingerprint.model.Response;
+import com.fingerprint.model.EventsGetResponse;
+import com.fingerprint.model.EventsUpdateRequest;
+import com.fingerprint.model.VisitorsGetResponse;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
 import com.fingerprint.sdk.Configuration;
@@ -305,8 +308,9 @@ When an event is created, it is assigned `linkedId` and `tag` submitted through 
 package main;
 
 import com.fingerprint.api.FingerprintApi;
-import com.fingerprint.model.EventResponse;
-import com.fingerprint.model.Response;
+import com.fingerprint.model.EventsGetResponse;
+import com.fingerprint.model.EventsUpdateRequest;
+import com.fingerprint.model.VisitorsGetResponse;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
 import com.fingerprint.sdk.Configuration;
@@ -384,8 +388,9 @@ Fake path to describe webhook format. More information about webhooks can be fou
 package main;
 
 import com.fingerprint.api.FingerprintApi;
-import com.fingerprint.model.EventResponse;
-import com.fingerprint.model.Response;
+import com.fingerprint.model.EventsGetResponse;
+import com.fingerprint.model.EventsUpdateRequest;
+import com.fingerprint.model.VisitorsGetResponse;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
 import com.fingerprint.sdk.Configuration;

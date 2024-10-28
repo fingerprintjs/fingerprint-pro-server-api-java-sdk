@@ -346,7 +346,6 @@ Class | Method | HTTP request | Description
  - [Proxy](docs/Proxy.md)
  - [RawDeviceAttribute](docs/RawDeviceAttribute.md)
  - [RawDeviceAttributeError](docs/RawDeviceAttributeError.md)
- - [RelatedVisitor](docs/RelatedVisitor.md)
  - [RemoteControl](docs/RemoteControl.md)
  - [RootApps](docs/RootApps.md)
  - [SuspectScore](docs/SuspectScore.md)

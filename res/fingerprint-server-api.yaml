@@ -1400,7 +1400,7 @@ components:
             field.
 
             The time of the most recent factory reset that happened on the
-            **mobile device** is expressed as Unix epoch time.
+            **mobile device** is expressed as Unix epoch time.       
     ProductFactoryReset:
       type: object
       additionalProperties: false
@@ -2022,7 +2022,7 @@ components:
             field.
 
             The time of the most recent factory reset that happened on the
-            **mobile device** is expressed as Unix epoch time.
+            **mobile device** is expressed as Unix epoch time.       
     WebhookJailbroken:
       type: object
       additionalProperties: false
@@ -2290,3 +2290,14 @@ components:
           $ref: '#/components/schemas/WebhookVelocity'
         developerTools:
           $ref: '#/components/schemas/WebhookDeveloperTools'
+    RelatedVisitor:
+      type: object
+      additionalProperties: false
+      required:
+        - visitorId
+      properties:
+        visitorId:
+          type: string
+          description: >-
+            Visitor ID of a browser that originates from the same mobile device
+            as the input visitor ID.

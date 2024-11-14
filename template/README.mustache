@@ -136,8 +136,9 @@ Please follow the [installation](#installation) instruction and execute the foll
 package main;
 
 import com.fingerprint.api.FingerprintApi;
-import com.fingerprint.model.EventResponse;
-import com.fingerprint.model.Response;
+import com.fingerprint.model.EventsGetResponse;
+import com.fingerprint.model.EventsUpdateRequest;
+import com.fingerprint.model.VisitorsGetResponse;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
 import com.fingerprint.sdk.Configuration;
@@ -172,7 +173,7 @@ public class FingerprintApiExample {
         // Get an event with a given requestId
         try {
             // Fetch the event with a given requestId
-            EventResponse response = api.getEvent(FPJS_REQUEST_ID);
+            EventsGetResponse response = api.getEvent(FPJS_REQUEST_ID);
             System.out.println(response.getProducts().toString());
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());
@@ -180,7 +181,7 @@ public class FingerprintApiExample {
 
         // Update an event with a given requestId
         try {
-            EventUpdateRequest request = new EventUpdateRequest();
+            EventsUpdateRequest request = new EventsUpdateRequest();
             request.setLinkedId("myNewLinkedId");
             api.updateEvent(FPJS_REQUEST_ID, request);
         } catch (ApiException e) {
@@ -190,7 +191,7 @@ public class FingerprintApiExample {
         // Get a specific visitor's all visits
         try {
             // Fetch all visits with a given visitorId, with a page limit
-            Response response = api.getVisits(FPJS_VISITOR_ID, null, null, LIMIT, null, null);
+            VisitorsGetResponse response = api.getVisits(FPJS_VISITOR_ID, null, null, LIMIT, null, null);
             System.out.println(response.getVisits().toString());
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getVisits:" + e.getMessage());
@@ -199,7 +200,7 @@ public class FingerprintApiExample {
         // Get a specific visitor's all visits with a linkedId
         try {
             // Fetch all visits with a given visitorId, with a page limit, skipping the first visit
-            Response response = api.getVisits(FPJS_VISITOR_ID, null, FPJS_LINKED_ID, LIMIT, PAGINATION_KEY, null);
+            VisitorsGetResponse response = api.getVisits(FPJS_VISITOR_ID, null, FPJS_LINKED_ID, LIMIT, PAGINATION_KEY, null);
             System.out.println(response.getVisits().toString());
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getVisits:" + e.getMessage());
@@ -208,7 +209,7 @@ public class FingerprintApiExample {
         // Use all the parameters on getVisits
         try {
             // Fetch the visitor's all visits with a given requestId and linkedId with a page limit while skipping the first visit
-            Response response = api.getVisits(FPJS_VISITOR_ID, FPJS_REQUEST_ID, FPJS_LINKED_ID, LIMIT, PAGINATION_KEY, null);
+            VisitorsGetResponse response = api.getVisits(FPJS_VISITOR_ID, FPJS_REQUEST_ID, FPJS_LINKED_ID, LIMIT, PAGINATION_KEY, null);
             System.out.println(response.getVisits().toString());
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getVisits:" + e.getMessage());
@@ -231,7 +232,7 @@ This SDK provides utility methods for decoding [sealed results](https://dev.fing
 package com.fingerprint.example;
 
 import com.fingerprint.Sealed;
-import com.fingerprint.model.EventResponse;
+import com.fingerprint.model.EventsGetResponse;
 
 import java.util.Base64;
 
@@ -243,7 +244,7 @@ public class SealedResults {
         // Base64 encoded key generated in the dashboard.
         String SEALED_KEY = System.getenv("BASE64_KEY");
 
-        final EventResponse event = Sealed.unsealEventResponse(
+        final EventsGetResponse event = Sealed.unsealEventResponse(
                 Base64.getDecoder().decode(SEALED_RESULT),
                 // You can provide more than one key to support key rotation. The SDK will try to decrypt the result with each key.
                 new Sealed.DecryptionKey[]{
@@ -264,7 +265,7 @@ To learn more, refer to example located in [src/examples/java/com/fingerprint/ex
 ## Webhook signature validation
 This SDK provides utility method for verifying the HMAC signature of the incoming webhook request.
 
-Here is an example implementation using Spring Boot: 
+Here is an example implementation using Spring Boot:
 ```java
 import com.fingerprint.sdk.Webhook;
 

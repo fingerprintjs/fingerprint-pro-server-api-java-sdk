@@ -109,8 +109,9 @@ Please follow the [installation](#installation) instruction and execute the foll
 package main;
 
 import com.fingerprint.api.FingerprintApi;
-import com.fingerprint.model.EventResponse;
-import com.fingerprint.model.Response;
+import com.fingerprint.model.EventsGetResponse;
+import com.fingerprint.model.EventsUpdateRequest;
+import com.fingerprint.model.VisitorsGetResponse;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
 import com.fingerprint.sdk.Configuration;
@@ -145,7 +146,7 @@ public class FingerprintApiExample {
         // Get an event with a given requestId
         try {
             // Fetch the event with a given requestId
-            EventResponse response = api.getEvent(FPJS_REQUEST_ID);
+            EventsGetResponse response = api.getEvent(FPJS_REQUEST_ID);
             System.out.println(response.getProducts().toString());
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());
@@ -153,7 +154,7 @@ public class FingerprintApiExample {
 
         // Update an event with a given requestId
         try {
-            EventUpdateRequest request = new EventUpdateRequest();
+            EventsUpdateRequest request = new EventsUpdateRequest();
             request.setLinkedId("myNewLinkedId");
             api.updateEvent(FPJS_REQUEST_ID, request);
         } catch (ApiException e) {
@@ -163,7 +164,7 @@ public class FingerprintApiExample {
         // Get a specific visitor's all visits
         try {
             // Fetch all visits with a given visitorId, with a page limit
-            Response response = api.getVisits(FPJS_VISITOR_ID, null, null, LIMIT, null, null);
+            VisitorsGetResponse response = api.getVisits(FPJS_VISITOR_ID, null, null, LIMIT, null, null);
             System.out.println(response.getVisits().toString());
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getVisits:" + e.getMessage());
@@ -172,7 +173,7 @@ public class FingerprintApiExample {
         // Get a specific visitor's all visits with a linkedId
         try {
             // Fetch all visits with a given visitorId, with a page limit, skipping the first visit
-            Response response = api.getVisits(FPJS_VISITOR_ID, null, FPJS_LINKED_ID, LIMIT, PAGINATION_KEY, null);
+            VisitorsGetResponse response = api.getVisits(FPJS_VISITOR_ID, null, FPJS_LINKED_ID, LIMIT, PAGINATION_KEY, null);
             System.out.println(response.getVisits().toString());
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getVisits:" + e.getMessage());
@@ -181,7 +182,7 @@ public class FingerprintApiExample {
         // Use all the parameters on getVisits
         try {
             // Fetch the visitor's all visits with a given requestId and linkedId with a page limit while skipping the first visit
-            Response response = api.getVisits(FPJS_VISITOR_ID, FPJS_REQUEST_ID, FPJS_LINKED_ID, LIMIT, PAGINATION_KEY, null);
+            VisitorsGetResponse response = api.getVisits(FPJS_VISITOR_ID, FPJS_REQUEST_ID, FPJS_LINKED_ID, LIMIT, PAGINATION_KEY, null);
             System.out.println(response.getVisits().toString());
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getVisits:" + e.getMessage());
@@ -204,7 +205,7 @@ This SDK provides utility methods for decoding [sealed results](https://dev.fing
 package com.fingerprint.example;
 
 import com.fingerprint.Sealed;
-import com.fingerprint.model.EventResponse;
+import com.fingerprint.model.EventsGetResponse;
 
 import java.util.Base64;
 
@@ -216,7 +217,7 @@ public class SealedResults {
         // Base64 encoded key generated in the dashboard.
         String SEALED_KEY = System.getenv("BASE64_KEY");
 
-        final EventResponse event = Sealed.unsealEventResponse(
+        final EventsGetResponse event = Sealed.unsealEventResponse(
                 Base64.getDecoder().decode(SEALED_RESULT),
                 // You can provide more than one key to support key rotation. The SDK will try to decrypt the result with each key.
                 new Sealed.DecryptionKey[]{
@@ -237,7 +238,7 @@ To learn more, refer to example located in [src/examples/java/com/fingerprint/ex
 ## Webhook signature validation
 This SDK provides utility method for verifying the HMAC signature of the incoming webhook request.
 
-Here is an example implementation using Spring Boot: 
+Here is an example implementation using Spring Boot:
 ```java
 import com.fingerprint.sdk.Webhook;
 
@@ -281,97 +282,105 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [ASN](docs/ASN.md)
- - [BotdDetectionResult](docs/BotdDetectionResult.md)
- - [BotdResult](docs/BotdResult.md)
+ - [Botd](docs/Botd.md)
+ - [BotdBot](docs/BotdBot.md)
+ - [BotdBotResult](docs/BotdBotResult.md)
  - [BrowserDetails](docs/BrowserDetails.md)
- - [ClonedAppResult](docs/ClonedAppResult.md)
- - [Common403ErrorResponse](docs/Common403ErrorResponse.md)
- - [Confidence](docs/Confidence.md)
- - [DataCenter](docs/DataCenter.md)
- - [DeprecatedIPLocation](docs/DeprecatedIPLocation.md)
- - [DeprecatedIPLocationCity](docs/DeprecatedIPLocationCity.md)
- - [DeveloperToolsResult](docs/DeveloperToolsResult.md)
- - [EmulatorResult](docs/EmulatorResult.md)
+ - [ClonedApp](docs/ClonedApp.md)
+ - [DeprecatedGeolocation](docs/DeprecatedGeolocation.md)
+ - [DeveloperTools](docs/DeveloperTools.md)
+ - [Emulator](docs/Emulator.md)
  - [Error](docs/Error.md)
- - [ErrorCommon403Response](docs/ErrorCommon403Response.md)
- - [ErrorCommon429Response](docs/ErrorCommon429Response.md)
- - [ErrorCommon429ResponseError](docs/ErrorCommon429ResponseError.md)
- - [ErrorEvent404Response](docs/ErrorEvent404Response.md)
- - [ErrorEvent404ResponseError](docs/ErrorEvent404ResponseError.md)
- - [ErrorUpdateEvent400Response](docs/ErrorUpdateEvent400Response.md)
- - [ErrorUpdateEvent400ResponseError](docs/ErrorUpdateEvent400ResponseError.md)
- - [ErrorUpdateEvent409Response](docs/ErrorUpdateEvent409Response.md)
- - [ErrorUpdateEvent409ResponseError](docs/ErrorUpdateEvent409ResponseError.md)
- - [ErrorVisitor400Response](docs/ErrorVisitor400Response.md)
- - [ErrorVisitor400ResponseError](docs/ErrorVisitor400ResponseError.md)
- - [ErrorVisitor404Response](docs/ErrorVisitor404Response.md)
- - [ErrorVisitor404ResponseError](docs/ErrorVisitor404ResponseError.md)
- - [ErrorVisits403](docs/ErrorVisits403.md)
- - [EventResponse](docs/EventResponse.md)
- - [EventUpdateRequest](docs/EventUpdateRequest.md)
- - [FactoryResetResult](docs/FactoryResetResult.md)
- - [FridaResult](docs/FridaResult.md)
- - [HighActivityResult](docs/HighActivityResult.md)
- - [IPLocation](docs/IPLocation.md)
- - [IPLocationCity](docs/IPLocationCity.md)
- - [IdentificationError](docs/IdentificationError.md)
- - [IncognitoResult](docs/IncognitoResult.md)
- - [IpBlockListResult](docs/IpBlockListResult.md)
- - [IpBlockListResultDetails](docs/IpBlockListResultDetails.md)
- - [IpInfoResult](docs/IpInfoResult.md)
- - [IpInfoResultV4](docs/IpInfoResultV4.md)
- - [IpInfoResultV6](docs/IpInfoResultV6.md)
- - [JailbrokenResult](docs/JailbrokenResult.md)
- - [Location](docs/Location.md)
- - [LocationSpoofingResult](docs/LocationSpoofingResult.md)
- - [PrivacySettingsResult](docs/PrivacySettingsResult.md)
- - [ProductError](docs/ProductError.md)
- - [ProductsResponse](docs/ProductsResponse.md)
- - [ProductsResponseBotd](docs/ProductsResponseBotd.md)
- - [ProductsResponseIdentification](docs/ProductsResponseIdentification.md)
- - [ProductsResponseIdentificationData](docs/ProductsResponseIdentificationData.md)
- - [ProxyResult](docs/ProxyResult.md)
- - [RawDeviceAttributesResultValue](docs/RawDeviceAttributesResultValue.md)
- - [RemoteControlResult](docs/RemoteControlResult.md)
- - [Response](docs/Response.md)
- - [ResponseVisits](docs/ResponseVisits.md)
- - [RootAppsResult](docs/RootAppsResult.md)
- - [SeenAt](docs/SeenAt.md)
- - [SignalResponseClonedApp](docs/SignalResponseClonedApp.md)
- - [SignalResponseDeveloperTools](docs/SignalResponseDeveloperTools.md)
- - [SignalResponseEmulator](docs/SignalResponseEmulator.md)
- - [SignalResponseFactoryReset](docs/SignalResponseFactoryReset.md)
- - [SignalResponseFrida](docs/SignalResponseFrida.md)
- - [SignalResponseHighActivity](docs/SignalResponseHighActivity.md)
- - [SignalResponseIncognito](docs/SignalResponseIncognito.md)
- - [SignalResponseIpBlocklist](docs/SignalResponseIpBlocklist.md)
- - [SignalResponseIpInfo](docs/SignalResponseIpInfo.md)
- - [SignalResponseJailbroken](docs/SignalResponseJailbroken.md)
- - [SignalResponseLocationSpoofing](docs/SignalResponseLocationSpoofing.md)
- - [SignalResponsePrivacySettings](docs/SignalResponsePrivacySettings.md)
- - [SignalResponseProxy](docs/SignalResponseProxy.md)
- - [SignalResponseRawDeviceAttributes](docs/SignalResponseRawDeviceAttributes.md)
- - [SignalResponseRemoteControl](docs/SignalResponseRemoteControl.md)
- - [SignalResponseRootApps](docs/SignalResponseRootApps.md)
- - [SignalResponseSuspectScore](docs/SignalResponseSuspectScore.md)
- - [SignalResponseTampering](docs/SignalResponseTampering.md)
- - [SignalResponseTor](docs/SignalResponseTor.md)
- - [SignalResponseVelocity](docs/SignalResponseVelocity.md)
- - [SignalResponseVirtualMachine](docs/SignalResponseVirtualMachine.md)
- - [SignalResponseVpn](docs/SignalResponseVpn.md)
- - [Subdivision](docs/Subdivision.md)
- - [SuspectScoreResult](docs/SuspectScoreResult.md)
- - [TamperingResult](docs/TamperingResult.md)
- - [TooManyRequestsResponse](docs/TooManyRequestsResponse.md)
- - [TorResult](docs/TorResult.md)
- - [VelocityIntervalResult](docs/VelocityIntervalResult.md)
+ - [ErrorCode](docs/ErrorCode.md)
+ - [ErrorPlainResponse](docs/ErrorPlainResponse.md)
+ - [ErrorResponse](docs/ErrorResponse.md)
+ - [EventsGetResponse](docs/EventsGetResponse.md)
+ - [EventsUpdateRequest](docs/EventsUpdateRequest.md)
+ - [FactoryReset](docs/FactoryReset.md)
+ - [Frida](docs/Frida.md)
+ - [Geolocation](docs/Geolocation.md)
+ - [GeolocationCity](docs/GeolocationCity.md)
+ - [GeolocationContinent](docs/GeolocationContinent.md)
+ - [GeolocationCountry](docs/GeolocationCountry.md)
+ - [GeolocationSubdivision](docs/GeolocationSubdivision.md)
+ - [HighActivity](docs/HighActivity.md)
+ - [IPBlocklist](docs/IPBlocklist.md)
+ - [IPBlocklistDetails](docs/IPBlocklistDetails.md)
+ - [IPInfo](docs/IPInfo.md)
+ - [IPInfoASN](docs/IPInfoASN.md)
+ - [IPInfoDataCenter](docs/IPInfoDataCenter.md)
+ - [IPInfoV4](docs/IPInfoV4.md)
+ - [IPInfoV6](docs/IPInfoV6.md)
+ - [Identification](docs/Identification.md)
+ - [IdentificationConfidence](docs/IdentificationConfidence.md)
+ - [IdentificationSeenAt](docs/IdentificationSeenAt.md)
+ - [Incognito](docs/Incognito.md)
+ - [Jailbroken](docs/Jailbroken.md)
+ - [LocationSpoofing](docs/LocationSpoofing.md)
+ - [PrivacySettings](docs/PrivacySettings.md)
+ - [ProductBotd](docs/ProductBotd.md)
+ - [ProductClonedApp](docs/ProductClonedApp.md)
+ - [ProductDeveloperTools](docs/ProductDeveloperTools.md)
+ - [ProductEmulator](docs/ProductEmulator.md)
+ - [ProductFactoryReset](docs/ProductFactoryReset.md)
+ - [ProductFrida](docs/ProductFrida.md)
+ - [ProductHighActivity](docs/ProductHighActivity.md)
+ - [ProductIPBlocklist](docs/ProductIPBlocklist.md)
+ - [ProductIPInfo](docs/ProductIPInfo.md)
+ - [ProductIdentification](docs/ProductIdentification.md)
+ - [ProductIncognito](docs/ProductIncognito.md)
+ - [ProductJailbroken](docs/ProductJailbroken.md)
+ - [ProductLocationSpoofing](docs/ProductLocationSpoofing.md)
+ - [ProductPrivacySettings](docs/ProductPrivacySettings.md)
+ - [ProductProxy](docs/ProductProxy.md)
+ - [ProductRawDeviceAttributes](docs/ProductRawDeviceAttributes.md)
+ - [ProductRemoteControl](docs/ProductRemoteControl.md)
+ - [ProductRootApps](docs/ProductRootApps.md)
+ - [ProductSuspectScore](docs/ProductSuspectScore.md)
+ - [ProductTampering](docs/ProductTampering.md)
+ - [ProductTor](docs/ProductTor.md)
+ - [ProductVPN](docs/ProductVPN.md)
+ - [ProductVelocity](docs/ProductVelocity.md)
+ - [ProductVirtualMachine](docs/ProductVirtualMachine.md)
+ - [Products](docs/Products.md)
+ - [Proxy](docs/Proxy.md)
+ - [RawDeviceAttribute](docs/RawDeviceAttribute.md)
+ - [RawDeviceAttributeError](docs/RawDeviceAttributeError.md)
+ - [RemoteControl](docs/RemoteControl.md)
+ - [RootApps](docs/RootApps.md)
+ - [SuspectScore](docs/SuspectScore.md)
+ - [Tampering](docs/Tampering.md)
+ - [Tor](docs/Tor.md)
+ - [VPN](docs/VPN.md)
+ - [VPNConfidence](docs/VPNConfidence.md)
+ - [VPNMethods](docs/VPNMethods.md)
+ - [Velocity](docs/Velocity.md)
+ - [VelocityData](docs/VelocityData.md)
  - [VelocityIntervals](docs/VelocityIntervals.md)
- - [VelocityResult](docs/VelocityResult.md)
- - [VirtualMachineResult](docs/VirtualMachineResult.md)
- - [VpnResult](docs/VpnResult.md)
- - [VpnResultMethods](docs/VpnResultMethods.md)
- - [WebhookVisit](docs/WebhookVisit.md)
+ - [VirtualMachine](docs/VirtualMachine.md)
+ - [Visit](docs/Visit.md)
+ - [VisitorsGetResponse](docs/VisitorsGetResponse.md)
+ - [Webhook](docs/Webhook.md)
+ - [WebhookClonedApp](docs/WebhookClonedApp.md)
+ - [WebhookDeveloperTools](docs/WebhookDeveloperTools.md)
+ - [WebhookEmulator](docs/WebhookEmulator.md)
+ - [WebhookFactoryReset](docs/WebhookFactoryReset.md)
+ - [WebhookFrida](docs/WebhookFrida.md)
+ - [WebhookHighActivity](docs/WebhookHighActivity.md)
+ - [WebhookIPBlocklist](docs/WebhookIPBlocklist.md)
+ - [WebhookIPInfo](docs/WebhookIPInfo.md)
+ - [WebhookJailbroken](docs/WebhookJailbroken.md)
+ - [WebhookLocationSpoofing](docs/WebhookLocationSpoofing.md)
+ - [WebhookPrivacySettings](docs/WebhookPrivacySettings.md)
+ - [WebhookProxy](docs/WebhookProxy.md)
+ - [WebhookRemoteControl](docs/WebhookRemoteControl.md)
+ - [WebhookRootApps](docs/WebhookRootApps.md)
+ - [WebhookSuspectScore](docs/WebhookSuspectScore.md)
+ - [WebhookTampering](docs/WebhookTampering.md)
+ - [WebhookTor](docs/WebhookTor.md)
+ - [WebhookVPN](docs/WebhookVPN.md)
+ - [WebhookVelocity](docs/WebhookVelocity.md)
+ - [WebhookVirtualMachine](docs/WebhookVirtualMachine.md)
 
 
 ## Documentation for Authorization

@@ -9,18 +9,12 @@ import com.fingerprint.sdk.Region;
 
 import jakarta.ws.rs.core.GenericType;
 
-import com.fingerprint.model.ErrorCommon403Response;
-import com.fingerprint.model.ErrorCommon429Response;
-import com.fingerprint.model.ErrorEvent404Response;
-import com.fingerprint.model.ErrorUpdateEvent400Response;
-import com.fingerprint.model.ErrorUpdateEvent409Response;
-import com.fingerprint.model.ErrorVisitor400Response;
-import com.fingerprint.model.ErrorVisitor404Response;
-import com.fingerprint.model.ErrorVisits403;
-import com.fingerprint.model.EventResponse;
-import com.fingerprint.model.EventUpdateRequest;
-import com.fingerprint.model.Response;
-import com.fingerprint.model.TooManyRequestsResponse;
+import com.fingerprint.model.ErrorPlainResponse;
+import com.fingerprint.model.ErrorResponse;
+import com.fingerprint.model.EventsGetResponse;
+import com.fingerprint.model.EventsUpdateRequest;
+import com.fingerprint.model.VisitorsGetResponse;
+import com.fingerprint.model.Webhook;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -69,7 +63,7 @@ public class FingerprintApi {
   /**
    * Delete data by visitor ID
    * Request deleting all data associated with the specified visitor ID. This API is useful for compliance with privacy regulations. ### Which data is deleted? - Browser (or device) properties - Identification requests made from this browser (or device)  #### Browser (or device) properties - Represents the data that Fingerprint collected from this specific browser (or device) and everything inferred and derived from it. - Upon request to delete, this data is deleted asynchronously (typically within a few minutes) and it will no longer be used to identify this browser (or device) for your [Fingerprint Application](https://dev.fingerprint.com/docs/glossary#fingerprint-application).  #### Identification requests made from this browser (or device) - Fingerprint stores the identification requests made from a browser (or device) for up to 30 (or 90) days depending on your plan. To learn more, see [Data Retention](https://dev.fingerprint.com/docs/regions#data-retention). - Upon request to delete, the identification requests that were made by this browser   - Within the past 10 days are deleted within 24 hrs.   - Outside of 10 days are allowed to purge as per your data retention period.  ### Corollary After requesting to delete a visitor ID, - If the same browser (or device) requests to identify, it will receive a different visitor ID. - If you request [`/events` API](https://dev.fingerprint.com/reference/getevent) with a `request_id` that was made outside of the 10 days, you will still receive a valid response. - If you request [`/visitors` API](https://dev.fingerprint.com/reference/getvisits) for the deleted visitor ID, the response will include identification requests that were made outside of those 10 days.  ### Interested? Please [contact our support team](https://fingerprint.com/support/) to enable it for you. Otherwise, you will receive a 403. 
-   * @param visitorId The [visitor ID](https://dev.fingerprint.com/docs/js-agent#visitorid) you want to delete. (required)
+   * @param visitorId The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) you want to delete. (required)
    * @throws ApiException if fails to make API call
    * @http.response.details
      <table summary="Response Details" border="1">
@@ -88,7 +82,7 @@ public class FingerprintApi {
   /**
    * Delete data by visitor ID
    * Request deleting all data associated with the specified visitor ID. This API is useful for compliance with privacy regulations. ### Which data is deleted? - Browser (or device) properties - Identification requests made from this browser (or device)  #### Browser (or device) properties - Represents the data that Fingerprint collected from this specific browser (or device) and everything inferred and derived from it. - Upon request to delete, this data is deleted asynchronously (typically within a few minutes) and it will no longer be used to identify this browser (or device) for your [Fingerprint Application](https://dev.fingerprint.com/docs/glossary#fingerprint-application).  #### Identification requests made from this browser (or device) - Fingerprint stores the identification requests made from a browser (or device) for up to 30 (or 90) days depending on your plan. To learn more, see [Data Retention](https://dev.fingerprint.com/docs/regions#data-retention). - Upon request to delete, the identification requests that were made by this browser   - Within the past 10 days are deleted within 24 hrs.   - Outside of 10 days are allowed to purge as per your data retention period.  ### Corollary After requesting to delete a visitor ID, - If the same browser (or device) requests to identify, it will receive a different visitor ID. - If you request [`/events` API](https://dev.fingerprint.com/reference/getevent) with a `request_id` that was made outside of the 10 days, you will still receive a valid response. - If you request [`/visitors` API](https://dev.fingerprint.com/reference/getvisits) for the deleted visitor ID, the response will include identification requests that were made outside of those 10 days.  ### Interested? Please [contact our support team](https://fingerprint.com/support/) to enable it for you. Otherwise, you will receive a 403. 
-   * @param visitorId The [visitor ID](https://dev.fingerprint.com/docs/js-agent#visitorid) you want to delete. (required)
+   * @param visitorId The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) you want to delete. (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    * @http.response.details
@@ -144,36 +138,36 @@ public class FingerprintApi {
   /**
    * Get event by request ID
    * Get a detailed analysis of an individual identification event, including Smart Signals.  Please note that the response includes mobile signals (e.g. `rootApps`) even if the request originated from a non-mobile platform. It is highly recommended that you **ignore** the mobile signals for such requests.   Use `requestId` as the URL path parameter. This API method is scoped to a request, i.e. all returned information is by `requestId`. 
-   * @param requestId The unique [identifier](https://dev.fingerprint.com/docs/js-agent#requestid) of each identification request. (required)
-   * @return EventResponse
+   * @param requestId The unique [identifier](https://dev.fingerprint.com/reference/get-function#requestid) of each identification request. (required)
+   * @return EventsGetResponse
    * @throws ApiException if fails to make API call
    * @http.response.details
      <table summary="Response Details" border="1">
        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-       <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-       <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-       <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+       <tr><td> 200 </td><td> OK. </td><td>  -  </td></tr>
+       <tr><td> 403 </td><td> Forbidden. Access to this API is denied. </td><td>  -  </td></tr>
+       <tr><td> 404 </td><td> Not found. The request ID cannot be found in this application&#39;s data. </td><td>  -  </td></tr>
      </table>
    */
-  public EventResponse getEvent(String requestId) throws ApiException {
+  public EventsGetResponse getEvent(String requestId) throws ApiException {
     return getEventWithHttpInfo(requestId).getData();
   }
 
   /**
    * Get event by request ID
    * Get a detailed analysis of an individual identification event, including Smart Signals.  Please note that the response includes mobile signals (e.g. `rootApps`) even if the request originated from a non-mobile platform. It is highly recommended that you **ignore** the mobile signals for such requests.   Use `requestId` as the URL path parameter. This API method is scoped to a request, i.e. all returned information is by `requestId`. 
-   * @param requestId The unique [identifier](https://dev.fingerprint.com/docs/js-agent#requestid) of each identification request. (required)
-   * @return ApiResponse&lt;EventResponse&gt;
+   * @param requestId The unique [identifier](https://dev.fingerprint.com/reference/get-function#requestid) of each identification request. (required)
+   * @return ApiResponse&lt;EventsGetResponse&gt;
    * @throws ApiException if fails to make API call
    * @http.response.details
      <table summary="Response Details" border="1">
        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-       <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-       <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-       <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+       <tr><td> 200 </td><td> OK. </td><td>  -  </td></tr>
+       <tr><td> 403 </td><td> Forbidden. Access to this API is denied. </td><td>  -  </td></tr>
+       <tr><td> 404 </td><td> Not found. The request ID cannot be found in this application&#39;s data. </td><td>  -  </td></tr>
      </table>
    */
-  public ApiResponse<EventResponse> getEventWithHttpInfo(String requestId) throws ApiException {
+  public ApiResponse<EventsGetResponse> getEventWithHttpInfo(String requestId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'requestId' is set
@@ -209,7 +203,7 @@ public class FingerprintApi {
 
     String[] localVarAuthNames = new String[] { "ApiKeyHeader", "ApiKeyQuery" };
 
-    GenericType<EventResponse> localVarReturnType = new GenericType<EventResponse>() {};
+    GenericType<EventsGetResponse> localVarReturnType = new GenericType<EventsGetResponse>() {};
 
     return apiClient.invokeAPI("FingerprintApi.getEvent", localVarPath, "GET", localVarQueryParams, localVarPostBody,
                                localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType,
@@ -218,46 +212,48 @@ public class FingerprintApi {
   /**
    * Get visits by visitor ID
    * Get a history of visits (identification events) for a specific `visitorId`. Use the `visitorId` as a URL path parameter. Only information from the _Identification_ product is returned.  #### Headers  * `Retry-After` — Present in case of `429 Too many requests`. Indicates how long you should wait before making a follow-up request. The value is non-negative decimal integer indicating the seconds to delay after the response is received. 
-   * @param visitorId Unique [visitor identifier](https://dev.fingerprint.com/docs/js-agent#visitorid) issued by Fingerprint Pro. (required)
-   * @param requestId Filter visits by `requestId`.   Every identification request has a unique identifier associated with it called `requestId`. This identifier is returned to the client in the identification [result](https://dev.fingerprint.com/docs/js-agent#requestid). When you filter visits by `requestId`, only one visit will be returned.  (optional)
-   * @param linkedId Filter visits by your custom identifier.   You can use [`linkedId`](https://dev.fingerprint.com/docs/js-agent#linkedid) to associate identification requests with your own identifier, for example: session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier.  (optional)
+   * @param visitorId Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. (required)
+   * @param requestId Filter visits by `requestId`.   Every identification request has a unique identifier associated with it called `requestId`. This identifier is returned to the client in the identification [result](https://dev.fingerprint.com/reference/get-function#requestid). When you filter visits by `requestId`, only one visit will be returned.  (optional)
+   * @param linkedId Filter visits by your custom identifier.   You can use [`linkedId`](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example: session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier.  (optional)
    * @param limit Limit scanned results.   For performance reasons, the API first scans some number of events before filtering them. Use `limit` to specify how many events are scanned before they are filtered by `requestId` or `linkedId`. Results are always returned sorted by the timestamp (most recent first). By default, the most recent 100 visits are scanned, the maximum is 500.  (optional)
    * @param paginationKey Use `paginationKey` to get the next page of results.   When more results are available (e.g., you requested 200 results using `limit` parameter, but a total of 600 results are available), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `requestId` of the last returned event. In the following request, use that value in the `paginationKey` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/visitors/:visitorId?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/visitors/:visitorId?limit=200&paginationKey=1683900801733.Ogvu1j`  Pagination happens during scanning and before filtering, so you can get less visits than the `limit` you specified with more available on the next page. When there are no more results available for scanning, the `paginationKey` attribute is not returned.  (optional)
    * @param before ⚠️ Deprecated pagination method, please use `paginationKey` instead. Timestamp (in milliseconds since epoch) used to paginate results.  (optional)
-   * @return Response
+   * @return VisitorsGetResponse
    * @throws ApiException if fails to make API call
    * @http.response.details
      <table summary="Response Details" border="1">
        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-       <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-       <tr><td> 403 </td><td> Forbidden. The API Key is probably missing or incorrect. </td><td>  -  </td></tr>
-       <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - Indicates how many seconds you should wait before attempting the next request. <br>  </td></tr>
+       <tr><td> 200 </td><td> OK. </td><td>  -  </td></tr>
+       <tr><td> 400 </td><td> Bad request. The visitor ID or query parameters are missing or in the wrong format. </td><td>  -  </td></tr>
+       <tr><td> 403 </td><td> Forbidden. Access to this API is denied. </td><td>  -  </td></tr>
+       <tr><td> 429 </td><td> Too Many Requests. The request is throttled. </td><td>  * Retry-After - Indicates how many seconds you should wait before attempting the next request. <br>  </td></tr>
      </table>
    */
-  public Response getVisits(String visitorId, String requestId, String linkedId, Integer limit, String paginationKey, Long before) throws ApiException {
+  public VisitorsGetResponse getVisits(String visitorId, String requestId, String linkedId, Integer limit, String paginationKey, Long before) throws ApiException {
     return getVisitsWithHttpInfo(visitorId, requestId, linkedId, limit, paginationKey, before).getData();
   }
 
   /**
    * Get visits by visitor ID
    * Get a history of visits (identification events) for a specific `visitorId`. Use the `visitorId` as a URL path parameter. Only information from the _Identification_ product is returned.  #### Headers  * `Retry-After` — Present in case of `429 Too many requests`. Indicates how long you should wait before making a follow-up request. The value is non-negative decimal integer indicating the seconds to delay after the response is received. 
-   * @param visitorId Unique [visitor identifier](https://dev.fingerprint.com/docs/js-agent#visitorid) issued by Fingerprint Pro. (required)
-   * @param requestId Filter visits by `requestId`.   Every identification request has a unique identifier associated with it called `requestId`. This identifier is returned to the client in the identification [result](https://dev.fingerprint.com/docs/js-agent#requestid). When you filter visits by `requestId`, only one visit will be returned.  (optional)
-   * @param linkedId Filter visits by your custom identifier.   You can use [`linkedId`](https://dev.fingerprint.com/docs/js-agent#linkedid) to associate identification requests with your own identifier, for example: session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier.  (optional)
+   * @param visitorId Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. (required)
+   * @param requestId Filter visits by `requestId`.   Every identification request has a unique identifier associated with it called `requestId`. This identifier is returned to the client in the identification [result](https://dev.fingerprint.com/reference/get-function#requestid). When you filter visits by `requestId`, only one visit will be returned.  (optional)
+   * @param linkedId Filter visits by your custom identifier.   You can use [`linkedId`](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example: session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier.  (optional)
    * @param limit Limit scanned results.   For performance reasons, the API first scans some number of events before filtering them. Use `limit` to specify how many events are scanned before they are filtered by `requestId` or `linkedId`. Results are always returned sorted by the timestamp (most recent first). By default, the most recent 100 visits are scanned, the maximum is 500.  (optional)
    * @param paginationKey Use `paginationKey` to get the next page of results.   When more results are available (e.g., you requested 200 results using `limit` parameter, but a total of 600 results are available), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `requestId` of the last returned event. In the following request, use that value in the `paginationKey` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/visitors/:visitorId?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/visitors/:visitorId?limit=200&paginationKey=1683900801733.Ogvu1j`  Pagination happens during scanning and before filtering, so you can get less visits than the `limit` you specified with more available on the next page. When there are no more results available for scanning, the `paginationKey` attribute is not returned.  (optional)
    * @param before ⚠️ Deprecated pagination method, please use `paginationKey` instead. Timestamp (in milliseconds since epoch) used to paginate results.  (optional)
-   * @return ApiResponse&lt;Response&gt;
+   * @return ApiResponse&lt;VisitorsGetResponse&gt;
    * @throws ApiException if fails to make API call
    * @http.response.details
      <table summary="Response Details" border="1">
        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-       <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-       <tr><td> 403 </td><td> Forbidden. The API Key is probably missing or incorrect. </td><td>  -  </td></tr>
-       <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - Indicates how many seconds you should wait before attempting the next request. <br>  </td></tr>
+       <tr><td> 200 </td><td> OK. </td><td>  -  </td></tr>
+       <tr><td> 400 </td><td> Bad request. The visitor ID or query parameters are missing or in the wrong format. </td><td>  -  </td></tr>
+       <tr><td> 403 </td><td> Forbidden. Access to this API is denied. </td><td>  -  </td></tr>
+       <tr><td> 429 </td><td> Too Many Requests. The request is throttled. </td><td>  * Retry-After - Indicates how many seconds you should wait before attempting the next request. <br>  </td></tr>
      </table>
    */
-  public ApiResponse<Response> getVisitsWithHttpInfo(String visitorId, String requestId, String linkedId, Integer limit, String paginationKey, Long before) throws ApiException {
+  public ApiResponse<VisitorsGetResponse> getVisitsWithHttpInfo(String visitorId, String requestId, String linkedId, Integer limit, String paginationKey, Long before) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'visitorId' is set
@@ -298,7 +294,7 @@ public class FingerprintApi {
 
     String[] localVarAuthNames = new String[] { "ApiKeyHeader", "ApiKeyQuery" };
 
-    GenericType<Response> localVarReturnType = new GenericType<Response>() {};
+    GenericType<VisitorsGetResponse> localVarReturnType = new GenericType<VisitorsGetResponse>() {};
 
     return apiClient.invokeAPI("FingerprintApi.getVisits", localVarPath, "GET", localVarQueryParams, localVarPostBody,
                                localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType,
@@ -307,51 +303,51 @@ public class FingerprintApi {
   /**
    * Update an event with a given request ID
    * Change information in existing events specified by `requestId` or *flag suspicious events*.  When an event is created, it is assigned `linkedId` and `tag` submitted through the JS agent parameters. This information might not be available on the client so the Server API allows for updating the attributes after the fact.  **Warning** It's not possible to update events older than 10 days. 
-   * @param requestId The unique event [identifier](https://dev.fingerprint.com/docs/js-agent#requestid). (required)
-   * @param eventUpdateRequest  (required)
+   * @param requestId The unique event [identifier](https://dev.fingerprint.com/reference/get-function#requestid). (required)
+   * @param eventsUpdateRequest  (required)
    * @throws ApiException if fails to make API call
    * @http.response.details
      <table summary="Response Details" border="1">
        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-       <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-       <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-       <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-       <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-       <tr><td> 409 </td><td> Conflict </td><td>  -  </td></tr>
+       <tr><td> 200 </td><td> OK. </td><td>  -  </td></tr>
+       <tr><td> 400 </td><td> Bad request. The request payload is not valid. </td><td>  -  </td></tr>
+       <tr><td> 403 </td><td> Forbidden. Access to this API is denied. </td><td>  -  </td></tr>
+       <tr><td> 404 </td><td> Not found. The request ID cannot be found in this application&#39;s data. </td><td>  -  </td></tr>
+       <tr><td> 409 </td><td> Conflict. The event is not mutable yet. </td><td>  -  </td></tr>
      </table>
    */
-  public void updateEvent(String requestId, EventUpdateRequest eventUpdateRequest) throws ApiException {
-    updateEventWithHttpInfo(requestId, eventUpdateRequest);
+  public void updateEvent(String requestId, EventsUpdateRequest eventsUpdateRequest) throws ApiException {
+    updateEventWithHttpInfo(requestId, eventsUpdateRequest);
   }
 
   /**
    * Update an event with a given request ID
    * Change information in existing events specified by `requestId` or *flag suspicious events*.  When an event is created, it is assigned `linkedId` and `tag` submitted through the JS agent parameters. This information might not be available on the client so the Server API allows for updating the attributes after the fact.  **Warning** It's not possible to update events older than 10 days. 
-   * @param requestId The unique event [identifier](https://dev.fingerprint.com/docs/js-agent#requestid). (required)
-   * @param eventUpdateRequest  (required)
+   * @param requestId The unique event [identifier](https://dev.fingerprint.com/reference/get-function#requestid). (required)
+   * @param eventsUpdateRequest  (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    * @http.response.details
      <table summary="Response Details" border="1">
        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-       <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-       <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-       <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-       <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-       <tr><td> 409 </td><td> Conflict </td><td>  -  </td></tr>
+       <tr><td> 200 </td><td> OK. </td><td>  -  </td></tr>
+       <tr><td> 400 </td><td> Bad request. The request payload is not valid. </td><td>  -  </td></tr>
+       <tr><td> 403 </td><td> Forbidden. Access to this API is denied. </td><td>  -  </td></tr>
+       <tr><td> 404 </td><td> Not found. The request ID cannot be found in this application&#39;s data. </td><td>  -  </td></tr>
+       <tr><td> 409 </td><td> Conflict. The event is not mutable yet. </td><td>  -  </td></tr>
      </table>
    */
-  public ApiResponse<Void> updateEventWithHttpInfo(String requestId, EventUpdateRequest eventUpdateRequest) throws ApiException {
-    Object localVarPostBody = eventUpdateRequest;
+  public ApiResponse<Void> updateEventWithHttpInfo(String requestId, EventsUpdateRequest eventsUpdateRequest) throws ApiException {
+    Object localVarPostBody = eventsUpdateRequest;
     
     // verify the required parameter 'requestId' is set
     if (requestId == null) {
       throw new ApiException(400, "Missing the required parameter 'requestId' when calling updateEvent");
     }
     
-    // verify the required parameter 'eventUpdateRequest' is set
-    if (eventUpdateRequest == null) {
-      throw new ApiException(400, "Missing the required parameter 'eventUpdateRequest' when calling updateEvent");
+    // verify the required parameter 'eventsUpdateRequest' is set
+    if (eventsUpdateRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'eventsUpdateRequest' when calling updateEvent");
     }
     
     // create path and map variables
@@ -389,6 +385,7 @@ public class FingerprintApi {
   /**
    * 
    * Fake path to describe webhook format. More information about webhooks can be found in the [documentation](https://dev.fingerprint.com/docs/webhooks)
+   * @param webhook  (optional)
    * @throws ApiException if fails to make API call
    * @http.response.details
      <table summary="Response Details" border="1">
@@ -396,13 +393,14 @@ public class FingerprintApi {
        <tr><td> 0 </td><td> Dummy for the schema </td><td>  -  </td></tr>
      </table>
    */
-  public void webhookTrace() throws ApiException {
-    webhookTraceWithHttpInfo();
+  public void webhookTrace(Webhook webhook) throws ApiException {
+    webhookTraceWithHttpInfo(webhook);
   }
 
   /**
    * 
    * Fake path to describe webhook format. More information about webhooks can be found in the [documentation](https://dev.fingerprint.com/docs/webhooks)
+   * @param webhook  (optional)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    * @http.response.details
@@ -411,8 +409,8 @@ public class FingerprintApi {
        <tr><td> 0 </td><td> Dummy for the schema </td><td>  -  </td></tr>
      </table>
    */
-  public ApiResponse<Void> webhookTraceWithHttpInfo() throws ApiException {
-    Object localVarPostBody = null;
+  public ApiResponse<Void> webhookTraceWithHttpInfo(Webhook webhook) throws ApiException {
+    Object localVarPostBody = webhook;
     
     // create path and map variables
     String localVarPath = "/webhook";
@@ -435,7 +433,7 @@ public class FingerprintApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 

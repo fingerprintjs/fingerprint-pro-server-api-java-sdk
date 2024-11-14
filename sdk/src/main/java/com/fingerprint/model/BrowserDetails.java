@@ -23,8 +23,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   BrowserDetails.JSON_PROPERTY_OS,
   BrowserDetails.JSON_PROPERTY_OS_VERSION,
   BrowserDetails.JSON_PROPERTY_DEVICE,
-  BrowserDetails.JSON_PROPERTY_USER_AGENT,
-  BrowserDetails.JSON_PROPERTY_BOT_PROBABILITY
+  BrowserDetails.JSON_PROPERTY_USER_AGENT
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class BrowserDetails {
@@ -49,9 +48,6 @@ public class BrowserDetails {
   public static final String JSON_PROPERTY_USER_AGENT = "userAgent";
   private String userAgent;
 
-  public static final String JSON_PROPERTY_BOT_PROBABILITY = "botProbability";
-  private Integer botProbability;
-
   public BrowserDetails() {
   }
 
@@ -65,7 +61,7 @@ public class BrowserDetails {
    * @return browserName
   **/
   @jakarta.annotation.Nonnull
-  @Schema(example = "Chrome", required = true, description = "")
+  @Schema(required = true, description = "")
   @JsonProperty(JSON_PROPERTY_BROWSER_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -91,7 +87,7 @@ public class BrowserDetails {
    * @return browserMajorVersion
   **/
   @jakarta.annotation.Nonnull
-  @Schema(example = "101", required = true, description = "")
+  @Schema(required = true, description = "")
   @JsonProperty(JSON_PROPERTY_BROWSER_MAJOR_VERSION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -117,7 +113,7 @@ public class BrowserDetails {
    * @return browserFullVersion
   **/
   @jakarta.annotation.Nonnull
-  @Schema(example = "101.0.4951", required = true, description = "")
+  @Schema(required = true, description = "")
   @JsonProperty(JSON_PROPERTY_BROWSER_FULL_VERSION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -143,7 +139,7 @@ public class BrowserDetails {
    * @return os
   **/
   @jakarta.annotation.Nonnull
-  @Schema(example = "Windows", required = true, description = "")
+  @Schema(required = true, description = "")
   @JsonProperty(JSON_PROPERTY_OS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -169,7 +165,7 @@ public class BrowserDetails {
    * @return osVersion
   **/
   @jakarta.annotation.Nonnull
-  @Schema(example = "10", required = true, description = "")
+  @Schema(required = true, description = "")
   @JsonProperty(JSON_PROPERTY_OS_VERSION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -195,7 +191,7 @@ public class BrowserDetails {
    * @return device
   **/
   @jakarta.annotation.Nonnull
-  @Schema(example = "Other", required = true, description = "")
+  @Schema(required = true, description = "")
   @JsonProperty(JSON_PROPERTY_DEVICE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -221,7 +217,7 @@ public class BrowserDetails {
    * @return userAgent
   **/
   @jakarta.annotation.Nonnull
-  @Schema(example = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36", required = true, description = "")
+  @Schema(required = true, description = "")
   @JsonProperty(JSON_PROPERTY_USER_AGENT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -234,32 +230,6 @@ public class BrowserDetails {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setUserAgent(String userAgent) {
     this.userAgent = userAgent;
-  }
-
-
-  public BrowserDetails botProbability(Integer botProbability) {
-    this.botProbability = botProbability;
-    return this;
-  }
-
-   /**
-   * Get botProbability
-   * @return botProbability
-  **/
-  @jakarta.annotation.Nullable
-  @Schema(description = "")
-  @JsonProperty(JSON_PROPERTY_BOT_PROBABILITY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Integer getBotProbability() {
-    return botProbability;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_BOT_PROBABILITY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBotProbability(Integer botProbability) {
-    this.botProbability = botProbability;
   }
 
 
@@ -281,13 +251,12 @@ public class BrowserDetails {
         Objects.equals(this.os, browserDetails.os) &&
         Objects.equals(this.osVersion, browserDetails.osVersion) &&
         Objects.equals(this.device, browserDetails.device) &&
-        Objects.equals(this.userAgent, browserDetails.userAgent) &&
-        Objects.equals(this.botProbability, browserDetails.botProbability);
+        Objects.equals(this.userAgent, browserDetails.userAgent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(browserName, browserMajorVersion, browserFullVersion, os, osVersion, device, userAgent, botProbability);
+    return Objects.hash(browserName, browserMajorVersion, browserFullVersion, os, osVersion, device, userAgent);
   }
 
   @Override
@@ -301,7 +270,6 @@ public class BrowserDetails {
     sb.append("    osVersion: ").append(toIndentedString(osVersion)).append("\n");
     sb.append("    device: ").append(toIndentedString(device)).append("\n");
     sb.append("    userAgent: ").append(toIndentedString(userAgent)).append("\n");
-    sb.append("    botProbability: ").append(toIndentedString(botProbability)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fingerprint.model.*;
+import com.fingerprint.model.Webhook;
 import com.fingerprint.sdk.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -57,9 +58,9 @@ public class FingerprintApiTest {
         when(api.getEvent(MOCK_REQUEST_WITH_EXTRA_FIELDS_ID)).thenReturn(fetchMockWithEventResponse("mocks/get_event_200_extra_fields.json"));
         when(api.getEvent(MOCK_REQUEST_WITH_ALL_FAILED_SIGNALS)).thenReturn(fetchMockWithEventResponse("mocks/get_event_200_all_errors.json"));
         when(api.getEvent(MOCK_REQUEST_BOTD_FAILED)).thenReturn(fetchMockWithEventResponse("mocks/get_event_200_botd_failed_error.json"));
-        when(api.getEvent(MOCK_REQUEST_BOTD_MANY_REQUEST)).thenReturn(fetchMockWithEventResponse("mocks/get_event_200_botd_too_many_requests_error.json"));
+        when(api.getEvent(MOCK_REQUEST_BOTD_MANY_REQUEST)).thenReturn(fetchMockWithEventResponse("mocks/get_event_200_too_many_requests_error.json"));
         when(api.getEvent(MOCK_REQUEST_IDENTIFICATION_FAILED)).thenReturn(fetchMockWithEventResponse("mocks/get_event_200_identification_failed_error.json"));
-        when(api.getEvent(MOCK_REQUEST_IDENTIFICATION_MANY_REQUEST)).thenReturn(fetchMockWithEventResponse("mocks/get_event_200_identification_too_many_requests_error.json"));
+        when(api.getEvent(MOCK_REQUEST_IDENTIFICATION_MANY_REQUEST)).thenReturn(fetchMockWithEventResponse("mocks/get_event_200_too_many_requests_error.json"));
 
         when(api.getVisits(MOCK_VISITOR_ID, MOCK_VISITOR_REQUEST_ID, null, 50, "1683900801733.Ogvu1j", null)).thenReturn(fetchMockVisit());
     }
@@ -71,18 +72,18 @@ public class FingerprintApiTest {
         return mapper;
     }
 
-    private EventResponse fetchMockWithEventResponse(String fileName) throws IOException {
-        return MAPPER.readValue(getFileAsIOStream(fileName), EventResponse.class);
+    private EventsGetResponse fetchMockWithEventResponse(String fileName) throws IOException {
+        return MAPPER.readValue(getFileAsIOStream(fileName), EventsGetResponse.class);
     }
 
     private <T> T fetchMock(String filename, Class<T> type) throws IOException {
         return MAPPER.readValue(getFileAsIOStream(filename), type);
     }
 
-    private Response fetchMockVisit() throws IOException {
+    private VisitorsGetResponse fetchMockVisit() throws IOException {
         ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-        return mapper.readValue(getFileAsIOStream("mocks/get_visits_200_limit_500.json"), Response.class);
+        return mapper.readValue(getFileAsIOStream("mocks/get_visitors_200_limit_500.json"), VisitorsGetResponse.class);
     }
 
     /**
@@ -93,7 +94,7 @@ public class FingerprintApiTest {
      */
     @Test
     public void getEventTest() throws ApiException {
-        EventResponse response = api.getEvent(MOCK_REQUEST_ID);
+        EventsGetResponse response = api.getEvent(MOCK_REQUEST_ID);
         assertNotNull(response.getProducts());
         assertNotNull(response.getProducts().getIdentification());
         assertNotNull(response.getProducts().getIdentification().getData());
@@ -112,7 +113,7 @@ public class FingerprintApiTest {
         assertFalse(response.getProducts().getHighActivity().getData().getResult());
         assertFalse(response.getProducts().getLocationSpoofing().getData().getResult());
         assertEquals(0, response.getProducts().getFactoryReset().getData().getTimestamp());
-        SignalResponseRawDeviceAttributes signalResponseRawDeviceAttributes = response.getProducts().getRawDeviceAttributes();
+        ProductRawDeviceAttributes signalResponseRawDeviceAttributes = response.getProducts().getRawDeviceAttributes();
         assertEquals(127, signalResponseRawDeviceAttributes.getData().get("architecture").getValue());
         assertEquals(35.73832903057337, signalResponseRawDeviceAttributes.getData().get("audio").getValue());
         Map<String, Object> canvasAttribute = (Map<String, Object>) response.getProducts().getRawDeviceAttributes().getData().get("canvas").getValue();
@@ -124,13 +125,13 @@ public class FingerprintApiTest {
 
     @Test
     public void updateOneFieldEventRequest() throws IOException {
-        EventUpdateRequest request = fetchMock("mocks/update_event_one_field_request.json", EventUpdateRequest.class);
+        EventsUpdateRequest request = fetchMock("mocks/update_event_one_field_request.json", EventsUpdateRequest.class);
         assertDoesNotThrow(() -> api.updateEvent(MOCK_REQUEST_ID, request));
     }
 
     @Test
     public void updateMultipleFieldsEventRequest() throws IOException {
-        EventUpdateRequest request = fetchMock("mocks/update_event_multiple_fields_request.json", EventUpdateRequest.class);
+        EventsUpdateRequest request = fetchMock("mocks/update_event_multiple_fields_request.json", EventsUpdateRequest.class);
         assertDoesNotThrow(() -> api.updateEvent(MOCK_REQUEST_ID, request));
     }
 
@@ -148,8 +149,8 @@ public class FingerprintApiTest {
      */
     @Test
     public void getEventWithExtraFieldsTest() throws ApiException {
-        EventResponse response = api.getEvent(MOCK_REQUEST_WITH_EXTRA_FIELDS_ID);
-        ProductsResponse products = response.getProducts();
+        EventsGetResponse response = api.getEvent(MOCK_REQUEST_WITH_EXTRA_FIELDS_ID);
+        Products products = response.getProducts();
         assertNotNull(products);
         assertNotNull(products.getIdentification());
         assertNotNull(products.getIdentification().getData());
@@ -158,29 +159,29 @@ public class FingerprintApiTest {
 
     @Test
     public void getEventWithAllFailedSignalsTest() throws ApiException {
-        EventResponse response = api.getEvent(MOCK_REQUEST_WITH_ALL_FAILED_SIGNALS);
-        ProductsResponse products = response.getProducts();
+        EventsGetResponse response = api.getEvent(MOCK_REQUEST_WITH_ALL_FAILED_SIGNALS);
+        Products products = response.getProducts();
 
         assertNotNull(products);
-        assertEquals(IdentificationError.CodeEnum.FAILED, products.getIdentification().getError().getCode());
-        assertEquals(ProductError.CodeEnum.FAILED, products.getBotd().getError().getCode());
-        assertEquals(ProductError.CodeEnum.FAILED, products.getIpInfo().getError().getCode());
-        assertEquals(IdentificationError.CodeEnum.FAILED, products.getIncognito().getError().getCode());
-        assertEquals(ProductError.CodeEnum.FAILED, products.getRootApps().getError().getCode());
-        assertEquals(ProductError.CodeEnum.FAILED, products.getEmulator().getError().getCode());
-        assertEquals(ProductError.CodeEnum.FAILED, products.getIpBlocklist().getError().getCode());
-        assertEquals(ProductError.CodeEnum.FAILED, products.getTor().getError().getCode());
-        assertEquals(ProductError.CodeEnum.FAILED, products.getVpn().getError().getCode());
-        assertEquals(ProductError.CodeEnum.FAILED, products.getProxy().getError().getCode());
-        assertEquals(IdentificationError.CodeEnum.FAILED, products.getTampering().getError().getCode());
-        assertEquals(ProductError.CodeEnum.FAILED, products.getClonedApp().getError().getCode());
-        assertEquals(ProductError.CodeEnum.FAILED, products.getFactoryReset().getError().getCode());
-        assertEquals(ProductError.CodeEnum.FAILED, products.getJailbroken().getError().getCode());
-        assertEquals(ProductError.CodeEnum.FAILED, products.getFrida().getError().getCode());
-        assertEquals(ProductError.CodeEnum.FAILED, products.getPrivacySettings().getError().getCode());
-        assertEquals(ProductError.CodeEnum.FAILED, products.getVirtualMachine().getError().getCode());
+        assertEquals(ErrorCode.FAILED, products.getIdentification().getError().getCode());
+        assertEquals(ErrorCode.FAILED, products.getBotd().getError().getCode());
+        assertEquals(ErrorCode.FAILED, products.getIpInfo().getError().getCode());
+        assertEquals(ErrorCode.FAILED, products.getIncognito().getError().getCode());
+        assertEquals(ErrorCode.FAILED, products.getRootApps().getError().getCode());
+        assertEquals(ErrorCode.FAILED, products.getEmulator().getError().getCode());
+        assertEquals(ErrorCode.FAILED, products.getIpBlocklist().getError().getCode());
+        assertEquals(ErrorCode.FAILED, products.getTor().getError().getCode());
+        assertEquals(ErrorCode.FAILED, products.getVpn().getError().getCode());
+        assertEquals(ErrorCode.FAILED, products.getProxy().getError().getCode());
+        assertEquals(ErrorCode.FAILED, products.getTampering().getError().getCode());
+        assertEquals(ErrorCode.FAILED, products.getClonedApp().getError().getCode());
+        assertEquals(ErrorCode.FAILED, products.getFactoryReset().getError().getCode());
+        assertEquals(ErrorCode.FAILED, products.getJailbroken().getError().getCode());
+        assertEquals(ErrorCode.FAILED, products.getFrida().getError().getCode());
+        assertEquals(ErrorCode.FAILED, products.getPrivacySettings().getError().getCode());
+        assertEquals(ErrorCode.FAILED, products.getVirtualMachine().getError().getCode());
 
-        SignalResponseRawDeviceAttributes signalResponseRawDeviceAttributes = response.getProducts().getRawDeviceAttributes();
+        ProductRawDeviceAttributes signalResponseRawDeviceAttributes = response.getProducts().getRawDeviceAttributes();
         assertEquals("Error", signalResponseRawDeviceAttributes.getData().get("audio").getError().getName());
         assertEquals("internal server error", signalResponseRawDeviceAttributes.getData().get("audio").getError().getMessage());
         assertEquals("Error", signalResponseRawDeviceAttributes.getData().get("canvas").getError().getName());
@@ -189,8 +190,8 @@ public class FingerprintApiTest {
 
     @Test
     public void getEventBotdFailedErrorTest() throws ApiException {
-        EventResponse response = api.getEvent(MOCK_REQUEST_BOTD_FAILED);
-        ProductsResponse products = response.getProducts();
+        EventsGetResponse response = api.getEvent(MOCK_REQUEST_BOTD_FAILED);
+        Products products = response.getProducts();
         assertNotNull(products);
         assertNotNull(products.getIdentification());
         assertNotNull(products.getIdentification().getData());
@@ -198,44 +199,39 @@ public class FingerprintApiTest {
 
         assertNotNull(products.getBotd());
         assertNotNull(products.getBotd().getError());
-        assertEquals(ProductError.CodeEnum.FAILED, products.getBotd().getError().getCode());
+        assertEquals(ErrorCode.FAILED, products.getBotd().getError().getCode());
     }
 
     @Test
     public void getEventBotdManyRequestsErrorTest() throws ApiException {
-        EventResponse response = api.getEvent(MOCK_REQUEST_BOTD_MANY_REQUEST);
-        ProductsResponse products = response.getProducts();
+        EventsGetResponse response = api.getEvent(MOCK_REQUEST_BOTD_MANY_REQUEST);
+        Products products = response.getProducts();
         assertNotNull(products);
-        assertNotNull(products.getIdentification());
-        assertNotNull(products.getIdentification().getData());
-        assertEquals("Ibk1527CUFmcnjLwIs4A9", response.getProducts().getIdentification().getData().getVisitorId());
         assertNotNull(products.getBotd());
         assertNotNull(products.getBotd().getError());
-        assertEquals(ProductError.CodeEnum.TOO_MANY_REQUESTS, products.getBotd().getError().getCode());
+        assertEquals(ErrorCode.TOO_MANY_REQUESTS, products.getBotd().getError().getCode());
     }
 
     @Test
     public void getEventIdentificationFailedErrorTest() throws ApiException {
-        EventResponse response = api.getEvent(MOCK_REQUEST_IDENTIFICATION_FAILED);
-        ProductsResponse products = response.getProducts();
+        EventsGetResponse response = api.getEvent(MOCK_REQUEST_IDENTIFICATION_FAILED);
+        Products products = response.getProducts();
         assertNotNull(products);
         assertNotNull(products.getIdentification());
         assertNotNull(products.getIdentification().getError());
-        assertEquals(IdentificationError.CodeEnum.FAILED, products.getIdentification().getError().getCode());
+        assertEquals(ErrorCode.FAILED, products.getIdentification().getError().getCode());
         assertNotNull(products.getBotd());
         assertNotNull(products.getBotd().getData());
     }
 
     @Test
     public void getEventIdentificationManyRequestsErrorTest() throws ApiException {
-        EventResponse response = api.getEvent(MOCK_REQUEST_IDENTIFICATION_MANY_REQUEST);
-        ProductsResponse products = response.getProducts();
+        EventsGetResponse response = api.getEvent(MOCK_REQUEST_IDENTIFICATION_MANY_REQUEST);
+        Products products = response.getProducts();
         assertNotNull(products);
         assertNotNull(products.getIdentification());
         assertNotNull(products.getIdentification().getError());
-        assertEquals(IdentificationError.CodeEnum._429_TOO_MANY_REQUESTS, products.getIdentification().getError().getCode());
-        assertNotNull(products.getBotd());
-        assertNotNull(products.getBotd().getData());
+        assertEquals(ErrorCode._429_TOO_MANY_REQUESTS, products.getIdentification().getError().getCode());
     }
 
     /**
@@ -246,7 +242,7 @@ public class FingerprintApiTest {
      */
     @Test
     public void getVisitsTest() throws ApiException {
-        Response response = api.getVisits(MOCK_VISITOR_ID, MOCK_VISITOR_REQUEST_ID, null, 50, "1683900801733.Ogvu1j", null);
+        VisitorsGetResponse response = api.getVisits(MOCK_VISITOR_ID, MOCK_VISITOR_REQUEST_ID, null, 50, "1683900801733.Ogvu1j", null);
         assertEquals(response.getVisitorId(), MOCK_VISITOR_ID);
     }
 
@@ -261,7 +257,7 @@ public class FingerprintApiTest {
         ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
-        WebhookVisit visit =  mapper.readValue(getFileAsIOStream("mocks/webhook.json"), WebhookVisit.class);
+        Webhook visit =  mapper.readValue(getFileAsIOStream("mocks/webhook.json"), Webhook.class);
 
         assertEquals(MOCK_WEBHOOK_VISITOR_ID, visit.getVisitorId());
         assertEquals(MOCK_WEBHOOK_REQUEST_ID, visit.getRequestId());

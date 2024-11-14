@@ -1,7 +1,7 @@
 package com.fingerprint;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fingerprint.model.EventResponse;
+import com.fingerprint.model.EventsGetResponse;
 import com.fingerprint.sdk.JSON;
 
 import javax.crypto.Cipher;
@@ -115,18 +115,18 @@ public class Sealed {
      *
      * @param sealed Base64 encoded sealed data
      * @param keys   Decryption keys. The SDK will try to decrypt the result with each key until it succeeds.
-     * @return EventResponse
+     * @return EventsGetResponse
      *
      * @throws IllegalArgumentException if invalid decryption algorithm is provided in any of the keys
      * @throws UnsealAggregateException if the sealed data cannot be decrypted with any of the keys. The exception contains the list of exceptions thrown by each key.
      * @throws IOException if the sealed data un-compression fails
      */
-    public static EventResponse unsealEventResponse(byte[] sealed, DecryptionKey[] keys) throws IllegalArgumentException, UnsealAggregateException, IOException {
+    public static EventsGetResponse unsealEventResponse(byte[] sealed, DecryptionKey[] keys) throws IllegalArgumentException, UnsealAggregateException, IOException {
         byte[] unsealed = unseal(sealed, keys);
 
         ObjectMapper mapper = JSON.getDefault().getMapper();
 
-        EventResponse value = mapper.readValue(unsealed, EventResponse.class);
+        EventsGetResponse value = mapper.readValue(unsealed, EventsGetResponse.class);
 
         if (value.getProducts() == null) {
             throw new InvalidSealedDataException();

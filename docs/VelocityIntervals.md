@@ -2,7 +2,8 @@
 
 # VelocityIntervals
 
-Is absent if the velocity data could not be generated for the visitor ID. 
+Is absent if the velocity data could not be generated for the visitor ID.
+
 
 ## Properties
 

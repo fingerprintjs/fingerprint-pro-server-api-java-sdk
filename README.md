@@ -233,7 +233,7 @@ public class SealedResults {
 }
 
 ```
-To learn more, refer to example located in [src/examples/java/com/fingerprint/example/SealedResults.java](src/examples/java/com/fingerprint/example/SealedResults.java).
+To learn more, see the [Sealed results example](/examples/src/main/java/com/fingerprint/example/SealedResults.java).
 
 ## Webhook signature validation
 This SDK provides utility method for verifying the HMAC signature of the incoming webhook request.

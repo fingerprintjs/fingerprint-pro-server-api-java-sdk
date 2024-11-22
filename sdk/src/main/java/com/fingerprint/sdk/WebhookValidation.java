@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
-public class Webhook {
+public class WebhookValidation {
 
     /**
      * Verifies the HMAC signature extracted from the "fpjs-event-signature" header of the incoming request.

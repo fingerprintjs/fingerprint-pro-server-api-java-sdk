@@ -13,7 +13,7 @@ public class WebhookSignatureSample {
         final byte[] data = "data".getBytes(StandardCharsets.UTF_8);
 
         try {
-            boolean isSignatureValid = WebhookValidation.isValidWebhookSignature(header, data, secret);
+            boolean isSignatureValid = WebhookValidation.isSignatureValid(header, data, secret);
             if (isSignatureValid) {
                 System.out.println("Webhook signature is valid");
             } else {

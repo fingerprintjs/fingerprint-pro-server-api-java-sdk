@@ -20,7 +20,7 @@ public class WebhookValidation {
      * @throws NoSuchAlgorithmException in case HMAC-SHA-256 isn't available
      * @throws IllegalArgumentException if an invalid key is provided
      */
-    public static boolean isValidWebhookSignature(String header, byte[] data, String secret) throws NoSuchAlgorithmException {
+    public static boolean isSignatureValid(String header, byte[] data, String secret) throws NoSuchAlgorithmException {
         String[] signatures = header.split(",");
         for (String signature : signatures) {
             String[] parts = signature.split("=");

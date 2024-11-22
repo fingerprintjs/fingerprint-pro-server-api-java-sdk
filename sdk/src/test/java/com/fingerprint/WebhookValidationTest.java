@@ -17,32 +17,32 @@ public class WebhookValidationTest {
 
     @Test
     public void validHeaderTest() throws NoSuchAlgorithmException {
-        boolean result = WebhookValidation.isValidWebhookSignature(validHeader, data, secret);
+        boolean result = WebhookValidation.isSignatureValid(validHeader, data, secret);
         Assertions.assertTrue(result);
     }
 
     @Test
     public void invalidHeaderTest() throws NoSuchAlgorithmException {
-        boolean result = WebhookValidation.isValidWebhookSignature("v2=wrong", data, secret);
+        boolean result = WebhookValidation.isSignatureValid("v2=wrong", data, secret);
         assert !result;
     }
 
     @Test
     public void headerWithoutVersionTest() throws NoSuchAlgorithmException {
-        boolean result = WebhookValidation.isValidWebhookSignature("secretonly", data, secret);
+        boolean result = WebhookValidation.isSignatureValid("secretonly", data, secret);
         assert !result;
     }
 
     @Test
     public void emptySecretTest() throws NoSuchAlgorithmException {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            WebhookValidation.isValidWebhookSignature("v1=value", data, "");
+            WebhookValidation.isSignatureValid("v1=value", data, "");
         });
     }
 
     @Test
     public void emptyDataTest() throws NoSuchAlgorithmException {
-        boolean result = WebhookValidation.isValidWebhookSignature(validHeader, "".getBytes(), secret);
+        boolean result = WebhookValidation.isSignatureValid(validHeader, "".getBytes(), secret);
         assert !result;
     }
 

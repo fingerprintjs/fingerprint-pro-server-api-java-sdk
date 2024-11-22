@@ -284,7 +284,7 @@ class WebhookController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Missing fpjs-event-signature header");
         }
 
-        final boolean isValidSignature = WebhookValidation.isValidWebhookSignature(signature, webhook, secret);
+        final boolean isValidSignature = WebhookValidation.isSignatureValid(signature, webhook, secret);
         if (!isValidSignature) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Webhook signature is not valid");
         }

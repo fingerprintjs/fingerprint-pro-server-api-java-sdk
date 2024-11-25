@@ -1,6 +1,6 @@
 package com.fingerprint.example;
 
-import com.fingerprint.sdk.Webhook;
+import com.fingerprint.sdk.WebhookValidation;
 
 import java.nio.charset.StandardCharsets;
 import java.security.NoSuchAlgorithmException;
@@ -13,7 +13,7 @@ public class WebhookSignatureSample {
         final byte[] data = "data".getBytes(StandardCharsets.UTF_8);
 
         try {
-            boolean isSignatureValid = Webhook.isValidWebhookSignature(header, data, secret);
+            boolean isSignatureValid = WebhookValidation.isSignatureValid(header, data, secret);
             if (isSignatureValid) {
                 System.out.println("Webhook signature is valid");
             } else {

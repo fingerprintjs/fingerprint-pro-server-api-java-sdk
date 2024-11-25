@@ -240,7 +240,7 @@ This SDK provides utility method for verifying the HMAC signature of the incomin
 
 Here is an example implementation using Spring Boot:
 ```java
-import com.fingerprint.sdk.Webhook;
+import com.fingerprint.sdk.WebhookValidation;
 
 @RestController
 class WebhookController {
@@ -257,7 +257,7 @@ class WebhookController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Missing fpjs-event-signature header");
         }
 
-        final boolean isValidSignature = Webhook.isValidWebhookSignature(signature, webhook, secret);
+        final boolean isValidSignature = WebhookValidation.isSignatureValid(signature, webhook, secret);
         if (!isValidSignature) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Webhook signature is not valid");
         }

@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
-public class Webhook {
+public class WebhookValidation {
 
     /**
      * Verifies the HMAC signature extracted from the "fpjs-event-signature" header of the incoming request.
@@ -20,7 +20,7 @@ public class Webhook {
      * @throws NoSuchAlgorithmException in case HMAC-SHA-256 isn't available
      * @throws IllegalArgumentException if an invalid key is provided
      */
-    public static boolean isValidWebhookSignature(String header, byte[] data, String secret) throws NoSuchAlgorithmException {
+    public static boolean isSignatureValid(String header, byte[] data, String secret) throws NoSuchAlgorithmException {
         String[] signatures = header.split(",");
         for (String signature : signatures) {
             String[] parts = signature.split("=");

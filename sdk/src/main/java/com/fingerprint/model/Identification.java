@@ -32,6 +32,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   Identification.JSON_PROPERTY_IP,
   Identification.JSON_PROPERTY_IP_LOCATION,
   Identification.JSON_PROPERTY_LINKED_ID,
+  Identification.JSON_PROPERTY_SUSPECT,
   Identification.JSON_PROPERTY_TIMESTAMP,
   Identification.JSON_PROPERTY_TIME,
   Identification.JSON_PROPERTY_URL,
@@ -64,6 +65,9 @@ public class Identification {
 
   public static final String JSON_PROPERTY_LINKED_ID = "linkedId";
   private String linkedId;
+
+  public static final String JSON_PROPERTY_SUSPECT = "suspect";
+  private Boolean suspect;
 
   public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
   private Long timestamp;
@@ -276,6 +280,32 @@ public class Identification {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLinkedId(String linkedId) {
     this.linkedId = linkedId;
+  }
+
+
+  public Identification suspect(Boolean suspect) {
+    this.suspect = suspect;
+    return this;
+  }
+
+   /**
+   * Field is &#x60;true&#x60; if you have previously set the &#x60;suspect&#x60; flag for this event using the [Server API Update event endpoint](https://dev.fingerprint.com/reference/updateevent).
+   * @return suspect
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "Field is `true` if you have previously set the `suspect` flag for this event using the [Server API Update event endpoint](https://dev.fingerprint.com/reference/updateevent).")
+  @JsonProperty(JSON_PROPERTY_SUSPECT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getSuspect() {
+    return suspect;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SUSPECT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSuspect(Boolean suspect) {
+    this.suspect = suspect;
   }
 
 
@@ -545,6 +575,7 @@ public class Identification {
         Objects.equals(this.ip, identification.ip) &&
         Objects.equals(this.ipLocation, identification.ipLocation) &&
         Objects.equals(this.linkedId, identification.linkedId) &&
+        Objects.equals(this.suspect, identification.suspect) &&
         Objects.equals(this.timestamp, identification.timestamp) &&
         Objects.equals(this.time, identification.time) &&
         Objects.equals(this.url, identification.url) &&
@@ -558,7 +589,7 @@ public class Identification {
 
   @Override
   public int hashCode() {
-    return Objects.hash(visitorId, requestId, browserDetails, incognito, ip, ipLocation, linkedId, timestamp, time, url, tag, confidence, visitorFound, firstSeenAt, lastSeenAt, components);
+    return Objects.hash(visitorId, requestId, browserDetails, incognito, ip, ipLocation, linkedId, suspect, timestamp, time, url, tag, confidence, visitorFound, firstSeenAt, lastSeenAt, components);
   }
 
   @Override
@@ -572,6 +603,7 @@ public class Identification {
     sb.append("    ip: ").append(toIndentedString(ip)).append("\n");
     sb.append("    ipLocation: ").append(toIndentedString(ipLocation)).append("\n");
     sb.append("    linkedId: ").append(toIndentedString(linkedId)).append("\n");
+    sb.append("    suspect: ").append(toIndentedString(suspect)).append("\n");
     sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
     sb.append("    time: ").append(toIndentedString(time)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");

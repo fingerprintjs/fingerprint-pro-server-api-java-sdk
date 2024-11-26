@@ -1,11 +1,17 @@
 # Fingerprint Pro Server Java SDK
 
+## 7.1.0
+
+### Minor Changes
+
+- Add `relay` detection method to the VPN Detection Smart Signal ([3b6d78f](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/3b6d78f162d06b3d3e633fce9227c7ee734e8722))
+- **events**: Add a `suspect` field to the `identification` product schema ([3b6d78f](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/3b6d78f162d06b3d3e633fce9227c7ee734e8722))
+
 ## 7.0.0
 
 ### Major Changes
 
 The underlying Server API hasn’t changed, but we made SDK type and class generation more precise, resulting in small breaking changes for the SDK itself. This change should make the SDK API a lot more stable going forward
-
 
 - Rename `Webhook` class to `WebhookValidation`.
   Right now, `Webhook` class points to the actual data model. ([817b444](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/817b4443db7d9eea45ac36d3843335762ead01b5))

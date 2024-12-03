@@ -4,8 +4,8 @@
 
 ### Minor Changes
 
-- Add `relay` detection method to the VPN Detection Smart Signal ([3b6d78f](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/3b6d78f162d06b3d3e633fce9227c7ee734e8722))
-- **events**: Add a `suspect` field to the `identification` product schema ([3b6d78f](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/3b6d78f162d06b3d3e633fce9227c7ee734e8722))
+- Add `relay` detection method to the VPN Detection Smart Signal ([3b6d78f](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/3b6d78f162d06b3d3e633fce9227c7ee734e8722))
+- **events**: Add a `suspect` field to the `identification` product schema ([3b6d78f](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/3b6d78f162d06b3d3e633fce9227c7ee734e8722))
 
 ## 7.0.0
 
@@ -14,7 +14,7 @@
 The underlying Server API hasn’t changed, but we made SDK type and class generation more precise, resulting in small breaking changes for the SDK itself. This change should make the SDK API a lot more stable going forward
 
 - Rename `Webhook` class to `WebhookValidation`.
-  Right now, `Webhook` class points to the actual data model. ([817b444](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/817b4443db7d9eea45ac36d3843335762ead01b5))
+  Right now, `Webhook` class points to the actual data model. ([817b444](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/817b4443db7d9eea45ac36d3843335762ead01b5))
 - - Remove the `BrowserDetails` field `botProbability`.
   - Update the `IdentificationConfidence` field `score` type format: `float` -> `double`.
   - Make the `RawDeviceAttributeError` field `name` **optional** .
@@ -43,7 +43,7 @@ The underlying Server API hasn’t changed, but we made SDK type and class gener
   - **webhook**: Make the `WebhookTor` field `result` **optional**.
   - **webhook**: Make the `WebhookVelocity` fields **optional**: `distinctIp`, `distinctLinkedId`, `distinctCountry`, `events`, `ipEvents`, `distinctIpByLinkedId`, `distinctVisitorIdByLinkedId`.
   - **webhook**: Make the `WebhookVirtualMachine` field `result` **optional**.
-  - **webhook**: Make the `WebhookVPN` fields **optional**: `result`, `confidence`, `originTimezone`, `methods`. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
+  - **webhook**: Make the `WebhookVPN` fields **optional**: `result`, `confidence`, `originTimezone`, `methods`. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
 - - Rename `BotdResult` -> `Botd`.
   - Rename `BotdDetectionResult` -> `BotdBot`:
     - Extract `result` type as `BotdBotResult`.
@@ -104,12 +104,12 @@ The underlying Server API hasn’t changed, but we made SDK type and class gener
     - Extract `confidence` type as `VPNConfidence`.
     - Extract `methods` type as `VPNMethods`.
   - Rename `WebhookVisit` -> `Webhook`.
-    - Introduce new inner types: `WebhookRootApps`, `WebhookEmulator`, `WebhookIPInfo`, `WebhookIPBlocklist`, `WebhookTor`, `WebhookVPN`, `WebhookProxy`, `WebhookTampering`, `WebhookClonedApp`, `WebhookFactoryReset`, `WebhookJailbroken`, `WebhookFrida`, `WebhookPrivacySettings`, `WebhookVirtualMachine`, `WebhookRawDeviceAttributes`, `WebhookHighActivity`, `WebhookLocationSpoofing`, `WebhookSuspectScore`, `WebhookRemoteControl`, `WebhookVelocity`, `WebhookDeveloperTools`. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
-- Rename `IsValidWebhookSignature` to `isSignatureValid` in `WebhookValidation` ([f49c1c2](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/f49c1c2cd754af8e1f763559886d30ce69567a39))
+    - Introduce new inner types: `WebhookRootApps`, `WebhookEmulator`, `WebhookIPInfo`, `WebhookIPBlocklist`, `WebhookTor`, `WebhookVPN`, `WebhookProxy`, `WebhookTampering`, `WebhookClonedApp`, `WebhookFactoryReset`, `WebhookJailbroken`, `WebhookFrida`, `WebhookPrivacySettings`, `WebhookVirtualMachine`, `WebhookRawDeviceAttributes`, `WebhookHighActivity`, `WebhookLocationSpoofing`, `WebhookSuspectScore`, `WebhookRemoteControl`, `WebhookVelocity`, `WebhookDeveloperTools`. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
+- Rename `IsValidWebhookSignature` to `isSignatureValid` in `WebhookValidation` ([f49c1c2](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/f49c1c2cd754af8e1f763559886d30ce69567a39))
 
 ### Minor Changes
 
-- Added new `ipEvents`, `distinctIpByLinkedId`, and `distinctVisitorIdByLinkedId` fields to the `velocity` Smart Signal. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
+- Added new `ipEvents`, `distinctIpByLinkedId`, and `distinctVisitorIdByLinkedId` fields to the `velocity` Smart Signal. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
 - - Make the `GeolocationCity` field `name` **required**.
   - Make the `GeolocationSubdivision` field `isoCode` **required**.
   - Make the `GeolocationSubdivision` field `name` **required**.
@@ -120,19 +120,19 @@ The underlying Server API hasn’t changed, but we made SDK type and class gener
   - **events**: Add **optional** `Identification` field `components`.
   - **events**: Make the `VPN` field `originCountry` **required**.
   - **visitors**: Add **optional** `Visit` field `components`.
-  - **webhook**: Add **optional** `Webhook` field `components`. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
-- Remove `ipv4` format from `ip` field in `Botd`, `Identification`, `Visit` and `Webhook` models. ([d608cfe](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/d608cfeb3d0007fff9f6742255f8110a5f4ae3e1))
-- **events**: Add `antiDetectBrowser` detection method to the `tampering` Smart Signal. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
+  - **webhook**: Add **optional** `Webhook` field `components`. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
+- Remove `ipv4` format from `ip` field in `Botd`, `Identification`, `Visit` and `Webhook` models. ([d608cfe](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/d608cfeb3d0007fff9f6742255f8110a5f4ae3e1))
+- **events**: Add `antiDetectBrowser` detection method to the `tampering` Smart Signal. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
 
 ### Patch Changes
 
 - - Fix descriptions formatting:
     - Remove extra line breaks.
     - Fix block styles.
-  - Fix links in descriptions. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
+  - Fix links in descriptions. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
 - - Replace GET /events TooManyRequests examples with a single `get_event_200_too_many_requests_error.json`.
   - Update `products.identification.error.message` in `get_event_200_<...>.json` examples.
-  - Rename GET /visitors example files. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
+  - Rename GET /visitors example files. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
 
 ## 7.0.0-develop.0
 
@@ -166,7 +166,7 @@ The underlying Server API hasn’t changed, but we made SDK type and class gener
   - **webhook**: Make the `WebhookTor` field `result` **optional**.
   - **webhook**: Make the `WebhookVelocity` fields **optional**: `distinctIp`, `distinctLinkedId`, `distinctCountry`, `events`, `ipEvents`, `distinctIpByLinkedId`, `distinctVisitorIdByLinkedId`.
   - **webhook**: Make the `WebhookVirtualMachine` field `result` **optional**.
-  - **webhook**: Make the `WebhookVPN` fields **optional**: `result`, `confidence`, `originTimezone`, `methods`. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
+  - **webhook**: Make the `WebhookVPN` fields **optional**: `result`, `confidence`, `originTimezone`, `methods`. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
 - - Rename `BotdResult` -> `Botd`.
   - Rename `BotdDetectionResult` -> `BotdBot`:
     - Extract `result` type as `BotdBotResult`.
@@ -227,11 +227,11 @@ The underlying Server API hasn’t changed, but we made SDK type and class gener
     - Extract `confidence` type as `VPNConfidence`.
     - Extract `methods` type as `VPNMethods`.
   - Rename `WebhookVisit` -> `Webhook`.
-    - Introduce new inner types: `WebhookRootApps`, `WebhookEmulator`, `WebhookIPInfo`, `WebhookIPBlocklist`, `WebhookTor`, `WebhookVPN`, `WebhookProxy`, `WebhookTampering`, `WebhookClonedApp`, `WebhookFactoryReset`, `WebhookJailbroken`, `WebhookFrida`, `WebhookPrivacySettings`, `WebhookVirtualMachine`, `WebhookRawDeviceAttributes`, `WebhookHighActivity`, `WebhookLocationSpoofing`, `WebhookSuspectScore`, `WebhookRemoteControl`, `WebhookVelocity`, `WebhookDeveloperTools`. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
+    - Introduce new inner types: `WebhookRootApps`, `WebhookEmulator`, `WebhookIPInfo`, `WebhookIPBlocklist`, `WebhookTor`, `WebhookVPN`, `WebhookProxy`, `WebhookTampering`, `WebhookClonedApp`, `WebhookFactoryReset`, `WebhookJailbroken`, `WebhookFrida`, `WebhookPrivacySettings`, `WebhookVirtualMachine`, `WebhookRawDeviceAttributes`, `WebhookHighActivity`, `WebhookLocationSpoofing`, `WebhookSuspectScore`, `WebhookRemoteControl`, `WebhookVelocity`, `WebhookDeveloperTools`. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
 
 ### Minor Changes
 
-- Added new `ipEvents`, `distinctIpByLinkedId`, and `distinctVisitorIdByLinkedId` fields to the `velocity` Smart Signal. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
+- Added new `ipEvents`, `distinctIpByLinkedId`, and `distinctVisitorIdByLinkedId` fields to the `velocity` Smart Signal. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
 - - Make the `GeolocationCity` field `name` **required**.
   - Make the `GeolocationSubdivision` field `isoCode` **required**.
   - Make the `GeolocationSubdivision` field `name` **required**.
@@ -242,31 +242,31 @@ The underlying Server API hasn’t changed, but we made SDK type and class gener
   - **events**: Add **optional** `Identification` field `components`.
   - **events**: Make the `VPN` field `originCountry` **required**.
   - **visitors**: Add **optional** `Visit` field `components`.
-  - **webhook**: Add **optional** `Webhook` field `components`. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
-- Remove `ipv4` format from `ip` field in `Botd`, `Identification`, `Visit` and `Webhook` models. ([d608cfe](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/d608cfeb3d0007fff9f6742255f8110a5f4ae3e1))
-- **events**: Add `antiDetectBrowser` detection method to the `tampering` Smart Signal. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
+  - **webhook**: Add **optional** `Webhook` field `components`. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
+- Remove `ipv4` format from `ip` field in `Botd`, `Identification`, `Visit` and `Webhook` models. ([d608cfe](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/d608cfeb3d0007fff9f6742255f8110a5f4ae3e1))
+- **events**: Add `antiDetectBrowser` detection method to the `tampering` Smart Signal. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
 
 ### Patch Changes
 
 - - Fix descriptions formatting:
     - Remove extra line breaks.
     - Fix block styles.
-  - Fix links in descriptions. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
+  - Fix links in descriptions. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
 - - Replace GET /events TooManyRequests examples with a single `get_event_200_too_many_requests_error.json`.
   - Update `products.identification.error.message` in `get_event_200_<...>.json` examples.
-  - Rename GET /visitors example files. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
+  - Rename GET /visitors example files. ([a09ca88](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/a09ca889b294900929a6aaab567a4f3a019f3e73))
 
 ## 6.2.0
 
 ### Minor Changes
 
-- **visitors**: Add the confidence field to the VPN Detection Smart Signal ([aec1770](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/aec1770034f91bef7fcd0775b99eb6baa74241de))
+- **visitors**: Add the confidence field to the VPN Detection Smart Signal ([aec1770](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/aec1770034f91bef7fcd0775b99eb6baa74241de))
 
 ## 6.2.0-develop.0
 
 ### Minor Changes
 
-- **visitors**: Add the confidence field to the VPN Detection Smart Signal ([aec1770](https://github.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/commit/aec1770034f91bef7fcd0775b99eb6baa74241de))
+- **visitors**: Add the confidence field to the VPN Detection Smart Signal ([aec1770](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/aec1770034f91bef7fcd0775b99eb6baa74241de))
 
 ## [6.1.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/compare/v6.0.2...v6.1.0) (2024-09-11)
 

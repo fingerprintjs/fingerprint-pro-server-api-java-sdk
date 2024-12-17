@@ -35,7 +35,7 @@ public class RelatedVisitorsResponse {
     return this;
   }
 
-  public RelatedVisitorsResponse addrelatedVisitorsItem(RelatedVisitor relatedVisitorsItem) {
+  public RelatedVisitorsResponse addRelatedVisitorItem(RelatedVisitor relatedVisitorsItem) {
     this.relatedVisitors.add(relatedVisitorsItem);
     return this;
   }

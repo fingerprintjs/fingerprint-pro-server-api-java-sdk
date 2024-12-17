@@ -275,6 +275,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *FingerprintApi* | [**deleteVisitorData**](docs/FingerprintApi.md#deleteVisitorData) | **DELETE** /visitors/{visitor_id} | Delete data by visitor ID
 *FingerprintApi* | [**getEvent**](docs/FingerprintApi.md#getEvent) | **GET** /events/{request_id} | Get event by request ID
+*FingerprintApi* | [**getRelatedVisitors**](docs/FingerprintApi.md#getRelatedVisitors) | **GET** /related-visitors | Get Related Visitors
 *FingerprintApi* | [**getVisits**](docs/FingerprintApi.md#getVisits) | **GET** /visitors/{visitor_id} | Get visits by visitor ID
 *FingerprintApi* | [**updateEvent**](docs/FingerprintApi.md#updateEvent) | **PUT** /events/{request_id} | Update an event with a given request ID
 *FingerprintApi* | [**webhookTrace**](docs/FingerprintApi.md#webhookTrace) | **TRACE** /webhook | 
@@ -346,6 +347,8 @@ Class | Method | HTTP request | Description
  - [Proxy](docs/Proxy.md)
  - [RawDeviceAttribute](docs/RawDeviceAttribute.md)
  - [RawDeviceAttributeError](docs/RawDeviceAttributeError.md)
+ - [RelatedVisitor](docs/RelatedVisitor.md)
+ - [RelatedVisitorsResponse](docs/RelatedVisitorsResponse.md)
  - [RemoteControl](docs/RemoteControl.md)
  - [RootApps](docs/RootApps.md)
  - [SuspectScore](docs/SuspectScore.md)

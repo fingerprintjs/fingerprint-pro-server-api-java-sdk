@@ -13,6 +13,7 @@ import com.fingerprint.model.ErrorPlainResponse;
 import com.fingerprint.model.ErrorResponse;
 import com.fingerprint.model.EventsGetResponse;
 import com.fingerprint.model.EventsUpdateRequest;
+import com.fingerprint.model.RelatedVisitorsResponse;
 import com.fingerprint.model.VisitorsGetResponse;
 import com.fingerprint.model.Webhook;
 
@@ -206,6 +207,84 @@ public class FingerprintApi {
     GenericType<EventsGetResponse> localVarReturnType = new GenericType<EventsGetResponse>() {};
 
     return apiClient.invokeAPI("FingerprintApi.getEvent", localVarPath, "GET", localVarQueryParams, localVarPostBody,
+                               localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType,
+                               localVarAuthNames, localVarReturnType, false);
+  }
+  /**
+   * Get Related Visitors
+   * Related visitors API lets you link web visits and in-app browser visits that originated from the same mobile device. It searches the past 6 months of identification events to find the visitor IDs that belong to the same mobile device as the given visitor ID.  ⚠️ Please note that this API is not enabled by default and is billable separately. ⚠️  If you would like to use Related visitors API, please contact our [support team](https://fingerprint.com/support). To learn more, see [Related visitors API reference](https://dev.fingerprint.com/reference/related-visitors-api). 
+   * @param visitorId The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) for which you want to find the other visitor IDs that originated from the same mobile device. (required)
+   * @return RelatedVisitorsResponse
+   * @throws ApiException if fails to make API call
+   * @http.response.details
+     <table summary="Response Details" border="1">
+       <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+       <tr><td> 200 </td><td> OK. </td><td>  -  </td></tr>
+       <tr><td> 400 </td><td> Bad request. The visitor ID parameter is missing or in the wrong format. </td><td>  -  </td></tr>
+       <tr><td> 403 </td><td> Forbidden. Access to this API is denied. </td><td>  -  </td></tr>
+       <tr><td> 404 </td><td> Not found. The visitor ID cannot be found in this application&#39;s data. </td><td>  -  </td></tr>
+       <tr><td> 429 </td><td> Too Many Requests. The request is throttled. </td><td>  -  </td></tr>
+     </table>
+   */
+  public RelatedVisitorsResponse getRelatedVisitors(String visitorId) throws ApiException {
+    return getRelatedVisitorsWithHttpInfo(visitorId).getData();
+  }
+
+  /**
+   * Get Related Visitors
+   * Related visitors API lets you link web visits and in-app browser visits that originated from the same mobile device. It searches the past 6 months of identification events to find the visitor IDs that belong to the same mobile device as the given visitor ID.  ⚠️ Please note that this API is not enabled by default and is billable separately. ⚠️  If you would like to use Related visitors API, please contact our [support team](https://fingerprint.com/support). To learn more, see [Related visitors API reference](https://dev.fingerprint.com/reference/related-visitors-api). 
+   * @param visitorId The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) for which you want to find the other visitor IDs that originated from the same mobile device. (required)
+   * @return ApiResponse&lt;RelatedVisitorsResponse&gt;
+   * @throws ApiException if fails to make API call
+   * @http.response.details
+     <table summary="Response Details" border="1">
+       <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+       <tr><td> 200 </td><td> OK. </td><td>  -  </td></tr>
+       <tr><td> 400 </td><td> Bad request. The visitor ID parameter is missing or in the wrong format. </td><td>  -  </td></tr>
+       <tr><td> 403 </td><td> Forbidden. Access to this API is denied. </td><td>  -  </td></tr>
+       <tr><td> 404 </td><td> Not found. The visitor ID cannot be found in this application&#39;s data. </td><td>  -  </td></tr>
+       <tr><td> 429 </td><td> Too Many Requests. The request is throttled. </td><td>  -  </td></tr>
+     </table>
+   */
+  public ApiResponse<RelatedVisitorsResponse> getRelatedVisitorsWithHttpInfo(String visitorId) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'visitorId' is set
+    if (visitorId == null) {
+      throw new ApiException(400, "Missing the required parameter 'visitorId' when calling getRelatedVisitors");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/related-visitors";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.add(new Pair("ii", INTEGRATION_INFO));
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "visitor_id", visitorId));
+
+    
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ApiKeyHeader", "ApiKeyQuery" };
+
+    GenericType<RelatedVisitorsResponse> localVarReturnType = new GenericType<RelatedVisitorsResponse>() {};
+
+    return apiClient.invokeAPI("FingerprintApi.getRelatedVisitors", localVarPath, "GET", localVarQueryParams, localVarPostBody,
                                localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType,
                                localVarAuthNames, localVarReturnType, false);
   }

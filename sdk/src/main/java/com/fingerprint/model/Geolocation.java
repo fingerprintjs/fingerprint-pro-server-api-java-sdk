@@ -283,7 +283,7 @@ public class Geolocation {
     return this;
   }
 
-  public Geolocation addsubdivisionsItem(GeolocationSubdivision subdivisionsItem) {
+  public Geolocation addGeolocationSubdivisionItem(GeolocationSubdivision subdivisionsItem) {
     if (this.subdivisions == null) {
       this.subdivisions = new ArrayList<>();
     }

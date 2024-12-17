@@ -6,6 +6,7 @@ All URIs are relative to *https://api.fpjs.io*
 |------------- | ------------- | -------------|
 | [**deleteVisitorData**](FingerprintApi.md#deleteVisitorData) | **DELETE** /visitors/{visitor_id} | Delete data by visitor ID |
 | [**getEvent**](FingerprintApi.md#getEvent) | **GET** /events/{request_id} | Get event by request ID |
+| [**getRelatedVisitors**](FingerprintApi.md#getRelatedVisitors) | **GET** /related-visitors | Get Related Visitors |
 | [**getVisits**](FingerprintApi.md#getVisits) | **GET** /visitors/{visitor_id} | Get visits by visitor ID |
 | [**updateEvent**](FingerprintApi.md#updateEvent) | **PUT** /events/{request_id} | Update an event with a given request ID |
 | [**webhookTrace**](FingerprintApi.md#webhookTrace) | **TRACE** /webhook |  |
@@ -193,6 +194,92 @@ public class FingerprintApiExample {
 | **200** | OK. |  -  |
 | **403** | Forbidden. Access to this API is denied. |  -  |
 | **404** | Not found. The request ID cannot be found in this application&#39;s data. |  -  |
+
+
+## getRelatedVisitors
+
+> RelatedVisitorsResponse getRelatedVisitors(visitorId)
+
+Get Related Visitors
+
+Related visitors API lets you link web visits and in-app browser visits that originated from the same mobile device.
+It searches the past 6 months of identification events to find the visitor IDs that belong to the same mobile device as the given visitor ID.
+
+⚠️ Please note that this API is not enabled by default and is billable separately. ⚠️
+
+If you would like to use Related visitors API, please contact our [support team](https://fingerprint.com/support).
+To learn more, see [Related visitors API reference](https://dev.fingerprint.com/reference/related-visitors-api).
+
+
+### Example
+
+```java
+package main;
+
+import com.fingerprint.api.FingerprintApi;
+import com.fingerprint.model.EventsGetResponse;
+import com.fingerprint.model.EventsUpdateRequest;
+import com.fingerprint.model.VisitorsGetResponse;
+import com.fingerprint.sdk.ApiClient;
+import com.fingerprint.sdk.ApiException;
+import com.fingerprint.sdk.Configuration;
+import com.fingerprint.sdk.Region;
+
+public class FingerprintApiExample {
+    // Fingerprint Pro Secret API Key
+    private static final String FPJS_API_SECRET = "Fingerprint Pro Secret API Key";
+    public static void main(String... args) {
+        // Create a new api client instance from Configuration with your Fingerprint Pro Server API Key and your Fingerprint Pro Server API Region.
+        /*
+        You can specify a region on getDefaultApiClient function's second parameter
+        If you leave the second parameter empty, then Region.GLOBAL will be used as a default region
+        Options for regions are:
+        Region.GLOBAL
+        Region.EUROPE
+        Region.ASIA
+        */
+        ApiClient client = Configuration.getDefaultApiClient(FPJS_API_SECRET, Region.EUROPE);
+        FingerprintApi api = new FingerprintApi(client);
+        String visitorId = "visitorId_example"; // String | The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) for which you want to find the other visitor IDs that originated from the same mobile device.
+        try {
+            RelatedVisitorsResponse result = apiInstance.getRelatedVisitors(visitorId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FingerprintApi.getRelatedVisitors:" + e.getMessage());
+        }
+    }
+}
+```
+
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **visitorId** | **String**| The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) for which you want to find the other visitor IDs that originated from the same mobile device. | |
+
+### Return type
+
+[**RelatedVisitorsResponse**](RelatedVisitorsResponse.md)
+
+### Authorization
+
+[ApiKeyHeader](../README.md#ApiKeyHeader), [ApiKeyQuery](../README.md#ApiKeyQuery)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK. |  -  |
+| **400** | Bad request. The visitor ID parameter is missing or in the wrong format. |  -  |
+| **403** | Forbidden. Access to this API is denied. |  -  |
+| **404** | Not found. The visitor ID cannot be found in this application&#39;s data. |  -  |
+| **429** | Too Many Requests. The request is throttled. |  -  |
 
 
 ## getVisits

@@ -5,17 +5,15 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fingerprint.model.*;
-import com.fingerprint.model.Webhook;
-import com.fingerprint.sdk.*;
+import com.fingerprint.sdk.ApiException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.mockito.Mockito;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
-
-import org.junit.jupiter.api.TestInstance;
-import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -63,6 +61,7 @@ public class FingerprintApiTest {
         when(api.getEvent(MOCK_REQUEST_IDENTIFICATION_MANY_REQUEST)).thenReturn(fetchMockWithEventResponse("mocks/get_event_200_too_many_requests_error.json"));
 
         when(api.getVisits(MOCK_VISITOR_ID, MOCK_VISITOR_REQUEST_ID, null, 50, "1683900801733.Ogvu1j", null)).thenReturn(fetchMockVisit());
+        when(api.getRelatedVisitors(MOCK_VISITOR_ID)).thenReturn(fetchMockVisitWithRelatedVisitorsResponse("mocks/related-visitors/get_related_visitors_200.json"));
     }
 
     private static ObjectMapper getMapper() {
@@ -74,6 +73,14 @@ public class FingerprintApiTest {
 
     private EventsGetResponse fetchMockWithEventResponse(String fileName) throws IOException {
         return MAPPER.readValue(getFileAsIOStream(fileName), EventsGetResponse.class);
+    }
+
+    private RelatedVisitorsResponse fetchMockVisitWithRelatedVisitorsResponse(String fileName) throws IOException {
+        return MAPPER.readValue(getFileAsIOStream(fileName), RelatedVisitorsResponse.class);
+    }
+
+    private ErrorResponse fetchMockErrorResponse(String fileName) throws IOException {
+        return MAPPER.readValue(getFileAsIOStream(fileName), ErrorResponse.class);
     }
 
     private <T> T fetchMock(String filename, Class<T> type) throws IOException {
@@ -261,6 +268,14 @@ public class FingerprintApiTest {
 
         assertEquals(MOCK_WEBHOOK_VISITOR_ID, visit.getVisitorId());
         assertEquals(MOCK_WEBHOOK_REQUEST_ID, visit.getRequestId());
+    }
+
+    @Test
+    public void relatedVisitorsTest() throws Exception {
+        RelatedVisitorsResponse response = api.getRelatedVisitors(MOCK_VISITOR_ID);
+        RelatedVisitorsResponse mock = fetchMockVisitWithRelatedVisitorsResponse("mocks/related-visitors/get_related_visitors_200.json");
+
+        assertEquals(response, mock);
     }
 
 }

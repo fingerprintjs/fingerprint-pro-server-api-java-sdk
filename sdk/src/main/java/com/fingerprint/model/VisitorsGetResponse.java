@@ -73,7 +73,7 @@ public class VisitorsGetResponse {
     return this;
   }
 
-  public VisitorsGetResponse addvisitsItem(Visit visitsItem) {
+  public VisitorsGetResponse addVisitItem(Visit visitsItem) {
     this.visits.add(visitsItem);
     return this;
   }

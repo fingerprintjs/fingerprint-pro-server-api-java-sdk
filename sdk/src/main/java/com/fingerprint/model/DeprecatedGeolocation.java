@@ -284,7 +284,7 @@ public class DeprecatedGeolocation {
     return this;
   }
 
-  public DeprecatedGeolocation addsubdivisionsItem(GeolocationSubdivision subdivisionsItem) {
+  public DeprecatedGeolocation addGeolocationSubdivisionItem(GeolocationSubdivision subdivisionsItem) {
     if (this.subdivisions == null) {
       this.subdivisions = new ArrayList<>();
     }

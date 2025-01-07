@@ -1,5 +1,15 @@
 # Fingerprint Pro Server Java SDK
 
+## 7.2.0
+
+### Minor Changes
+
+- Add Related Visitors API ([e49248a](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/e49248a8337df05f5eb573ddc5f74f88e8f17fed))
+
+### Patch Changes
+
+- Fix invalid phrasing for methods that append to lists in the models ([5d1431e](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/5d1431e256e418d7c1de3261260f8c875026ce10))
+
 ## 7.1.0
 
 ### Minor Changes

@@ -1,6 +1,7 @@
 package com.fingerprint.api;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -18,6 +19,7 @@ import org.mockito.invocation.InvocationOnMock;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -119,8 +121,12 @@ public class FingerprintApiTest {
         }
         Mockito.doAnswer(invocation -> {
             validateIntegrationInfo(invocation.getArgument(3));
-
-            return answerFunction.apply(invocation);
+            ApiResponse result = answerFunction.apply(invocation);
+            if (result.getStatusCode() == 200) {
+                return result;
+            } else {
+                throw new ApiException(result.getStatusCode(), result.getHeaders(), result.getData().toString());
+            }
         }).when(apiClient).invokeAPI(
                 eq(operationName),   // operation, for example "FingerprintApi.getEvent"
                 eq(path),            // path
@@ -146,11 +152,11 @@ public class FingerprintApiTest {
 
     ApiResponse mockFileToResponse(int statusCode, InvocationOnMock invocation, String path) throws IOException {
         GenericType returnType = invocation.getArgument(11);
-        return new ApiResponse<>(statusCode, null, path != null ? MAPPER.readValue(getFileAsIOStream(path), returnType.getRawType()) : null);
-    }
-
-    private <T> T fetchMock(String filename, Class<T> type) throws IOException {
-        return MAPPER.readValue(getFileAsIOStream(filename), type);
+        if (statusCode == 200) {
+            return new ApiResponse<>(statusCode, null, path != null ? MAPPER.readValue(getFileAsIOStream(path), returnType.getRawType()) : null);
+        } else {
+            return new ApiResponse<>(statusCode, null, new String(getFileAsIOStream(path).readAllBytes(), StandardCharsets.UTF_8));
+        }
     }
 
     public static boolean listContainsPair(List<Pair> pairs, String key, String value) {
@@ -504,4 +510,120 @@ public class FingerprintApiTest {
         assertEquals(relatedVisitorsList.get(1).getVisitorId(), "25ee02iZwGxeyT0jMNkZ");
     }
 
+    @Test
+    public void searchEventsMinimumParamsTest() throws ApiException {
+        int LIMIT = 1;
+        addMock("searchEvents", null, invocation -> {
+            List<Pair> queryParams = invocation.getArgument(3);
+            assertEquals(2, queryParams.size());
+            assertTrue(listContainsPair(queryParams, "limit", String.valueOf(LIMIT)));
+
+            return mockFileToResponse(200, invocation, "mocks/get_event_search_200.json");
+        });
+
+        SearchEventsResponse response = api.searchEvents(LIMIT, null, null, null, null, null, null, null, null);
+        List<SearchEventsResponseEventsInner> events = response.getEvents();
+
+        assertEquals(events.size(), 1);
+        Products products = events.get(0).getProducts();
+
+        assertNotNull(products);
+        assertNotNull(products.getIdentification());
+        assertNotNull(products.getIdentification().getData());
+        assertEquals("Ibk1527CUFmcnjLwIs4A9", products.getIdentification().getData().getVisitorId());
+
+        assertFalse(products.getClonedApp().getData().getResult());
+        assertFalse(products.getEmulator().getData().getResult());
+        assertFalse(products.getFrida().getData().getResult());
+        assertFalse(products.getJailbroken().getData().getResult());
+        assertFalse(products.getIpBlocklist().getData().getResult());
+        assertFalse(products.getProxy().getData().getResult());
+        assertFalse(products.getTampering().getData().getResult());
+        assertFalse(products.getTor().getData().getResult());
+        assertFalse(products.getVpn().getData().getResult());
+        assertFalse(products.getVirtualMachine().getData().getResult());
+        assertFalse(products.getHighActivity().getData().getResult());
+        assertFalse(products.getLocationSpoofing().getData().getResult());
+        assertEquals(0, products.getFactoryReset().getData().getTimestamp());
+        ProductRawDeviceAttributes signalResponseRawDeviceAttributes = products.getRawDeviceAttributes();
+        assertEquals(127, signalResponseRawDeviceAttributes.getData().get("architecture").getValue());
+        assertEquals(35.73832903057337, signalResponseRawDeviceAttributes.getData().get("audio").getValue());
+        Map<String, Object> canvasAttribute = (Map<String, Object>) products.getRawDeviceAttributes().getData().get("canvas").getValue();
+        assertEquals(true, canvasAttribute.get("Winding"));
+        assertEquals("4dce9d6017c3e0c052a77252f29f2b1c", canvasAttribute.get("Geometry"));
+        assertEquals("p3", signalResponseRawDeviceAttributes.getData().get("colorGamut").getValue());
+        assertEquals(true, signalResponseRawDeviceAttributes.getData().get("cookiesEnabled").getValue());
+    }
+
+    @Test
+    public void searchEventsMaximumParamsTest() throws ApiException {
+        final int LIMIT = 1;
+        final String BOT = "good";
+        final String IP_ADDRESS = "192.168.0.1/32";
+        final String LINKED_ID = "some_id";
+        final Long START = 1582299576511L;
+        final Long END = 1582299576513L;
+        final Boolean REVERSE = true;
+        final Boolean SUSPECT = false;
+
+        addMock("searchEvents", null, invocation -> {
+            List<Pair> queryParams = invocation.getArgument(3);
+            assertEquals(10, queryParams.size());
+            assertTrue(listContainsPair(queryParams, "limit", String.valueOf(LIMIT)));
+            assertTrue(listContainsPair(queryParams, "visitor_id", MOCK_VISITOR_ID));
+            assertTrue(listContainsPair(queryParams, "bot", BOT));
+            assertTrue(listContainsPair(queryParams, "ip_address", IP_ADDRESS));
+            assertTrue(listContainsPair(queryParams, "linked_id", LINKED_ID));
+            assertTrue(listContainsPair(queryParams, "start", String.valueOf(START)));
+            assertTrue(listContainsPair(queryParams, "end", String.valueOf(END)));
+            assertTrue(listContainsPair(queryParams, "reverse", String.valueOf(REVERSE)));
+            assertTrue(listContainsPair(queryParams, "suspect", String.valueOf(SUSPECT)));
+
+            return mockFileToResponse(200, invocation, "mocks/get_event_search_200.json");
+        });
+
+        SearchEventsResponse response = api.searchEvents(LIMIT, MOCK_VISITOR_ID, BOT, IP_ADDRESS, LINKED_ID, START, END, REVERSE, SUSPECT);
+        List<SearchEventsResponseEventsInner> events = response.getEvents();
+        assertEquals(events.size(), 1);
+    }
+
+    @Test
+    public void searchEvents400ErrorTest() throws ApiException, JsonProcessingException {
+        int LIMIT = 1;
+        addMock("searchEvents", null, invocation -> {
+            List<Pair> queryParams = invocation.getArgument(3);
+            assertEquals(2, queryParams.size());
+            assertTrue(listContainsPair(queryParams, "limit", String.valueOf(LIMIT)));
+
+            return mockFileToResponse(400, invocation, "mocks/errors/400_ip_address_invalid.json");
+        });
+
+        ApiException exception = assertThrows(ApiException.class,
+                () -> api.searchEvents(LIMIT, null, null, null, null, null, null, null, null));
+
+        assertEquals(400, exception.getCode());
+        ErrorResponse response = MAPPER.readValue(exception.getResponseBody(), ErrorResponse.class);
+        assertEquals(ErrorCode.REQUEST_CANNOT_BE_PARSED, response.getError().getCode());
+        assertEquals("invalid ip address", response.getError().getMessage());
+    }
+
+    @Test
+    public void searchEvents403ErrorTest() throws ApiException, JsonProcessingException {
+        int LIMIT = 1;
+        addMock("searchEvents", null, invocation -> {
+            List<Pair> queryParams = invocation.getArgument(3);
+            assertEquals(2, queryParams.size());
+            assertTrue(listContainsPair(queryParams, "limit", String.valueOf(LIMIT)));
+
+            return mockFileToResponse(403, invocation, "mocks/errors/403_feature_not_enabled.json");
+        });
+
+        ApiException exception = assertThrows(ApiException.class,
+                () -> api.searchEvents(LIMIT, null, null, null, null, null, null, null, null));
+
+        assertEquals(403, exception.getCode());
+        ErrorResponse response = MAPPER.readValue(exception.getResponseBody(), ErrorResponse.class);
+        assertEquals(ErrorCode.FEATURE_NOT_ENABLED, response.getError().getCode());
+        assertEquals("feature not enabled", response.getError().getMessage());
+    }
 }

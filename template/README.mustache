@@ -179,6 +179,19 @@ public class FingerprintApiExample {
             System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());
         }
 
+        // Search events with custom filters
+        try {
+            // By visitorId
+            EventsGetResponse response = api.searchEvents(LIMIT, FPJS_VISITOR_ID, null, null, null, null, null, null, null);
+            // Bad bot
+            // EventsGetResponse response = api.searchEvents(LIMIT, null, "bad", null, null, null, null, null, null);
+            // Filtered by IP
+            // EventsGetResponse response = api.searchEvents(LIMIT, null, null, "192.168.0.1/32", null, null, null, null, null);
+            System.out.println(response.getProducts().toString());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());
+        }
+
         // Update an event with a given requestId
         try {
             EventsUpdateRequest request = new EventsUpdateRequest();

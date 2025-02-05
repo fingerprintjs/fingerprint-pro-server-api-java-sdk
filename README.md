@@ -277,6 +277,7 @@ Class | Method | HTTP request | Description
 *FingerprintApi* | [**getEvent**](docs/FingerprintApi.md#getEvent) | **GET** /events/{request_id} | Get event by request ID
 *FingerprintApi* | [**getRelatedVisitors**](docs/FingerprintApi.md#getRelatedVisitors) | **GET** /related-visitors | Get Related Visitors
 *FingerprintApi* | [**getVisits**](docs/FingerprintApi.md#getVisits) | **GET** /visitors/{visitor_id} | Get visits by visitor ID
+*FingerprintApi* | [**searchEvents**](docs/FingerprintApi.md#searchEvents) | **GET** /events/search | Get events via search
 *FingerprintApi* | [**updateEvent**](docs/FingerprintApi.md#updateEvent) | **PUT** /events/{request_id} | Update an event with a given request ID
 *FingerprintApi* | [**webhookTrace**](docs/FingerprintApi.md#webhookTrace) | **TRACE** /webhook | 
 
@@ -351,6 +352,8 @@ Class | Method | HTTP request | Description
  - [RelatedVisitorsResponse](docs/RelatedVisitorsResponse.md)
  - [RemoteControl](docs/RemoteControl.md)
  - [RootApps](docs/RootApps.md)
+ - [SearchEventsResponse](docs/SearchEventsResponse.md)
+ - [SearchEventsResponseEventsInner](docs/SearchEventsResponseEventsInner.md)
  - [SuspectScore](docs/SuspectScore.md)
  - [Tampering](docs/Tampering.md)
  - [Tor](docs/Tor.md)

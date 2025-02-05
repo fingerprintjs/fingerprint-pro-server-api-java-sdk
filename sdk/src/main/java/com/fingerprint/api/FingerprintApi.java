@@ -14,6 +14,7 @@ import com.fingerprint.model.ErrorResponse;
 import com.fingerprint.model.EventsGetResponse;
 import com.fingerprint.model.EventsUpdateRequest;
 import com.fingerprint.model.RelatedVisitorsResponse;
+import com.fingerprint.model.SearchEventsResponse;
 import com.fingerprint.model.VisitorsGetResponse;
 import com.fingerprint.model.Webhook;
 
@@ -376,6 +377,104 @@ public class FingerprintApi {
     GenericType<VisitorsGetResponse> localVarReturnType = new GenericType<VisitorsGetResponse>() {};
 
     return apiClient.invokeAPI("FingerprintApi.getVisits", localVarPath, "GET", localVarQueryParams, localVarPostBody,
+                               localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType,
+                               localVarAuthNames, localVarReturnType, false);
+  }
+  /**
+   * Get events via search
+   * Search for identification events, including Smart Signals, using multiple filtering criteria. If you don't provide `start` or `end` parameters, the default search range is the last 7 days.  Please note that events include mobile signals (e.g. `rootApps`) even if the request originated from a non-mobile platform. We recommend you **ignore** mobile signals for such requests. 
+   * @param limit Limit the number of events returned.  (required)
+   * @param visitorId Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. Filter for events matching this `visitor_id`.  (optional)
+   * @param bot Filter events by the bot detection result, specifically:    - events where any kind of bot was detected.   - events where a good bot was detected.   - events where a bad bot was detected.   - events where no bot was detected.  (optional)
+   * @param ipAddress Filter events by IP address range. The range can be as specific as a single IP (/32 for IPv4 or /128 for IPv6)  All ip_address filters must use CIDR notation, for example, 10.0.0.0/24, 192.168.0.1/32  (optional)
+   * @param linkedId Filter events by your custom identifier.   You can use [linked IDs](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example, session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier.  (optional)
+   * @param start Filter events with a timestamp greater than the start time, in Unix time (milliseconds).  (optional)
+   * @param end Filter events with a timestamp smaller than the end time, in Unix time (milliseconds).  (optional)
+   * @param reverse Sort events in reverse timestamp order.  (optional)
+   * @param suspect Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent).  (optional)
+   * @return SearchEventsResponse
+   * @throws ApiException if fails to make API call
+   * @http.response.details
+     <table summary="Response Details" border="1">
+       <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+       <tr><td> 200 </td><td> Events matching the filter(s). </td><td>  -  </td></tr>
+       <tr><td> 400 </td><td> Bad request. One or more supplied search parameters are invalid, or a required parameter is missing. </td><td>  -  </td></tr>
+       <tr><td> 403 </td><td> Forbidden. Access to this API is denied. </td><td>  -  </td></tr>
+     </table>
+   */
+  public SearchEventsResponse searchEvents(Integer limit, String visitorId, String bot, String ipAddress, String linkedId, Long start, Long end, Boolean reverse, Boolean suspect) throws ApiException {
+    return searchEventsWithHttpInfo(limit, visitorId, bot, ipAddress, linkedId, start, end, reverse, suspect).getData();
+  }
+
+  /**
+   * Get events via search
+   * Search for identification events, including Smart Signals, using multiple filtering criteria. If you don't provide `start` or `end` parameters, the default search range is the last 7 days.  Please note that events include mobile signals (e.g. `rootApps`) even if the request originated from a non-mobile platform. We recommend you **ignore** mobile signals for such requests. 
+   * @param limit Limit the number of events returned.  (required)
+   * @param visitorId Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. Filter for events matching this `visitor_id`.  (optional)
+   * @param bot Filter events by the bot detection result, specifically:    - events where any kind of bot was detected.   - events where a good bot was detected.   - events where a bad bot was detected.   - events where no bot was detected.  (optional)
+   * @param ipAddress Filter events by IP address range. The range can be as specific as a single IP (/32 for IPv4 or /128 for IPv6)  All ip_address filters must use CIDR notation, for example, 10.0.0.0/24, 192.168.0.1/32  (optional)
+   * @param linkedId Filter events by your custom identifier.   You can use [linked IDs](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example, session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier.  (optional)
+   * @param start Filter events with a timestamp greater than the start time, in Unix time (milliseconds).  (optional)
+   * @param end Filter events with a timestamp smaller than the end time, in Unix time (milliseconds).  (optional)
+   * @param reverse Sort events in reverse timestamp order.  (optional)
+   * @param suspect Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent).  (optional)
+   * @return ApiResponse&lt;SearchEventsResponse&gt;
+   * @throws ApiException if fails to make API call
+   * @http.response.details
+     <table summary="Response Details" border="1">
+       <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+       <tr><td> 200 </td><td> Events matching the filter(s). </td><td>  -  </td></tr>
+       <tr><td> 400 </td><td> Bad request. One or more supplied search parameters are invalid, or a required parameter is missing. </td><td>  -  </td></tr>
+       <tr><td> 403 </td><td> Forbidden. Access to this API is denied. </td><td>  -  </td></tr>
+     </table>
+   */
+  public ApiResponse<SearchEventsResponse> searchEventsWithHttpInfo(Integer limit, String visitorId, String bot, String ipAddress, String linkedId, Long start, Long end, Boolean reverse, Boolean suspect) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'limit' is set
+    if (limit == null) {
+      throw new ApiException(400, "Missing the required parameter 'limit' when calling searchEvents");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/events/search";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.add(new Pair("ii", INTEGRATION_INFO));
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "visitor_id", visitorId));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "bot", bot));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "ip_address", ipAddress));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "linked_id", linkedId));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "start", start));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "end", end));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "reverse", reverse));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "suspect", suspect));
+
+    
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ApiKeyHeader", "ApiKeyQuery" };
+
+    GenericType<SearchEventsResponse> localVarReturnType = new GenericType<SearchEventsResponse>() {};
+
+    return apiClient.invokeAPI("FingerprintApi.searchEvents", localVarPath, "GET", localVarQueryParams, localVarPostBody,
                                localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType,
                                localVarAuthNames, localVarReturnType, false);
   }

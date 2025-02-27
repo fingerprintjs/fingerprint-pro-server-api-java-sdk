@@ -42,6 +42,15 @@ public class FunctionalTests {
             System.exit(1);
         }
 
+        // Search events
+        try {
+            final Object events = api.searchEvents(2, null, "bad", null, null, null, null, null, null);
+            System.out.println(events);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FingerprintApi.searchEvents:" + e.getMessage());
+            System.exit(1);
+        }
+
         // Update identification event
 
         if (FPJS_REQUEST_ID_TO_UPDATE != null) {

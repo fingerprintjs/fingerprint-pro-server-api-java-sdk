@@ -379,7 +379,7 @@ public class FingerprintApiExample {
 
 ## searchEvents
 
-> SearchEventsResponse searchEvents(limit, visitorId, bot, ipAddress, linkedId, start, end, reverse, suspect)
+> SearchEventsResponse searchEvents(limit, paginationKey, visitorId, bot, ipAddress, linkedId, start, end, reverse, suspect)
 
 Get events via search
 
@@ -418,6 +418,7 @@ public class FingerprintApiExample {
         ApiClient client = Configuration.getDefaultApiClient(FPJS_API_SECRET, Region.EUROPE);
         FingerprintApi api = new FingerprintApi(client);
         Integer limit = 10; // Integer | Limit the number of events returned. 
+        String paginationKey = "paginationKey_example"; // String | Use `pagination_key` to get the next page of results.   When more results are available (e.g., you requested up to 200 results for your search using `limit`, but there are more than 200 events total matching your request), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `timestamp` of the last returned event. In the following request, use that value in the `pagination_key` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/events/search?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/events/search?limit=200&pagination_key=1740815825085` 
         String visitorId = "visitorId_example"; // String | Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. Filter for events matching this `visitor_id`. 
         String bot = "all"; // String | Filter events by the bot detection result, specifically:    `all` - events where any kind of bot was detected.   `good` - events where a good bot was detected.   `bad` - events where a bad bot was detected.   `none` - events where no bot was detected. 
         String ipAddress = "ipAddress_example"; // String | Filter events by IP address range. The range can be as specific as a single IP (/32 for IPv4 or /128 for IPv6)  All ip_address filters must use CIDR notation, for example, 10.0.0.0/24, 192.168.0.1/32 
@@ -427,7 +428,7 @@ public class FingerprintApiExample {
         Boolean reverse = true; // Boolean | Sort events in reverse timestamp order. 
         Boolean suspect = true; // Boolean | Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent).  > Note: When using this parameter, only events with the `suspect` property explicitly set to `true` or `false` are returned. Events with undefined `suspect` property are left out of the response. 
         try {
-            SearchEventsResponse result = apiInstance.searchEvents(limit, visitorId, bot, ipAddress, linkedId, start, end, reverse, suspect);
+            SearchEventsResponse result = apiInstance.searchEvents(limit, paginationKey, visitorId, bot, ipAddress, linkedId, start, end, reverse, suspect);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.searchEvents:" + e.getMessage());
@@ -443,6 +444,7 @@ public class FingerprintApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **limit** | **Integer**| Limit the number of events returned.  | |
+| **paginationKey** | **String**| Use `pagination_key` to get the next page of results.   When more results are available (e.g., you requested up to 200 results for your search using `limit`, but there are more than 200 events total matching your request), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `timestamp` of the last returned event. In the following request, use that value in the `pagination_key` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/events/search?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/events/search?limit=200&pagination_key=1740815825085`  | [optional] |
 | **visitorId** | **String**| Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. Filter for events matching this `visitor_id`.  | [optional] |
 | **bot** | **String**| Filter events by the bot detection result, specifically:    `all` - events where any kind of bot was detected.   `good` - events where a good bot was detected.   `bad` - events where a bad bot was detected.   `none` - events where no bot was detected.  | [optional] [enum: all, good, bad, none] |
 | **ipAddress** | **String**| Filter events by IP address range. The range can be as specific as a single IP (/32 for IPv4 or /128 for IPv6)  All ip_address filters must use CIDR notation, for example, 10.0.0.0/24, 192.168.0.1/32  | [optional] |

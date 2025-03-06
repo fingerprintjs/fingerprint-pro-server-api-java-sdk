@@ -74,7 +74,7 @@ public class SearchEventsResponse {
   }
 
    /**
-   * Use this value in the &#x60;pagination_key&#x60; parameter to request the next page of search results.
+   * Use this value in the `pagination_key` parameter to request the next page of search results.
    * @return paginationKey
   **/
   @jakarta.annotation.Nullable

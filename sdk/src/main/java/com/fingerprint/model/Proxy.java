@@ -33,7 +33,7 @@ public class Proxy {
   }
 
    /**
-   * &#x60;true&#x60; if the request IP address is used by a public proxy provider, &#x60;false&#x60; otherwise. 
+   * `true` if the request IP address is used by a public proxy provider, `false` otherwise. 
    * @return result
   **/
   @jakarta.annotation.Nonnull

@@ -155,13 +155,13 @@ public class FingerprintApiExample {
         // Search events with custom filters
         try {
             // By visitorId
-            EventsGetResponse response = api.searchEvents(LIMIT, null, FPJS_VISITOR_ID, null, null, null, null, null, null, null);
+            SearchEventsResponse response = api.searchEvents(LIMIT, null, FPJS_VISITOR_ID, null, null, null, null, null, null, null);
             // Next page
-            // EventsGetResponse response = api.searchEvents(LIMIT, paginationKey, FPJS_VISITOR_ID, null, null, null, null, null, null, null);
+            // SearchEventsResponse response = api.searchEvents(LIMIT, response.getPaginationKey(), FPJS_VISITOR_ID, null, null, null, null, null, null, null);
             // Bad bot
-            // EventsGetResponse response = api.searchEvents(LIMIT, null, null, "bad", null, null, null, null, null, null);
+            // SearchEventsResponse response = api.searchEvents(LIMIT, null, null, "bad", null, null, null, null, null, null);
             // Filtered by IP
-            // EventsGetResponse response = api.searchEvents(LIMIT, null, null, null, "192.168.0.1/32", null, null, null, null, null);
+            // SearchEventsResponse response = api.searchEvents(LIMIT, null, null, null, "192.168.0.1/32", null, null, null, null, null);
             System.out.println(response.getProducts().toString());
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());

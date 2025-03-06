@@ -105,7 +105,7 @@ public class VisitorsGetResponse {
   }
 
    /**
-   * ⚠️ Deprecated paging attribute, please use &#x60;paginationKey&#x60; instead. Timestamp of the last visit in the current page of results. 
+   * ⚠️ Deprecated paging attribute, please use `paginationKey` instead. Timestamp of the last visit in the current page of results. 
    * @return lastTimestamp
    * @deprecated
   **/
@@ -133,7 +133,7 @@ public class VisitorsGetResponse {
   }
 
    /**
-   * Request ID of the last visit in the current page of results. Use this value in the following request as the &#x60;paginationKey&#x60; parameter to get the next page of results.
+   * Request ID of the last visit in the current page of results. Use this value in the following request as the `paginationKey` parameter to get the next page of results.
    * @return paginationKey
   **/
   @jakarta.annotation.Nullable

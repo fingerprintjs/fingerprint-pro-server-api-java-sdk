@@ -41,7 +41,7 @@ public class Tampering {
   }
 
    /**
-   * Flag indicating browser tampering was detected. This happens when either of these conditions is true:   * There are inconsistencies in the browser configuration that cross our internal tampering thresholds (indicated by &#x60;anomalyScore&#x60;).   * The browser signature resembles one of \&quot;anti-detect\&quot; browsers specifically designed to evade identification and fingerprinting, for example, Incognition (indicated by &#x60;antiDetectBrowser&#x60;). 
+   * Flag indicating browser tampering was detected. This happens when either of these conditions is true:   * There are inconsistencies in the browser configuration that cross our internal tampering thresholds (indicated by `anomalyScore`).   * The browser signature resembles one of \"anti-detect\" browsers specifically designed to evade identification and fingerprinting, for example, Incognition (indicated by `antiDetectBrowser`). 
    * @return result
   **/
   @jakarta.annotation.Nonnull
@@ -67,7 +67,7 @@ public class Tampering {
   }
 
    /**
-   * Confidence score (&#x60;0.0 - 1.0&#x60;) for tampering detection:   * Values above &#x60;0.5&#x60; indicate that there was a tampering attempt.    * Values below &#x60;0.5&#x60; indicate genuine browsers. 
+   * Confidence score (`0.0 - 1.0`) for tampering detection:   * Values above `0.5` indicate that there was a tampering attempt.    * Values below `0.5` indicate genuine browsers. 
    * minimum: 0
    * maximum: 1
    * @return anomalyScore
@@ -95,7 +95,7 @@ public class Tampering {
   }
 
    /**
-   * Is &#x60;true&#x60; if the identified browser resembles one of \&quot;anti-detect\&quot; browsers, for example, Incognition.  Anti-detect browsers try to evade identification by masking or manipulating their fingerprint to imitate legitimate browser configurations.
+   * Is `true` if the identified browser resembles one of \"anti-detect\" browsers, for example, Incognition.  Anti-detect browsers try to evade identification by masking or manipulating their fingerprint to imitate legitimate browser configurations.
    * @return antiDetectBrowser
   **/
   @jakarta.annotation.Nonnull

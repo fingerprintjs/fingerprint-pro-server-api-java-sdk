@@ -255,7 +255,7 @@ public class Botd {
   }
 
    /**
-   * Unique identifier of the user&#39;s request.
+   * Unique identifier of the user's request.
    * @return requestId
   **/
   @jakarta.annotation.Nonnull

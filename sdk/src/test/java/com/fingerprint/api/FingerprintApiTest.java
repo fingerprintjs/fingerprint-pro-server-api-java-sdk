@@ -521,7 +521,7 @@ public class FingerprintApiTest {
             return mockFileToResponse(200, invocation, "mocks/get_event_search_200.json");
         });
 
-        SearchEventsResponse response = api.searchEvents(LIMIT, null, null, null, null, null, null, null, null, null);
+        SearchEventsResponse response = api.searchEvents(LIMIT, null);
         List<SearchEventsResponseEventsInner> events = response.getEvents();
 
         assertEquals(events.size(), 1);
@@ -584,7 +584,13 @@ public class FingerprintApiTest {
             return mockFileToResponse(200, invocation, "mocks/get_event_search_200.json");
         });
 
-        SearchEventsResponse response = api.searchEvents(LIMIT, PAGINATION_KEY, MOCK_VISITOR_ID, BOT, IP_ADDRESS, LINKED_ID, START, END, REVERSE, SUSPECT);
+        SearchEventsResponse response = api.searchEvents(LIMIT, new FingerprintApi.SearchEventsFilter()
+                .setPaginationKey(PAGINATION_KEY)
+                .setVisitorId(MOCK_VISITOR_ID)
+                .setBot(BOT).setIpAddress(IP_ADDRESS)
+                .setLinkedId(LINKED_ID).setStart(START)
+                .setEnd(END).setReverse(REVERSE)
+                .setSuspect(SUSPECT));
         List<SearchEventsResponseEventsInner> events = response.getEvents();
         assertEquals(events.size(), 1);
     }
@@ -601,7 +607,7 @@ public class FingerprintApiTest {
         });
 
         ApiException exception = assertThrows(ApiException.class,
-                () -> api.searchEvents(LIMIT, null, null, null, null, null, null, null, null, null));
+                () -> api.searchEvents(LIMIT, null));
 
         assertEquals(400, exception.getCode());
         ErrorResponse response = MAPPER.readValue(exception.getResponseBody(), ErrorResponse.class);
@@ -621,7 +627,7 @@ public class FingerprintApiTest {
         });
 
         ApiException exception = assertThrows(ApiException.class,
-                () -> api.searchEvents(LIMIT, null, null, null, null, null, null, null, null, null));
+                () -> api.searchEvents(LIMIT, null));
 
         assertEquals(403, exception.getCode());
         ErrorResponse response = MAPPER.readValue(exception.getResponseBody(), ErrorResponse.class);

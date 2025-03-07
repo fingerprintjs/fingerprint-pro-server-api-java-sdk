@@ -44,7 +44,7 @@ public class FunctionalTests {
 
         // Search events
         try {
-            final Object events = api.searchEvents(2, null, null, "bad", null, null, null, null, null, null);
+            final Object events = api.searchEvents(2, new FingerprintApi.SearchEventsFilter().setBot("bad"));
             System.out.println(events);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.searchEvents:" + e.getMessage());

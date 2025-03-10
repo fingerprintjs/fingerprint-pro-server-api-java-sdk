@@ -64,7 +64,7 @@ public class WebhookFactoryReset {
   }
 
    /**
-   * This field is just another representation of the value in the &#x60;time&#x60; field. The time of the most recent factory reset that happened on the **mobile device** is expressed as Unix epoch time.        
+   * This field is just another representation of the value in the `time` field. The time of the most recent factory reset that happened on the **mobile device** is expressed as Unix epoch time.        
    * @return timestamp
   **/
   @jakarta.annotation.Nullable

@@ -33,7 +33,7 @@ public class RemoteControl {
   }
 
    /**
-   * &#x60;true&#x60; if the request came from a machine being remotely controlled (e.g. TeamViewer), &#x60;false&#x60; otherwise. 
+   * `true` if the request came from a machine being remotely controlled (e.g. TeamViewer), `false` otherwise. 
    * @return result
   **/
   @jakarta.annotation.Nonnull

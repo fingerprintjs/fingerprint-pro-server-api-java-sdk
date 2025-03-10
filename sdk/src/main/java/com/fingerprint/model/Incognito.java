@@ -33,7 +33,7 @@ public class Incognito {
   }
 
    /**
-   * &#x60;true&#x60; if we detected incognito mode used in the browser, &#x60;false&#x60; otherwise. 
+   * `true` if we detected incognito mode used in the browser, `false` otherwise. 
    * @return result
   **/
   @jakarta.annotation.Nonnull

@@ -33,7 +33,7 @@ public class WebhookVirtualMachine {
   }
 
    /**
-   * &#x60;true&#x60; if the request came from a browser running inside a virtual machine (e.g. VMWare), &#x60;false&#x60; otherwise. 
+   * `true` if the request came from a browser running inside a virtual machine (e.g. VMWare), `false` otherwise. 
    * @return result
   **/
   @jakarta.annotation.Nullable

@@ -33,7 +33,7 @@ public class Tor {
   }
 
    /**
-   * &#x60;true&#x60; if the request IP address is a known tor exit node, &#x60;false&#x60; otherwise. 
+   * `true` if the request IP address is a known tor exit node, `false` otherwise. 
    * @return result
   **/
   @jakarta.annotation.Nonnull

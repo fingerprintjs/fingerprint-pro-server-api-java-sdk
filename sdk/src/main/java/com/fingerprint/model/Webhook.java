@@ -218,7 +218,7 @@ public class Webhook {
   }
 
    /**
-   * Unique identifier of the user&#39;s request.
+   * Unique identifier of the user's request.
    * @return requestId
   **/
   @jakarta.annotation.Nonnull
@@ -436,7 +436,7 @@ public class Webhook {
   }
 
    /**
-   * String of 20 characters that uniquely identifies the visitor&#39;s browser.
+   * String of 20 characters that uniquely identifies the visitor's browser.
    * @return visitorId
   **/
   @jakarta.annotation.Nullable

@@ -60,7 +60,7 @@ public class {{classname}} {
   }
 
   {{#operation}}
-  {{^vendorExtensions.x-flattern-filter}}
+  {{^vendorExtensions.x-flatten-optional-params}}
   {{#hasOptionalParams}}
   public static class {{operationIdCamelCase}}Filter {
     {{#allParams}}
@@ -81,27 +81,27 @@ public class {{classname}} {
     {{/allParams}}
   }
   {{/hasOptionalParams}}
-  {{/vendorExtensions.x-flattern-filter}}
+  {{/vendorExtensions.x-flatten-optional-params}}
   /**
    * {{summary}}
    * {{{notes}}}
-   {{^vendorExtensions.x-flattern-filter}}
+   {{^vendorExtensions.x-flatten-optional-params}}
    {{#allParams}}
    {{#required}}
    * @param {{paramName}} {{{description}}} (required)
    {{/required}}
    {{/allParams}}
-   {{/vendorExtensions.x-flattern-filter}}
-   {{#vendorExtensions.x-flattern-filter}}
+   {{/vendorExtensions.x-flatten-optional-params}}
+   {{#vendorExtensions.x-flatten-optional-params}}
    {{#allParams}}
    * @param {{paramName}} {{{description}}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}
    {{/allParams}}
-   {{/vendorExtensions.x-flattern-filter}}
-   {{^vendorExtensions.x-flattern-filter}}
+   {{/vendorExtensions.x-flatten-optional-params}}
+   {{^vendorExtensions.x-flatten-optional-params}}
    {{#hasOptionalParams}}
    * @param {{operationId}}Filter Filter object containing optional parameters for search criteria.  (optional)
    {{/hasOptionalParams}}
-   {{/vendorExtensions.x-flattern-filter}}
+   {{/vendorExtensions.x-flatten-optional-params}}
    {{#returnType}}
    * @return {{.}}
    {{/returnType}}
@@ -126,37 +126,37 @@ public class {{classname}} {
   {{#isDeprecated}}
   @Deprecated
   {{/isDeprecated}}
-  {{^vendorExtensions.x-flattern-filter}}
+  {{^vendorExtensions.x-flatten-optional-params}}
   public {{#returnType}}{{{.}}} {{/returnType}}{{^returnType}}void {{/returnType}}{{operationId}}({{#allParams}}{{#required}}{{{dataType}}} {{paramName}}{{^-last}}, {{/-last}}{{/required}}{{/allParams}}{{#hasOptionalParams}}{{operationIdCamelCase}}Filter {{operationId}}Filter{{/hasOptionalParams}}) throws ApiException {
     {{#returnType}}return {{/returnType}}{{operationId}}WithHttpInfo({{#allParams}}{{#required}}{{paramName}}{{^-last}}, {{/-last}}{{/required}}{{/allParams}}{{#hasOptionalParams}}{{operationId}}Filter{{/hasOptionalParams}}){{#returnType}}.getData(){{/returnType}};
   }
-  {{/vendorExtensions.x-flattern-filter}}
-  {{#vendorExtensions.x-flattern-filter}}
+  {{/vendorExtensions.x-flatten-optional-params}}
+  {{#vendorExtensions.x-flatten-optional-params}}
   public {{#returnType}}{{{.}}} {{/returnType}}{{^returnType}}void {{/returnType}}{{operationId}}({{#allParams}}{{{dataType}}} {{paramName}}{{^-last}}, {{/-last}}{{/allParams}}) throws ApiException {
     {{#returnType}}return {{/returnType}}{{operationId}}WithHttpInfo({{#allParams}}{{paramName}}{{^-last}}, {{/-last}}{{/allParams}}){{#returnType}}.getData(){{/returnType}};
   }
-  {{/vendorExtensions.x-flattern-filter}}
+  {{/vendorExtensions.x-flatten-optional-params}}
 
   /**
    * {{summary}}
    * {{{notes}}}
-   {{^vendorExtensions.x-flattern-filter}}
+   {{^vendorExtensions.x-flatten-optional-params}}
    {{#allParams}}
    {{#required}}
    * @param {{paramName}} {{{description}}} (required)
    {{/required}}
    {{/allParams}}
-   {{/vendorExtensions.x-flattern-filter}}
-   {{#vendorExtensions.x-flattern-filter}}
+   {{/vendorExtensions.x-flatten-optional-params}}
+   {{#vendorExtensions.x-flatten-optional-params}}
    {{#allParams}}
    * @param {{paramName}} {{{description}}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}
    {{/allParams}}
-   {{/vendorExtensions.x-flattern-filter}}
-   {{^vendorExtensions.x-flattern-filter}}
+   {{/vendorExtensions.x-flatten-optional-params}}
+   {{^vendorExtensions.x-flatten-optional-params}}
    {{#hasOptionalParams}}
    * @param {{operationId}}Filter Filter object containing optional parameters for search criteria.  (optional)
    {{/hasOptionalParams}}
-   {{/vendorExtensions.x-flattern-filter}}
+   {{/vendorExtensions.x-flatten-optional-params}}
    * @return ApiResponse<{{returnType}}{{^returnType}}Void{{/returnType}}>
    * @throws ApiException if fails to make API call
    {{#responses.0}}
@@ -179,12 +179,12 @@ public class {{classname}} {
   {{#isDeprecated}}
   @Deprecated
   {{/isDeprecated}}
-  {{^vendorExtensions.x-flattern-filter}}
+  {{^vendorExtensions.x-flatten-optional-params}}
   public ApiResponse<{{{returnType}}}{{^returnType}}Void{{/returnType}}> {{operationId}}WithHttpInfo({{#allParams}}{{#required}}{{{dataType}}} {{paramName}}{{^-last}}, {{/-last}}{{/required}}{{/allParams}}{{#hasOptionalParams}}{{operationIdCamelCase}}Filter {{operationId}}Filter{{/hasOptionalParams}}) throws ApiException {
-  {{/vendorExtensions.x-flattern-filter}}
-  {{#vendorExtensions.x-flattern-filter}}
+  {{/vendorExtensions.x-flatten-optional-params}}
+  {{#vendorExtensions.x-flatten-optional-params}}
   public ApiResponse<{{{returnType}}}{{^returnType}}Void{{/returnType}}> {{operationId}}WithHttpInfo({{#allParams}}{{{dataType}}} {{paramName}}{{^-last}}, {{/-last}}{{/allParams}}) throws ApiException {
-  {{/vendorExtensions.x-flattern-filter}}
+  {{/vendorExtensions.x-flatten-optional-params}}
     Object localVarPostBody = {{#bodyParam}}{{paramName}}{{/bodyParam}}{{^bodyParam}}null{{/bodyParam}};
     {{#allParams}}{{#required}}
     // verify the required parameter '{{paramName}}' is set
@@ -204,7 +204,7 @@ public class {{classname}} {
 
     localVarQueryParams.add(new Pair("ii", INTEGRATION_INFO));
 
-    {{^vendorExtensions.x-flattern-filter}}
+    {{^vendorExtensions.x-flatten-optional-params}}
     {{#queryParams}}
     {{#required}}
     localVarQueryParams.addAll(apiClient.parameterToPairs("{{{collectionFormat}}}", "{{baseName}}", {{paramName}}));
@@ -219,12 +219,12 @@ public class {{classname}} {
     {{/queryParams}}
     }
     {{/hasOptionalParams}}
-    {{/vendorExtensions.x-flattern-filter}}
-    {{#vendorExtensions.x-flattern-filter}}
+    {{/vendorExtensions.x-flatten-optional-params}}
+    {{#vendorExtensions.x-flatten-optional-params}}
     {{#queryParams}}
     localVarQueryParams.addAll(apiClient.parameterToPairs("{{{collectionFormat}}}", "{{baseName}}", {{paramName}}));
     {{/queryParams}}
-    {{/vendorExtensions.x-flattern-filter}}
+    {{/vendorExtensions.x-flatten-optional-params}}
 
     {{#headerParams}}if ({{paramName}} != null)
       localVarHeaderParams.put("{{baseName}}", apiClient.parameterToString({{paramName}}));

@@ -314,7 +314,7 @@ paths:
         how long you should wait before making a follow-up request. The value is
         non-negative decimal integer indicating the seconds to delay after the
         response is received.
-      x-flattern-filter: true
+      x-flatten-optional-params: true
       parameters:
         - name: visitor_id
           in: path
@@ -625,7 +625,7 @@ paths:
         Fake path to describe webhook format. More information about webhooks
         can be found in the
         [documentation](https://dev.fingerprint.com/docs/webhooks)
-      x-flattern-filter: true
+      x-flatten-optional-params: true
       requestBody:
         content:
           application/json:

@@ -69,10 +69,16 @@ public class {{classname}} {
 
     {{#allParams}}
     {{^required}}
+    /**
+    * getter for {{paramName}} - {{{description}}}
+    **/
     public {{{dataType}}} get{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}}() {
       return {{paramName}};
     }
 
+    /**
+    * setter for {{paramName}} - {{{description}}}
+    **/
     public {{operationIdCamelCase}}Filter set{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}}({{{dataType}}} {{paramName}}) {
       this.{{paramName}} = {{paramName}};
       return this;

@@ -400,6 +400,7 @@ public class FingerprintApi {
       this.paginationKey = paginationKey;
       return this;
     }
+
     public String getVisitorId() {
       return visitorId;
     }
@@ -408,6 +409,7 @@ public class FingerprintApi {
       this.visitorId = visitorId;
       return this;
     }
+
     public String getBot() {
       return bot;
     }
@@ -416,6 +418,7 @@ public class FingerprintApi {
       this.bot = bot;
       return this;
     }
+
     public String getIpAddress() {
       return ipAddress;
     }
@@ -424,6 +427,7 @@ public class FingerprintApi {
       this.ipAddress = ipAddress;
       return this;
     }
+
     public String getLinkedId() {
       return linkedId;
     }
@@ -432,6 +436,7 @@ public class FingerprintApi {
       this.linkedId = linkedId;
       return this;
     }
+
     public Long getStart() {
       return start;
     }
@@ -440,6 +445,7 @@ public class FingerprintApi {
       this.start = start;
       return this;
     }
+
     public Long getEnd() {
       return end;
     }
@@ -448,6 +454,7 @@ public class FingerprintApi {
       this.end = end;
       return this;
     }
+
     public Boolean getReverse() {
       return reverse;
     }
@@ -456,6 +463,7 @@ public class FingerprintApi {
       this.reverse = reverse;
       return this;
     }
+
     public Boolean getSuspect() {
       return suspect;
     }
@@ -464,6 +472,7 @@ public class FingerprintApi {
       this.suspect = suspect;
       return this;
     }
+
   }
   /**
    * Get events via search

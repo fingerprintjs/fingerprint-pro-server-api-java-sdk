@@ -428,7 +428,7 @@ public class FingerprintApiExample {
         Boolean reverse = true; // Boolean | Sort events in reverse timestamp order. 
         Boolean suspect = true; // Boolean | Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent).  > Note: When using this parameter, only events with the `suspect` property explicitly set to `true` or `false` are returned. Events with undefined `suspect` property are left out of the response. 
         try {
-            SearchEventsResponse result = apiInstance.searchEvents(limit, new FingerprintApi.SearchEventsFilter()
+            SearchEventsResponse result = apiInstance.searchEvents(limit, new FingerprintApi.SearchEventsOptionalParams()
                 .setPaginationKey(paginationKey)
                 .setVisitorId(visitorId)
                 .setBot(bot)
@@ -453,11 +453,11 @@ public class FingerprintApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **limit** | **Integer**| Limit the number of events returned.  | |
-| **searchEventsFilter** | [**FingerprintApi.SearchEventsFilter**](#fingerprintapisearcheventsfilter) | | [optional] |
+| **searchEventsOptionalParams** | [**FingerprintApi.SearchEventsOptionalParams**](#fingerprintapisearcheventsoptionalparams) | | [optional] |
 
-#### FingerprintApi.SearchEventsFilter
+#### FingerprintApi.SearchEventsOptionalParams
 
-Filter object containing optional parameters for specifying search criteria. Supports a fluent interface for convenient method chaining.
+Object containing optional parameters for API method. Supports a fluent interface for convenient method chaining.
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|

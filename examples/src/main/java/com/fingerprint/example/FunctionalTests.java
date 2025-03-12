@@ -2,6 +2,7 @@ package com.fingerprint.example;
 
 import com.fingerprint.api.FingerprintApi;
 import com.fingerprint.model.EventsUpdateRequest;
+import com.fingerprint.model.SearchEventsResponse;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
 import com.fingerprint.sdk.Configuration;
@@ -44,8 +45,8 @@ public class FunctionalTests {
 
         // Search events
         try {
-            final Object events = api.searchEvents(2, new FingerprintApi.SearchEventsFilter().setBot("bad"));
-            System.out.println(events);
+            final SearchEventsResponse events = api.searchEvents(2, new FingerprintApi.SearchEventsOptionalParams().setBot("bad"));
+            System.out.println(events.getEvents());
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.searchEvents:" + e.getMessage());
             System.exit(1);

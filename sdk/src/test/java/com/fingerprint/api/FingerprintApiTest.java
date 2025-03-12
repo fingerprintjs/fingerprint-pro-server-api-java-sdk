@@ -584,7 +584,7 @@ public class FingerprintApiTest {
             return mockFileToResponse(200, invocation, "mocks/get_event_search_200.json");
         });
 
-        SearchEventsResponse response = api.searchEvents(LIMIT, new FingerprintApi.SearchEventsFilter()
+        SearchEventsResponse response = api.searchEvents(LIMIT, new FingerprintApi.SearchEventsOptionalParams()
                 .setPaginationKey(PAGINATION_KEY)
                 .setVisitorId(MOCK_VISITOR_ID)
                 .setBot(BOT).setIpAddress(IP_ADDRESS)

@@ -54,7 +54,7 @@ public class FingerprintApiExample {
         {{/allParams}}
         try {
         {{^vendorExtensions.x-flatten-optional-params}}
-            {{#returnType}}{{{returnType}}} result = {{/returnType}}apiInstance.{{{operationId}}}({{#allParams}}{{#required}}{{{paramName}}}{{^-last}}, {{/-last}}{{/required}}{{/allParams}}{{#hasOptionalParams}}new FingerprintApi.{{operationIdCamelCase}}Filter(){{#allParams}}{{^required}}
+            {{#returnType}}{{{returnType}}} result = {{/returnType}}apiInstance.{{{operationId}}}({{#allParams}}{{#required}}{{{paramName}}}{{^-last}}, {{/-last}}{{/required}}{{/allParams}}{{#hasOptionalParams}}new FingerprintApi.{{operationIdCamelCase}}OptionalParams(){{#allParams}}{{^required}}
                 .set{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}}({{{paramName}}}){{/required}}{{/allParams}}{{/hasOptionalParams}});
         {{/vendorExtensions.x-flatten-optional-params}}
         {{#vendorExtensions.x-flatten-optional-params}}
@@ -82,11 +82,11 @@ public class FingerprintApiExample {
 {{/vendorExtensions.x-flatten-optional-params}}
 {{^vendorExtensions.x-flatten-optional-params}}
 {{#allParams}}{{#required}}| **{{paramName}}** | {{#isContainer}}{{#isArray}}{{#items}}{{#isModel}}{{^isFile}}[{{/isFile}}{{/isModel}}**List&lt;{{dataType}}&gt;**{{#isModel}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isModel}}{{/items}}{{/isArray}}{{#isMap}}{{#items}}{{#isModel}}{{^isFile}}[{{/isFile}}{{/isModel}}**Map&lt;String,{{dataType}}&gt;**{{#isModel}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isModel}}{{/items}}{{/isMap}}{{/isContainer}}{{^isContainer}}{{#isModel}}{{^isFile}}[{{/isFile}}{{/isModel}}**{{dataType}}**{{#isModel}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isModel}}{{/isContainer}}| {{{description}}} |{{^required}} [optional]{{/required}}{{^isContainer}}{{#defaultValue}} [default to {{.}}]{{/defaultValue}}{{/isContainer}}{{#allowableValues}} [enum: {{#values}}{{{.}}}{{^-last}}, {{/-last}}{{/values}}]{{/allowableValues}} |
-{{/required}}{{/allParams}}{{#hasOptionalParams}}| **{{operationId}}Filter** | [**{{classname}}.{{operationIdCamelCase}}Filter**](#{{#lambda.lowercase}}{{classname}}{{operationId}}filter{{/lambda.lowercase}}) | | [optional] |
+{{/required}}{{/allParams}}{{#hasOptionalParams}}| **{{operationId}}OptionalParams** | [**{{classname}}.{{operationIdCamelCase}}OptionalParams**](#{{#lambda.lowercase}}{{classname}}{{operationId}}OptionalParams{{/lambda.lowercase}}) | | [optional] |
 
-#### {{classname}}.{{operationIdCamelCase}}Filter
+#### {{classname}}.{{operationIdCamelCase}}OptionalParams
 
-Filter object containing optional parameters for specifying search criteria. Supports a fluent interface for convenient method chaining.
+Object containing optional parameters for API method. Supports a fluent interface for convenient method chaining.
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|

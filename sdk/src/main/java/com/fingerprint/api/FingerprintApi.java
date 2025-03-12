@@ -380,7 +380,7 @@ public class FingerprintApi {
                                localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType,
                                localVarAuthNames, localVarReturnType, false);
   }
-  public static class SearchEventsFilter {
+  public static class SearchEventsOptionalParams {
     
     private String paginationKey;
     private String visitorId;
@@ -402,7 +402,7 @@ public class FingerprintApi {
     /**
     * setter for paginationKey - Use `pagination_key` to get the next page of results.   When more results are available (e.g., you requested up to 200 results for your search using `limit`, but there are more than 200 events total matching your request), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `timestamp` of the last returned event. In the following request, use that value in the `pagination_key` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/events/search?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/events/search?limit=200&pagination_key=1740815825085` 
     **/
-    public SearchEventsFilter setPaginationKey(String paginationKey) {
+    public SearchEventsOptionalParams setPaginationKey(String paginationKey) {
       this.paginationKey = paginationKey;
       return this;
     }
@@ -417,7 +417,7 @@ public class FingerprintApi {
     /**
     * setter for visitorId - Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. Filter for events matching this `visitor_id`. 
     **/
-    public SearchEventsFilter setVisitorId(String visitorId) {
+    public SearchEventsOptionalParams setVisitorId(String visitorId) {
       this.visitorId = visitorId;
       return this;
     }
@@ -432,7 +432,7 @@ public class FingerprintApi {
     /**
     * setter for bot - Filter events by the bot detection result, specifically:    `all` - events where any kind of bot was detected.   `good` - events where a good bot was detected.   `bad` - events where a bad bot was detected.   `none` - events where no bot was detected. 
     **/
-    public SearchEventsFilter setBot(String bot) {
+    public SearchEventsOptionalParams setBot(String bot) {
       this.bot = bot;
       return this;
     }
@@ -447,7 +447,7 @@ public class FingerprintApi {
     /**
     * setter for ipAddress - Filter events by IP address range. The range can be as specific as a single IP (/32 for IPv4 or /128 for IPv6)  All ip_address filters must use CIDR notation, for example, 10.0.0.0/24, 192.168.0.1/32 
     **/
-    public SearchEventsFilter setIpAddress(String ipAddress) {
+    public SearchEventsOptionalParams setIpAddress(String ipAddress) {
       this.ipAddress = ipAddress;
       return this;
     }
@@ -462,7 +462,7 @@ public class FingerprintApi {
     /**
     * setter for linkedId - Filter events by your custom identifier.   You can use [linked IDs](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example, session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier. 
     **/
-    public SearchEventsFilter setLinkedId(String linkedId) {
+    public SearchEventsOptionalParams setLinkedId(String linkedId) {
       this.linkedId = linkedId;
       return this;
     }
@@ -477,7 +477,7 @@ public class FingerprintApi {
     /**
     * setter for start - Filter events with a timestamp greater than the start time, in Unix time (milliseconds). 
     **/
-    public SearchEventsFilter setStart(Long start) {
+    public SearchEventsOptionalParams setStart(Long start) {
       this.start = start;
       return this;
     }
@@ -492,7 +492,7 @@ public class FingerprintApi {
     /**
     * setter for end - Filter events with a timestamp smaller than the end time, in Unix time (milliseconds). 
     **/
-    public SearchEventsFilter setEnd(Long end) {
+    public SearchEventsOptionalParams setEnd(Long end) {
       this.end = end;
       return this;
     }
@@ -507,7 +507,7 @@ public class FingerprintApi {
     /**
     * setter for reverse - Sort events in reverse timestamp order. 
     **/
-    public SearchEventsFilter setReverse(Boolean reverse) {
+    public SearchEventsOptionalParams setReverse(Boolean reverse) {
       this.reverse = reverse;
       return this;
     }
@@ -522,7 +522,7 @@ public class FingerprintApi {
     /**
     * setter for suspect - Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent).  > Note: When using this parameter, only events with the `suspect` property explicitly set to `true` or `false` are returned. Events with undefined `suspect` property are left out of the response. 
     **/
-    public SearchEventsFilter setSuspect(Boolean suspect) {
+    public SearchEventsOptionalParams setSuspect(Boolean suspect) {
       this.suspect = suspect;
       return this;
     }
@@ -532,7 +532,7 @@ public class FingerprintApi {
    * Get events via search
    * Search for identification events, including Smart Signals, using multiple filtering criteria. If you don't provide `start` or `end` parameters, the default search range is the last 7 days.  Please note that events include mobile signals (e.g. `rootApps`) even if the request originated from a non-mobile platform. We recommend you **ignore** mobile signals for such requests. 
    * @param limit Limit the number of events returned.  (required)
-   * @param searchEventsFilter Filter object containing optional parameters for search criteria.  (optional)
+   * @param searchEventsOptionalParams Object containing optional parameters for API method.  (optional)
    * @return SearchEventsResponse
    * @throws ApiException if fails to make API call
    * @http.response.details
@@ -543,15 +543,15 @@ public class FingerprintApi {
        <tr><td> 403 </td><td> Forbidden. Access to this API is denied. </td><td>  -  </td></tr>
      </table>
    */
-  public SearchEventsResponse searchEvents(Integer limit, SearchEventsFilter searchEventsFilter) throws ApiException {
-    return searchEventsWithHttpInfo(limit, searchEventsFilter).getData();
+  public SearchEventsResponse searchEvents(Integer limit, SearchEventsOptionalParams searchEventsOptionalParams) throws ApiException {
+    return searchEventsWithHttpInfo(limit, searchEventsOptionalParams).getData();
   }
 
   /**
    * Get events via search
    * Search for identification events, including Smart Signals, using multiple filtering criteria. If you don't provide `start` or `end` parameters, the default search range is the last 7 days.  Please note that events include mobile signals (e.g. `rootApps`) even if the request originated from a non-mobile platform. We recommend you **ignore** mobile signals for such requests. 
    * @param limit Limit the number of events returned.  (required)
-   * @param searchEventsFilter Filter object containing optional parameters for search criteria.  (optional)
+   * @param searchEventsOptionalParams Object containing optional parameters for API method.  (optional)
    * @return ApiResponse<SearchEventsResponse>
    * @throws ApiException if fails to make API call
    * @http.response.details
@@ -562,7 +562,7 @@ public class FingerprintApi {
        <tr><td> 403 </td><td> Forbidden. Access to this API is denied. </td><td>  -  </td></tr>
      </table>
    */
-  public ApiResponse<SearchEventsResponse> searchEventsWithHttpInfo(Integer limit, SearchEventsFilter searchEventsFilter) throws ApiException {
+  public ApiResponse<SearchEventsResponse> searchEventsWithHttpInfo(Integer limit, SearchEventsOptionalParams searchEventsOptionalParams) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'limit' is set
@@ -582,16 +582,16 @@ public class FingerprintApi {
     localVarQueryParams.add(new Pair("ii", INTEGRATION_INFO));
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
-    if (searchEventsFilter != null) {
-      localVarQueryParams.addAll(apiClient.parameterToPairs("", "pagination_key", searchEventsFilter.getPaginationKey()));
-      localVarQueryParams.addAll(apiClient.parameterToPairs("", "visitor_id", searchEventsFilter.getVisitorId()));
-      localVarQueryParams.addAll(apiClient.parameterToPairs("", "bot", searchEventsFilter.getBot()));
-      localVarQueryParams.addAll(apiClient.parameterToPairs("", "ip_address", searchEventsFilter.getIpAddress()));
-      localVarQueryParams.addAll(apiClient.parameterToPairs("", "linked_id", searchEventsFilter.getLinkedId()));
-      localVarQueryParams.addAll(apiClient.parameterToPairs("", "start", searchEventsFilter.getStart()));
-      localVarQueryParams.addAll(apiClient.parameterToPairs("", "end", searchEventsFilter.getEnd()));
-      localVarQueryParams.addAll(apiClient.parameterToPairs("", "reverse", searchEventsFilter.getReverse()));
-      localVarQueryParams.addAll(apiClient.parameterToPairs("", "suspect", searchEventsFilter.getSuspect()));
+    if (searchEventsOptionalParams != null) {
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "pagination_key", searchEventsOptionalParams.getPaginationKey()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "visitor_id", searchEventsOptionalParams.getVisitorId()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "bot", searchEventsOptionalParams.getBot()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "ip_address", searchEventsOptionalParams.getIpAddress()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "linked_id", searchEventsOptionalParams.getLinkedId()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "start", searchEventsOptionalParams.getStart()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "end", searchEventsOptionalParams.getEnd()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "reverse", searchEventsOptionalParams.getReverse()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "suspect", searchEventsOptionalParams.getSuspect()));
     }
 
     

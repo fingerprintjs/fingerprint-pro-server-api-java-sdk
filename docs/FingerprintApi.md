@@ -379,7 +379,7 @@ public class FingerprintApiExample {
 
 ## searchEvents
 
-> SearchEventsResponse searchEvents(limit, paginationKey, visitorId, bot, ipAddress, linkedId, start, end, reverse, suspect)
+> SearchEventsResponse searchEvents(limit, searchEventsOptionalParams)
 
 Get events via search
 

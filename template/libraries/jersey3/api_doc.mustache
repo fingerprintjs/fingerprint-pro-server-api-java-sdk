@@ -14,7 +14,12 @@ All URIs are relative to *{{basePath}}*
 
 ## {{operationId}}
 
+{{#vendorExtensions.x-flatten-optional-params}}
 > {{#returnType}}{{.}} {{/returnType}}{{operationId}}({{#allParams}}{{paramName}}{{^-last}}, {{/-last}}{{/allParams}})
+{{/vendorExtensions.x-flatten-optional-params}}
+{{^vendorExtensions.x-flatten-optional-params}}
+> {{#returnType}}{{.}} {{/returnType}}{{operationId}}({{#allParams}}{{#required}}{{{paramName}}}{{^-last}}, {{/-last}}{{/required}}{{/allParams}}{{#hasOptionalParams}}{{operationId}}OptionalParams{{/hasOptionalParams}})
+{{/vendorExtensions.x-flatten-optional-params}}
 
 {{summary}}{{#notes}}
 

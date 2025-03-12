@@ -54,11 +54,11 @@ public class FingerprintApiExample {
         {{/allParams}}
         try {
         {{^vendorExtensions.x-flatten-optional-params}}
-            {{#returnType}}{{{returnType}}} result = {{/returnType}}apiInstance.{{{operationId}}}({{#allParams}}{{#required}}{{{paramName}}}{{^-last}}, {{/-last}}{{/required}}{{/allParams}}{{#hasOptionalParams}}new FingerprintApi.{{operationIdCamelCase}}OptionalParams(){{#allParams}}{{^required}}
+            {{#returnType}}{{{returnType}}} result = {{/returnType}}api.{{{operationId}}}({{#allParams}}{{#required}}{{{paramName}}}{{^-last}}, {{/-last}}{{/required}}{{/allParams}}{{#hasOptionalParams}}new FingerprintApi.{{operationIdCamelCase}}OptionalParams(){{#allParams}}{{^required}}
                 .set{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}}({{{paramName}}}){{/required}}{{/allParams}}{{/hasOptionalParams}});
         {{/vendorExtensions.x-flatten-optional-params}}
         {{#vendorExtensions.x-flatten-optional-params}}
-            {{#returnType}}{{{returnType}}} result = {{/returnType}}apiInstance.{{{operationId}}}({{#allParams}}{{{paramName}}}{{^-last}}, {{/-last}}{{/allParams}});
+            {{#returnType}}{{{returnType}}} result = {{/returnType}}api.{{{operationId}}}({{#allParams}}{{{paramName}}}{{^-last}}, {{/-last}}{{/allParams}});
         {{/vendorExtensions.x-flatten-optional-params}}
             {{#returnType}}
             System.out.println(result);

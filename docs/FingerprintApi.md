@@ -76,7 +76,7 @@ public class FingerprintApiExample {
         FingerprintApi api = new FingerprintApi(client);
         String visitorId = "visitorId_example"; // String | The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) you want to delete.
         try {
-            apiInstance.deleteVisitorData(visitorId);
+            api.deleteVisitorData(visitorId);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.deleteVisitorData:" + e.getMessage());
         }
@@ -159,7 +159,7 @@ public class FingerprintApiExample {
         FingerprintApi api = new FingerprintApi(client);
         String requestId = "requestId_example"; // String | The unique [identifier](https://dev.fingerprint.com/reference/get-function#requestid) of each identification request.
         try {
-            EventsGetResponse result = apiInstance.getEvent(requestId);
+            EventsGetResponse result = api.getEvent(requestId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());
@@ -243,7 +243,7 @@ public class FingerprintApiExample {
         FingerprintApi api = new FingerprintApi(client);
         String visitorId = "visitorId_example"; // String | The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) for which you want to find the other visitor IDs that originated from the same mobile device.
         try {
-            RelatedVisitorsResponse result = apiInstance.getRelatedVisitors(visitorId);
+            RelatedVisitorsResponse result = api.getRelatedVisitors(visitorId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getRelatedVisitors:" + e.getMessage());
@@ -333,7 +333,7 @@ public class FingerprintApiExample {
         String paginationKey = "paginationKey_example"; // String | Use `paginationKey` to get the next page of results.   When more results are available (e.g., you requested 200 results using `limit` parameter, but a total of 600 results are available), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `requestId` of the last returned event. In the following request, use that value in the `paginationKey` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/visitors/:visitorId?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/visitors/:visitorId?limit=200&paginationKey=1683900801733.Ogvu1j`  Pagination happens during scanning and before filtering, so you can get less visits than the `limit` you specified with more available on the next page. When there are no more results available for scanning, the `paginationKey` attribute is not returned. 
         Long before = 56L; // Long | ⚠️ Deprecated pagination method, please use `paginationKey` instead. Timestamp (in milliseconds since epoch) used to paginate results. 
         try {
-            VisitorsGetResponse result = apiInstance.getVisits(visitorId, requestId, linkedId, limit, paginationKey, before);
+            VisitorsGetResponse result = api.getVisits(visitorId, requestId, linkedId, limit, paginationKey, before);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getVisits:" + e.getMessage());
@@ -428,7 +428,7 @@ public class FingerprintApiExample {
         Boolean reverse = true; // Boolean | Sort events in reverse timestamp order. 
         Boolean suspect = true; // Boolean | Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent).  > Note: When using this parameter, only events with the `suspect` property explicitly set to `true` or `false` are returned. Events with undefined `suspect` property are left out of the response. 
         try {
-            SearchEventsResponse result = apiInstance.searchEvents(limit, new FingerprintApi.SearchEventsOptionalParams()
+            SearchEventsResponse result = api.searchEvents(limit, new FingerprintApi.SearchEventsOptionalParams()
                 .setPaginationKey(paginationKey)
                 .setVisitorId(visitorId)
                 .setBot(bot)
@@ -537,7 +537,7 @@ public class FingerprintApiExample {
         String requestId = "requestId_example"; // String | The unique event [identifier](https://dev.fingerprint.com/reference/get-function#requestid).
         EventsUpdateRequest eventsUpdateRequest = new EventsUpdateRequest(); // EventsUpdateRequest | 
         try {
-            apiInstance.updateEvent(requestId, eventsUpdateRequest);
+            api.updateEvent(requestId, eventsUpdateRequest);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.updateEvent:" + e.getMessage());
         }
@@ -616,7 +616,7 @@ public class FingerprintApiExample {
         FingerprintApi api = new FingerprintApi(client);
         Webhook webhook = new Webhook(); // Webhook | 
         try {
-            apiInstance.webhookTrace(webhook);
+            api.webhookTrace(webhook);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.webhookTrace:" + e.getMessage());
         }

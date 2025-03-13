@@ -393,135 +393,135 @@ public class FingerprintApi {
     private Boolean suspect;
 
     /**
-    * getter for paginationKey - Use `pagination_key` to get the next page of results.   When more results are available (e.g., you requested up to 200 results for your search using `limit`, but there are more than 200 events total matching your request), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `timestamp` of the last returned event. In the following request, use that value in the `pagination_key` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/events/search?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/events/search?limit=200&pagination_key=1740815825085` 
-    **/
+     * getter for paginationKey - Use `pagination_key` to get the next page of results.   When more results are available (e.g., you requested up to 200 results for your search using `limit`, but there are more than 200 events total matching your request), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `timestamp` of the last returned event. In the following request, use that value in the `pagination_key` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/events/search?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/events/search?limit=200&pagination_key=1740815825085` 
+     */
     public String getPaginationKey() {
       return paginationKey;
     }
 
     /**
-    * setter for paginationKey - Use `pagination_key` to get the next page of results.   When more results are available (e.g., you requested up to 200 results for your search using `limit`, but there are more than 200 events total matching your request), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `timestamp` of the last returned event. In the following request, use that value in the `pagination_key` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/events/search?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/events/search?limit=200&pagination_key=1740815825085` 
-    **/
+     * setter for paginationKey - Use `pagination_key` to get the next page of results.   When more results are available (e.g., you requested up to 200 results for your search using `limit`, but there are more than 200 events total matching your request), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `timestamp` of the last returned event. In the following request, use that value in the `pagination_key` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/events/search?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/events/search?limit=200&pagination_key=1740815825085` 
+     */
     public SearchEventsOptionalParams setPaginationKey(String paginationKey) {
       this.paginationKey = paginationKey;
       return this;
     }
 
     /**
-    * getter for visitorId - Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. Filter for events matching this `visitor_id`. 
-    **/
+     * getter for visitorId - Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. Filter for events matching this `visitor_id`. 
+     */
     public String getVisitorId() {
       return visitorId;
     }
 
     /**
-    * setter for visitorId - Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. Filter for events matching this `visitor_id`. 
-    **/
+     * setter for visitorId - Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. Filter for events matching this `visitor_id`. 
+     */
     public SearchEventsOptionalParams setVisitorId(String visitorId) {
       this.visitorId = visitorId;
       return this;
     }
 
     /**
-    * getter for bot - Filter events by the bot detection result, specifically:    `all` - events where any kind of bot was detected.   `good` - events where a good bot was detected.   `bad` - events where a bad bot was detected.   `none` - events where no bot was detected. 
-    **/
+     * getter for bot - Filter events by the bot detection result, specifically:    `all` - events where any kind of bot was detected.   `good` - events where a good bot was detected.   `bad` - events where a bad bot was detected.   `none` - events where no bot was detected. 
+     */
     public String getBot() {
       return bot;
     }
 
     /**
-    * setter for bot - Filter events by the bot detection result, specifically:    `all` - events where any kind of bot was detected.   `good` - events where a good bot was detected.   `bad` - events where a bad bot was detected.   `none` - events where no bot was detected. 
-    **/
+     * setter for bot - Filter events by the bot detection result, specifically:    `all` - events where any kind of bot was detected.   `good` - events where a good bot was detected.   `bad` - events where a bad bot was detected.   `none` - events where no bot was detected. 
+     */
     public SearchEventsOptionalParams setBot(String bot) {
       this.bot = bot;
       return this;
     }
 
     /**
-    * getter for ipAddress - Filter events by IP address range. The range can be as specific as a single IP (/32 for IPv4 or /128 for IPv6)  All ip_address filters must use CIDR notation, for example, 10.0.0.0/24, 192.168.0.1/32 
-    **/
+     * getter for ipAddress - Filter events by IP address range. The range can be as specific as a single IP (/32 for IPv4 or /128 for IPv6)  All ip_address filters must use CIDR notation, for example, 10.0.0.0/24, 192.168.0.1/32 
+     */
     public String getIpAddress() {
       return ipAddress;
     }
 
     /**
-    * setter for ipAddress - Filter events by IP address range. The range can be as specific as a single IP (/32 for IPv4 or /128 for IPv6)  All ip_address filters must use CIDR notation, for example, 10.0.0.0/24, 192.168.0.1/32 
-    **/
+     * setter for ipAddress - Filter events by IP address range. The range can be as specific as a single IP (/32 for IPv4 or /128 for IPv6)  All ip_address filters must use CIDR notation, for example, 10.0.0.0/24, 192.168.0.1/32 
+     */
     public SearchEventsOptionalParams setIpAddress(String ipAddress) {
       this.ipAddress = ipAddress;
       return this;
     }
 
     /**
-    * getter for linkedId - Filter events by your custom identifier.   You can use [linked IDs](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example, session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier. 
-    **/
+     * getter for linkedId - Filter events by your custom identifier.   You can use [linked IDs](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example, session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier. 
+     */
     public String getLinkedId() {
       return linkedId;
     }
 
     /**
-    * setter for linkedId - Filter events by your custom identifier.   You can use [linked IDs](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example, session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier. 
-    **/
+     * setter for linkedId - Filter events by your custom identifier.   You can use [linked IDs](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example, session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier. 
+     */
     public SearchEventsOptionalParams setLinkedId(String linkedId) {
       this.linkedId = linkedId;
       return this;
     }
 
     /**
-    * getter for start - Filter events with a timestamp greater than the start time, in Unix time (milliseconds). 
-    **/
+     * getter for start - Filter events with a timestamp greater than the start time, in Unix time (milliseconds). 
+     */
     public Long getStart() {
       return start;
     }
 
     /**
-    * setter for start - Filter events with a timestamp greater than the start time, in Unix time (milliseconds). 
-    **/
+     * setter for start - Filter events with a timestamp greater than the start time, in Unix time (milliseconds). 
+     */
     public SearchEventsOptionalParams setStart(Long start) {
       this.start = start;
       return this;
     }
 
     /**
-    * getter for end - Filter events with a timestamp smaller than the end time, in Unix time (milliseconds). 
-    **/
+     * getter for end - Filter events with a timestamp smaller than the end time, in Unix time (milliseconds). 
+     */
     public Long getEnd() {
       return end;
     }
 
     /**
-    * setter for end - Filter events with a timestamp smaller than the end time, in Unix time (milliseconds). 
-    **/
+     * setter for end - Filter events with a timestamp smaller than the end time, in Unix time (milliseconds). 
+     */
     public SearchEventsOptionalParams setEnd(Long end) {
       this.end = end;
       return this;
     }
 
     /**
-    * getter for reverse - Sort events in reverse timestamp order. 
-    **/
+     * getter for reverse - Sort events in reverse timestamp order. 
+     */
     public Boolean getReverse() {
       return reverse;
     }
 
     /**
-    * setter for reverse - Sort events in reverse timestamp order. 
-    **/
+     * setter for reverse - Sort events in reverse timestamp order. 
+     */
     public SearchEventsOptionalParams setReverse(Boolean reverse) {
       this.reverse = reverse;
       return this;
     }
 
     /**
-    * getter for suspect - Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent).  > Note: When using this parameter, only events with the `suspect` property explicitly set to `true` or `false` are returned. Events with undefined `suspect` property are left out of the response. 
-    **/
+     * getter for suspect - Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent).  > Note: When using this parameter, only events with the `suspect` property explicitly set to `true` or `false` are returned. Events with undefined `suspect` property are left out of the response. 
+     */
     public Boolean getSuspect() {
       return suspect;
     }
 
     /**
-    * setter for suspect - Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent).  > Note: When using this parameter, only events with the `suspect` property explicitly set to `true` or `false` are returned. Events with undefined `suspect` property are left out of the response. 
-    **/
+     * setter for suspect - Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent).  > Note: When using this parameter, only events with the `suspect` property explicitly set to `true` or `false` are returned. Events with undefined `suspect` property are left out of the response. 
+     */
     public SearchEventsOptionalParams setSuspect(Boolean suspect) {
       this.suspect = suspect;
       return this;

@@ -9,7 +9,7 @@ Contains a list of all identification events matching the specified search crite
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**events** | [**List&lt;SearchEventsResponseEventsInner&gt;**](SearchEventsResponseEventsInner.md) |  |  [optional] |
-|**paginationKey** | **String** |  |  [optional] |
+|**paginationKey** | **String** | Use this value in the `pagination_key` parameter to request the next page of search results. |  [optional] |
 
 
 

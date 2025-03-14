@@ -105,7 +105,7 @@ public class Identification {
   }
 
    /**
-   * String of 20 characters that uniquely identifies the visitor&#39;s browser.
+   * String of 20 characters that uniquely identifies the visitor's browser.
    * @return visitorId
   **/
   @jakarta.annotation.Nonnull
@@ -131,7 +131,7 @@ public class Identification {
   }
 
    /**
-   * Unique identifier of the user&#39;s request.
+   * Unique identifier of the user's request.
    * @return requestId
   **/
   @jakarta.annotation.Nonnull
@@ -289,7 +289,7 @@ public class Identification {
   }
 
    /**
-   * Field is &#x60;true&#x60; if you have previously set the &#x60;suspect&#x60; flag for this event using the [Server API Update event endpoint](https://dev.fingerprint.com/reference/updateevent).
+   * Field is `true` if you have previously set the `suspect` flag for this event using the [Server API Update event endpoint](https://dev.fingerprint.com/reference/updateevent).
    * @return suspect
   **/
   @jakarta.annotation.Nullable

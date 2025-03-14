@@ -33,7 +33,7 @@ public class DeveloperTools {
   }
 
    /**
-   * &#x60;true&#x60; if the browser is Chrome with DevTools open or Firefox with Developer Tools open, &#x60;false&#x60; otherwise. 
+   * `true` if the browser is Chrome with DevTools open or Firefox with Developer Tools open, `false` otherwise. 
    * @return result
   **/
   @jakarta.annotation.Nonnull

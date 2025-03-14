@@ -1,7 +1,10 @@
 package com.fingerprint.example;
 
 import com.fingerprint.api.FingerprintApi;
+import com.fingerprint.model.EventsGetResponse;
 import com.fingerprint.model.EventsUpdateRequest;
+import com.fingerprint.model.SearchEventsResponse;
+import com.fingerprint.model.VisitorsGetResponse;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
 import com.fingerprint.sdk.Configuration;
@@ -26,7 +29,7 @@ public class FunctionalTests {
 
         // Get identification event
         try {
-            final Object event = api.getEvent(FPJS_REQUEST_ID);
+            final EventsGetResponse event = api.getEvent(FPJS_REQUEST_ID);
             System.out.println(event);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());
@@ -35,7 +38,7 @@ public class FunctionalTests {
 
         // Get visitor history
         try {
-            final Object visits = api.getVisits(FPJS_VISITOR_ID, null, null, null, null, null);
+            final VisitorsGetResponse visits = api.getVisits(FPJS_VISITOR_ID, null, null, null, null, null);
             System.out.println(visits);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());
@@ -44,8 +47,8 @@ public class FunctionalTests {
 
         // Search events
         try {
-            final Object events = api.searchEvents(2, null, "bad", null, null, null, null, null, null);
-            System.out.println(events);
+            final SearchEventsResponse events = api.searchEvents(2, new FingerprintApi.SearchEventsOptionalParams().setBot("bad"));
+            System.out.println(events.getEvents());
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.searchEvents:" + e.getMessage());
             System.exit(1);

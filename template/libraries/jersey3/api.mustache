@@ -60,13 +60,55 @@ public class {{classname}} {
   }
 
   {{#operation}}
-  {{^vendorExtensions.x-group-parameters}}
+  {{^vendorExtensions.x-flatten-optional-params}}
+  {{#hasOptionalParams}}
+  public static class {{operationIdCamelCase}}OptionalParams {
+    {{#allParams}}
+    {{^required}}private {{{dataType}}} {{paramName}};{{/required}}
+    {{/allParams}}
+
+    {{#allParams}}
+    {{^required}}
+    /**
+     * getter for {{paramName}} - {{{description}}}
+     */
+    public {{{dataType}}} get{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}}() {
+      return {{paramName}};
+    }
+
+    /**
+     * setter for {{paramName}} - {{{description}}}
+     */
+    public {{operationIdCamelCase}}OptionalParams set{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}}({{{dataType}}} {{paramName}}) {
+      this.{{paramName}} = {{paramName}};
+      return this;
+    }
+
+    {{/required}}
+    {{/allParams}}
+  }
+  {{/hasOptionalParams}}
+  {{/vendorExtensions.x-flatten-optional-params}}
   /**
    * {{summary}}
    * {{{notes}}}
+   {{^vendorExtensions.x-flatten-optional-params}}
+   {{#allParams}}
+   {{#required}}
+   * @param {{paramName}} {{{description}}} (required)
+   {{/required}}
+   {{/allParams}}
+   {{/vendorExtensions.x-flatten-optional-params}}
+   {{#vendorExtensions.x-flatten-optional-params}}
    {{#allParams}}
    * @param {{paramName}} {{{description}}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}
    {{/allParams}}
+   {{/vendorExtensions.x-flatten-optional-params}}
+   {{^vendorExtensions.x-flatten-optional-params}}
+   {{#hasOptionalParams}}
+   * @param {{operationId}}OptionalParams Object containing optional parameters for API method.  (optional)
+   {{/hasOptionalParams}}
+   {{/vendorExtensions.x-flatten-optional-params}}
    {{#returnType}}
    * @return {{.}}
    {{/returnType}}
@@ -91,19 +133,38 @@ public class {{classname}} {
   {{#isDeprecated}}
   @Deprecated
   {{/isDeprecated}}
+  {{^vendorExtensions.x-flatten-optional-params}}
+  public {{#returnType}}{{{.}}} {{/returnType}}{{^returnType}}void {{/returnType}}{{operationId}}({{#allParams}}{{#required}}{{{dataType}}} {{paramName}}{{^-last}}, {{/-last}}{{/required}}{{/allParams}}{{#hasOptionalParams}}{{operationIdCamelCase}}OptionalParams {{operationId}}OptionalParams{{/hasOptionalParams}}) throws ApiException {
+    {{#returnType}}return {{/returnType}}{{operationId}}WithHttpInfo({{#allParams}}{{#required}}{{paramName}}{{^-last}}, {{/-last}}{{/required}}{{/allParams}}{{#hasOptionalParams}}{{operationId}}OptionalParams{{/hasOptionalParams}}){{#returnType}}.getData(){{/returnType}};
+  }
+  {{/vendorExtensions.x-flatten-optional-params}}
+  {{#vendorExtensions.x-flatten-optional-params}}
   public {{#returnType}}{{{.}}} {{/returnType}}{{^returnType}}void {{/returnType}}{{operationId}}({{#allParams}}{{{dataType}}} {{paramName}}{{^-last}}, {{/-last}}{{/allParams}}) throws ApiException {
     {{#returnType}}return {{/returnType}}{{operationId}}WithHttpInfo({{#allParams}}{{paramName}}{{^-last}}, {{/-last}}{{/allParams}}){{#returnType}}.getData(){{/returnType}};
   }
-  {{/vendorExtensions.x-group-parameters}}
+  {{/vendorExtensions.x-flatten-optional-params}}
 
-  {{^vendorExtensions.x-group-parameters}}
   /**
    * {{summary}}
    * {{{notes}}}
+   {{^vendorExtensions.x-flatten-optional-params}}
+   {{#allParams}}
+   {{#required}}
+   * @param {{paramName}} {{{description}}} (required)
+   {{/required}}
+   {{/allParams}}
+   {{/vendorExtensions.x-flatten-optional-params}}
+   {{#vendorExtensions.x-flatten-optional-params}}
    {{#allParams}}
    * @param {{paramName}} {{{description}}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}
    {{/allParams}}
-   * @return ApiResponse&lt;{{returnType}}{{^returnType}}Void{{/returnType}}&gt;
+   {{/vendorExtensions.x-flatten-optional-params}}
+   {{^vendorExtensions.x-flatten-optional-params}}
+   {{#hasOptionalParams}}
+   * @param {{operationId}}OptionalParams Object containing optional parameters for API method.  (optional)
+   {{/hasOptionalParams}}
+   {{/vendorExtensions.x-flatten-optional-params}}
+   * @return ApiResponse<{{returnType}}{{^returnType}}Void{{/returnType}}>
    * @throws ApiException if fails to make API call
    {{#responses.0}}
    * @http.response.details
@@ -125,7 +186,12 @@ public class {{classname}} {
   {{#isDeprecated}}
   @Deprecated
   {{/isDeprecated}}
-  public{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}private{{/vendorExtensions.x-group-parameters}} ApiResponse<{{{returnType}}}{{^returnType}}Void{{/returnType}}> {{operationId}}WithHttpInfo({{#allParams}}{{{dataType}}} {{paramName}}{{^-last}}, {{/-last}}{{/allParams}}) throws ApiException {
+  {{^vendorExtensions.x-flatten-optional-params}}
+  public ApiResponse<{{{returnType}}}{{^returnType}}Void{{/returnType}}> {{operationId}}WithHttpInfo({{#allParams}}{{#required}}{{{dataType}}} {{paramName}}{{^-last}}, {{/-last}}{{/required}}{{/allParams}}{{#hasOptionalParams}}{{operationIdCamelCase}}OptionalParams {{operationId}}OptionalParams{{/hasOptionalParams}}) throws ApiException {
+  {{/vendorExtensions.x-flatten-optional-params}}
+  {{#vendorExtensions.x-flatten-optional-params}}
+  public ApiResponse<{{{returnType}}}{{^returnType}}Void{{/returnType}}> {{operationId}}WithHttpInfo({{#allParams}}{{{dataType}}} {{paramName}}{{^-last}}, {{/-last}}{{/allParams}}) throws ApiException {
+  {{/vendorExtensions.x-flatten-optional-params}}
     Object localVarPostBody = {{#bodyParam}}{{paramName}}{{/bodyParam}}{{^bodyParam}}null{{/bodyParam}};
     {{#allParams}}{{#required}}
     // verify the required parameter '{{paramName}}' is set
@@ -145,9 +211,27 @@ public class {{classname}} {
 
     localVarQueryParams.add(new Pair("ii", INTEGRATION_INFO));
 
+    {{^vendorExtensions.x-flatten-optional-params}}
+    {{#queryParams}}
+    {{#required}}
+    localVarQueryParams.addAll(apiClient.parameterToPairs("{{{collectionFormat}}}", "{{baseName}}", {{paramName}}));
+    {{/required}}
+    {{/queryParams}}
+    {{#hasOptionalParams}}
+    if ({{operationId}}OptionalParams != null) {
+    {{#queryParams}}
+    {{^required}}
+      localVarQueryParams.addAll(apiClient.parameterToPairs("{{{collectionFormat}}}", "{{baseName}}", {{operationId}}OptionalParams.get{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}}()));
+    {{/required}}
+    {{/queryParams}}
+    }
+    {{/hasOptionalParams}}
+    {{/vendorExtensions.x-flatten-optional-params}}
+    {{#vendorExtensions.x-flatten-optional-params}}
     {{#queryParams}}
     localVarQueryParams.addAll(apiClient.parameterToPairs("{{{collectionFormat}}}", "{{baseName}}", {{paramName}}));
     {{/queryParams}}
+    {{/vendorExtensions.x-flatten-optional-params}}
 
     {{#headerParams}}if ({{paramName}} != null)
       localVarHeaderParams.put("{{baseName}}", apiClient.parameterToString({{paramName}}));
@@ -181,94 +265,6 @@ public class {{classname}} {
                                localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType,
                                localVarAuthNames, {{#returnType}}localVarReturnType{{/returnType}}{{^returnType}}null{{/returnType}}, {{#bodyParam}}{{#isNullable}}true{{/isNullable}}{{^isNullable}}false{{/isNullable}}{{/bodyParam}}{{^bodyParam}}false{{/bodyParam}});
   }
-  {{#vendorExtensions.x-group-parameters}}
-
-  public class API{{operationId}}Request {
-    {{#allParams}}
-    private {{{dataType}}} {{paramName}};
-    {{/allParams}}
-
-    private API{{operationId}}Request({{#pathParams}}{{{dataType}}} {{paramName}}{{^-last}}, {{/-last}}{{/pathParams}}) {
-      {{#pathParams}}
-      this.{{paramName}} = {{paramName}};
-      {{/pathParams}}
-    }
-    {{#allParams}}
-    {{^isPathParam}}
-
-    /**
-     * Set {{paramName}}
-     * @param {{paramName}} {{{description}}} ({{^required}}optional{{^isContainer}}{{#defaultValue}}, default to {{.}}{{/defaultValue}}{{/isContainer}}{{/required}}{{#required}}required{{/required}})
-     * @return API{{operationId}}Request
-     */
-    public API{{operationId}}Request {{paramName}}({{{dataType}}} {{paramName}}) {
-      this.{{paramName}} = {{paramName}};
-      return this;
-    }
-    {{/isPathParam}}
-    {{/allParams}}
-
-    /**
-     * Execute {{operationId}} request
-     {{#returnType}}* @return {{.}}{{/returnType}}
-     * @throws ApiException if fails to make API call
-     {{#responses.0}}
-     * @http.response.details
-       <table summary="Response Details" border="1">
-         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-         {{#responses}}
-         <tr><td> {{code}} </td><td> {{message}} </td><td> {{#headers}} * {{baseName}} - {{{description}}} <br> {{/headers}}{{^headers.0}} - {{/headers.0}} </td></tr>
-         {{/responses}}
-       </table>
-     {{/responses.0}}
-     {{#isDeprecated}}* @deprecated{{/isDeprecated}}
-     */
-    {{#isDeprecated}}@Deprecated{{/isDeprecated}}
-    public {{{returnType}}}{{^returnType}}void{{/returnType}} execute() throws ApiException {
-      {{#returnType}}return {{/returnType}}this.executeWithHttpInfo().getData();
-    }
-
-    /**
-     * Execute {{operationId}} request with HTTP info returned
-     * @return ApiResponse&lt;{{returnType}}{{^returnType}}Void{{/returnType}}&gt;
-     * @throws ApiException if fails to make API call
-     {{#responses.0}}
-     * @http.response.details
-       <table summary="Response Details" border="1">
-         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-         {{#responses}}
-         <tr><td> {{code}} </td><td> {{message}} </td><td> {{#headers}} * {{baseName}} - {{{description}}} <br> {{/headers}}{{^headers.0}} - {{/headers.0}} </td></tr>
-         {{/responses}}
-       </table>
-     {{/responses.0}}
-     {{#isDeprecated}}
-     * @deprecated{{/isDeprecated}}
-     */
-    {{#isDeprecated}}
-    @Deprecated
-    {{/isDeprecated}}
-    public ApiResponse<{{{returnType}}}{{^returnType}}Void{{/returnType}}> executeWithHttpInfo() throws ApiException {
-      return {{operationId}}WithHttpInfo({{#allParams}}{{paramName}}{{^-last}}, {{/-last}}{{/allParams}});
-    }
-  }
-
-  /**
-   * {{summary}}
-   * {{{notes}}}{{#pathParams}}
-   * @param {{paramName}} {{{description}}} (required){{/pathParams}}
-   * @return {{operationId}}Request
-   * @throws ApiException if fails to make API call
-   {{#isDeprecated}}* @deprecated{{/isDeprecated}}
-   {{#externalDocs}}* {{{description}}}
-   * @see <a href="{{url}}">{{summary}} Documentation</a>{{/externalDocs}}
-   */
-  {{#isDeprecated}}
-  @Deprecated
-  {{/isDeprecated}}
-  public API{{operationId}}Request {{operationId}}({{#pathParams}}{{{dataType}}} {{paramName}}{{^-last}}, {{/-last}}{{/pathParams}}) throws ApiException {
-    return new API{{operationId}}Request({{#pathParams}}{{paramName}}{{^-last}}, {{/-last}}{{/pathParams}});
-  }
-  {{/vendorExtensions.x-group-parameters}}
   {{/operation}}
 }
 {{/operations}}

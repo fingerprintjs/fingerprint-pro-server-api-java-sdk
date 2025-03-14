@@ -182,14 +182,16 @@ public class FingerprintApiExample {
         // Search events with custom filters
         try {
             // By visitorId
-            EventsGetResponse response = api.searchEvents(LIMIT, FPJS_VISITOR_ID, null, null, null, null, null, null, null);
+            SearchEventsResponse response = api.searchEvents(LIMIT, new FingerprintApi.SearchEventsOptionalParams().setVisitorId(FPJS_VISITOR_ID));
+            // Next page
+            // SearchEventsResponse response = api.searchEvents(LIMIT, new FingerprintApi.SearchEventsOptionalParams().setPaginationKey(response.getPaginationKey()).setVisitorId(FPJS_VISITOR_ID));
             // Bad bot
-            // EventsGetResponse response = api.searchEvents(LIMIT, null, "bad", null, null, null, null, null, null);
+            // SearchEventsResponse response = api.searchEvents(LIMIT, new FingerprintApi.SearchEventsOptionalParams().setBot("bad"));
             // Filtered by IP
-            // EventsGetResponse response = api.searchEvents(LIMIT, null, null, "192.168.0.1/32", null, null, null, null, null);
-            System.out.println(response.getProducts().toString());
+            // SearchEventsResponse response = api.searchEvents(LIMIT, new FingerprintApi.SearchEventsOptionalParams().setIpAddress("192.168.0.1/32"));
+            System.out.println(response.getEvents().toString());
         } catch (ApiException e) {
-            System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());
+            System.err.println("Exception when calling FingerprintApi.searchEvents:" + e.getMessage());
         }
 
         // Update an event with a given requestId

@@ -129,7 +129,7 @@ public class VPN {
   }
 
    /**
-   * Country of the request (only for Android SDK version &gt;&#x3D; 2.4.0, ISO 3166 format or unknown).
+   * Country of the request (only for Android SDK version >= 2.4.0, ISO 3166 format or unknown).
    * @return originCountry
   **/
   @jakarta.annotation.Nonnull

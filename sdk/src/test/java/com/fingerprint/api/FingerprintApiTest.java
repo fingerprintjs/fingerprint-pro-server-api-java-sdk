@@ -521,7 +521,7 @@ public class FingerprintApiTest {
             return mockFileToResponse(200, invocation, "mocks/get_event_search_200.json");
         });
 
-        SearchEventsResponse response = api.searchEvents(LIMIT, null, null, null, null, null, null, null, null);
+        SearchEventsResponse response = api.searchEvents(LIMIT, null);
         List<SearchEventsResponseEventsInner> events = response.getEvents();
 
         assertEquals(events.size(), 1);
@@ -558,6 +558,7 @@ public class FingerprintApiTest {
     @Test
     public void searchEventsMaximumParamsTest() throws ApiException {
         final int LIMIT = 1;
+        final String PAGINATION_KEY = "1741187431959";
         final String BOT = "good";
         final String IP_ADDRESS = "192.168.0.1/32";
         final String LINKED_ID = "some_id";
@@ -568,8 +569,9 @@ public class FingerprintApiTest {
 
         addMock("searchEvents", null, invocation -> {
             List<Pair> queryParams = invocation.getArgument(3);
-            assertEquals(10, queryParams.size());
+            assertEquals(11, queryParams.size());
             assertTrue(listContainsPair(queryParams, "limit", String.valueOf(LIMIT)));
+            assertTrue(listContainsPair(queryParams, "pagination_key", PAGINATION_KEY));
             assertTrue(listContainsPair(queryParams, "visitor_id", MOCK_VISITOR_ID));
             assertTrue(listContainsPair(queryParams, "bot", BOT));
             assertTrue(listContainsPair(queryParams, "ip_address", IP_ADDRESS));
@@ -582,7 +584,13 @@ public class FingerprintApiTest {
             return mockFileToResponse(200, invocation, "mocks/get_event_search_200.json");
         });
 
-        SearchEventsResponse response = api.searchEvents(LIMIT, MOCK_VISITOR_ID, BOT, IP_ADDRESS, LINKED_ID, START, END, REVERSE, SUSPECT);
+        SearchEventsResponse response = api.searchEvents(LIMIT, new FingerprintApi.SearchEventsOptionalParams()
+                .setPaginationKey(PAGINATION_KEY)
+                .setVisitorId(MOCK_VISITOR_ID)
+                .setBot(BOT).setIpAddress(IP_ADDRESS)
+                .setLinkedId(LINKED_ID).setStart(START)
+                .setEnd(END).setReverse(REVERSE)
+                .setSuspect(SUSPECT));
         List<SearchEventsResponseEventsInner> events = response.getEvents();
         assertEquals(events.size(), 1);
     }
@@ -599,7 +607,7 @@ public class FingerprintApiTest {
         });
 
         ApiException exception = assertThrows(ApiException.class,
-                () -> api.searchEvents(LIMIT, null, null, null, null, null, null, null, null));
+                () -> api.searchEvents(LIMIT, null));
 
         assertEquals(400, exception.getCode());
         ErrorResponse response = MAPPER.readValue(exception.getResponseBody(), ErrorResponse.class);
@@ -619,7 +627,7 @@ public class FingerprintApiTest {
         });
 
         ApiException exception = assertThrows(ApiException.class,
-                () -> api.searchEvents(LIMIT, null, null, null, null, null, null, null, null));
+                () -> api.searchEvents(LIMIT, null));
 
         assertEquals(403, exception.getCode());
         ErrorResponse response = MAPPER.readValue(exception.getResponseBody(), ErrorResponse.class);

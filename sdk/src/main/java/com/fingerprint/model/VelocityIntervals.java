@@ -93,7 +93,7 @@ public class VelocityIntervals {
   }
 
    /**
-   * The &#x60;24h&#x60; interval of &#x60;distinctIp&#x60;, &#x60;distinctLinkedId&#x60;, &#x60;distinctCountry&#x60;, &#x60;distinctIpByLinkedId&#x60; and &#x60;distinctVisitorIdByLinkedId&#x60; will be omitted if the number of &#x60;events&#x60;&#x60; for the visitor ID in the last 24 hours (&#x60;events.intervals.[&#39;24h&#39;]&#x60;) is higher than 20.000. 
+   * The `24h` interval of `distinctIp`, `distinctLinkedId`, `distinctCountry`, `distinctIpByLinkedId` and `distinctVisitorIdByLinkedId` will be omitted if the number of `events`` for the visitor ID in the last 24 hours (`events.intervals.['24h']`) is higher than 20.000. 
    * @return _24h
   **/
   @jakarta.annotation.Nullable

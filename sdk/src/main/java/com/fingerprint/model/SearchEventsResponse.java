@@ -74,11 +74,11 @@ public class SearchEventsResponse {
   }
 
    /**
-   * Get paginationKey
+   * Use this value in the `pagination_key` parameter to request the next page of search results.
    * @return paginationKey
   **/
   @jakarta.annotation.Nullable
-  @Schema(description = "")
+  @Schema(description = "Use this value in the `pagination_key` parameter to request the next page of search results.")
   @JsonProperty(JSON_PROPERTY_PAGINATION_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

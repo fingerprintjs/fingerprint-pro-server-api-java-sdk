@@ -14,12 +14,12 @@ All URIs are relative to *{{basePath}}*
 
 ## {{operationId}}
 
-{{^vendorExtensions.x-group-parameters}}
+{{#vendorExtensions.x-flatten-optional-params}}
 > {{#returnType}}{{.}} {{/returnType}}{{operationId}}({{#allParams}}{{paramName}}{{^-last}}, {{/-last}}{{/allParams}})
-{{/vendorExtensions.x-group-parameters}}
-{{#vendorExtensions.x-group-parameters}}
-> {{#returnType}}{{.}} {{/returnType}}{{operationId}}({{#pathParams}}{{paramName}}{{^-last}}, {{/-last}}{{/pathParams}}){{#allParams}}{{^isPathParam}}.{{paramName}}({{paramName}}){{/isPathParam}}{{/allParams}}.execute();
-{{/vendorExtensions.x-group-parameters}}
+{{/vendorExtensions.x-flatten-optional-params}}
+{{^vendorExtensions.x-flatten-optional-params}}
+> {{#returnType}}{{.}} {{/returnType}}{{operationId}}({{#allParams}}{{#required}}{{{paramName}}}{{^-last}}, {{/-last}}{{/required}}{{/allParams}}{{#hasOptionalParams}}{{operationId}}OptionalParams{{/hasOptionalParams}})
+{{/vendorExtensions.x-flatten-optional-params}}
 
 {{summary}}{{#notes}}
 
@@ -53,15 +53,23 @@ public class FingerprintApiExample {
         Region.ASIA
         */
         ApiClient client = Configuration.getDefaultApiClient(FPJS_API_SECRET, Region.EUROPE);
-        FingerprintApi api = new FingerprintApi(client);
+        {{classname}} api = new {{classname}}(client);
         {{#allParams}}
         {{{dataType}}} {{{paramName}}} = {{{example}}}; // {{{dataType}}} | {{{description}}}
         {{/allParams}}
         try {
-            {{#returnType}}{{{returnType}}} result = {{/returnType}}apiInstance.{{{operationId}}}({{#allParams}}{{{paramName}}}{{^-last}}, {{/-last}}{{/allParams}});{{#returnType}}
-            System.out.println(result);{{/returnType}}
+        {{^vendorExtensions.x-flatten-optional-params}}
+            {{#returnType}}{{{returnType}}} result = {{/returnType}}api.{{{operationId}}}({{#allParams}}{{#required}}{{{paramName}}}{{^-last}}, {{/-last}}{{/required}}{{/allParams}}{{#hasOptionalParams}}new FingerprintApi.{{operationIdCamelCase}}OptionalParams(){{#allParams}}{{^required}}
+                .set{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}}({{{paramName}}}){{/required}}{{/allParams}}{{/hasOptionalParams}});
+        {{/vendorExtensions.x-flatten-optional-params}}
+        {{#vendorExtensions.x-flatten-optional-params}}
+            {{#returnType}}{{{returnType}}} result = {{/returnType}}api.{{{operationId}}}({{#allParams}}{{{paramName}}}{{^-last}}, {{/-last}}{{/allParams}});
+        {{/vendorExtensions.x-flatten-optional-params}}
+            {{#returnType}}
+            System.out.println(result);
+            {{/returnType}}
         } catch (ApiException e) {
-            System.err.println("Exception when calling FingerprintApi.{{{operationId}}}:" + e.getMessage());
+            System.err.println("Exception when calling {{classname}}.{{{operationId}}}:" + e.getMessage());
         }
     }
 }
@@ -73,9 +81,22 @@ public class FingerprintApiExample {
 {{^allParams}}This endpoint does not need any parameter.{{/allParams}}{{#allParams}}{{#-last}}
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|{{/-last}}{{/allParams}}
+{{#vendorExtensions.x-flatten-optional-params}}
 {{#allParams}}| **{{paramName}}** | {{#isContainer}}{{#isArray}}{{#items}}{{#isModel}}{{^isFile}}[{{/isFile}}{{/isModel}}**List&lt;{{dataType}}&gt;**{{#isModel}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isModel}}{{/items}}{{/isArray}}{{#isMap}}{{#items}}{{#isModel}}{{^isFile}}[{{/isFile}}{{/isModel}}**Map&lt;String,{{dataType}}&gt;**{{#isModel}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isModel}}{{/items}}{{/isMap}}{{/isContainer}}{{^isContainer}}{{#isModel}}{{^isFile}}[{{/isFile}}{{/isModel}}**{{dataType}}**{{#isModel}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isModel}}{{/isContainer}}| {{{description}}} |{{^required}} [optional]{{/required}}{{^isContainer}}{{#defaultValue}} [default to {{.}}]{{/defaultValue}}{{/isContainer}}{{#allowableValues}} [enum: {{#values}}{{{.}}}{{^-last}}, {{/-last}}{{/values}}]{{/allowableValues}} |
 {{/allParams}}
+{{/vendorExtensions.x-flatten-optional-params}}
+{{^vendorExtensions.x-flatten-optional-params}}
+{{#allParams}}{{#required}}| **{{paramName}}** | {{#isContainer}}{{#isArray}}{{#items}}{{#isModel}}{{^isFile}}[{{/isFile}}{{/isModel}}**List&lt;{{dataType}}&gt;**{{#isModel}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isModel}}{{/items}}{{/isArray}}{{#isMap}}{{#items}}{{#isModel}}{{^isFile}}[{{/isFile}}{{/isModel}}**Map&lt;String,{{dataType}}&gt;**{{#isModel}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isModel}}{{/items}}{{/isMap}}{{/isContainer}}{{^isContainer}}{{#isModel}}{{^isFile}}[{{/isFile}}{{/isModel}}**{{dataType}}**{{#isModel}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isModel}}{{/isContainer}}| {{{description}}} |{{^required}} [optional]{{/required}}{{^isContainer}}{{#defaultValue}} [default to {{.}}]{{/defaultValue}}{{/isContainer}}{{#allowableValues}} [enum: {{#values}}{{{.}}}{{^-last}}, {{/-last}}{{/values}}]{{/allowableValues}} |
+{{/required}}{{/allParams}}{{#hasOptionalParams}}| **{{operationId}}OptionalParams** | [**{{classname}}.{{operationIdCamelCase}}OptionalParams**](#{{#lambda.lowercase}}{{classname}}{{operationId}}OptionalParams{{/lambda.lowercase}}) | | [optional] |
 
+#### {{classname}}.{{operationIdCamelCase}}OptionalParams
+
+Object containing optional parameters for API method. Supports a fluent interface for convenient method chaining.
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+{{#allParams}}{{^required}}| **{{paramName}}** | {{#isContainer}}{{#isArray}}{{#items}}{{#isModel}}{{^isFile}}[{{/isFile}}{{/isModel}}**List&lt;{{dataType}}&gt;**{{#isModel}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isModel}}{{/items}}{{/isArray}}{{#isMap}}{{#items}}{{#isModel}}{{^isFile}}[{{/isFile}}{{/isModel}}**Map&lt;String,{{dataType}}&gt;**{{#isModel}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isModel}}{{/items}}{{/isMap}}{{/isContainer}}{{^isContainer}}{{#isModel}}{{^isFile}}[{{/isFile}}{{/isModel}}**{{dataType}}**{{#isModel}}{{^isFile}}]({{^baseType}}{{dataType}}{{/baseType}}{{baseType}}.md){{/isFile}}{{/isModel}}{{/isContainer}}| {{{description}}} |{{^required}} [optional]{{/required}}{{^isContainer}}{{#defaultValue}} [default to {{.}}]{{/defaultValue}}{{/isContainer}}{{#allowableValues}} [enum: {{#values}}{{{.}}}{{^-last}}, {{/-last}}{{/values}}]{{/allowableValues}} |
+{{/required}}{{/allParams}}{{/hasOptionalParams}}{{/vendorExtensions.x-flatten-optional-params}}
 ### Return type
 
 {{#returnType}}{{#returnTypeIsPrimitive}}**{{returnType}}**{{/returnTypeIsPrimitive}}{{^returnTypeIsPrimitive}}[**{{returnType}}**]({{returnBaseType}}.md){{/returnTypeIsPrimitive}}{{/returnType}}{{^returnType}}null (empty response body){{/returnType}}

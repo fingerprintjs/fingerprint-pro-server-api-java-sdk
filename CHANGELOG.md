@@ -1,5 +1,15 @@
 # Fingerprint Pro Server Java SDK
 
+## 7.3.0-develop.1
+
+### Minor Changes
+
+- **events-search**: Add 'pagination_key' parameter ([22dd46a](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/22dd46ae3c266427f289568276be7da90a1a5cc9))
+
+### Patch Changes
+
+- **events-search**: Improve parameter descriptions for `bot`, `suspect` ([cfacdcf](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/cfacdcfa6c8752f08b9974295da3f423ca1f285b))
+
 ## 7.3.0-develop.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # Fingerprint Pro Server Java SDK
 
+## 7.3.0
+
+### Minor Changes
+
+- **events-search**: Add a new `events/search` API endpoint. Allow users to search for identification events matching one or more search criteria, for example, visitor ID, IP address, bot detection result, etc. ([a276c75](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/a276c75ded03addd8cffd602587c37447ace2e3a))
+
 ## 7.3.0-develop.1
 
 ### Minor Changes

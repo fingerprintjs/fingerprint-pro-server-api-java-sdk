@@ -32,6 +32,7 @@ Contains all information about the request identified by `requestId`, depending 
 |**remoteControl** | [**ProductRemoteControl**](ProductRemoteControl.md) |  |  [optional] |
 |**velocity** | [**ProductVelocity**](ProductVelocity.md) |  |  [optional] |
 |**developerTools** | [**ProductDeveloperTools**](ProductDeveloperTools.md) |  |  [optional] |
+|**mitmAttack** | [**ProductMitMAttack**](ProductMitMAttack.md) |  |  [optional] |
 
 
 

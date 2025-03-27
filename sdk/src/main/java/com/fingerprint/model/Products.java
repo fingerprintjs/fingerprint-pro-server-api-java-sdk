@@ -19,6 +19,7 @@ import com.fingerprint.model.ProductIdentification;
 import com.fingerprint.model.ProductIncognito;
 import com.fingerprint.model.ProductJailbroken;
 import com.fingerprint.model.ProductLocationSpoofing;
+import com.fingerprint.model.ProductMitMAttack;
 import com.fingerprint.model.ProductPrivacySettings;
 import com.fingerprint.model.ProductProxy;
 import com.fingerprint.model.ProductRawDeviceAttributes;
@@ -64,7 +65,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
   Products.JSON_PROPERTY_SUSPECT_SCORE,
   Products.JSON_PROPERTY_REMOTE_CONTROL,
   Products.JSON_PROPERTY_VELOCITY,
-  Products.JSON_PROPERTY_DEVELOPER_TOOLS
+  Products.JSON_PROPERTY_DEVELOPER_TOOLS,
+  Products.JSON_PROPERTY_MITM_ATTACK
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class Products {
@@ -139,6 +141,9 @@ public class Products {
 
   public static final String JSON_PROPERTY_DEVELOPER_TOOLS = "developerTools";
   private ProductDeveloperTools developerTools;
+
+  public static final String JSON_PROPERTY_MITM_ATTACK = "mitmAttack";
+  private ProductMitMAttack mitmAttack;
 
   public Products() {
   }
@@ -767,6 +772,32 @@ public class Products {
   }
 
 
+  public Products mitmAttack(ProductMitMAttack mitmAttack) {
+    this.mitmAttack = mitmAttack;
+    return this;
+  }
+
+   /**
+   * Get mitmAttack
+   * @return mitmAttack
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "")
+  @JsonProperty(JSON_PROPERTY_MITM_ATTACK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ProductMitMAttack getMitmAttack() {
+    return mitmAttack;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MITM_ATTACK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMitmAttack(ProductMitMAttack mitmAttack) {
+    this.mitmAttack = mitmAttack;
+  }
+
+
   /**
    * Return true if this Products object is equal to o.
    */
@@ -802,12 +833,13 @@ public class Products {
         Objects.equals(this.suspectScore, products.suspectScore) &&
         Objects.equals(this.remoteControl, products.remoteControl) &&
         Objects.equals(this.velocity, products.velocity) &&
-        Objects.equals(this.developerTools, products.developerTools);
+        Objects.equals(this.developerTools, products.developerTools) &&
+        Objects.equals(this.mitmAttack, products.mitmAttack);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(identification, botd, rootApps, emulator, ipInfo, ipBlocklist, tor, vpn, proxy, incognito, tampering, clonedApp, factoryReset, jailbroken, frida, privacySettings, virtualMachine, rawDeviceAttributes, highActivity, locationSpoofing, suspectScore, remoteControl, velocity, developerTools);
+    return Objects.hash(identification, botd, rootApps, emulator, ipInfo, ipBlocklist, tor, vpn, proxy, incognito, tampering, clonedApp, factoryReset, jailbroken, frida, privacySettings, virtualMachine, rawDeviceAttributes, highActivity, locationSpoofing, suspectScore, remoteControl, velocity, developerTools, mitmAttack);
   }
 
   @Override
@@ -838,6 +870,7 @@ public class Products {
     sb.append("    remoteControl: ").append(toIndentedString(remoteControl)).append("\n");
     sb.append("    velocity: ").append(toIndentedString(velocity)).append("\n");
     sb.append("    developerTools: ").append(toIndentedString(developerTools)).append("\n");
+    sb.append("    mitmAttack: ").append(toIndentedString(mitmAttack)).append("\n");
     sb.append("}");
     return sb.toString();
   }

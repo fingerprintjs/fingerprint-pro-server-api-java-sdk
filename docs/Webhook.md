@@ -47,6 +47,7 @@
 |**remoteControl** | [**WebhookRemoteControl**](WebhookRemoteControl.md) |  |  [optional] |
 |**velocity** | [**WebhookVelocity**](WebhookVelocity.md) |  |  [optional] |
 |**developerTools** | [**WebhookDeveloperTools**](WebhookDeveloperTools.md) |  |  [optional] |
+|**mitmAttack** | [**WebhookMitMAttack**](WebhookMitMAttack.md) |  |  [optional] |
 
 
 

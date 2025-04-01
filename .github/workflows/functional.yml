@@ -1,9 +1,9 @@
 name: Functional Tests
 
 on:
-  pull_request_target:
-    branches:
-      - '*'
+  push:
+    branches-ignore:
+      - main
   workflow_dispatch:
   schedule:
     - cron: '0 5 * * *'
@@ -11,7 +11,7 @@ on:
 jobs:
   functional_tests:
     name: "Functional Tests Java ${{ matrix.java }}"
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         java: [ '11', '17', '21' ]
@@ -28,8 +28,6 @@ jobs:
         env:
           FPJS_API_SECRET: "${{ secrets.FPJS_API_SECRET }}"
           FPJS_API_REGION: "${{ secrets.FPJS_API_REGION }}"
-          FPJS_VISITOR_ID: "${{ secrets.FPJS_VISITOR_ID }}"
-          FPJS_REQUEST_ID: "${{ secrets.FPJS_REQUEST_ID }}"
 
   report_status:
     needs: functional_tests
@@ -39,4 +37,4 @@ jobs:
       notification_title: 'Java SDK Functional Tests has {status_message}'
       job_status: ${{ needs.functional_tests.result }}
     secrets:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}  
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

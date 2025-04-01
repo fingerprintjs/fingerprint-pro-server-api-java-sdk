@@ -1,5 +1,11 @@
 # Fingerprint Pro Server Java SDK
 
+## 7.4.0
+
+### Minor Changes
+
+- Add `mitmAttack` (man-in-the-middle attack) Smart Signal ([097bf99](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/097bf99a628d08d3f528d32e5edbd412c975cfcf))
+
 ## 7.3.0
 
 ### Minor Changes

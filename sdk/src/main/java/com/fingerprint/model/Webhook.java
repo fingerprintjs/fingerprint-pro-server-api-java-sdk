@@ -22,6 +22,7 @@ import com.fingerprint.model.WebhookIPBlocklist;
 import com.fingerprint.model.WebhookIPInfo;
 import com.fingerprint.model.WebhookJailbroken;
 import com.fingerprint.model.WebhookLocationSpoofing;
+import com.fingerprint.model.WebhookMitMAttack;
 import com.fingerprint.model.WebhookPrivacySettings;
 import com.fingerprint.model.WebhookProxy;
 import com.fingerprint.model.WebhookRemoteControl;
@@ -85,7 +86,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
   Webhook.JSON_PROPERTY_SUSPECT_SCORE,
   Webhook.JSON_PROPERTY_REMOTE_CONTROL,
   Webhook.JSON_PROPERTY_VELOCITY,
-  Webhook.JSON_PROPERTY_DEVELOPER_TOOLS
+  Webhook.JSON_PROPERTY_DEVELOPER_TOOLS,
+  Webhook.JSON_PROPERTY_MITM_ATTACK
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class Webhook {
@@ -208,6 +210,9 @@ public class Webhook {
 
   public static final String JSON_PROPERTY_DEVELOPER_TOOLS = "developerTools";
   private WebhookDeveloperTools developerTools;
+
+  public static final String JSON_PROPERTY_MITM_ATTACK = "mitmAttack";
+  private WebhookMitMAttack mitmAttack;
 
   public Webhook() {
   }
@@ -1278,6 +1283,32 @@ public class Webhook {
   }
 
 
+  public Webhook mitmAttack(WebhookMitMAttack mitmAttack) {
+    this.mitmAttack = mitmAttack;
+    return this;
+  }
+
+   /**
+   * Get mitmAttack
+   * @return mitmAttack
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "")
+  @JsonProperty(JSON_PROPERTY_MITM_ATTACK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public WebhookMitMAttack getMitmAttack() {
+    return mitmAttack;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MITM_ATTACK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMitmAttack(WebhookMitMAttack mitmAttack) {
+    this.mitmAttack = mitmAttack;
+  }
+
+
   /**
    * Return true if this Webhook object is equal to o.
    */
@@ -1329,12 +1360,13 @@ public class Webhook {
         Objects.equals(this.suspectScore, webhook.suspectScore) &&
         Objects.equals(this.remoteControl, webhook.remoteControl) &&
         Objects.equals(this.velocity, webhook.velocity) &&
-        Objects.equals(this.developerTools, webhook.developerTools);
+        Objects.equals(this.developerTools, webhook.developerTools) &&
+        Objects.equals(this.mitmAttack, webhook.mitmAttack);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(requestId, url, ip, tag, time, timestamp, ipLocation, linkedId, visitorId, visitorFound, confidence, firstSeenAt, lastSeenAt, browserDetails, incognito, clientReferrer, components, bot, userAgent, rootApps, emulator, ipInfo, ipBlocklist, tor, vpn, proxy, tampering, clonedApp, factoryReset, jailbroken, frida, privacySettings, virtualMachine, rawDeviceAttributes, highActivity, locationSpoofing, suspectScore, remoteControl, velocity, developerTools);
+    return Objects.hash(requestId, url, ip, tag, time, timestamp, ipLocation, linkedId, visitorId, visitorFound, confidence, firstSeenAt, lastSeenAt, browserDetails, incognito, clientReferrer, components, bot, userAgent, rootApps, emulator, ipInfo, ipBlocklist, tor, vpn, proxy, tampering, clonedApp, factoryReset, jailbroken, frida, privacySettings, virtualMachine, rawDeviceAttributes, highActivity, locationSpoofing, suspectScore, remoteControl, velocity, developerTools, mitmAttack);
   }
 
   @Override
@@ -1381,6 +1413,7 @@ public class Webhook {
     sb.append("    remoteControl: ").append(toIndentedString(remoteControl)).append("\n");
     sb.append("    velocity: ").append(toIndentedString(velocity)).append("\n");
     sb.append("    developerTools: ").append(toIndentedString(developerTools)).append("\n");
+    sb.append("    mitmAttack: ").append(toIndentedString(mitmAttack)).append("\n");
     sb.append("}");
     return sb.toString();
   }

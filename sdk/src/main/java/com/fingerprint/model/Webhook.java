@@ -50,6 +50,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   Webhook.JSON_PROPERTY_REQUEST_ID,
   Webhook.JSON_PROPERTY_URL,
   Webhook.JSON_PROPERTY_IP,
+  Webhook.JSON_PROPERTY_ENVIRONMENT_ID,
   Webhook.JSON_PROPERTY_TAG,
   Webhook.JSON_PROPERTY_TIME,
   Webhook.JSON_PROPERTY_TIMESTAMP,
@@ -99,6 +100,9 @@ public class Webhook {
 
   public static final String JSON_PROPERTY_IP = "ip";
   private String ip;
+
+  public static final String JSON_PROPERTY_ENVIRONMENT_ID = "environmentId";
+  private String environmentId;
 
   public static final String JSON_PROPERTY_TAG = "tag";
   private Map<String, Object> tag = null;
@@ -292,6 +296,32 @@ public class Webhook {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIp(String ip) {
     this.ip = ip;
+  }
+
+
+  public Webhook environmentId(String environmentId) {
+    this.environmentId = environmentId;
+    return this;
+  }
+
+   /**
+   * Environment ID of the event.
+   * @return environmentId
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "Environment ID of the event.")
+  @JsonProperty(JSON_PROPERTY_ENVIRONMENT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getEnvironmentId() {
+    return environmentId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ENVIRONMENT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEnvironmentId(String environmentId) {
+    this.environmentId = environmentId;
   }
 
 
@@ -1324,6 +1354,7 @@ public class Webhook {
     return Objects.equals(this.requestId, webhook.requestId) &&
         Objects.equals(this.url, webhook.url) &&
         Objects.equals(this.ip, webhook.ip) &&
+        Objects.equals(this.environmentId, webhook.environmentId) &&
         Objects.equals(this.tag, webhook.tag) &&
         Objects.equals(this.time, webhook.time) &&
         Objects.equals(this.timestamp, webhook.timestamp) &&
@@ -1366,7 +1397,7 @@ public class Webhook {
 
   @Override
   public int hashCode() {
-    return Objects.hash(requestId, url, ip, tag, time, timestamp, ipLocation, linkedId, visitorId, visitorFound, confidence, firstSeenAt, lastSeenAt, browserDetails, incognito, clientReferrer, components, bot, userAgent, rootApps, emulator, ipInfo, ipBlocklist, tor, vpn, proxy, tampering, clonedApp, factoryReset, jailbroken, frida, privacySettings, virtualMachine, rawDeviceAttributes, highActivity, locationSpoofing, suspectScore, remoteControl, velocity, developerTools, mitmAttack);
+    return Objects.hash(requestId, url, ip, environmentId, tag, time, timestamp, ipLocation, linkedId, visitorId, visitorFound, confidence, firstSeenAt, lastSeenAt, browserDetails, incognito, clientReferrer, components, bot, userAgent, rootApps, emulator, ipInfo, ipBlocklist, tor, vpn, proxy, tampering, clonedApp, factoryReset, jailbroken, frida, privacySettings, virtualMachine, rawDeviceAttributes, highActivity, locationSpoofing, suspectScore, remoteControl, velocity, developerTools, mitmAttack);
   }
 
   @Override
@@ -1376,6 +1407,7 @@ public class Webhook {
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    ip: ").append(toIndentedString(ip)).append("\n");
+    sb.append("    environmentId: ").append(toIndentedString(environmentId)).append("\n");
     sb.append("    tag: ").append(toIndentedString(tag)).append("\n");
     sb.append("    time: ").append(toIndentedString(time)).append("\n");
     sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");

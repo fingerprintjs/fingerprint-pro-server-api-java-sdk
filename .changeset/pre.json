@@ -1,0 +1,8 @@
+{
+  "mode": "pre",
+  "tag": "develop",
+  "initialVersions": {
+    "fingerprint-pro-server-api-java-sdk": "7.4.0"
+  },
+  "changesets": []
+}

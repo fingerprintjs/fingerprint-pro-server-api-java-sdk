@@ -566,10 +566,24 @@ public class FingerprintApiTest {
         final Long END = 1582299576513L;
         final Boolean REVERSE = true;
         final Boolean SUSPECT = false;
+        final Boolean ANTI_DETECT_BROWSER = true;
+        final Boolean CLONED_APP = true;
+        final Boolean FACTORY_RESET = true;
+        final Boolean FRIDA = true;
+        final Boolean JAILBROKEN = true;
+        final Float MIN_SUSPECT_SCORE = 0.5f;
+        final Boolean PRIVACY_SETTINGS = true;
+        final Boolean ROOT_APPS = true;
+        final Boolean TAMPERING = true;
+        final Boolean VIRTUAL_MACHINE = true;
+        final Boolean VPN = true;
+        final String VPN_CONFIDENCE = "medium";
+        final Boolean EMULATOR = true;
+        final Boolean INCOGNITO = true;
 
         addMock("searchEvents", null, invocation -> {
             List<Pair> queryParams = invocation.getArgument(3);
-            assertEquals(11, queryParams.size());
+            assertEquals(25, queryParams.size());
             assertTrue(listContainsPair(queryParams, "limit", String.valueOf(LIMIT)));
             assertTrue(listContainsPair(queryParams, "pagination_key", PAGINATION_KEY));
             assertTrue(listContainsPair(queryParams, "visitor_id", MOCK_VISITOR_ID));
@@ -580,6 +594,20 @@ public class FingerprintApiTest {
             assertTrue(listContainsPair(queryParams, "end", String.valueOf(END)));
             assertTrue(listContainsPair(queryParams, "reverse", String.valueOf(REVERSE)));
             assertTrue(listContainsPair(queryParams, "suspect", String.valueOf(SUSPECT)));
+            assertTrue(listContainsPair(queryParams, "anti_detect_browser", String.valueOf(ANTI_DETECT_BROWSER)));
+            assertTrue(listContainsPair(queryParams, "cloned_app", String.valueOf(CLONED_APP)));
+            assertTrue(listContainsPair(queryParams, "factory_reset", String.valueOf(FACTORY_RESET)));
+            assertTrue(listContainsPair(queryParams, "frida", String.valueOf(FRIDA)));
+            assertTrue(listContainsPair(queryParams, "jailbroken", String.valueOf(JAILBROKEN)));
+            assertTrue(listContainsPair(queryParams, "min_suspect_score", String.valueOf(MIN_SUSPECT_SCORE)));
+            assertTrue(listContainsPair(queryParams, "privacy_settings", String.valueOf(PRIVACY_SETTINGS)));
+            assertTrue(listContainsPair(queryParams, "root_apps", String.valueOf(ROOT_APPS)));
+            assertTrue(listContainsPair(queryParams, "tampering", String.valueOf(TAMPERING)));
+            assertTrue(listContainsPair(queryParams, "virtual_machine", String.valueOf(VIRTUAL_MACHINE)));
+            assertTrue(listContainsPair(queryParams, "vpn", String.valueOf(VPN)));
+            assertTrue(listContainsPair(queryParams, "vpn_confidence", VPN_CONFIDENCE));
+            assertTrue(listContainsPair(queryParams, "emulator", String.valueOf(EMULATOR)));
+            assertTrue(listContainsPair(queryParams, "incognito", String.valueOf(INCOGNITO)));
 
             return mockFileToResponse(200, invocation, "mocks/get_event_search_200.json");
         });
@@ -590,7 +618,21 @@ public class FingerprintApiTest {
                 .setBot(BOT).setIpAddress(IP_ADDRESS)
                 .setLinkedId(LINKED_ID).setStart(START)
                 .setEnd(END).setReverse(REVERSE)
-                .setSuspect(SUSPECT));
+                .setSuspect(SUSPECT)
+                .setAntiDetectBrowser(ANTI_DETECT_BROWSER)
+                .setClonedApp(CLONED_APP)
+                .setFactoryReset(FACTORY_RESET)
+                .setFrida(FRIDA)
+                .setJailbroken(JAILBROKEN)
+                .setMinSuspectScore(MIN_SUSPECT_SCORE)
+                .setPrivacySettings(PRIVACY_SETTINGS)
+                .setRootApps(ROOT_APPS)
+                .setTampering(TAMPERING)
+                .setVirtualMachine(VIRTUAL_MACHINE)
+                .setVpn(VPN)
+                .setVpnConfidence(VPN_CONFIDENCE)
+                .setEmulator(EMULATOR)
+                .setIncognito(INCOGNITO));
         List<SearchEventsResponseEventsInner> events = response.getEvents();
         assertEquals(events.size(), 1);
     }

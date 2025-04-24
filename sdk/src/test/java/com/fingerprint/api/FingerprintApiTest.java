@@ -580,6 +580,8 @@ public class FingerprintApiTest {
         final String VPN_CONFIDENCE = "medium";
         final Boolean EMULATOR = true;
         final Boolean INCOGNITO = true;
+        final Boolean IP_BLOCKLIST = true;
+        final Boolean DATACENTER = true;
 
         Map<String, String> expectedQueryParams = new HashMap<>();
         expectedQueryParams.put("limit", String.valueOf(LIMIT));
@@ -606,6 +608,8 @@ public class FingerprintApiTest {
         expectedQueryParams.put("vpn_confidence", VPN_CONFIDENCE);
         expectedQueryParams.put("emulator", String.valueOf(EMULATOR));
         expectedQueryParams.put("incognito", String.valueOf(INCOGNITO));
+        expectedQueryParams.put("ip_blocklist", String.valueOf(IP_BLOCKLIST));
+        expectedQueryParams.put("datacenter", String.valueOf(DATACENTER));
 
         addMock("searchEvents", null, invocation -> {
             List<Pair> queryParams = invocation.getArgument(3);
@@ -638,7 +642,9 @@ public class FingerprintApiTest {
                 .setVpn(VPN)
                 .setVpnConfidence(VPN_CONFIDENCE)
                 .setEmulator(EMULATOR)
-                .setIncognito(INCOGNITO));
+                .setIncognito(INCOGNITO)
+                .setIpBlocklist(IP_BLOCKLIST)
+                .setDatacenter(DATACENTER));
         List<SearchEventsResponseEventsInner> events = response.getEvents();
         assertEquals(events.size(), 1);
     }

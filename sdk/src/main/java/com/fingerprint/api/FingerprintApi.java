@@ -405,6 +405,8 @@ public class FingerprintApi {
     private Boolean rootApps;
     private String vpnConfidence;
     private Float minSuspectScore;
+    private Boolean ipBlocklist;
+    private Boolean datacenter;
 
     /**
      * getter for paginationKey - Use `pagination_key` to get the next page of results.   When more results are available (e.g., you requested up to 200 results for your search using `limit`, but there are more than 200 events total matching your request), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `timestamp` of the last returned event. In the following request, use that value in the `pagination_key` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/events/search?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/events/search?limit=200&pagination_key=1740815825085` 
@@ -751,6 +753,36 @@ public class FingerprintApi {
       return this;
     }
 
+    /**
+     * getter for ipBlocklist - Filter events by IP Blocklist Detection result.   > Note: When using this parameter, only events with the `products.ipBlocklist.data.result` property set to `true` or `false` are returned. Events without a `products.ipBlocklist` Smart Signal result are left out of the response. 
+     */
+    public Boolean getIpBlocklist() {
+      return ipBlocklist;
+    }
+
+    /**
+     * setter for ipBlocklist - Filter events by IP Blocklist Detection result.   > Note: When using this parameter, only events with the `products.ipBlocklist.data.result` property set to `true` or `false` are returned. Events without a `products.ipBlocklist` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setIpBlocklist(Boolean ipBlocklist) {
+      this.ipBlocklist = ipBlocklist;
+      return this;
+    }
+
+    /**
+     * getter for datacenter - Filter events by Datacenter Detection result.   > Note: When using this parameter, only events with the `products.ipInfo.data.v4.datacenter.result` or `products.ipInfo.data.v6.datacenter.result` property set to `true` or `false` are returned. Events without a `products.ipInfo` Smart Signal result are left out of the response. 
+     */
+    public Boolean getDatacenter() {
+      return datacenter;
+    }
+
+    /**
+     * setter for datacenter - Filter events by Datacenter Detection result.   > Note: When using this parameter, only events with the `products.ipInfo.data.v4.datacenter.result` or `products.ipInfo.data.v6.datacenter.result` property set to `true` or `false` are returned. Events without a `products.ipInfo` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setDatacenter(Boolean datacenter) {
+      this.datacenter = datacenter;
+      return this;
+    }
+
   }
   /**
    * Get events via search
@@ -830,6 +862,8 @@ public class FingerprintApi {
       localVarQueryParams.addAll(apiClient.parameterToPairs("", "root_apps", searchEventsOptionalParams.getRootApps()));
       localVarQueryParams.addAll(apiClient.parameterToPairs("", "vpn_confidence", searchEventsOptionalParams.getVpnConfidence()));
       localVarQueryParams.addAll(apiClient.parameterToPairs("", "min_suspect_score", searchEventsOptionalParams.getMinSuspectScore()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "ip_blocklist", searchEventsOptionalParams.getIpBlocklist()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "datacenter", searchEventsOptionalParams.getDatacenter()));
     }
 
     

@@ -64,7 +64,7 @@ public class FingerprintApi {
 
   /**
    * Delete data by visitor ID
-   * Request deleting all data associated with the specified visitor ID. This API is useful for compliance with privacy regulations. ### Which data is deleted? - Browser (or device) properties - Identification requests made from this browser (or device)  #### Browser (or device) properties - Represents the data that Fingerprint collected from this specific browser (or device) and everything inferred and derived from it. - Upon request to delete, this data is deleted asynchronously (typically within a few minutes) and it will no longer be used to identify this browser (or device) for your [Fingerprint Application](https://dev.fingerprint.com/docs/glossary#fingerprint-application).  #### Identification requests made from this browser (or device) - Fingerprint stores the identification requests made from a browser (or device) for up to 30 (or 90) days depending on your plan. To learn more, see [Data Retention](https://dev.fingerprint.com/docs/regions#data-retention). - Upon request to delete, the identification requests that were made by this browser   - Within the past 10 days are deleted within 24 hrs.   - Outside of 10 days are allowed to purge as per your data retention period.  ### Corollary After requesting to delete a visitor ID, - If the same browser (or device) requests to identify, it will receive a different visitor ID. - If you request [`/events` API](https://dev.fingerprint.com/reference/getevent) with a `request_id` that was made outside of the 10 days, you will still receive a valid response. - If you request [`/visitors` API](https://dev.fingerprint.com/reference/getvisits) for the deleted visitor ID, the response will include identification requests that were made outside of those 10 days.  ### Interested? Please [contact our support team](https://fingerprint.com/support/) to enable it for you. Otherwise, you will receive a 403. 
+   * Request deleting all data associated with the specified visitor ID. This API is useful for compliance with privacy regulations. ### Which data is deleted? - Browser (or device) properties - Identification requests made from this browser (or device)  #### Browser (or device) properties - Represents the data that Fingerprint collected from this specific browser (or device) and everything inferred and derived from it. - Upon request to delete, this data is deleted asynchronously (typically within a few minutes) and it will no longer be used to identify this browser (or device) for your [Fingerprint Workspace](https://dev.fingerprint.com/docs/glossary#fingerprint-workspace).  #### Identification requests made from this browser (or device) - Fingerprint stores the identification requests made from a browser (or device) for up to 30 (or 90) days depending on your plan. To learn more, see [Data Retention](https://dev.fingerprint.com/docs/regions#data-retention). - Upon request to delete, the identification requests that were made by this browser   - Within the past 10 days are deleted within 24 hrs.   - Outside of 10 days are allowed to purge as per your data retention period.  ### Corollary After requesting to delete a visitor ID, - If the same browser (or device) requests to identify, it will receive a different visitor ID. - If you request [`/events` API](https://dev.fingerprint.com/reference/getevent) with a `request_id` that was made outside of the 10 days, you will still receive a valid response. - If you request [`/visitors` API](https://dev.fingerprint.com/reference/getvisits) for the deleted visitor ID, the response will include identification requests that were made outside of those 10 days.  ### Interested? Please [contact our support team](https://fingerprint.com/support/) to enable it for you. Otherwise, you will receive a 403. 
    * @param visitorId The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) you want to delete. (required)
    * @throws ApiException if fails to make API call
    * @http.response.details
@@ -83,7 +83,7 @@ public class FingerprintApi {
 
   /**
    * Delete data by visitor ID
-   * Request deleting all data associated with the specified visitor ID. This API is useful for compliance with privacy regulations. ### Which data is deleted? - Browser (or device) properties - Identification requests made from this browser (or device)  #### Browser (or device) properties - Represents the data that Fingerprint collected from this specific browser (or device) and everything inferred and derived from it. - Upon request to delete, this data is deleted asynchronously (typically within a few minutes) and it will no longer be used to identify this browser (or device) for your [Fingerprint Application](https://dev.fingerprint.com/docs/glossary#fingerprint-application).  #### Identification requests made from this browser (or device) - Fingerprint stores the identification requests made from a browser (or device) for up to 30 (or 90) days depending on your plan. To learn more, see [Data Retention](https://dev.fingerprint.com/docs/regions#data-retention). - Upon request to delete, the identification requests that were made by this browser   - Within the past 10 days are deleted within 24 hrs.   - Outside of 10 days are allowed to purge as per your data retention period.  ### Corollary After requesting to delete a visitor ID, - If the same browser (or device) requests to identify, it will receive a different visitor ID. - If you request [`/events` API](https://dev.fingerprint.com/reference/getevent) with a `request_id` that was made outside of the 10 days, you will still receive a valid response. - If you request [`/visitors` API](https://dev.fingerprint.com/reference/getvisits) for the deleted visitor ID, the response will include identification requests that were made outside of those 10 days.  ### Interested? Please [contact our support team](https://fingerprint.com/support/) to enable it for you. Otherwise, you will receive a 403. 
+   * Request deleting all data associated with the specified visitor ID. This API is useful for compliance with privacy regulations. ### Which data is deleted? - Browser (or device) properties - Identification requests made from this browser (or device)  #### Browser (or device) properties - Represents the data that Fingerprint collected from this specific browser (or device) and everything inferred and derived from it. - Upon request to delete, this data is deleted asynchronously (typically within a few minutes) and it will no longer be used to identify this browser (or device) for your [Fingerprint Workspace](https://dev.fingerprint.com/docs/glossary#fingerprint-workspace).  #### Identification requests made from this browser (or device) - Fingerprint stores the identification requests made from a browser (or device) for up to 30 (or 90) days depending on your plan. To learn more, see [Data Retention](https://dev.fingerprint.com/docs/regions#data-retention). - Upon request to delete, the identification requests that were made by this browser   - Within the past 10 days are deleted within 24 hrs.   - Outside of 10 days are allowed to purge as per your data retention period.  ### Corollary After requesting to delete a visitor ID, - If the same browser (or device) requests to identify, it will receive a different visitor ID. - If you request [`/events` API](https://dev.fingerprint.com/reference/getevent) with a `request_id` that was made outside of the 10 days, you will still receive a valid response. - If you request [`/visitors` API](https://dev.fingerprint.com/reference/getvisits) for the deleted visitor ID, the response will include identification requests that were made outside of those 10 days.  ### Interested? Please [contact our support team](https://fingerprint.com/support/) to enable it for you. Otherwise, you will receive a 403. 
    * @param visitorId The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) you want to delete. (required)
    * @return ApiResponse<Void>
    * @throws ApiException if fails to make API call
@@ -391,6 +391,20 @@ public class FingerprintApi {
     private Long end;
     private Boolean reverse;
     private Boolean suspect;
+    private Boolean vpn;
+    private Boolean virtualMachine;
+    private Boolean tampering;
+    private Boolean antiDetectBrowser;
+    private Boolean incognito;
+    private Boolean privacySettings;
+    private Boolean jailbroken;
+    private Boolean frida;
+    private Boolean factoryReset;
+    private Boolean clonedApp;
+    private Boolean emulator;
+    private Boolean rootApps;
+    private String vpnConfidence;
+    private Float minSuspectScore;
 
     /**
      * getter for paginationKey - Use `pagination_key` to get the next page of results.   When more results are available (e.g., you requested up to 200 results for your search using `limit`, but there are more than 200 events total matching your request), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `timestamp` of the last returned event. In the following request, use that value in the `pagination_key` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/events/search?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/events/search?limit=200&pagination_key=1740815825085` 
@@ -423,14 +437,14 @@ public class FingerprintApi {
     }
 
     /**
-     * getter for bot - Filter events by the bot detection result, specifically:    `all` - events where any kind of bot was detected.   `good` - events where a good bot was detected.   `bad` - events where a bad bot was detected.   `none` - events where no bot was detected. 
+     * getter for bot - Filter events by the Bot Detection result, specifically:    `all` - events where any kind of bot was detected.   `good` - events where a good bot was detected.   `bad` - events where a bad bot was detected.   `none` - events where no bot was detected. > Note: When using this parameter, only events with the `products.botd.data.bot.result` property set to a valid value are returned. Events without a `products.botd` Smart Signal result are left out of the response. 
      */
     public String getBot() {
       return bot;
     }
 
     /**
-     * setter for bot - Filter events by the bot detection result, specifically:    `all` - events where any kind of bot was detected.   `good` - events where a good bot was detected.   `bad` - events where a bad bot was detected.   `none` - events where no bot was detected. 
+     * setter for bot - Filter events by the Bot Detection result, specifically:    `all` - events where any kind of bot was detected.   `good` - events where a good bot was detected.   `bad` - events where a bad bot was detected.   `none` - events where no bot was detected. > Note: When using this parameter, only events with the `products.botd.data.bot.result` property set to a valid value are returned. Events without a `products.botd` Smart Signal result are left out of the response. 
      */
     public SearchEventsOptionalParams setBot(String bot) {
       this.bot = bot;
@@ -527,6 +541,216 @@ public class FingerprintApi {
       return this;
     }
 
+    /**
+     * getter for vpn - Filter events by VPN Detection result.   > Note: When using this parameter, only events with the `products.vpn.data.result` property set to `true` or `false` are returned. Events without a `products.vpn` Smart Signal result are left out of the response. 
+     */
+    public Boolean getVpn() {
+      return vpn;
+    }
+
+    /**
+     * setter for vpn - Filter events by VPN Detection result.   > Note: When using this parameter, only events with the `products.vpn.data.result` property set to `true` or `false` are returned. Events without a `products.vpn` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setVpn(Boolean vpn) {
+      this.vpn = vpn;
+      return this;
+    }
+
+    /**
+     * getter for virtualMachine - Filter events by Virtual Machine Detection result.   > Note: When using this parameter, only events with the `products.virtualMachine.data.result` property set to `true` or `false` are returned. Events without a `products.virtualMachine` Smart Signal result are left out of the response. 
+     */
+    public Boolean getVirtualMachine() {
+      return virtualMachine;
+    }
+
+    /**
+     * setter for virtualMachine - Filter events by Virtual Machine Detection result.   > Note: When using this parameter, only events with the `products.virtualMachine.data.result` property set to `true` or `false` are returned. Events without a `products.virtualMachine` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setVirtualMachine(Boolean virtualMachine) {
+      this.virtualMachine = virtualMachine;
+      return this;
+    }
+
+    /**
+     * getter for tampering - Filter events by Tampering Detection result.   > Note: When using this parameter, only events with the `products.tampering.data.result` property set to `true` or `false` are returned. Events without a `products.tampering` Smart Signal result are left out of the response. 
+     */
+    public Boolean getTampering() {
+      return tampering;
+    }
+
+    /**
+     * setter for tampering - Filter events by Tampering Detection result.   > Note: When using this parameter, only events with the `products.tampering.data.result` property set to `true` or `false` are returned. Events without a `products.tampering` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setTampering(Boolean tampering) {
+      this.tampering = tampering;
+      return this;
+    }
+
+    /**
+     * getter for antiDetectBrowser - Filter events by Anti-detect Browser Detection result.   > Note: When using this parameter, only events with the `products.tampering.data.antiDetectBrowser` property set to `true` or `false` are returned. Events without a `products.tampering` Smart Signal result are left out of the response. 
+     */
+    public Boolean getAntiDetectBrowser() {
+      return antiDetectBrowser;
+    }
+
+    /**
+     * setter for antiDetectBrowser - Filter events by Anti-detect Browser Detection result.   > Note: When using this parameter, only events with the `products.tampering.data.antiDetectBrowser` property set to `true` or `false` are returned. Events without a `products.tampering` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setAntiDetectBrowser(Boolean antiDetectBrowser) {
+      this.antiDetectBrowser = antiDetectBrowser;
+      return this;
+    }
+
+    /**
+     * getter for incognito - Filter events by Browser Incognito Detection result.   > Note: When using this parameter, only events with the `products.incognito.data.result` property set to `true` or `false` are returned. Events without a `products.incognito` Smart Signal result are left out of the response. 
+     */
+    public Boolean getIncognito() {
+      return incognito;
+    }
+
+    /**
+     * setter for incognito - Filter events by Browser Incognito Detection result.   > Note: When using this parameter, only events with the `products.incognito.data.result` property set to `true` or `false` are returned. Events without a `products.incognito` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setIncognito(Boolean incognito) {
+      this.incognito = incognito;
+      return this;
+    }
+
+    /**
+     * getter for privacySettings - Filter events by Privacy Settings Detection result.   > Note: When using this parameter, only events with the `products.privacySettings.data.result` property set to `true` or `false` are returned. Events without a `products.privacySettings` Smart Signal result are left out of the response. 
+     */
+    public Boolean getPrivacySettings() {
+      return privacySettings;
+    }
+
+    /**
+     * setter for privacySettings - Filter events by Privacy Settings Detection result.   > Note: When using this parameter, only events with the `products.privacySettings.data.result` property set to `true` or `false` are returned. Events without a `products.privacySettings` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setPrivacySettings(Boolean privacySettings) {
+      this.privacySettings = privacySettings;
+      return this;
+    }
+
+    /**
+     * getter for jailbroken - Filter events by Jailbroken Device Detection result.   > Note: When using this parameter, only events with the `products.jailbroken.data.result` property set to `true` or `false` are returned. Events without a `products.jailbroken` Smart Signal result are left out of the response. 
+     */
+    public Boolean getJailbroken() {
+      return jailbroken;
+    }
+
+    /**
+     * setter for jailbroken - Filter events by Jailbroken Device Detection result.   > Note: When using this parameter, only events with the `products.jailbroken.data.result` property set to `true` or `false` are returned. Events without a `products.jailbroken` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setJailbroken(Boolean jailbroken) {
+      this.jailbroken = jailbroken;
+      return this;
+    }
+
+    /**
+     * getter for frida - Filter events by Frida Detection result.   > Note: When using this parameter, only events with the `products.frida.data.result` property set to `true` or `false` are returned. Events without a `products.frida` Smart Signal result are left out of the response. 
+     */
+    public Boolean getFrida() {
+      return frida;
+    }
+
+    /**
+     * setter for frida - Filter events by Frida Detection result.   > Note: When using this parameter, only events with the `products.frida.data.result` property set to `true` or `false` are returned. Events without a `products.frida` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setFrida(Boolean frida) {
+      this.frida = frida;
+      return this;
+    }
+
+    /**
+     * getter for factoryReset - Filter events by Factory Reset Detection result.   > Note: When using this parameter, only events with the `products.factoryReset.data.result` property set to `true` or `false` are returned. Events without a `products.factoryReset` Smart Signal result are left out of the response. 
+     */
+    public Boolean getFactoryReset() {
+      return factoryReset;
+    }
+
+    /**
+     * setter for factoryReset - Filter events by Factory Reset Detection result.   > Note: When using this parameter, only events with the `products.factoryReset.data.result` property set to `true` or `false` are returned. Events without a `products.factoryReset` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setFactoryReset(Boolean factoryReset) {
+      this.factoryReset = factoryReset;
+      return this;
+    }
+
+    /**
+     * getter for clonedApp - Filter events by Cloned App Detection result.   > Note: When using this parameter, only events with the `products.clonedApp.data.result` property set to `true` or `false` are returned. Events without a `products.clonedApp` Smart Signal result are left out of the response. 
+     */
+    public Boolean getClonedApp() {
+      return clonedApp;
+    }
+
+    /**
+     * setter for clonedApp - Filter events by Cloned App Detection result.   > Note: When using this parameter, only events with the `products.clonedApp.data.result` property set to `true` or `false` are returned. Events without a `products.clonedApp` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setClonedApp(Boolean clonedApp) {
+      this.clonedApp = clonedApp;
+      return this;
+    }
+
+    /**
+     * getter for emulator - Filter events by Android Emulator Detection result.   > Note: When using this parameter, only events with the `products.emulator.data.result` property set to `true` or `false` are returned. Events without a `products.emulator` Smart Signal result are left out of the response. 
+     */
+    public Boolean getEmulator() {
+      return emulator;
+    }
+
+    /**
+     * setter for emulator - Filter events by Android Emulator Detection result.   > Note: When using this parameter, only events with the `products.emulator.data.result` property set to `true` or `false` are returned. Events without a `products.emulator` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setEmulator(Boolean emulator) {
+      this.emulator = emulator;
+      return this;
+    }
+
+    /**
+     * getter for rootApps - Filter events by Rooted Device Detection result.   > Note: When using this parameter, only events with the `products.rootApps.data.result` property set to `true` or `false` are returned. Events without a `products.rootApps` Smart Signal result are left out of the response. 
+     */
+    public Boolean getRootApps() {
+      return rootApps;
+    }
+
+    /**
+     * setter for rootApps - Filter events by Rooted Device Detection result.   > Note: When using this parameter, only events with the `products.rootApps.data.result` property set to `true` or `false` are returned. Events without a `products.rootApps` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setRootApps(Boolean rootApps) {
+      this.rootApps = rootApps;
+      return this;
+    }
+
+    /**
+     * getter for vpnConfidence - Filter events by VPN Detection result confidence level.   `high` - events with high VPN Detection confidence. `medium` - events with medium VPN Detection confidence. `low` - events with low VPN Detection confidence. > Note: When using this parameter, only events with the `products.vpn.data.confidence` property set to a valid value are returned. Events without a `products.vpn` Smart Signal result are left out of the response. 
+     */
+    public String getVpnConfidence() {
+      return vpnConfidence;
+    }
+
+    /**
+     * setter for vpnConfidence - Filter events by VPN Detection result confidence level.   `high` - events with high VPN Detection confidence. `medium` - events with medium VPN Detection confidence. `low` - events with low VPN Detection confidence. > Note: When using this parameter, only events with the `products.vpn.data.confidence` property set to a valid value are returned. Events without a `products.vpn` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setVpnConfidence(String vpnConfidence) {
+      this.vpnConfidence = vpnConfidence;
+      return this;
+    }
+
+    /**
+     * getter for minSuspectScore - Filter events with Suspect Score result above a provided minimum threshold. > Note: When using this parameter, only events where the `products.suspectScore.data.result` property set to a value exceeding your threshold are returned. Events without a `products.suspectScore` Smart Signal result are left out of the response. 
+     */
+    public Float getMinSuspectScore() {
+      return minSuspectScore;
+    }
+
+    /**
+     * setter for minSuspectScore - Filter events with Suspect Score result above a provided minimum threshold. > Note: When using this parameter, only events where the `products.suspectScore.data.result` property set to a value exceeding your threshold are returned. Events without a `products.suspectScore` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setMinSuspectScore(Float minSuspectScore) {
+      this.minSuspectScore = minSuspectScore;
+      return this;
+    }
+
   }
   /**
    * Get events via search
@@ -592,6 +816,20 @@ public class FingerprintApi {
       localVarQueryParams.addAll(apiClient.parameterToPairs("", "end", searchEventsOptionalParams.getEnd()));
       localVarQueryParams.addAll(apiClient.parameterToPairs("", "reverse", searchEventsOptionalParams.getReverse()));
       localVarQueryParams.addAll(apiClient.parameterToPairs("", "suspect", searchEventsOptionalParams.getSuspect()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "vpn", searchEventsOptionalParams.getVpn()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "virtual_machine", searchEventsOptionalParams.getVirtualMachine()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "tampering", searchEventsOptionalParams.getTampering()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "anti_detect_browser", searchEventsOptionalParams.getAntiDetectBrowser()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "incognito", searchEventsOptionalParams.getIncognito()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "privacy_settings", searchEventsOptionalParams.getPrivacySettings()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "jailbroken", searchEventsOptionalParams.getJailbroken()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "frida", searchEventsOptionalParams.getFrida()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "factory_reset", searchEventsOptionalParams.getFactoryReset()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "cloned_app", searchEventsOptionalParams.getClonedApp()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "emulator", searchEventsOptionalParams.getEmulator()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "root_apps", searchEventsOptionalParams.getRootApps()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "vpn_confidence", searchEventsOptionalParams.getVpnConfidence()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "min_suspect_score", searchEventsOptionalParams.getMinSuspectScore()));
     }
 
     

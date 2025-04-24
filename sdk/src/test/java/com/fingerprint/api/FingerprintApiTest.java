@@ -581,33 +581,39 @@ public class FingerprintApiTest {
         final Boolean EMULATOR = true;
         final Boolean INCOGNITO = true;
 
+        Map<String, String> expectedQueryParams = new HashMap<>();
+        expectedQueryParams.put("limit", String.valueOf(LIMIT));
+        expectedQueryParams.put("pagination_key", PAGINATION_KEY);
+        expectedQueryParams.put("visitor_id", MOCK_VISITOR_ID);
+        expectedQueryParams.put("bot", BOT);
+        expectedQueryParams.put("ip_address", IP_ADDRESS);
+        expectedQueryParams.put("linked_id", LINKED_ID);
+        expectedQueryParams.put("start", START.toString());
+        expectedQueryParams.put("end", END.toString());
+        expectedQueryParams.put("reverse", String.valueOf(REVERSE));
+        expectedQueryParams.put("suspect", String.valueOf(SUSPECT));
+        expectedQueryParams.put("anti_detect_browser", String.valueOf(ANTI_DETECT_BROWSER));
+        expectedQueryParams.put("cloned_app", String.valueOf(CLONED_APP));
+        expectedQueryParams.put("factory_reset", String.valueOf(FACTORY_RESET));
+        expectedQueryParams.put("frida", String.valueOf(FRIDA));
+        expectedQueryParams.put("jailbroken", String.valueOf(JAILBROKEN));
+        expectedQueryParams.put("min_suspect_score", MIN_SUSPECT_SCORE.toString());
+        expectedQueryParams.put("privacy_settings", String.valueOf(PRIVACY_SETTINGS));
+        expectedQueryParams.put("root_apps", String.valueOf(ROOT_APPS));
+        expectedQueryParams.put("tampering", String.valueOf(TAMPERING));
+        expectedQueryParams.put("virtual_machine", String.valueOf(VIRTUAL_MACHINE));
+        expectedQueryParams.put("vpn", String.valueOf(VPN));
+        expectedQueryParams.put("vpn_confidence", VPN_CONFIDENCE);
+        expectedQueryParams.put("emulator", String.valueOf(EMULATOR));
+        expectedQueryParams.put("incognito", String.valueOf(INCOGNITO));
+
         addMock("searchEvents", null, invocation -> {
             List<Pair> queryParams = invocation.getArgument(3);
-            assertEquals(25, queryParams.size());
-            assertTrue(listContainsPair(queryParams, "limit", String.valueOf(LIMIT)));
-            assertTrue(listContainsPair(queryParams, "pagination_key", PAGINATION_KEY));
-            assertTrue(listContainsPair(queryParams, "visitor_id", MOCK_VISITOR_ID));
-            assertTrue(listContainsPair(queryParams, "bot", BOT));
-            assertTrue(listContainsPair(queryParams, "ip_address", IP_ADDRESS));
-            assertTrue(listContainsPair(queryParams, "linked_id", LINKED_ID));
-            assertTrue(listContainsPair(queryParams, "start", String.valueOf(START)));
-            assertTrue(listContainsPair(queryParams, "end", String.valueOf(END)));
-            assertTrue(listContainsPair(queryParams, "reverse", String.valueOf(REVERSE)));
-            assertTrue(listContainsPair(queryParams, "suspect", String.valueOf(SUSPECT)));
-            assertTrue(listContainsPair(queryParams, "anti_detect_browser", String.valueOf(ANTI_DETECT_BROWSER)));
-            assertTrue(listContainsPair(queryParams, "cloned_app", String.valueOf(CLONED_APP)));
-            assertTrue(listContainsPair(queryParams, "factory_reset", String.valueOf(FACTORY_RESET)));
-            assertTrue(listContainsPair(queryParams, "frida", String.valueOf(FRIDA)));
-            assertTrue(listContainsPair(queryParams, "jailbroken", String.valueOf(JAILBROKEN)));
-            assertTrue(listContainsPair(queryParams, "min_suspect_score", String.valueOf(MIN_SUSPECT_SCORE)));
-            assertTrue(listContainsPair(queryParams, "privacy_settings", String.valueOf(PRIVACY_SETTINGS)));
-            assertTrue(listContainsPair(queryParams, "root_apps", String.valueOf(ROOT_APPS)));
-            assertTrue(listContainsPair(queryParams, "tampering", String.valueOf(TAMPERING)));
-            assertTrue(listContainsPair(queryParams, "virtual_machine", String.valueOf(VIRTUAL_MACHINE)));
-            assertTrue(listContainsPair(queryParams, "vpn", String.valueOf(VPN)));
-            assertTrue(listContainsPair(queryParams, "vpn_confidence", VPN_CONFIDENCE));
-            assertTrue(listContainsPair(queryParams, "emulator", String.valueOf(EMULATOR)));
-            assertTrue(listContainsPair(queryParams, "incognito", String.valueOf(INCOGNITO)));
+            // Added +1 because the `ii` query parameter is always included
+            assertEquals(expectedQueryParams.size() + 1, queryParams.size());
+            for (Map.Entry<String, String> expected : expectedQueryParams.entrySet()) {
+                assertTrue(listContainsPair(queryParams, expected.getKey(), expected.getValue()));
+            }
 
             return mockFileToResponse(200, invocation, "mocks/get_event_search_200.json");
         });

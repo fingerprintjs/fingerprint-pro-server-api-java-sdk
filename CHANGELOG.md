@@ -1,5 +1,17 @@
 # Fingerprint Pro Server Java SDK
 
+## 7.5.0
+
+### Minor Changes
+
+- **events-search**: Event search now supports a new set of filter parameters: `vpn`, `virtual_machine`, `tampering`, `anti_detect_browser`, `incognito`, `privacy_settings`, `jailbroken`, `frida`, `factory_reset`, `cloned_app`, `emulator`, `root_apps`, `vpn_confidence`, `min_suspect_score`. ([057c1bc](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/057c1bc8bc87d080d22ee88b4e5b26d0737d3907))
+- **events-search**: Event search now supports two new filter parameters: `ip_blocklist`, `datacenter` ([b6ef518](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/b6ef5181f749eed24b0dfe031c3eb35d344ffb29))
+
+### Patch Changes
+
+- **events**: Update Tampering descriptions to reflect Android support. ([057c1bc](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/057c1bc8bc87d080d22ee88b4e5b26d0737d3907))
+- **webhook**: Add `environmentId` property ([057c1bc](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/057c1bc8bc87d080d22ee88b4e5b26d0737d3907))
+
 ## 7.5.0-develop.0
 
 ### Minor Changes

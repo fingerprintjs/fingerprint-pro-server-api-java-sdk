@@ -1,5 +1,11 @@
 # Fingerprint Pro Server Java SDK
 
+## 7.6.0
+
+### Minor Changes
+
+- Add `confidence` property to the Proxy detection Smart Signal, which now supports both residential and public web proxies. ([90729b3](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/90729b38f9ae45b78807720c946b4fe69891578d))
+
 ## 7.5.0
 
 ### Minor Changes

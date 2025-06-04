@@ -7,7 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**result** | **Boolean** | `true` if the request IP address is used by a public proxy provider, `false` otherwise.  |  [optional] |
+|**result** | **Boolean** | IP address was used by a public proxy provider or belonged to a known recent residential proxy  |  [optional] |
+|**confidence** | [**ProxyConfidence**](ProxyConfidence.md) |  |  [optional] |
 
 
 

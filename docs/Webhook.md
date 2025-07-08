@@ -49,6 +49,7 @@
 |**velocity** | [**WebhookVelocity**](WebhookVelocity.md) |  |  [optional] |
 |**developerTools** | [**WebhookDeveloperTools**](WebhookDeveloperTools.md) |  |  [optional] |
 |**mitmAttack** | [**WebhookMitMAttack**](WebhookMitMAttack.md) |  |  [optional] |
+|**replayed** | **Boolean** | `true` if we determined that this payload was replayed, `false` otherwise.  |  [optional] |
 
 
 

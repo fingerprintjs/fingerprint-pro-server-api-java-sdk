@@ -88,7 +88,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
   Webhook.JSON_PROPERTY_REMOTE_CONTROL,
   Webhook.JSON_PROPERTY_VELOCITY,
   Webhook.JSON_PROPERTY_DEVELOPER_TOOLS,
-  Webhook.JSON_PROPERTY_MITM_ATTACK
+  Webhook.JSON_PROPERTY_MITM_ATTACK,
+  Webhook.JSON_PROPERTY_REPLAYED
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class Webhook {
@@ -217,6 +218,9 @@ public class Webhook {
 
   public static final String JSON_PROPERTY_MITM_ATTACK = "mitmAttack";
   private WebhookMitMAttack mitmAttack;
+
+  public static final String JSON_PROPERTY_REPLAYED = "replayed";
+  private Boolean replayed;
 
   public Webhook() {
   }
@@ -1339,6 +1343,32 @@ public class Webhook {
   }
 
 
+  public Webhook replayed(Boolean replayed) {
+    this.replayed = replayed;
+    return this;
+  }
+
+   /**
+   * `true` if we determined that this payload was replayed, `false` otherwise. 
+   * @return replayed
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "`true` if we determined that this payload was replayed, `false` otherwise. ")
+  @JsonProperty(JSON_PROPERTY_REPLAYED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getReplayed() {
+    return replayed;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_REPLAYED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setReplayed(Boolean replayed) {
+    this.replayed = replayed;
+  }
+
+
   /**
    * Return true if this Webhook object is equal to o.
    */
@@ -1392,12 +1422,13 @@ public class Webhook {
         Objects.equals(this.remoteControl, webhook.remoteControl) &&
         Objects.equals(this.velocity, webhook.velocity) &&
         Objects.equals(this.developerTools, webhook.developerTools) &&
-        Objects.equals(this.mitmAttack, webhook.mitmAttack);
+        Objects.equals(this.mitmAttack, webhook.mitmAttack) &&
+        Objects.equals(this.replayed, webhook.replayed);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(requestId, url, ip, environmentId, tag, time, timestamp, ipLocation, linkedId, visitorId, visitorFound, confidence, firstSeenAt, lastSeenAt, browserDetails, incognito, clientReferrer, components, bot, userAgent, rootApps, emulator, ipInfo, ipBlocklist, tor, vpn, proxy, tampering, clonedApp, factoryReset, jailbroken, frida, privacySettings, virtualMachine, rawDeviceAttributes, highActivity, locationSpoofing, suspectScore, remoteControl, velocity, developerTools, mitmAttack);
+    return Objects.hash(requestId, url, ip, environmentId, tag, time, timestamp, ipLocation, linkedId, visitorId, visitorFound, confidence, firstSeenAt, lastSeenAt, browserDetails, incognito, clientReferrer, components, bot, userAgent, rootApps, emulator, ipInfo, ipBlocklist, tor, vpn, proxy, tampering, clonedApp, factoryReset, jailbroken, frida, privacySettings, virtualMachine, rawDeviceAttributes, highActivity, locationSpoofing, suspectScore, remoteControl, velocity, developerTools, mitmAttack, replayed);
   }
 
   @Override
@@ -1446,6 +1477,7 @@ public class Webhook {
     sb.append("    velocity: ").append(toIndentedString(velocity)).append("\n");
     sb.append("    developerTools: ").append(toIndentedString(developerTools)).append("\n");
     sb.append("    mitmAttack: ").append(toIndentedString(mitmAttack)).append("\n");
+    sb.append("    replayed: ").append(toIndentedString(replayed)).append("\n");
     sb.append("}");
     return sb.toString();
   }

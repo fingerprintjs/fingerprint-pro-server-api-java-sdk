@@ -970,7 +970,7 @@ public class FingerprintApi {
                                localVarAuthNames, null, false);
   }
   /**
-   * 
+   * Dummy path to describe webhook format.
    * Fake path to describe webhook format. More information about webhooks can be found in the [documentation](https://dev.fingerprint.com/docs/webhooks)
    * @param webhook  (optional)
    * @throws ApiException if fails to make API call
@@ -985,7 +985,7 @@ public class FingerprintApi {
   }
 
   /**
-   * 
+   * Dummy path to describe webhook format.
    * Fake path to describe webhook format. More information about webhooks can be found in the [documentation](https://dev.fingerprint.com/docs/webhooks)
    * @param webhook  (optional)
    * @return ApiResponse<Void>

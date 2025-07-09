@@ -1,5 +1,11 @@
 # Fingerprint Pro Server Java SDK
 
+## 7.7.0
+
+### Minor Changes
+
+- add `replayed` field to `identification` in Events and Webhooks ([ae4f9d9](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/ae4f9d93d40881d02c66785adb989b711f12f96d))
+
 ## 7.6.0
 
 ### Minor Changes

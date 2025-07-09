@@ -10,7 +10,7 @@ All URIs are relative to *https://api.fpjs.io*
 | [**getVisits**](FingerprintApi.md#getVisits) | **GET** /visitors/{visitor_id} | Get visits by visitor ID |
 | [**searchEvents**](FingerprintApi.md#searchEvents) | **GET** /events/search | Get events via search |
 | [**updateEvent**](FingerprintApi.md#updateEvent) | **PUT** /events/{request_id} | Update an event with a given request ID |
-| [**webhookTrace**](FingerprintApi.md#webhookTrace) | **TRACE** /webhook |  |
+| [**webhookTrace**](FingerprintApi.md#webhookTrace) | **TRACE** /webhook | Dummy path to describe webhook format. |
 
 
 
@@ -629,7 +629,7 @@ null (empty response body)
 
 > webhookTrace(webhook)
 
-
+Dummy path to describe webhook format.
 
 Fake path to describe webhook format. More information about webhooks can be found in the [documentation](https://dev.fingerprint.com/docs/webhooks)
 

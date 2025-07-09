@@ -41,7 +41,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
   Identification.JSON_PROPERTY_VISITOR_FOUND,
   Identification.JSON_PROPERTY_FIRST_SEEN_AT,
   Identification.JSON_PROPERTY_LAST_SEEN_AT,
-  Identification.JSON_PROPERTY_COMPONENTS
+  Identification.JSON_PROPERTY_COMPONENTS,
+  Identification.JSON_PROPERTY_REPLAYED
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class Identification {
@@ -95,6 +96,9 @@ public class Identification {
 
   public static final String JSON_PROPERTY_COMPONENTS = "components";
   private Map<String, RawDeviceAttribute> components = null;
+
+  public static final String JSON_PROPERTY_REPLAYED = "replayed";
+  private Boolean replayed;
 
   public Identification() {
   }
@@ -556,6 +560,32 @@ public class Identification {
   }
 
 
+  public Identification replayed(Boolean replayed) {
+    this.replayed = replayed;
+    return this;
+  }
+
+   /**
+   * `true` if we determined that this payload was replayed, `false` otherwise. 
+   * @return replayed
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "`true` if we determined that this payload was replayed, `false` otherwise. ")
+  @JsonProperty(JSON_PROPERTY_REPLAYED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getReplayed() {
+    return replayed;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_REPLAYED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setReplayed(Boolean replayed) {
+    this.replayed = replayed;
+  }
+
+
   /**
    * Return true if this Identification object is equal to o.
    */
@@ -584,12 +614,13 @@ public class Identification {
         Objects.equals(this.visitorFound, identification.visitorFound) &&
         Objects.equals(this.firstSeenAt, identification.firstSeenAt) &&
         Objects.equals(this.lastSeenAt, identification.lastSeenAt) &&
-        Objects.equals(this.components, identification.components);
+        Objects.equals(this.components, identification.components) &&
+        Objects.equals(this.replayed, identification.replayed);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(visitorId, requestId, browserDetails, incognito, ip, ipLocation, linkedId, suspect, timestamp, time, url, tag, confidence, visitorFound, firstSeenAt, lastSeenAt, components);
+    return Objects.hash(visitorId, requestId, browserDetails, incognito, ip, ipLocation, linkedId, suspect, timestamp, time, url, tag, confidence, visitorFound, firstSeenAt, lastSeenAt, components, replayed);
   }
 
   @Override
@@ -613,6 +644,7 @@ public class Identification {
     sb.append("    firstSeenAt: ").append(toIndentedString(firstSeenAt)).append("\n");
     sb.append("    lastSeenAt: ").append(toIndentedString(lastSeenAt)).append("\n");
     sb.append("    components: ").append(toIndentedString(components)).append("\n");
+    sb.append("    replayed: ").append(toIndentedString(replayed)).append("\n");
     sb.append("}");
     return sb.toString();
   }

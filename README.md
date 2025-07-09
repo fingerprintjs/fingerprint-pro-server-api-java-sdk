@@ -294,7 +294,7 @@ Class | Method | HTTP request | Description
 *FingerprintApi* | [**getVisits**](docs/FingerprintApi.md#getVisits) | **GET** /visitors/{visitor_id} | Get visits by visitor ID
 *FingerprintApi* | [**searchEvents**](docs/FingerprintApi.md#searchEvents) | **GET** /events/search | Get events via search
 *FingerprintApi* | [**updateEvent**](docs/FingerprintApi.md#updateEvent) | **PUT** /events/{request_id} | Update an event with a given request ID
-*FingerprintApi* | [**webhookTrace**](docs/FingerprintApi.md#webhookTrace) | **TRACE** /webhook | 
+*FingerprintApi* | [**webhookTrace**](docs/FingerprintApi.md#webhookTrace) | **TRACE** /webhook | Dummy path to describe webhook format.
 
 
 ## Documentation for Models

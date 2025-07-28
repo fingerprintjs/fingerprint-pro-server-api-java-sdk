@@ -12,6 +12,7 @@ import com.fingerprint.model.DeprecatedGeolocation;
 import com.fingerprint.model.IdentificationConfidence;
 import com.fingerprint.model.IdentificationSeenAt;
 import com.fingerprint.model.RawDeviceAttribute;
+import com.fingerprint.model.SDK;
 import com.fingerprint.model.WebhookClonedApp;
 import com.fingerprint.model.WebhookDeveloperTools;
 import com.fingerprint.model.WebhookEmulator;
@@ -89,7 +90,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
   Webhook.JSON_PROPERTY_VELOCITY,
   Webhook.JSON_PROPERTY_DEVELOPER_TOOLS,
   Webhook.JSON_PROPERTY_MITM_ATTACK,
-  Webhook.JSON_PROPERTY_REPLAYED
+  Webhook.JSON_PROPERTY_REPLAYED,
+  Webhook.JSON_PROPERTY_SDK
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class Webhook {
@@ -221,6 +223,9 @@ public class Webhook {
 
   public static final String JSON_PROPERTY_REPLAYED = "replayed";
   private Boolean replayed;
+
+  public static final String JSON_PROPERTY_SDK = "sdk";
+  private SDK sdk;
 
   public Webhook() {
   }
@@ -1247,7 +1252,9 @@ public class Webhook {
    /**
    * Get remoteControl
    * @return remoteControl
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @Schema(description = "")
   @JsonProperty(JSON_PROPERTY_REMOTE_CONTROL)
@@ -1369,6 +1376,32 @@ public class Webhook {
   }
 
 
+  public Webhook sdk(SDK sdk) {
+    this.sdk = sdk;
+    return this;
+  }
+
+   /**
+   * Get sdk
+   * @return sdk
+  **/
+  @jakarta.annotation.Nonnull
+  @Schema(required = true, description = "")
+  @JsonProperty(JSON_PROPERTY_SDK)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public SDK getSdk() {
+    return sdk;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SDK)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setSdk(SDK sdk) {
+    this.sdk = sdk;
+  }
+
+
   /**
    * Return true if this Webhook object is equal to o.
    */
@@ -1423,12 +1456,13 @@ public class Webhook {
         Objects.equals(this.velocity, webhook.velocity) &&
         Objects.equals(this.developerTools, webhook.developerTools) &&
         Objects.equals(this.mitmAttack, webhook.mitmAttack) &&
-        Objects.equals(this.replayed, webhook.replayed);
+        Objects.equals(this.replayed, webhook.replayed) &&
+        Objects.equals(this.sdk, webhook.sdk);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(requestId, url, ip, environmentId, tag, time, timestamp, ipLocation, linkedId, visitorId, visitorFound, confidence, firstSeenAt, lastSeenAt, browserDetails, incognito, clientReferrer, components, bot, userAgent, rootApps, emulator, ipInfo, ipBlocklist, tor, vpn, proxy, tampering, clonedApp, factoryReset, jailbroken, frida, privacySettings, virtualMachine, rawDeviceAttributes, highActivity, locationSpoofing, suspectScore, remoteControl, velocity, developerTools, mitmAttack, replayed);
+    return Objects.hash(requestId, url, ip, environmentId, tag, time, timestamp, ipLocation, linkedId, visitorId, visitorFound, confidence, firstSeenAt, lastSeenAt, browserDetails, incognito, clientReferrer, components, bot, userAgent, rootApps, emulator, ipInfo, ipBlocklist, tor, vpn, proxy, tampering, clonedApp, factoryReset, jailbroken, frida, privacySettings, virtualMachine, rawDeviceAttributes, highActivity, locationSpoofing, suspectScore, remoteControl, velocity, developerTools, mitmAttack, replayed, sdk);
   }
 
   @Override
@@ -1478,6 +1512,7 @@ public class Webhook {
     sb.append("    developerTools: ").append(toIndentedString(developerTools)).append("\n");
     sb.append("    mitmAttack: ").append(toIndentedString(mitmAttack)).append("\n");
     sb.append("    replayed: ").append(toIndentedString(replayed)).append("\n");
+    sb.append("    sdk: ").append(toIndentedString(sdk)).append("\n");
     sb.append("}");
     return sb.toString();
   }

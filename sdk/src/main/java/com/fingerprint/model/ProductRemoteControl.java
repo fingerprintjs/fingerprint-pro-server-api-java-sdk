@@ -14,10 +14,11 @@ import com.fingerprint.sdk.JSON;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
- * ProductRemoteControl
+ * This product is deprecated. 
+ * @deprecated
  */
-
-
+@Deprecated
+@Schema(description = "This product is deprecated. ")
 @JsonPropertyOrder({
   ProductRemoteControl.JSON_PROPERTY_DATA,
   ProductRemoteControl.JSON_PROPERTY_ERROR
@@ -41,7 +42,9 @@ public class ProductRemoteControl {
    /**
    * Get data
    * @return data
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @Schema(description = "")
   @JsonProperty(JSON_PROPERTY_DATA)

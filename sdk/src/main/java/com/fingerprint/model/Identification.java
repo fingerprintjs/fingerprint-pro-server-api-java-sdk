@@ -11,6 +11,7 @@ import com.fingerprint.model.DeprecatedGeolocation;
 import com.fingerprint.model.IdentificationConfidence;
 import com.fingerprint.model.IdentificationSeenAt;
 import com.fingerprint.model.RawDeviceAttribute;
+import com.fingerprint.model.SDK;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -42,7 +43,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
   Identification.JSON_PROPERTY_FIRST_SEEN_AT,
   Identification.JSON_PROPERTY_LAST_SEEN_AT,
   Identification.JSON_PROPERTY_COMPONENTS,
-  Identification.JSON_PROPERTY_REPLAYED
+  Identification.JSON_PROPERTY_REPLAYED,
+  Identification.JSON_PROPERTY_SDK
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class Identification {
@@ -99,6 +101,9 @@ public class Identification {
 
   public static final String JSON_PROPERTY_REPLAYED = "replayed";
   private Boolean replayed;
+
+  public static final String JSON_PROPERTY_SDK = "sdk";
+  private SDK sdk;
 
   public Identification() {
   }
@@ -569,10 +574,10 @@ public class Identification {
    * `true` if we determined that this payload was replayed, `false` otherwise. 
    * @return replayed
   **/
-  @jakarta.annotation.Nullable
-  @Schema(description = "`true` if we determined that this payload was replayed, `false` otherwise. ")
+  @jakarta.annotation.Nonnull
+  @Schema(required = true, description = "`true` if we determined that this payload was replayed, `false` otherwise. ")
   @JsonProperty(JSON_PROPERTY_REPLAYED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getReplayed() {
     return replayed;
@@ -580,9 +585,35 @@ public class Identification {
 
 
   @JsonProperty(JSON_PROPERTY_REPLAYED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setReplayed(Boolean replayed) {
     this.replayed = replayed;
+  }
+
+
+  public Identification sdk(SDK sdk) {
+    this.sdk = sdk;
+    return this;
+  }
+
+   /**
+   * Get sdk
+   * @return sdk
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "")
+  @JsonProperty(JSON_PROPERTY_SDK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SDK getSdk() {
+    return sdk;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SDK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSdk(SDK sdk) {
+    this.sdk = sdk;
   }
 
 
@@ -615,12 +646,13 @@ public class Identification {
         Objects.equals(this.firstSeenAt, identification.firstSeenAt) &&
         Objects.equals(this.lastSeenAt, identification.lastSeenAt) &&
         Objects.equals(this.components, identification.components) &&
-        Objects.equals(this.replayed, identification.replayed);
+        Objects.equals(this.replayed, identification.replayed) &&
+        Objects.equals(this.sdk, identification.sdk);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(visitorId, requestId, browserDetails, incognito, ip, ipLocation, linkedId, suspect, timestamp, time, url, tag, confidence, visitorFound, firstSeenAt, lastSeenAt, components, replayed);
+    return Objects.hash(visitorId, requestId, browserDetails, incognito, ip, ipLocation, linkedId, suspect, timestamp, time, url, tag, confidence, visitorFound, firstSeenAt, lastSeenAt, components, replayed, sdk);
   }
 
   @Override
@@ -645,6 +677,7 @@ public class Identification {
     sb.append("    lastSeenAt: ").append(toIndentedString(lastSeenAt)).append("\n");
     sb.append("    components: ").append(toIndentedString(components)).append("\n");
     sb.append("    replayed: ").append(toIndentedString(replayed)).append("\n");
+    sb.append("    sdk: ").append(toIndentedString(sdk)).append("\n");
     sb.append("}");
     return sb.toString();
   }

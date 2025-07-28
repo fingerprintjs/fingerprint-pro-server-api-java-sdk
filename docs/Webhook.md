@@ -50,6 +50,7 @@
 |**developerTools** | [**WebhookDeveloperTools**](WebhookDeveloperTools.md) |  |  [optional] |
 |**mitmAttack** | [**WebhookMitMAttack**](WebhookMitMAttack.md) |  |  [optional] |
 |**replayed** | **Boolean** | `true` if we determined that this payload was replayed, `false` otherwise.  |  [optional] |
+|**sdk** | [**SDK**](SDK.md) |  |  |
 
 
 

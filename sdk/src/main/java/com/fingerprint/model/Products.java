@@ -702,7 +702,9 @@ public class Products {
    /**
    * Get remoteControl
    * @return remoteControl
+   * @deprecated
   **/
+  @Deprecated
   @jakarta.annotation.Nullable
   @Schema(description = "")
   @JsonProperty(JSON_PROPERTY_REMOTE_CONTROL)

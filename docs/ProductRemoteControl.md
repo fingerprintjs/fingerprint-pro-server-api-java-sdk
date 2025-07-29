@@ -2,6 +2,8 @@
 
 # ProductRemoteControl
 
+This product is deprecated.
+
 
 ## Properties
 

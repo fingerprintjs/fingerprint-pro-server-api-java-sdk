@@ -370,6 +370,7 @@ Class | Method | HTTP request | Description
  - [RelatedVisitorsResponse](docs/RelatedVisitorsResponse.md)
  - [RemoteControl](docs/RemoteControl.md)
  - [RootApps](docs/RootApps.md)
+ - [SDK](docs/SDK.md)
  - [SearchEventsResponse](docs/SearchEventsResponse.md)
  - [SearchEventsResponseEventsInner](docs/SearchEventsResponseEventsInner.md)
  - [SuspectScore](docs/SuspectScore.md)

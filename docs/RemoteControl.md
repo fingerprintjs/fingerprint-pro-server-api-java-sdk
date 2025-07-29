@@ -2,6 +2,8 @@
 
 # RemoteControl
 
+This signal is deprecated.
+
 
 ## Properties
 

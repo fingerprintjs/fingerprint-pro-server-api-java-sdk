@@ -12,10 +12,11 @@ import com.fingerprint.sdk.JSON;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
- * WebhookRemoteControl
+ * This signal is deprecated. 
+ * @deprecated
  */
-
-
+@Deprecated
+@Schema(description = "This signal is deprecated. ")
 @JsonPropertyOrder({
   WebhookRemoteControl.JSON_PROPERTY_RESULT
 })

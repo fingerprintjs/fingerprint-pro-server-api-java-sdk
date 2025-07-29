@@ -4,5 +4,9 @@
   "initialVersions": {
     "fingerprint-pro-server-api-java-sdk": "7.7.0"
   },
-  "changesets": []
+  "changesets": [
+    "dark-dogs-play",
+    "sharp-facts-boil",
+    "ten-plums-tickle"
+  ]
 }

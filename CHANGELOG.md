@@ -1,5 +1,16 @@
 # Fingerprint Pro Server Java SDK
 
+## 7.8.0
+
+### Minor Changes
+
+- Mark `replayed` field required in the `identification` product schema. This field will always be present. ([0a0a401](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/0a0a40165031649be96ad9197e929409c642cfad))
+- Add `sdk` field with platform metadata to `identification` ([0a0a401](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/0a0a40165031649be96ad9197e929409c642cfad))
+
+### Patch Changes
+
+- Deprecate the Remote Control Detection Smart Signal. This signal is no longer available. ([0a0a401](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/0a0a40165031649be96ad9197e929409c642cfad))
+
 ## 7.8.0-develop.0
 
 ### Minor Changes

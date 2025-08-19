@@ -20,6 +20,7 @@ import org.mockito.invocation.InvocationOnMock;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -194,7 +195,9 @@ public class FingerprintApiTest {
         assertFalse(response.getProducts().getFrida().getData().getResult());
         assertFalse(response.getProducts().getJailbroken().getData().getResult());
         assertFalse(response.getProducts().getIpBlocklist().getData().getResult());
-        assertFalse(response.getProducts().getProxy().getData().getResult());
+        assertTrue(response.getProducts().getProxy().getData().getResult());
+        assertEquals(ProxyDetails.ProxyTypeEnum.RESIDENTIAL, response.getProducts().getProxy().getData().getDetails().getProxyType());
+        assertInstanceOf(OffsetDateTime.class, response.getProducts().getProxy().getData().getDetails().getLastSeenAt());
         assertFalse(response.getProducts().getTampering().getData().getResult());
         assertFalse(response.getProducts().getTor().getData().getResult());
         assertFalse(response.getProducts().getVpn().getData().getResult());

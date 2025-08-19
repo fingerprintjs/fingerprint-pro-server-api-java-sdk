@@ -1,5 +1,11 @@
 # Fingerprint Pro Server Java SDK
 
+## 7.9.0
+
+### Minor Changes
+
+- Add `details` object to the `proxy` signal. This field includes the `type` of the detected proxy (`residential` or `data_center`) and the `lastSeenAt` timestamp of when an IP was last observed to show proxy-like behavior. ([c4ccff0](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/c4ccff044bcf967e3839027fc12c793814504853))
+
 ## 7.8.0
 
 ### Minor Changes

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fingerprint.model.ProxyConfidence;
+import com.fingerprint.model.ProxyDetails;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fingerprint.sdk.JSON;
@@ -19,7 +20,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 @JsonPropertyOrder({
   Proxy.JSON_PROPERTY_RESULT,
-  Proxy.JSON_PROPERTY_CONFIDENCE
+  Proxy.JSON_PROPERTY_CONFIDENCE,
+  Proxy.JSON_PROPERTY_DETAILS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class Proxy {
@@ -28,6 +30,9 @@ public class Proxy {
 
   public static final String JSON_PROPERTY_CONFIDENCE = "confidence";
   private ProxyConfidence confidence;
+
+  public static final String JSON_PROPERTY_DETAILS = "details";
+  private ProxyDetails details;
 
   public Proxy() {
   }
@@ -84,6 +89,32 @@ public class Proxy {
   }
 
 
+  public Proxy details(ProxyDetails details) {
+    this.details = details;
+    return this;
+  }
+
+   /**
+   * Get details
+   * @return details
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "")
+  @JsonProperty(JSON_PROPERTY_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ProxyDetails getDetails() {
+    return details;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDetails(ProxyDetails details) {
+    this.details = details;
+  }
+
+
   /**
    * Return true if this Proxy object is equal to o.
    */
@@ -97,12 +128,13 @@ public class Proxy {
     }
     Proxy proxy = (Proxy) o;
     return Objects.equals(this.result, proxy.result) &&
-        Objects.equals(this.confidence, proxy.confidence);
+        Objects.equals(this.confidence, proxy.confidence) &&
+        Objects.equals(this.details, proxy.details);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(result, confidence);
+    return Objects.hash(result, confidence, details);
   }
 
   @Override
@@ -111,6 +143,7 @@ public class Proxy {
     sb.append("class Proxy {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("    confidence: ").append(toIndentedString(confidence)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -407,6 +407,13 @@ public class FingerprintApi {
     private Float minSuspectScore;
     private Boolean ipBlocklist;
     private Boolean datacenter;
+    private Boolean developerTools;
+    private Boolean locationSpoofing;
+    private Boolean mitmAttack;
+    private Boolean proxy;
+    private String sdkVersion;
+    private String sdkPlatform;
+    private List<String> environment;
 
     /**
      * getter for paginationKey - Use `pagination_key` to get the next page of results.   When more results are available (e.g., you requested up to 200 results for your search using `limit`, but there are more than 200 events total matching your request), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `timestamp` of the last returned event. In the following request, use that value in the `pagination_key` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/events/search?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/events/search?limit=200&pagination_key=1740815825085` 
@@ -783,6 +790,111 @@ public class FingerprintApi {
       return this;
     }
 
+    /**
+     * getter for developerTools - Filter events by Developer Tools detection result. > Note: When using this parameter, only events with the `products.developerTools.data.result` property set to `true` or `false` are returned. Events without a `products.developerTools` Smart Signal result are left out of the response. 
+     */
+    public Boolean getDeveloperTools() {
+      return developerTools;
+    }
+
+    /**
+     * setter for developerTools - Filter events by Developer Tools detection result. > Note: When using this parameter, only events with the `products.developerTools.data.result` property set to `true` or `false` are returned. Events without a `products.developerTools` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setDeveloperTools(Boolean developerTools) {
+      this.developerTools = developerTools;
+      return this;
+    }
+
+    /**
+     * getter for locationSpoofing - Filter events by Location Spoofing detection result. > Note: When using this parameter, only events with the `products.locationSpoofing.data.result` property set to `true` or `false` are returned. Events without a `products.locationSpoofing` Smart Signal result are left out of the response. 
+     */
+    public Boolean getLocationSpoofing() {
+      return locationSpoofing;
+    }
+
+    /**
+     * setter for locationSpoofing - Filter events by Location Spoofing detection result. > Note: When using this parameter, only events with the `products.locationSpoofing.data.result` property set to `true` or `false` are returned. Events without a `products.locationSpoofing` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setLocationSpoofing(Boolean locationSpoofing) {
+      this.locationSpoofing = locationSpoofing;
+      return this;
+    }
+
+    /**
+     * getter for mitmAttack - Filter events by MITM (Man-in-the-Middle) Attack detection result. > Note: When using this parameter, only events with the `products.mitmAttack.data.result` property set to `true` or `false` are returned. Events without a `products.mitmAttack` Smart Signal result are left out of the response. 
+     */
+    public Boolean getMitmAttack() {
+      return mitmAttack;
+    }
+
+    /**
+     * setter for mitmAttack - Filter events by MITM (Man-in-the-Middle) Attack detection result. > Note: When using this parameter, only events with the `products.mitmAttack.data.result` property set to `true` or `false` are returned. Events without a `products.mitmAttack` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setMitmAttack(Boolean mitmAttack) {
+      this.mitmAttack = mitmAttack;
+      return this;
+    }
+
+    /**
+     * getter for proxy - Filter events by Proxy detection result. > Note: When using this parameter, only events with the `products.proxy.data.result` property set to `true` or `false` are returned. Events without a `products.proxy` Smart Signal result are left out of the response. 
+     */
+    public Boolean getProxy() {
+      return proxy;
+    }
+
+    /**
+     * setter for proxy - Filter events by Proxy detection result. > Note: When using this parameter, only events with the `products.proxy.data.result` property set to `true` or `false` are returned. Events without a `products.proxy` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setProxy(Boolean proxy) {
+      this.proxy = proxy;
+      return this;
+    }
+
+    /**
+     * getter for sdkVersion - Filter events by a specific SDK version associated with the identification event. Example: `3.11.14` 
+     */
+    public String getSdkVersion() {
+      return sdkVersion;
+    }
+
+    /**
+     * setter for sdkVersion - Filter events by a specific SDK version associated with the identification event. Example: `3.11.14` 
+     */
+    public SearchEventsOptionalParams setSdkVersion(String sdkVersion) {
+      this.sdkVersion = sdkVersion;
+      return this;
+    }
+
+    /**
+     * getter for sdkPlatform - Filter events by the SDK Platform associated with the identification event. `js` - JavaScript agent (Web). `ios` - Apple iOS based devices. `android` - Android based devices. 
+     */
+    public String getSdkPlatform() {
+      return sdkPlatform;
+    }
+
+    /**
+     * setter for sdkPlatform - Filter events by the SDK Platform associated with the identification event. `js` - JavaScript agent (Web). `ios` - Apple iOS based devices. `android` - Android based devices. 
+     */
+    public SearchEventsOptionalParams setSdkPlatform(String sdkPlatform) {
+      this.sdkPlatform = sdkPlatform;
+      return this;
+    }
+
+    /**
+     * getter for environment - Filter for events by providing one or more environment IDs. 
+     */
+    public List<String> getEnvironment() {
+      return environment;
+    }
+
+    /**
+     * setter for environment - Filter for events by providing one or more environment IDs. 
+     */
+    public SearchEventsOptionalParams setEnvironment(List<String> environment) {
+      this.environment = environment;
+      return this;
+    }
+
   }
   /**
    * Get events via search
@@ -864,6 +976,13 @@ public class FingerprintApi {
       localVarQueryParams.addAll(apiClient.parameterToPairs("", "min_suspect_score", searchEventsOptionalParams.getMinSuspectScore()));
       localVarQueryParams.addAll(apiClient.parameterToPairs("", "ip_blocklist", searchEventsOptionalParams.getIpBlocklist()));
       localVarQueryParams.addAll(apiClient.parameterToPairs("", "datacenter", searchEventsOptionalParams.getDatacenter()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "developer_tools", searchEventsOptionalParams.getDeveloperTools()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "location_spoofing", searchEventsOptionalParams.getLocationSpoofing()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "mitm_attack", searchEventsOptionalParams.getMitmAttack()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "proxy", searchEventsOptionalParams.getProxy()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "sdk_version", searchEventsOptionalParams.getSdkVersion()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "sdk_platform", searchEventsOptionalParams.getSdkPlatform()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "environment", searchEventsOptionalParams.getEnvironment()));
     }
 
     

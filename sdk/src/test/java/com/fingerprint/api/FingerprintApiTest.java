@@ -19,11 +19,10 @@ import org.mockito.invocation.InvocationOnMock;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.time.OffsetDateTime;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -585,6 +584,15 @@ public class FingerprintApiTest {
         final Boolean INCOGNITO = true;
         final Boolean IP_BLOCKLIST = true;
         final Boolean DATACENTER = true;
+        final Boolean DEVELOPER_TOOLS = true;
+        final Boolean LOCATION_SPOOFING = true;
+        final Boolean MITM_ATTACK = true;
+        final Boolean PROXY = true;
+        final String SDK_VERSION = "testSdkVersion";
+        final String SDK_PLATFORM = "testSdkPlatform";
+        final List<String> ENVIRONMENT = new ArrayList<String>();
+        ENVIRONMENT.add("env1");
+        ENVIRONMENT.add("env2");
 
         Map<String, String> expectedQueryParams = new HashMap<>();
         expectedQueryParams.put("limit", String.valueOf(LIMIT));
@@ -613,14 +621,29 @@ public class FingerprintApiTest {
         expectedQueryParams.put("incognito", String.valueOf(INCOGNITO));
         expectedQueryParams.put("ip_blocklist", String.valueOf(IP_BLOCKLIST));
         expectedQueryParams.put("datacenter", String.valueOf(DATACENTER));
+        expectedQueryParams.put("developer_tools", String.valueOf(DEVELOPER_TOOLS));
+        expectedQueryParams.put("location_spoofing", String.valueOf(LOCATION_SPOOFING));
+        expectedQueryParams.put("mitm_attack", String.valueOf(MITM_ATTACK));
+        expectedQueryParams.put("proxy", String.valueOf(PROXY));
+        expectedQueryParams.put("sdk_version", SDK_VERSION);
+        expectedQueryParams.put("sdk_platform", SDK_PLATFORM);
 
         addMock("searchEvents", null, invocation -> {
             List<Pair> queryParams = invocation.getArgument(3);
-            // Added +1 because the `ii` query parameter is always included
-            assertEquals(expectedQueryParams.size() + 1, queryParams.size());
+            // base expected + 1 for "ii" + N for each environment entry
+            assertEquals(expectedQueryParams.size() + 1 + ENVIRONMENT.size(), queryParams.size());
             for (Map.Entry<String, String> expected : expectedQueryParams.entrySet()) {
                 assertTrue(listContainsPair(queryParams, expected.getKey(), expected.getValue()));
             }
+
+            List<String> actualEnv = queryParams.stream()
+                    .filter(p -> "environment".equals(p.getName()) || "environment[]".equals(p.getName()))
+                    .map(Pair::getValue)
+                    // if your Pair values might be percent-encoded, decode them
+                    .map(v -> URLDecoder.decode(v, StandardCharsets.UTF_8))
+                    .collect(Collectors.toList());
+
+            assertEquals(ENVIRONMENT, actualEnv);
 
             return mockFileToResponse(200, invocation, "mocks/get_event_search_200.json");
         });
@@ -647,7 +670,15 @@ public class FingerprintApiTest {
                 .setEmulator(EMULATOR)
                 .setIncognito(INCOGNITO)
                 .setIpBlocklist(IP_BLOCKLIST)
-                .setDatacenter(DATACENTER));
+                .setDatacenter(DATACENTER)
+                .setDeveloperTools(DEVELOPER_TOOLS)
+                .setLocationSpoofing(LOCATION_SPOOFING)
+                .setMitmAttack(MITM_ATTACK)
+                .setProxy(PROXY)
+                .setSdkVersion(SDK_VERSION)
+                .setSdkPlatform(SDK_PLATFORM)
+                .setEnvironment(ENVIRONMENT)
+        );
         List<SearchEventsResponseEventsInner> events = response.getEvents();
         assertEquals(events.size(), 1);
     }

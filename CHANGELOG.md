@@ -1,5 +1,13 @@
 # Fingerprint Pro Server Java SDK
 
+## 7.10.0-develop.0
+
+### Minor Changes
+
+- **events-search**: Event search now supports a new set of filter parameters: `developer_tools`, `location_spoofing`, `mitm_attack`, `proxy`, `sdk_version`, `sdk_platform`, `environment` ([9f98693](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/9f9869302ff055045d379e83b9ea624bc03f2962))
+- **webhook**: Add `supplementaryIds` property to the Webhooks schema. ([9f98693](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/9f9869302ff055045d379e83b9ea624bc03f2962))
+- Add `environmentId` property to `identification` ([9f98693](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/9f9869302ff055045d379e83b9ea624bc03f2962))
+
 ## 7.9.0
 
 ### Minor Changes

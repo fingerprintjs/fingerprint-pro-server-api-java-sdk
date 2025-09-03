@@ -44,7 +44,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
   Identification.JSON_PROPERTY_LAST_SEEN_AT,
   Identification.JSON_PROPERTY_COMPONENTS,
   Identification.JSON_PROPERTY_REPLAYED,
-  Identification.JSON_PROPERTY_SDK
+  Identification.JSON_PROPERTY_SDK,
+  Identification.JSON_PROPERTY_ENVIRONMENT_ID
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class Identification {
@@ -105,6 +106,9 @@ public class Identification {
   public static final String JSON_PROPERTY_SDK = "sdk";
   private SDK sdk;
 
+  public static final String JSON_PROPERTY_ENVIRONMENT_ID = "environmentId";
+  private String environmentId;
+
   public Identification() {
   }
 
@@ -114,11 +118,11 @@ public class Identification {
   }
 
    /**
-   * String of 20 characters that uniquely identifies the visitor's browser.
+   * String of 20 characters that uniquely identifies the visitor's browser or mobile device.
    * @return visitorId
   **/
   @jakarta.annotation.Nonnull
-  @Schema(required = true, description = "String of 20 characters that uniquely identifies the visitor's browser.")
+  @Schema(required = true, description = "String of 20 characters that uniquely identifies the visitor's browser or mobile device.")
   @JsonProperty(JSON_PROPERTY_VISITOR_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -617,6 +621,32 @@ public class Identification {
   }
 
 
+  public Identification environmentId(String environmentId) {
+    this.environmentId = environmentId;
+    return this;
+  }
+
+   /**
+   * Environment ID associated with the event
+   * @return environmentId
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "Environment ID associated with the event")
+  @JsonProperty(JSON_PROPERTY_ENVIRONMENT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getEnvironmentId() {
+    return environmentId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ENVIRONMENT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEnvironmentId(String environmentId) {
+    this.environmentId = environmentId;
+  }
+
+
   /**
    * Return true if this Identification object is equal to o.
    */
@@ -647,12 +677,13 @@ public class Identification {
         Objects.equals(this.lastSeenAt, identification.lastSeenAt) &&
         Objects.equals(this.components, identification.components) &&
         Objects.equals(this.replayed, identification.replayed) &&
-        Objects.equals(this.sdk, identification.sdk);
+        Objects.equals(this.sdk, identification.sdk) &&
+        Objects.equals(this.environmentId, identification.environmentId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(visitorId, requestId, browserDetails, incognito, ip, ipLocation, linkedId, suspect, timestamp, time, url, tag, confidence, visitorFound, firstSeenAt, lastSeenAt, components, replayed, sdk);
+    return Objects.hash(visitorId, requestId, browserDetails, incognito, ip, ipLocation, linkedId, suspect, timestamp, time, url, tag, confidence, visitorFound, firstSeenAt, lastSeenAt, components, replayed, sdk, environmentId);
   }
 
   @Override
@@ -678,6 +709,7 @@ public class Identification {
     sb.append("    components: ").append(toIndentedString(components)).append("\n");
     sb.append("    replayed: ").append(toIndentedString(replayed)).append("\n");
     sb.append("    sdk: ").append(toIndentedString(sdk)).append("\n");
+    sb.append("    environmentId: ").append(toIndentedString(environmentId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

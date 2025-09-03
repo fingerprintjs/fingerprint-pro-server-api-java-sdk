@@ -16,7 +16,7 @@
 |**timestamp** | **Long** | Timestamp of the event with millisecond precision in Unix time. |  |
 |**ipLocation** | [**DeprecatedGeolocation**](DeprecatedGeolocation.md) |  |  [optional] |
 |**linkedId** | **String** | A customer-provided id that was sent with the request. |  [optional] |
-|**visitorId** | **String** | String of 20 characters that uniquely identifies the visitor's browser. |  [optional] |
+|**visitorId** | **String** | String of 20 characters that uniquely identifies the visitor's browser or mobile device. |  [optional] |
 |**visitorFound** | **Boolean** | Attribute represents if a visitor had been identified before. |  [optional] |
 |**confidence** | [**IdentificationConfidence**](IdentificationConfidence.md) |  |  [optional] |
 |**firstSeenAt** | [**IdentificationSeenAt**](IdentificationSeenAt.md) |  |  [optional] |
@@ -51,6 +51,7 @@
 |**mitmAttack** | [**WebhookMitMAttack**](WebhookMitMAttack.md) |  |  [optional] |
 |**replayed** | **Boolean** | `true` if we determined that this payload was replayed, `false` otherwise.  |  [optional] |
 |**sdk** | [**SDK**](SDK.md) |  |  |
+|**supplementaryIds** | [**WebhookSupplementaryIDs**](WebhookSupplementaryIDs.md) |  |  [optional] |
 
 
 

@@ -443,6 +443,13 @@ public class FingerprintApiExample {
         Float minSuspectScore = 3.4F; // Float | Filter events with Suspect Score result above a provided minimum threshold. > Note: When using this parameter, only events where the `products.suspectScore.data.result` property set to a value exceeding your threshold are returned. Events without a `products.suspectScore` Smart Signal result are left out of the response. 
         Boolean ipBlocklist = true; // Boolean | Filter events by IP Blocklist Detection result.   > Note: When using this parameter, only events with the `products.ipBlocklist.data.result` property set to `true` or `false` are returned. Events without a `products.ipBlocklist` Smart Signal result are left out of the response. 
         Boolean datacenter = true; // Boolean | Filter events by Datacenter Detection result.   > Note: When using this parameter, only events with the `products.ipInfo.data.v4.datacenter.result` or `products.ipInfo.data.v6.datacenter.result` property set to `true` or `false` are returned. Events without a `products.ipInfo` Smart Signal result are left out of the response. 
+        Boolean developerTools = true; // Boolean | Filter events by Developer Tools detection result. > Note: When using this parameter, only events with the `products.developerTools.data.result` property set to `true` or `false` are returned. Events without a `products.developerTools` Smart Signal result are left out of the response. 
+        Boolean locationSpoofing = true; // Boolean | Filter events by Location Spoofing detection result. > Note: When using this parameter, only events with the `products.locationSpoofing.data.result` property set to `true` or `false` are returned. Events without a `products.locationSpoofing` Smart Signal result are left out of the response. 
+        Boolean mitmAttack = true; // Boolean | Filter events by MITM (Man-in-the-Middle) Attack detection result. > Note: When using this parameter, only events with the `products.mitmAttack.data.result` property set to `true` or `false` are returned. Events without a `products.mitmAttack` Smart Signal result are left out of the response. 
+        Boolean proxy = true; // Boolean | Filter events by Proxy detection result. > Note: When using this parameter, only events with the `products.proxy.data.result` property set to `true` or `false` are returned. Events without a `products.proxy` Smart Signal result are left out of the response. 
+        String sdkVersion = "sdkVersion_example"; // String | Filter events by a specific SDK version associated with the identification event. Example: `3.11.14` 
+        String sdkPlatform = "js"; // String | Filter events by the SDK Platform associated with the identification event. `js` - JavaScript agent (Web). `ios` - Apple iOS based devices. `android` - Android based devices. 
+        List<String> environment = Arrays.asList(); // List<String> | Filter for events by providing one or more environment IDs. 
         try {
             SearchEventsResponse result = api.searchEvents(limit, new FingerprintApi.SearchEventsOptionalParams()
                 .setPaginationKey(paginationKey)
@@ -469,7 +476,14 @@ public class FingerprintApiExample {
                 .setVpnConfidence(vpnConfidence)
                 .setMinSuspectScore(minSuspectScore)
                 .setIpBlocklist(ipBlocklist)
-                .setDatacenter(datacenter));
+                .setDatacenter(datacenter)
+                .setDeveloperTools(developerTools)
+                .setLocationSpoofing(locationSpoofing)
+                .setMitmAttack(mitmAttack)
+                .setProxy(proxy)
+                .setSdkVersion(sdkVersion)
+                .setSdkPlatform(sdkPlatform)
+                .setEnvironment(environment));
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.searchEvents:" + e.getMessage());
@@ -518,6 +532,13 @@ Object containing optional parameters for API method. Supports a fluent interfac
 | **minSuspectScore** | **Float**| Filter events with Suspect Score result above a provided minimum threshold. > Note: When using this parameter, only events where the `products.suspectScore.data.result` property set to a value exceeding your threshold are returned. Events without a `products.suspectScore` Smart Signal result are left out of the response.  | [optional] |
 | **ipBlocklist** | **Boolean**| Filter events by IP Blocklist Detection result.   > Note: When using this parameter, only events with the `products.ipBlocklist.data.result` property set to `true` or `false` are returned. Events without a `products.ipBlocklist` Smart Signal result are left out of the response.  | [optional] |
 | **datacenter** | **Boolean**| Filter events by Datacenter Detection result.   > Note: When using this parameter, only events with the `products.ipInfo.data.v4.datacenter.result` or `products.ipInfo.data.v6.datacenter.result` property set to `true` or `false` are returned. Events without a `products.ipInfo` Smart Signal result are left out of the response.  | [optional] |
+| **developerTools** | **Boolean**| Filter events by Developer Tools detection result. > Note: When using this parameter, only events with the `products.developerTools.data.result` property set to `true` or `false` are returned. Events without a `products.developerTools` Smart Signal result are left out of the response.  | [optional] |
+| **locationSpoofing** | **Boolean**| Filter events by Location Spoofing detection result. > Note: When using this parameter, only events with the `products.locationSpoofing.data.result` property set to `true` or `false` are returned. Events without a `products.locationSpoofing` Smart Signal result are left out of the response.  | [optional] |
+| **mitmAttack** | **Boolean**| Filter events by MITM (Man-in-the-Middle) Attack detection result. > Note: When using this parameter, only events with the `products.mitmAttack.data.result` property set to `true` or `false` are returned. Events without a `products.mitmAttack` Smart Signal result are left out of the response.  | [optional] |
+| **proxy** | **Boolean**| Filter events by Proxy detection result. > Note: When using this parameter, only events with the `products.proxy.data.result` property set to `true` or `false` are returned. Events without a `products.proxy` Smart Signal result are left out of the response.  | [optional] |
+| **sdkVersion** | **String**| Filter events by a specific SDK version associated with the identification event. Example: `3.11.14`  | [optional] |
+| **sdkPlatform** | **String**| Filter events by the SDK Platform associated with the identification event. `js` - JavaScript agent (Web). `ios` - Apple iOS based devices. `android` - Android based devices.  | [optional] [enum: js, android, ios] |
+| **environment** | **List&lt;String&gt;**| Filter for events by providing one or more environment IDs.  | [optional] |
 
 ### Return type
 

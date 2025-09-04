@@ -414,6 +414,8 @@ public class FingerprintApi {
     private String sdkVersion;
     private String sdkPlatform;
     private List<String> environment;
+    private String proximityId;
+    private Integer proximityPrecisionRadius;
 
     /**
      * getter for paginationKey - Use `pagination_key` to get the next page of results.   When more results are available (e.g., you requested up to 200 results for your search using `limit`, but there are more than 200 events total matching your request), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `timestamp` of the last returned event. In the following request, use that value in the `pagination_key` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/events/search?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/events/search?limit=200&pagination_key=1740815825085` 
@@ -895,6 +897,36 @@ public class FingerprintApi {
       return this;
     }
 
+    /**
+     * getter for proximityId - Filter events by the most precise Proximity ID provided by default. > Note: When using this parameter, only events with the `products.proximity.id` property matching the provided ID are returned. Events without a `products.proximity` result are left out of the response. 
+     */
+    public String getProximityId() {
+      return proximityId;
+    }
+
+    /**
+     * setter for proximityId - Filter events by the most precise Proximity ID provided by default. > Note: When using this parameter, only events with the `products.proximity.id` property matching the provided ID are returned. Events without a `products.proximity` result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setProximityId(String proximityId) {
+      this.proximityId = proximityId;
+      return this;
+    }
+
+    /**
+     * getter for proximityPrecisionRadius - Filter events by Proximity Radius. > Note: When using this parameter, only events with the `products.proximity.precisionRadius` property set to a valid value are returned. Events without a `products.proximity` result are left out of the response. 
+     */
+    public Integer getProximityPrecisionRadius() {
+      return proximityPrecisionRadius;
+    }
+
+    /**
+     * setter for proximityPrecisionRadius - Filter events by Proximity Radius. > Note: When using this parameter, only events with the `products.proximity.precisionRadius` property set to a valid value are returned. Events without a `products.proximity` result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setProximityPrecisionRadius(Integer proximityPrecisionRadius) {
+      this.proximityPrecisionRadius = proximityPrecisionRadius;
+      return this;
+    }
+
   }
   /**
    * Get events via search
@@ -983,6 +1015,8 @@ public class FingerprintApi {
       localVarQueryParams.addAll(apiClient.parameterToPairs("", "sdk_version", searchEventsOptionalParams.getSdkVersion()));
       localVarQueryParams.addAll(apiClient.parameterToPairs("", "sdk_platform", searchEventsOptionalParams.getSdkPlatform()));
       localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "environment", searchEventsOptionalParams.getEnvironment()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "proximity_id", searchEventsOptionalParams.getProximityId()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "proximity_precision_radius", searchEventsOptionalParams.getProximityPrecisionRadius()));
     }
 
     

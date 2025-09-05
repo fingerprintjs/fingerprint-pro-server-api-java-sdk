@@ -450,6 +450,8 @@ public class FingerprintApiExample {
         String sdkVersion = "sdkVersion_example"; // String | Filter events by a specific SDK version associated with the identification event. Example: `3.11.14` 
         String sdkPlatform = "js"; // String | Filter events by the SDK Platform associated with the identification event. `js` - JavaScript agent (Web). `ios` - Apple iOS based devices. `android` - Android based devices. 
         List<String> environment = Arrays.asList(); // List<String> | Filter for events by providing one or more environment IDs. 
+        String proximityId = "proximityId_example"; // String | Filter events by the most precise Proximity ID provided by default. > Note: When using this parameter, only events with the `products.proximity.id` property matching the provided ID are returned. Events without a `products.proximity` result are left out of the response. 
+        Integer proximityPrecisionRadius = 10; // Integer | Filter events by Proximity Radius. > Note: When using this parameter, only events with the `products.proximity.precisionRadius` property set to a valid value are returned. Events without a `products.proximity` result are left out of the response. 
         try {
             SearchEventsResponse result = api.searchEvents(limit, new FingerprintApi.SearchEventsOptionalParams()
                 .setPaginationKey(paginationKey)
@@ -483,7 +485,9 @@ public class FingerprintApiExample {
                 .setProxy(proxy)
                 .setSdkVersion(sdkVersion)
                 .setSdkPlatform(sdkPlatform)
-                .setEnvironment(environment));
+                .setEnvironment(environment)
+                .setProximityId(proximityId)
+                .setProximityPrecisionRadius(proximityPrecisionRadius));
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.searchEvents:" + e.getMessage());
@@ -539,6 +543,8 @@ Object containing optional parameters for API method. Supports a fluent interfac
 | **sdkVersion** | **String**| Filter events by a specific SDK version associated with the identification event. Example: `3.11.14`  | [optional] |
 | **sdkPlatform** | **String**| Filter events by the SDK Platform associated with the identification event. `js` - JavaScript agent (Web). `ios` - Apple iOS based devices. `android` - Android based devices.  | [optional] [enum: js, android, ios] |
 | **environment** | **List&lt;String&gt;**| Filter for events by providing one or more environment IDs.  | [optional] |
+| **proximityId** | **String**| Filter events by the most precise Proximity ID provided by default. > Note: When using this parameter, only events with the `products.proximity.id` property matching the provided ID are returned. Events without a `products.proximity` result are left out of the response.  | [optional] |
+| **proximityPrecisionRadius** | **Integer**| Filter events by Proximity Radius. > Note: When using this parameter, only events with the `products.proximity.precisionRadius` property set to a valid value are returned. Events without a `products.proximity` result are left out of the response.  | [optional] [enum: 10, 25, 65, 175, 450, 1200, 3300, 8500, 22500] |
 
 ### Return type
 

@@ -52,6 +52,7 @@
 |**replayed** | **Boolean** | `true` if we determined that this payload was replayed, `false` otherwise.  |  [optional] |
 |**sdk** | [**SDK**](SDK.md) |  |  |
 |**supplementaryIds** | [**WebhookSupplementaryIDs**](WebhookSupplementaryIDs.md) |  |  [optional] |
+|**proximity** | [**WebhookProximity**](WebhookProximity.md) |  |  [optional] |
 
 
 

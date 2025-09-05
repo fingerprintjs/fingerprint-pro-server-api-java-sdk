@@ -593,6 +593,8 @@ public class FingerprintApiTest {
         final List<String> ENVIRONMENT = new ArrayList<String>();
         ENVIRONMENT.add("env1");
         ENVIRONMENT.add("env2");
+        final String PROXIMITY_ID = "testProximityId";
+        final Integer PROXIMITY_PRECISION_RADIUS = 10;
 
         Map<String, String> expectedQueryParams = new HashMap<>();
         expectedQueryParams.put("limit", String.valueOf(LIMIT));
@@ -627,6 +629,8 @@ public class FingerprintApiTest {
         expectedQueryParams.put("proxy", String.valueOf(PROXY));
         expectedQueryParams.put("sdk_version", SDK_VERSION);
         expectedQueryParams.put("sdk_platform", SDK_PLATFORM);
+        expectedQueryParams.put("proximity_id", PROXIMITY_ID);
+        expectedQueryParams.put("proximity_precision_radius", String.valueOf(PROXIMITY_PRECISION_RADIUS));
 
         addMock("searchEvents", null, invocation -> {
             List<Pair> queryParams = invocation.getArgument(3);
@@ -678,6 +682,8 @@ public class FingerprintApiTest {
                 .setSdkVersion(SDK_VERSION)
                 .setSdkPlatform(SDK_PLATFORM)
                 .setEnvironment(ENVIRONMENT)
+                .setProximityId(PROXIMITY_ID)
+                .setProximityPrecisionRadius(PROXIMITY_PRECISION_RADIUS)
         );
         List<SearchEventsResponseEventsInner> events = response.getEvents();
         assertEquals(events.size(), 1);

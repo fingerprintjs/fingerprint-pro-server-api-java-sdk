@@ -1,5 +1,11 @@
 # Fingerprint Pro Server Java SDK
 
+## 7.10.0-develop.1
+
+### Minor Changes
+
+- Add `proximity` signal that represents a fixed geographical zone in a discrete global grid within which the device is observed. ([1fc1ec6](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/1fc1ec614c43d738392740e9210d362d06cf0122))
+
 ## 7.10.0-develop.0
 
 ### Minor Changes

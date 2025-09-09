@@ -1,6 +1,6 @@
 {
   "name": "fingerprint-pro-server-api-java-sdk",
-  "version": "7.10.0-develop.1",
+  "version": "7.10.0",
   "private": true,
   "devDependencies": {
     "@changesets/cli": "^2.27.8",

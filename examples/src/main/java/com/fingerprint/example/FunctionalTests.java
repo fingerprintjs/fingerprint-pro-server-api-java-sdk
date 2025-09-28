@@ -2,7 +2,6 @@ package com.fingerprint.example;
 
 import com.fingerprint.api.FingerprintApi;
 import com.fingerprint.model.*;
-import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
 import com.fingerprint.sdk.Configuration;
 
@@ -11,22 +10,27 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class FunctionalTests {
-    public static void main(String... args) {
-        String FPJS_API_SECRET = System.getenv("FPJS_API_SECRET");
-        String FPJS_API_REGION = System.getenv("FPJS_API_REGION");
-        String FPJS_REQUEST_ID_TO_UPDATE = System.getenv("FPJS_REQUEST_ID_TO_UPDATE");
-        String FPJS_VISITOR_ID_TO_DELETE = System.getenv("FPJS_VISITOR_ID_TO_DELETE");
-        String FPJS_VISITOR_ID = "";
-        String FPJS_REQUEST_ID = "";
 
-        // Create a new instance of the API client
-        ApiClient client = Configuration.getDefaultApiClient(FPJS_API_SECRET, FPJS_API_REGION != null ? FPJS_API_REGION : "us");
-        FingerprintApi api = new FingerprintApi(client);
+    public static void main(String... args) {
+        final String apiSecret = System.getenv("FPJS_API_SECRET");
+        if (apiSecret == null || apiSecret.isBlank()) {
+            System.err.println("Missing required environment variable: FPJS_API_SECRET");
+            System.exit(1);
+        }
+
+        final String regionEnv = System.getenv("FPJS_API_REGION");
+        final String region = regionEnv != null ? regionEnv.toLowerCase(Locale.getDefault()).trim() : "us";
+
+        final FingerprintApi api = new FingerprintApi(Configuration.getDefaultApiClient(apiSecret, region));
 
         long end = Instant.now().toEpochMilli();
         long start = Instant.now().minus(90L, ChronoUnit.DAYS).toEpochMilli();
+
+        String visitorId = "";
+        String requestId = "";
 
         // Search events
         try {
@@ -34,13 +38,17 @@ public class FunctionalTests {
                     .setStart(start)
                     .setEnd(end)
             );
+            assert events.getEvents() != null;
             if (events.getEvents().isEmpty()) {
                 System.err.println("FingerprintApi.searchEvents: is empty");
                 System.exit(1);
             }
-            Identification firstEventIdentificationData = events.getEvents().get(0).getProducts().getIdentification().getData();
-            FPJS_VISITOR_ID = firstEventIdentificationData.getVisitorId();
-            FPJS_REQUEST_ID = firstEventIdentificationData.getRequestId();
+            final ProductIdentification productIdentification = events.getEvents().get(0).getProducts().getIdentification();
+            assert productIdentification != null;
+            Identification firstEventIdentificationData = productIdentification.getData();
+            assert firstEventIdentificationData != null;
+            visitorId = firstEventIdentificationData.getVisitorId();
+            requestId = firstEventIdentificationData.getRequestId();
             System.out.println(events.getEvents());
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.searchEvents:" + e.getMessage());
@@ -49,7 +57,7 @@ public class FunctionalTests {
 
         // Get identification event
         try {
-            final EventsGetResponse event = api.getEvent(FPJS_REQUEST_ID);
+            final EventsGetResponse event = api.getEvent(requestId);
             System.out.println(event);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());
@@ -58,7 +66,7 @@ public class FunctionalTests {
 
         // Get visitor history
         try {
-            final VisitorsGetResponse visits = api.getVisits(FPJS_VISITOR_ID, null, null, null, null, null);
+            final VisitorsGetResponse visits = api.getVisits(visitorId, null, null, null, null, null);
             System.out.println(visits);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());
@@ -66,13 +74,13 @@ public class FunctionalTests {
         }
 
         // Update identification event
-
-        if (FPJS_REQUEST_ID_TO_UPDATE != null) {
+        final String requestIdToUpdate = System.getenv("FPJS_REQUEST_ID_TO_UPDATE");
+        if (requestIdToUpdate != null) {
             try {
                 final HashMap<String, Object> tags = new HashMap() {{
                     put("timestamp", new Timestamp(new Date().getTime()));
                 }};
-                api.updateEvent(FPJS_REQUEST_ID_TO_UPDATE, new EventsUpdateRequest().tag(tags));
+                api.updateEvent(requestIdToUpdate, new EventsUpdateRequest().tag(tags));
             } catch (ApiException e) {
                 System.err.println("Exception when calling FingerprintApi.updateEvent:" + e.getMessage());
                 System.exit(1);
@@ -80,10 +88,10 @@ public class FunctionalTests {
         }
 
         // Delete visitor data
-
-        if (FPJS_VISITOR_ID_TO_DELETE != null) {
+        final String visitorIdToDelete = System.getenv("FPJS_VISITOR_ID_TO_DELETE");
+        if (visitorIdToDelete != null) {
             try {
-                api.deleteVisitorData(FPJS_VISITOR_ID_TO_DELETE);
+                api.deleteVisitorData(visitorIdToDelete);
             } catch (ApiException e) {
                 System.err.println("Exception when calling FingerprintApi.deleteVisitor:" + e.getMessage());
                 System.exit(1);
@@ -97,21 +105,25 @@ public class FunctionalTests {
                     .setEnd(end)
                     .setReverse(true)
             );
+            assert oldEvents.getEvents() != null;
             if (oldEvents.getEvents().isEmpty()) {
                 System.err.println("FingerprintApi.searchEvents: is empty for old events");
                 System.exit(1);
             }
-            Identification oldEventIdentificationData = oldEvents.getEvents().get(0).getProducts().getIdentification().getData();
-            String FPJS_OLD_VISITOR_ID = oldEventIdentificationData.getVisitorId();
-            String FPJS_OLD_REQUEST_ID = oldEventIdentificationData.getRequestId();
+            final ProductIdentification productIdentification = oldEvents.getEvents().get(0).getProducts().getIdentification();
+            assert productIdentification != null;
+            Identification oldEventIdentificationData = productIdentification.getData();
+            assert oldEventIdentificationData != null;
+            String oldVisitorId = oldEventIdentificationData.getVisitorId();
+            String oldRequestId = oldEventIdentificationData.getRequestId();
 
-            if (FPJS_VISITOR_ID.equals(FPJS_OLD_VISITOR_ID) || FPJS_REQUEST_ID.equals(FPJS_OLD_REQUEST_ID)) {
+            if (requestId.equals(oldRequestId)) {
                 System.err.println("Old events are identical to new");
                 System.exit(1);
             }
 
-            api.getEvent(FPJS_OLD_REQUEST_ID);
-            api.getVisits(FPJS_OLD_VISITOR_ID, null, null, null, null, null);
+            api.getEvent(oldRequestId);
+            api.getVisits(oldVisitorId, null, null, null, null, null);
             System.out.println("Old events are good");
         } catch (ApiException e) {
             System.err.println("Exception when trying to read old data:" + e.getMessage());

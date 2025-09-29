@@ -47,6 +47,7 @@ tasks.register<JavaExec>("runFunctionalTests") {
     mainClass = "com.fingerprint.example.FunctionalTests"
     classpath = sourceSets["main"].runtimeClasspath
     environment(loadEnv())
+    jvmArgs("-ea")
 }
 
 tasks.named("runFunctionalTests") {

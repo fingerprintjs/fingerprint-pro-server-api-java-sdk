@@ -13,7 +13,6 @@
 |**os** | **String** |  |  |
 |**osVersion** | **String** |  |  |
 |**device** | **String** |  |  |
-|**userAgent** | **String** |  |  |
 
 
 

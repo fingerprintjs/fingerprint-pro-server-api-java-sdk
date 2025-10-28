@@ -68,6 +68,11 @@ openApiGenerate {
     gitUserId.set("fingerprintjs")
     configOptions.put("hideGenerationTimestamp", "true")
     configOptions.put("openApiNullable", "false")
+
+    globalProperties.put("apis", "Fingerprint")
+    globalProperties.put("models", "")
+    configOptions.put("apiDocs", "")
+    configOptions.put("modelDocs", "")
 }
 
 tasks.register("removeDocs") {

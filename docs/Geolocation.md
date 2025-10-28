@@ -12,10 +12,12 @@
 |**longitude** | **Double** |  |  [optional] |
 |**postalCode** | **String** |  |  [optional] |
 |**timezone** | **String** |  |  [optional] |
-|**city** | [**GeolocationCity**](GeolocationCity.md) |  |  [optional] |
-|**country** | [**GeolocationCountry**](GeolocationCountry.md) |  |  [optional] |
-|**continent** | [**GeolocationContinent**](GeolocationContinent.md) |  |  [optional] |
-|**subdivisions** | [**List&lt;GeolocationSubdivision&gt;**](GeolocationSubdivision.md) |  |  [optional] |
+|**cityName** | **String** |  |  [optional] |
+|**countryCode** | **String** |  |  [optional] |
+|**countryName** | **String** |  |  [optional] |
+|**continentCode** | **String** |  |  [optional] |
+|**continentName** | **String** |  |  [optional] |
+|**subdivisions** | [**List&lt;GeolocationSubdivisionsInner&gt;**](GeolocationSubdivisionsInner.md) |  |  [optional] |
 
 
 

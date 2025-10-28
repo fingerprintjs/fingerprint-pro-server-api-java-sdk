@@ -1,7 +1,7 @@
 package com.fingerprint;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fingerprint.model.EventsGetResponse;
+import com.fingerprint.model.Event;
 import com.fingerprint.sdk.JSON;
 
 import javax.crypto.Cipher;
@@ -121,14 +121,14 @@ public class Sealed {
      * @throws UnsealAggregateException if the sealed data cannot be decrypted with any of the keys. The exception contains the list of exceptions thrown by each key.
      * @throws IOException if the sealed data un-compression fails
      */
-    public static EventsGetResponse unsealEventResponse(byte[] sealed, DecryptionKey[] keys) throws IllegalArgumentException, UnsealAggregateException, IOException {
+    public static Event unsealEventResponse(byte[] sealed, DecryptionKey[] keys) throws IllegalArgumentException, UnsealAggregateException, IOException {
         byte[] unsealed = unseal(sealed, keys);
 
         ObjectMapper mapper = JSON.getDefault().getMapper();
 
-        EventsGetResponse value = mapper.readValue(unsealed, EventsGetResponse.class);
+        Event value = mapper.readValue(unsealed, Event.class);
 
-        if (value.getProducts() == null) {
+        if (value.getTimestamp() == null) { // TODO decide how to check
             throw new InvalidSealedDataException();
         }
 

@@ -45,37 +45,38 @@ Please [contact our support team](https://fingerprint.com/support/) to enable it
 ### Example
 
 ```java
-// Import classes:
+package main;
+
+import com.fingerprint.api.FingerprintApi;
+import com.fingerprint.sdk.model.*;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
-import com.fingerprint.sdk.Configuration;
-import com.fingerprint.sdk.auth.*;
-import com.fingerprint.sdk.model.*;
-import com.fingerprint.api.FingerprintApi;
+import com.fingerprint.sdk.Region;
 
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.fpjs.io/v4");
-        
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
-
-        FingerprintApi apiInstance = new FingerprintApi(defaultClient);
+public class FingerprintApiExample {
+    // Fingerprint Secret API Key
+    private static final String FPJS_API_SECRET = "Fingerprint Secret API Key";
+    public static void main(String... args) {
+        // Create a new api client instance from Configuration with your Fingerprint Server API Key and your Fingerprint Server API Region.
+        /*
+        You can specify a region on getDefaultApiClient function's second parameter
+        If you leave the second parameter empty, then Region.GLOBAL will be used as a default region
+        Options for regions are:
+        Region.GLOBAL
+        Region.EUROPE
+        Region.ASIA
+        */
+        FingerprintApi api = new FingerprintApi(FPJS_API_SECRET, Region.EUROPE);
         String visitorId = "visitorId_example"; // String | The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) you want to delete.
         try {
-            apiInstance.deleteVisitorData(visitorId);
+            api.deleteVisitorData(visitorId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling FingerprintApi#deleteVisitorData");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
+            System.err.println("Exception when calling FingerprintApi.deleteVisitorData:" + e.getMessage());
         }
     }
 }
 ```
+
 
 ### Parameters
 
@@ -121,45 +122,46 @@ Use `event_id` as the URL path parameter. This API method is scoped to a request
 ### Example
 
 ```java
-// Import classes:
+package main;
+
+import com.fingerprint.api.FingerprintApi;
+import com.fingerprint.sdk.model.*;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
-import com.fingerprint.sdk.Configuration;
-import com.fingerprint.sdk.auth.*;
-import com.fingerprint.sdk.model.*;
-import com.fingerprint.api.FingerprintApi;
+import com.fingerprint.sdk.Region;
 
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.fpjs.io/v4");
-        
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
-
-        FingerprintApi apiInstance = new FingerprintApi(defaultClient);
+public class FingerprintApiExample {
+    // Fingerprint Secret API Key
+    private static final String FPJS_API_SECRET = "Fingerprint Secret API Key";
+    public static void main(String... args) {
+        // Create a new api client instance from Configuration with your Fingerprint Server API Key and your Fingerprint Server API Region.
+        /*
+        You can specify a region on getDefaultApiClient function's second parameter
+        If you leave the second parameter empty, then Region.GLOBAL will be used as a default region
+        Options for regions are:
+        Region.GLOBAL
+        Region.EUROPE
+        Region.ASIA
+        */
+        FingerprintApi api = new FingerprintApi(FPJS_API_SECRET, Region.EUROPE);
         String eventId = "eventId_example"; // String | The unique [identifier](https://dev.fingerprint.com/reference/get-function#requestid) of each identification request (`requestId` can be used in its place).
         try {
-            Event result = apiInstance.getEvent(eventId);
+            Event result = api.getEvent(eventId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling FingerprintApi#getEvent");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
+            System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());
         }
     }
 }
 ```
+
 
 ### Parameters
 
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **eventId** | **String**| The unique [identifier](https://dev.fingerprint.com/reference/get-function#requestid) of each identification request (&#x60;requestId&#x60; can be used in its place). | |
+| **eventId** | **String**| The unique [identifier](https://dev.fingerprint.com/reference/get-function#requestid) of each identification request (`requestId` can be used in its place). | |
 
 ### Return type
 
@@ -186,7 +188,7 @@ public class Example {
 
 ## searchEvents
 
-> EventSearch searchEvents(limit, paginationKey, visitorId, bot, ipAddress, linkedId, url, origin, start, end, reverse, suspect, vpn, virtualMachine, tampering, antiDetectBrowser, incognito, privacySettings, jailbroken, frida, factoryReset, clonedApp, emulator, rootApps, vpnConfidence, minSuspectScore, developerTools, locationSpoofing, mitmAttack, proxy, sdkVersion, sdkPlatform, environment, totalHits)
+> EventSearch searchEvents(searchEventsOptionalParams)
 
 Search events
 
@@ -216,24 +218,28 @@ Smart Signals not activated for your workspace or are not included in the respon
 ### Example
 
 ```java
-// Import classes:
+package main;
+
+import com.fingerprint.api.FingerprintApi;
+import com.fingerprint.sdk.model.*;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
-import com.fingerprint.sdk.Configuration;
-import com.fingerprint.sdk.auth.*;
-import com.fingerprint.sdk.model.*;
-import com.fingerprint.api.FingerprintApi;
+import com.fingerprint.sdk.Region;
 
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.fpjs.io/v4");
-        
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
-
-        FingerprintApi apiInstance = new FingerprintApi(defaultClient);
+public class FingerprintApiExample {
+    // Fingerprint Secret API Key
+    private static final String FPJS_API_SECRET = "Fingerprint Secret API Key";
+    public static void main(String... args) {
+        // Create a new api client instance from Configuration with your Fingerprint Server API Key and your Fingerprint Server API Region.
+        /*
+        You can specify a region on getDefaultApiClient function's second parameter
+        If you leave the second parameter empty, then Region.GLOBAL will be used as a default region
+        Options for regions are:
+        Region.GLOBAL
+        Region.EUROPE
+        Region.ASIA
+        */
+        FingerprintApi api = new FingerprintApi(FPJS_API_SECRET, Region.EUROPE);
         Integer limit = 10; // Integer | Limit the number of events returned. 
         String paginationKey = "paginationKey_example"; // String | Use `pagination_key` to get the next page of results.  When more results are available (e.g., you requested up to 100 results for your query using `limit`, but there are more than 100 events total matching your request), the `pagination_key` field is added to the response. The key corresponds to the `timestamp` of the last returned event. In the following request, use that value in the `pagination_key` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/events?limit=100` 2. Use `response.pagination_key` to get the next page of results: `GET api-base-url/events?limit=100&pagination_key=1740815825085` 
         String visitorId = "visitorId_example"; // String | Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Identification and all active Smart Signals. Filter for events matching this `visitor_id`. 
@@ -269,58 +275,97 @@ public class Example {
         List<String> environment = Arrays.asList(); // List<String> | Filter for events by providing one or more environment IDs (`environment_id` property). 
         Long totalHits = 56L; // Long | When set, the response will include a `total_hits` property with a count of total query matches across all pages, up to the specified limit. 
         try {
-            EventSearch result = apiInstance.searchEvents(limit, paginationKey, visitorId, bot, ipAddress, linkedId, url, origin, start, end, reverse, suspect, vpn, virtualMachine, tampering, antiDetectBrowser, incognito, privacySettings, jailbroken, frida, factoryReset, clonedApp, emulator, rootApps, vpnConfidence, minSuspectScore, developerTools, locationSpoofing, mitmAttack, proxy, sdkVersion, sdkPlatform, environment, totalHits);
+            EventSearch result = api.searchEvents(new FingerprintApi.SearchEventsOptionalParams()
+                .setLimit(limit)
+                .setPaginationKey(paginationKey)
+                .setVisitorId(visitorId)
+                .setBot(bot)
+                .setIpAddress(ipAddress)
+                .setLinkedId(linkedId)
+                .setUrl(url)
+                .setOrigin(origin)
+                .setStart(start)
+                .setEnd(end)
+                .setReverse(reverse)
+                .setSuspect(suspect)
+                .setVpn(vpn)
+                .setVirtualMachine(virtualMachine)
+                .setTampering(tampering)
+                .setAntiDetectBrowser(antiDetectBrowser)
+                .setIncognito(incognito)
+                .setPrivacySettings(privacySettings)
+                .setJailbroken(jailbroken)
+                .setFrida(frida)
+                .setFactoryReset(factoryReset)
+                .setClonedApp(clonedApp)
+                .setEmulator(emulator)
+                .setRootApps(rootApps)
+                .setVpnConfidence(vpnConfidence)
+                .setMinSuspectScore(minSuspectScore)
+                .setDeveloperTools(developerTools)
+                .setLocationSpoofing(locationSpoofing)
+                .setMitmAttack(mitmAttack)
+                .setProxy(proxy)
+                .setSdkVersion(sdkVersion)
+                .setSdkPlatform(sdkPlatform)
+                .setEnvironment(environment)
+                .setTotalHits(totalHits));
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling FingerprintApi#searchEvents");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
+            System.err.println("Exception when calling FingerprintApi.searchEvents:" + e.getMessage());
         }
     }
 }
 ```
+
 
 ### Parameters
 
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **searchEventsOptionalParams** | [**FingerprintApi.SearchEventsOptionalParams**](#fingerprintapisearcheventsoptionalparams) | | [optional] |
+
+#### FingerprintApi.SearchEventsOptionalParams
+
+Object containing optional parameters for API method. Supports a fluent interface for convenient method chaining.
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
 | **limit** | **Integer**| Limit the number of events returned.  | [optional] [default to 10] |
-| **paginationKey** | **String**| Use &#x60;pagination_key&#x60; to get the next page of results.  When more results are available (e.g., you requested up to 100 results for your query using &#x60;limit&#x60;, but there are more than 100 events total matching your request), the &#x60;pagination_key&#x60; field is added to the response. The key corresponds to the &#x60;timestamp&#x60; of the last returned event. In the following request, use that value in the &#x60;pagination_key&#x60; parameter to get the next page of results:  1. First request, returning most recent 200 events: &#x60;GET api-base-url/events?limit&#x3D;100&#x60; 2. Use &#x60;response.pagination_key&#x60; to get the next page of results: &#x60;GET api-base-url/events?limit&#x3D;100&amp;pagination_key&#x3D;1740815825085&#x60;  | [optional] |
-| **visitorId** | **String**| Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Identification and all active Smart Signals. Filter for events matching this &#x60;visitor_id&#x60;.  | [optional] |
-| **bot** | **String**| Filter events by the Bot Detection result, specifically:   &#x60;all&#x60; - events where any kind of bot was detected.   &#x60;good&#x60; - events where a good bot was detected.   &#x60;bad&#x60; - events where a bad bot was detected.   &#x60;none&#x60; - events where no bot was detected. &gt; Note: When using this parameter, only events with the &#x60;botd.bot&#x60; property set to a valid value are returned. Events without a &#x60;botd&#x60; Smart Signal result are left out of the response.  | [optional] [enum: all, good, bad, none] |
+| **paginationKey** | **String**| Use `pagination_key` to get the next page of results.  When more results are available (e.g., you requested up to 100 results for your query using `limit`, but there are more than 100 events total matching your request), the `pagination_key` field is added to the response. The key corresponds to the `timestamp` of the last returned event. In the following request, use that value in the `pagination_key` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/events?limit=100` 2. Use `response.pagination_key` to get the next page of results: `GET api-base-url/events?limit=100&pagination_key=1740815825085`  | [optional] |
+| **visitorId** | **String**| Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Identification and all active Smart Signals. Filter for events matching this `visitor_id`.  | [optional] |
+| **bot** | **String**| Filter events by the Bot Detection result, specifically:   `all` - events where any kind of bot was detected.   `good` - events where a good bot was detected.   `bad` - events where a bad bot was detected.   `none` - events where no bot was detected. > Note: When using this parameter, only events with the `botd.bot` property set to a valid value are returned. Events without a `botd` Smart Signal result are left out of the response.  | [optional] [enum: all, good, bad, none] |
 | **ipAddress** | **String**| Filter events by IP address or IP range (if CIDR notation is used). If CIDR notation is not used, a /32 for IPv4 or /128 for IPv6 is assumed. Examples of range based queries: 10.0.0.0/24, 192.168.0.1/32  | [optional] |
-| **linkedId** | **String**| Filter events by your custom identifier.  You can use [linked Ids](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example, session Id, purchase Id, or transaction Id. You can then use this &#x60;linked_id&#x60; parameter to retrieve all events associated with your custom identifier.  | [optional] |
-| **url** | **String**| Filter events by the URL (&#x60;url&#x60; property) associated with the event.  | [optional] |
+| **linkedId** | **String**| Filter events by your custom identifier.  You can use [linked Ids](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example, session Id, purchase Id, or transaction Id. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier.  | [optional] |
+| **url** | **String**| Filter events by the URL (`url` property) associated with the event.  | [optional] |
 | **origin** | **String**| Filter events by the origin field of the event. Origin could be the website domain or mobile app bundle ID (eg: com.foo.bar)  | [optional] |
 | **start** | **Long**| Filter events with a timestamp greater than the start time, in Unix time (milliseconds).  | [optional] |
 | **end** | **Long**| Filter events with a timestamp smaller than the end time, in Unix time (milliseconds).  | [optional] |
 | **reverse** | **Boolean**| Sort events in reverse timestamp order.  | [optional] |
-| **suspect** | **Boolean**| Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent). &gt; Note: When using this parameter, only events with the &#x60;suspect&#x60; property explicitly set to &#x60;true&#x60; or &#x60;false&#x60; are returned. Events with undefined &#x60;suspect&#x60; property are left out of the response.  | [optional] |
-| **vpn** | **Boolean**| Filter events by VPN Detection result. &gt; Note: When using this parameter, only events with the &#x60;vpn&#x60; property set to &#x60;true&#x60; or &#x60;false&#x60; are returned. Events without a &#x60;vpn&#x60; Smart Signal result are left out of the response.  | [optional] |
-| **virtualMachine** | **Boolean**| Filter events by Virtual Machine Detection result. &gt; Note: When using this parameter, only events with the &#x60;virtual_machine&#x60; property set to &#x60;true&#x60; or &#x60;false&#x60; are returned. Events without a &#x60;virtual_machine&#x60; Smart Signal result are left out of the response.  | [optional] |
-| **tampering** | **Boolean**| Filter events by Browser Tampering Detection result. &gt; Note: When using this parameter, only events with the &#x60;tampering.result&#x60; property set to &#x60;true&#x60; or &#x60;false&#x60; are returned. Events without a &#x60;tampering&#x60; Smart Signal result are left out of the response.  | [optional] |
-| **antiDetectBrowser** | **Boolean**| Filter events by Anti-detect Browser Detection result. &gt; Note: When using this parameter, only events with the &#x60;tampering.anti_detect_browser&#x60; property set to &#x60;true&#x60; or &#x60;false&#x60; are returned. Events without a &#x60;tampering&#x60; Smart Signal result are left out of the response.  | [optional] |
-| **incognito** | **Boolean**| Filter events by Browser Incognito Detection result. &gt; Note: When using this parameter, only events with the &#x60;incognito&#x60; property set to &#x60;true&#x60; or &#x60;false&#x60; are returned. Events without an &#x60;incognito&#x60; Smart Signal result are left out of the response.  | [optional] |
-| **privacySettings** | **Boolean**| Filter events by Privacy Settings Detection result. &gt; Note: When using this parameter, only events with the &#x60;privacy_settings&#x60; property set to &#x60;true&#x60; or &#x60;false&#x60; are returned. Events without a &#x60;privacy_settings&#x60; Smart Signal result are left out of the response.  | [optional] |
-| **jailbroken** | **Boolean**| Filter events by Jailbroken Device Detection result. &gt; Note: When using this parameter, only events with the &#x60;jailbroken&#x60; property set to &#x60;true&#x60; or &#x60;false&#x60; are returned. Events without a &#x60;jailbroken&#x60; Smart Signal result are left out of the response.  | [optional] |
-| **frida** | **Boolean**| Filter events by Frida Detection result. &gt; Note: When using this parameter, only events with the &#x60;frida&#x60; property set to &#x60;true&#x60; or &#x60;false&#x60; are returned. Events without a &#x60;frida&#x60; Smart Signal result are left out of the response.  | [optional] |
-| **factoryReset** | **Boolean**| Filter events by Factory Reset Detection result. &gt; Note: When using this parameter, only events with a &#x60;factory_reset&#x60; time. Events without a &#x60;factory_reset&#x60; Smart Signal result are left out of the response.  | [optional] |
-| **clonedApp** | **Boolean**| Filter events by Cloned App Detection result. &gt; Note: When using this parameter, only events with the &#x60;cloned_app&#x60; property set to &#x60;true&#x60; or &#x60;false&#x60; are returned. Events without a &#x60;cloned_app&#x60; Smart Signal result are left out of the response.  | [optional] |
-| **emulator** | **Boolean**| Filter events by Android Emulator Detection result. &gt; Note: When using this parameter, only events with the &#x60;emulator&#x60; property set to &#x60;true&#x60; or &#x60;false&#x60; are returned. Events without an &#x60;emulator&#x60; Smart Signal result are left out of the response.  | [optional] |
-| **rootApps** | **Boolean**| Filter events by Rooted Device Detection result. &gt; Note: When using this parameter, only events with the &#x60;root_apps&#x60; property set to &#x60;true&#x60; or &#x60;false&#x60; are returned. Events without a &#x60;root_apps&#x60; Smart Signal result are left out of the response.  | [optional] |
-| **vpnConfidence** | **String**| Filter events by VPN Detection result confidence level. &#x60;high&#x60; - events with high VPN Detection confidence. &#x60;medium&#x60; - events with medium VPN Detection confidence. &#x60;low&#x60; - events with low VPN Detection confidence. &gt; Note: When using this parameter, only events with the &#x60;vpn.confidence&#x60; property set to a valid value are returned. Events without a &#x60;vpn&#x60; Smart Signal result are left out of the response.  | [optional] [enum: high,, medium, low] |
-| **minSuspectScore** | **Float**| Filter events with Suspect Score result above a provided minimum threshold. &gt; Note: When using this parameter, only events where the &#x60;suspect_score&#x60; property set to a value exceeding your threshold are returned. Events without a &#x60;suspect_score&#x60; Smart Signal result are left out of the response.  | [optional] |
-| **developerTools** | **Boolean**| Filter events by Developer Tools detection result. &gt; Note: When using this parameter, only events with the &#x60;developer_tools&#x60; property set to &#x60;true&#x60; or &#x60;false&#x60; are returned. Events without a &#x60;developer_tools&#x60; Smart Signal result are left out of the response.  | [optional] |
-| **locationSpoofing** | **Boolean**| Filter events by Location Spoofing detection result. &gt; Note: When using this parameter, only events with the &#x60;location_spoofing&#x60; property set to &#x60;true&#x60; or &#x60;false&#x60; are returned. Events without a &#x60;location_spoofing&#x60; Smart Signal result are left out of the response.  | [optional] |
-| **mitmAttack** | **Boolean**| Filter events by MITM (Man-in-the-Middle) Attack detection result. &gt; Note: When using this parameter, only events with the &#x60;mitm_attack&#x60; property set to &#x60;true&#x60; or &#x60;false&#x60; are returned. Events without a &#x60;mitm_attack&#x60; Smart Signal result are left out of the response.  | [optional] |
-| **proxy** | **Boolean**| Filter events by Proxy detection result. &gt; Note: When using this parameter, only events with the &#x60;proxy&#x60; property set to &#x60;true&#x60; or &#x60;false&#x60; are returned. Events without a &#x60;proxy&#x60; Smart Signal result are left out of the response.  | [optional] |
-| **sdkVersion** | **String**| Filter events by a specific SDK version associated with the identification event (&#x60;sdk.version&#x60; property). Example: &#x60;3.11.14&#x60;  | [optional] |
-| **sdkPlatform** | **String**| Filter events by the SDK Platform associated with the identification event (&#x60;sdk.platform&#x60; property) . &#x60;js&#x60; - Javascript agent (Web). &#x60;ios&#x60; - Apple iOS based devices. &#x60;android&#x60; - Android based devices.  | [optional] [enum: js, android, ios] |
-| **environment** | **List&lt;String&gt;**| Filter for events by providing one or more environment IDs (&#x60;environment_id&#x60; property).  | [optional] |
-| **totalHits** | **Long**| When set, the response will include a &#x60;total_hits&#x60; property with a count of total query matches across all pages, up to the specified limit.  | [optional] |
+| **suspect** | **Boolean**| Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent). > Note: When using this parameter, only events with the `suspect` property explicitly set to `true` or `false` are returned. Events with undefined `suspect` property are left out of the response.  | [optional] |
+| **vpn** | **Boolean**| Filter events by VPN Detection result. > Note: When using this parameter, only events with the `vpn` property set to `true` or `false` are returned. Events without a `vpn` Smart Signal result are left out of the response.  | [optional] |
+| **virtualMachine** | **Boolean**| Filter events by Virtual Machine Detection result. > Note: When using this parameter, only events with the `virtual_machine` property set to `true` or `false` are returned. Events without a `virtual_machine` Smart Signal result are left out of the response.  | [optional] |
+| **tampering** | **Boolean**| Filter events by Browser Tampering Detection result. > Note: When using this parameter, only events with the `tampering.result` property set to `true` or `false` are returned. Events without a `tampering` Smart Signal result are left out of the response.  | [optional] |
+| **antiDetectBrowser** | **Boolean**| Filter events by Anti-detect Browser Detection result. > Note: When using this parameter, only events with the `tampering.anti_detect_browser` property set to `true` or `false` are returned. Events without a `tampering` Smart Signal result are left out of the response.  | [optional] |
+| **incognito** | **Boolean**| Filter events by Browser Incognito Detection result. > Note: When using this parameter, only events with the `incognito` property set to `true` or `false` are returned. Events without an `incognito` Smart Signal result are left out of the response.  | [optional] |
+| **privacySettings** | **Boolean**| Filter events by Privacy Settings Detection result. > Note: When using this parameter, only events with the `privacy_settings` property set to `true` or `false` are returned. Events without a `privacy_settings` Smart Signal result are left out of the response.  | [optional] |
+| **jailbroken** | **Boolean**| Filter events by Jailbroken Device Detection result. > Note: When using this parameter, only events with the `jailbroken` property set to `true` or `false` are returned. Events without a `jailbroken` Smart Signal result are left out of the response.  | [optional] |
+| **frida** | **Boolean**| Filter events by Frida Detection result. > Note: When using this parameter, only events with the `frida` property set to `true` or `false` are returned. Events without a `frida` Smart Signal result are left out of the response.  | [optional] |
+| **factoryReset** | **Boolean**| Filter events by Factory Reset Detection result. > Note: When using this parameter, only events with a `factory_reset` time. Events without a `factory_reset` Smart Signal result are left out of the response.  | [optional] |
+| **clonedApp** | **Boolean**| Filter events by Cloned App Detection result. > Note: When using this parameter, only events with the `cloned_app` property set to `true` or `false` are returned. Events without a `cloned_app` Smart Signal result are left out of the response.  | [optional] |
+| **emulator** | **Boolean**| Filter events by Android Emulator Detection result. > Note: When using this parameter, only events with the `emulator` property set to `true` or `false` are returned. Events without an `emulator` Smart Signal result are left out of the response.  | [optional] |
+| **rootApps** | **Boolean**| Filter events by Rooted Device Detection result. > Note: When using this parameter, only events with the `root_apps` property set to `true` or `false` are returned. Events without a `root_apps` Smart Signal result are left out of the response.  | [optional] |
+| **vpnConfidence** | **String**| Filter events by VPN Detection result confidence level. `high` - events with high VPN Detection confidence. `medium` - events with medium VPN Detection confidence. `low` - events with low VPN Detection confidence. > Note: When using this parameter, only events with the `vpn.confidence` property set to a valid value are returned. Events without a `vpn` Smart Signal result are left out of the response.  | [optional] [enum: high,, medium, low] |
+| **minSuspectScore** | **Float**| Filter events with Suspect Score result above a provided minimum threshold. > Note: When using this parameter, only events where the `suspect_score` property set to a value exceeding your threshold are returned. Events without a `suspect_score` Smart Signal result are left out of the response.  | [optional] |
+| **developerTools** | **Boolean**| Filter events by Developer Tools detection result. > Note: When using this parameter, only events with the `developer_tools` property set to `true` or `false` are returned. Events without a `developer_tools` Smart Signal result are left out of the response.  | [optional] |
+| **locationSpoofing** | **Boolean**| Filter events by Location Spoofing detection result. > Note: When using this parameter, only events with the `location_spoofing` property set to `true` or `false` are returned. Events without a `location_spoofing` Smart Signal result are left out of the response.  | [optional] |
+| **mitmAttack** | **Boolean**| Filter events by MITM (Man-in-the-Middle) Attack detection result. > Note: When using this parameter, only events with the `mitm_attack` property set to `true` or `false` are returned. Events without a `mitm_attack` Smart Signal result are left out of the response.  | [optional] |
+| **proxy** | **Boolean**| Filter events by Proxy detection result. > Note: When using this parameter, only events with the `proxy` property set to `true` or `false` are returned. Events without a `proxy` Smart Signal result are left out of the response.  | [optional] |
+| **sdkVersion** | **String**| Filter events by a specific SDK version associated with the identification event (`sdk.version` property). Example: `3.11.14`  | [optional] |
+| **sdkPlatform** | **String**| Filter events by the SDK Platform associated with the identification event (`sdk.platform` property) . `js` - Javascript agent (Web). `ios` - Apple iOS based devices. `android` - Android based devices.  | [optional] [enum: js, android, ios] |
+| **environment** | **List&lt;String&gt;**| Filter for events by providing one or more environment IDs (`environment_id` property).  | [optional] |
+| **totalHits** | **Long**| When set, the response will include a `total_hits` property with a count of total query matches across all pages, up to the specified limit.  | [optional] |
 
 ### Return type
 
@@ -364,38 +409,39 @@ error (HTTP 409 Conflict. The event is not mutable yet.) as the event is fully p
 ### Example
 
 ```java
-// Import classes:
+package main;
+
+import com.fingerprint.api.FingerprintApi;
+import com.fingerprint.sdk.model.*;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
-import com.fingerprint.sdk.Configuration;
-import com.fingerprint.sdk.auth.*;
-import com.fingerprint.sdk.model.*;
-import com.fingerprint.api.FingerprintApi;
+import com.fingerprint.sdk.Region;
 
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.fpjs.io/v4");
-        
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
-
-        FingerprintApi apiInstance = new FingerprintApi(defaultClient);
+public class FingerprintApiExample {
+    // Fingerprint Secret API Key
+    private static final String FPJS_API_SECRET = "Fingerprint Secret API Key";
+    public static void main(String... args) {
+        // Create a new api client instance from Configuration with your Fingerprint Server API Key and your Fingerprint Server API Region.
+        /*
+        You can specify a region on getDefaultApiClient function's second parameter
+        If you leave the second parameter empty, then Region.GLOBAL will be used as a default region
+        Options for regions are:
+        Region.GLOBAL
+        Region.EUROPE
+        Region.ASIA
+        */
+        FingerprintApi api = new FingerprintApi(FPJS_API_SECRET, Region.EUROPE);
         String eventId = "eventId_example"; // String | The unique event [identifier](https://dev.fingerprint.com/reference/get-function#event_id).
         EventUpdate eventUpdate = new EventUpdate(); // EventUpdate | 
         try {
-            apiInstance.updateEvent(eventId, eventUpdate);
+            api.updateEvent(eventId, eventUpdate);
         } catch (ApiException e) {
-            System.err.println("Exception when calling FingerprintApi#updateEvent");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
+            System.err.println("Exception when calling FingerprintApi.updateEvent:" + e.getMessage());
         }
     }
 }
 ```
+
 
 ### Parameters
 

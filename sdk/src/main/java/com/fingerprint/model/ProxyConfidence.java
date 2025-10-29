@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Locale;
 
 /**
- * Confidence level of the proxy detection. If a proxy is not detected, confidence is \&quot;high\&quot;. If it&#39;s detected, can be \&quot;low\&quot;, \&quot;medium\&quot;, or \&quot;high\&quot;. 
+ * Confidence level of the proxy detection. If a proxy is not detected, confidence is \"high\". If it's detected, can be \"low\", \"medium\", or \"high\". 
  */
 public enum ProxyConfidence {
   

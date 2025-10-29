@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Locale;
 
 /**
- * A confidence rating for the VPN detection result — \&quot;low\&quot;, \&quot;medium\&quot;, or \&quot;high\&quot;. Depends on the combination of results returned from all VPN detection methods.
+ * A confidence rating for the VPN detection result — \"low\", \"medium\", or \"high\". Depends on the combination of results returned from all VPN detection methods.
  */
 public enum VpnConfidence {
   

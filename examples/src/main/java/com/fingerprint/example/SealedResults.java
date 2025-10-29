@@ -1,7 +1,7 @@
 package com.fingerprint.example;
 
 import com.fingerprint.Sealed;
-import com.fingerprint.model.EventsGetResponse;
+import com.fingerprint.model.Event;
 
 import java.util.Base64;
 
@@ -10,7 +10,7 @@ public class SealedResults {
         String SEALED_RESULT = System.getenv("BASE64_SEALED_RESULT");
         String SEALED_KEY = System.getenv("BASE64_KEY");
 
-        final EventsGetResponse event = Sealed.unsealEventResponse(
+        final Event event = Sealed.unsealEventResponse(
                 Base64.getDecoder().decode(SEALED_RESULT),
                 new Sealed.DecryptionKey[]{
                         new Sealed.DecryptionKey(

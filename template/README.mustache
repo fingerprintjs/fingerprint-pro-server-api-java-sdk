@@ -136,8 +136,8 @@ Please follow the [installation](#installation) instruction and execute the foll
 package main;
 
 import com.fingerprint.api.FingerprintApi;
-import com.fingerprint.model.EventsGetResponse;
-import com.fingerprint.model.EventsUpdateRequest;
+import com.fingerprint.model.Events;
+import com.fingerprint.model.UpdateEvents;
 import com.fingerprint.model.VisitorsGetResponse;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
@@ -149,8 +149,8 @@ public class FingerprintApiExample {
     private static final String FPJS_API_SECRET = "Fingerprint Secret API Key";
     // A mandatory visitorId of a specific visitor
     private static final String FPJS_VISITOR_ID = "visitorId";
-    // An optional requestId made by a specific visitor
-    private static final String FPJS_REQUEST_ID = "requestId";
+    // An optional eventId initiated by a specific visitor
+    private static final String FPJS_EVENT_ID = "eventId";
     // An optional linkedId of the visit
     private static final String FPJS_LINKED_ID = "linkedId";
     // An optional parameter limiting scanned results
@@ -173,7 +173,7 @@ public class FingerprintApiExample {
         // Get an event with a given requestId
         try {
             // Fetch the event with a given requestId
-            EventsGetResponse response = api.getEvent(FPJS_REQUEST_ID);
+            Event response = api.getEvent(FPJS_EVENT_ID);
             System.out.println(response.getProducts().toString());
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());
@@ -196,38 +196,11 @@ public class FingerprintApiExample {
 
         // Update an event with a given requestId
         try {
-            EventsUpdateRequest request = new EventsUpdateRequest();
+            EventUpdate request = new EventUpdate();
             request.setLinkedId("myNewLinkedId");
-            api.updateEvent(FPJS_REQUEST_ID, request);
+            api.updateEvent(FPJS_EVENT_ID, request);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.updateEvent:" + e.getMessage());
-        }
-
-        // Get a specific visitor's all visits
-        try {
-            // Fetch all visits with a given visitorId, with a page limit
-            VisitorsGetResponse response = api.getVisits(FPJS_VISITOR_ID, null, null, LIMIT, null, null);
-            System.out.println(response.getVisits().toString());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FingerprintApi.getVisits:" + e.getMessage());
-        }
-
-        // Get a specific visitor's all visits with a linkedId
-        try {
-            // Fetch all visits with a given visitorId, with a page limit, skipping the first visit
-            VisitorsGetResponse response = api.getVisits(FPJS_VISITOR_ID, null, FPJS_LINKED_ID, LIMIT, PAGINATION_KEY, null);
-            System.out.println(response.getVisits().toString());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FingerprintApi.getVisits:" + e.getMessage());
-        }
-
-        // Use all the parameters on getVisits
-        try {
-            // Fetch the visitor's all visits with a given requestId and linkedId with a page limit while skipping the first visit
-            VisitorsGetResponse response = api.getVisits(FPJS_VISITOR_ID, FPJS_REQUEST_ID, FPJS_LINKED_ID, LIMIT, PAGINATION_KEY, null);
-            System.out.println(response.getVisits().toString());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FingerprintApi.getVisits:" + e.getMessage());
         }
 
         // Delete visitor data with a given visitorID

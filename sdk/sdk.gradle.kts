@@ -71,7 +71,7 @@ openApiGenerate {
 
     globalProperties.put("apis", "Fingerprint")
     globalProperties.put("models", "")
-    globalProperties.put("supportingFiles", "Configuration.java, JSON.java")
+    globalProperties.put("supportingFiles", "Configuration.java, JSON.java, README.md")
 }
 
 tasks.register("removeDocs") {

@@ -1,9 +1,9 @@
 package com.fingerprint.sdk;
 
 public enum Region {
-    GLOBAL ("https://api.fpjs.io"),
-    EUROPE ("https://eu.api.fpjs.io"),
-    ASIA ("https://ap.api.fpjs.io");
+    GLOBAL ("https://api.fpjs.io/v4"),
+    EUROPE ("https://eu.api.fpjs.io/v4"),
+    ASIA ("https://ap.api.fpjs.io/v4");
     private final String url;
 
     Region(String s) {

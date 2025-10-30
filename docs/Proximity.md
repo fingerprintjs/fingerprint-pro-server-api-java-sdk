@@ -2,8 +2,7 @@
 
 # Proximity
 
-Proximity ID represents a fixed geographical zone in a discrete global grid within which the device is observed.
-
+Proximity ID represents a fixed geographical zone in a discrete global grid within which the device is observed. 
 
 ## Properties
 
@@ -11,13 +10,14 @@ Proximity ID represents a fixed geographical zone in a discrete global grid with
 |------------ | ------------- | ------------- | -------------|
 |**id** | **String** | A stable privacy-preserving identifier for a given proximity zone.  |  |
 |**precisionRadius** | [**PrecisionRadiusEnum**](#PrecisionRadiusEnum) | The radius of the proximity zone’s precision level, in meters.  |  |
-|**confidence** | **Float** | A value between `0` and `1` representing the likelihood that the true device location lies within the mapped proximity zone.   * Scores closer to `1` indicate high confidence that the location is inside the mapped proximity zone.   * Scores closer to `0` indicate lower confidence, suggesting the true location may fall in an adjacent zone.  |  |
+|**confidence** | **Float** | A value between &#x60;0&#x60; and &#x60;1&#x60; representing the likelihood that the true device location lies within the mapped proximity zone.   * Scores closer to &#x60;1&#x60; indicate high confidence that the location is inside the mapped proximity zone.   * Scores closer to &#x60;0&#x60; indicate lower confidence, suggesting the true location may fall in an adjacent zone.  |  |
+
 
 
 ## Enum: PrecisionRadiusEnum
 
 | Name | Value |
-|---- | ----- |
+|---- | -----|
 | NUMBER_10 | 10 |
 | NUMBER_25 | 25 |
 | NUMBER_65 | 65 |

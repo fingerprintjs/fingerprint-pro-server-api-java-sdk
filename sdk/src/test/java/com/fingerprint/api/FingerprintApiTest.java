@@ -21,7 +21,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
-import java.time.OffsetDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -35,16 +34,9 @@ import static org.mockito.ArgumentMatchers.*;
 public class FingerprintApiTest {
     private FingerprintApi api;
     private static final String MOCK_REQUEST_ID = "0KSh65EnVoB85JBmloQK";
-    private static final String MOCK_REQUEST_WITH_EXTRA_FIELDS_ID = "EXTRA_FIELDS";
-    private static final String MOCK_REQUEST_WITH_ALL_FAILED_SIGNALS = "ALL_FAILED_SIGNALS";
-    private static final String MOCK_REQUEST_BOTD_FAILED = "MOCK_REQUEST_BOTD_FAILED";
-    private static final String MOCK_REQUEST_BOTD_MANY_REQUEST = "MOCK_REQUEST_BOTD_MANY_REQUEST";
-    private static final String MOCK_REQUEST_IDENTIFICATION_FAILED = "MOCK_REQUEST_IDENTIFICATION_FAILED";
-    private static final String MOCK_REQUEST_IDENTIFICATION_MANY_REQUEST = "MOCK_REQUEST_IDENTIFICATION_MANY_REQUEST";
     private static final String MOCK_VISITOR_ID = "AcxioeQKffpXF8iGQK3P";
-    private static final String MOCK_VISITOR_REQUEST_ID = "1655373780901.HhjRFX";
-    private static final String MOCK_WEBHOOK_VISITOR_ID = "3HNey93AkBW6CRbxV6xP";
-    private static final String MOCK_WEBHOOK_REQUEST_ID = "Px6VxbRC6WBkA39yeNH3";
+    private static final String MOCK_WEBHOOK_VISITOR_ID = "Ibk1527CUFmcnjLwIs4A9";
+    private static final String MOCK_WEBHOOK_EVENT_ID = "1708102555327.NLOjmg";
 
     private static final ObjectMapper MAPPER = getMapper();
 
@@ -72,6 +64,7 @@ public class FingerprintApiTest {
     public void before() {
         ApiClient realApiClient = new ApiClient();
         ApiClient apiClient = Mockito.spy(realApiClient);
+//        apiClient.setBearerToken("MOCK_API_KEY");
         api = new FingerprintApi(apiClient);
     }
 
@@ -98,22 +91,14 @@ public class FingerprintApiTest {
                 break;
             case "updateEvent":
                 path = "/events/" + path;
-                httpMethod = "PUT";
-                break;
-            case "getVisits":
-                path = "/visitors/" + path;
-                httpMethod = "GET";
+                httpMethod = "PATCH";
                 break;
             case "deleteVisitorData":
                 path = "/visitors/" + path;
                 httpMethod = "DELETE";
                 break;
-            case "getRelatedVisitors":
-                path = "/related-visitors";
-                httpMethod = "GET";
-                break;
             case "searchEvents":
-                path = "/events/search";
+                path = "/events";
                 httpMethod = "GET";
                 break;
             default:
@@ -133,7 +118,7 @@ public class FingerprintApiTest {
                 eq(httpMethod),      // HTTP-method
                 any(),               // queryParams
                 argThat(body -> {
-                    if (httpMethod.equals("PUT")) {
+                    if (httpMethod.equals("PATCH")) {
                         return body != null;
                     } else {
                         return body == null;
@@ -180,53 +165,44 @@ public class FingerprintApiTest {
     @Test
     public void getEventTest() throws ApiException {
         addMock("getEvent", MOCK_REQUEST_ID, invocation -> {
-            return mockFileToResponse(200, invocation, "mocks/get_event_200.json");
+            return mockFileToResponse(200, invocation, "mocks/events/get_event_200.json");
         });
 
-        EventsGetResponse response = api.getEvent(MOCK_REQUEST_ID);
-        assertNotNull(response.getProducts());
-        assertNotNull(response.getProducts().getIdentification());
-        assertNotNull(response.getProducts().getIdentification().getData());
-        assertEquals("Ibk1527CUFmcnjLwIs4A9", response.getProducts().getIdentification().getData().getVisitorId());
+        Event response = api.getEvent(MOCK_REQUEST_ID);
+        assertNotNull(response);
+        assertNotNull(response.getIdentification());
+        assertEquals("Ibk1527CUFmcnjLwIs4A9", response.getIdentification().getVisitorId());
 
-        assertFalse(response.getProducts().getClonedApp().getData().getResult());
-        assertFalse(response.getProducts().getEmulator().getData().getResult());
-        assertFalse(response.getProducts().getFrida().getData().getResult());
-        assertFalse(response.getProducts().getJailbroken().getData().getResult());
-        assertFalse(response.getProducts().getIpBlocklist().getData().getResult());
-        assertTrue(response.getProducts().getProxy().getData().getResult());
-        assertEquals(ProxyDetails.ProxyTypeEnum.RESIDENTIAL, response.getProducts().getProxy().getData().getDetails().getProxyType());
-        assertInstanceOf(OffsetDateTime.class, response.getProducts().getProxy().getData().getDetails().getLastSeenAt());
-        assertFalse(response.getProducts().getTampering().getData().getResult());
-        assertFalse(response.getProducts().getTor().getData().getResult());
-        assertFalse(response.getProducts().getVpn().getData().getResult());
-        assertFalse(response.getProducts().getVirtualMachine().getData().getResult());
-        assertFalse(response.getProducts().getHighActivity().getData().getResult());
-        assertFalse(response.getProducts().getLocationSpoofing().getData().getResult());
-        assertEquals(0, response.getProducts().getFactoryReset().getData().getTimestamp());
-        ProductRawDeviceAttributes signalResponseRawDeviceAttributes = response.getProducts().getRawDeviceAttributes();
-        assertEquals(127, signalResponseRawDeviceAttributes.getData().get("architecture").getValue());
-        assertEquals(35.73832903057337, signalResponseRawDeviceAttributes.getData().get("audio").getValue());
-        Map<String, Object> canvasAttribute = (Map<String, Object>) response.getProducts().getRawDeviceAttributes().getData().get("canvas").getValue();
-        assertEquals(true, canvasAttribute.get("Winding"));
-        assertEquals("4dce9d6017c3e0c052a77252f29f2b1c", canvasAttribute.get("Geometry"));
-        assertEquals("p3", signalResponseRawDeviceAttributes.getData().get("colorGamut").getValue());
-        assertEquals(true, signalResponseRawDeviceAttributes.getData().get("cookiesEnabled").getValue());
+        assertFalse(response.getClonedApp());
+        assertFalse(response.getEmulator());
+        assertFalse(response.getFrida());
+        assertFalse(response.getJailbroken());
+        assertFalse(response.getIpBlocklist().getEmailSpam());
+        assertFalse(response.getIpBlocklist().getTorNode());
+        assertTrue(response.getProxy());
+        assertEquals(ProxyDetails.ProxyTypeEnum.RESIDENTIAL, response.getProxyDetails().getProxyType());
+        assertEquals(1708102555327L, response.getProxyDetails().getLastSeenAt());
+        assertFalse(response.getTampering());
+        assertFalse(response.getVpn());
+        assertFalse(response.getVirtualMachine());
+        assertInstanceOf(VelocityData.class, response.getVelocity().getDistinctCountry());
+        assertFalse(response.getLocationSpoofing());
+        assertEquals(0L, response.getFactoryResetTimestamp());
     }
 
     @Test
     public void updateEventLinkedIdRequest() throws ApiException {
         final String LINKED_ID = "myLinkedId";
-        EventsUpdateRequest request = new EventsUpdateRequest();
+        EventUpdate request = new EventUpdate();
         request.setLinkedId(LINKED_ID);
 
         addMock("updateEvent", MOCK_REQUEST_ID, invocation -> {
             List<Pair> queryParams = invocation.getArgument(3);
             assertEquals(1, queryParams.size());
 
-            EventsUpdateRequest body = invocation.getArgument(4);
+            EventUpdate body = invocation.getArgument(4);
             assertEquals(LINKED_ID, body.getLinkedId());
-            assertNull(body.getTag());
+            assertNull(body.getTags());
             assertNull(body.getSuspect());
             return mockFileToResponse(200, invocation, null);
         });
@@ -247,16 +223,16 @@ public class FingerprintApiTest {
             put("key1", "value1");
             put("key2", 2);
         }});
-        EventsUpdateRequest request = new EventsUpdateRequest();
-        request.setTag(TAG);
+        EventUpdate request = new EventUpdate();
+        request.setTags(TAG);
 
         addMock("updateEvent", MOCK_REQUEST_ID, invocation -> {
             List<Pair> queryParams = invocation.getArgument(3);
             assertEquals(1, queryParams.size());
 
-            EventsUpdateRequest body = invocation.getArgument(4);
+            EventUpdate body = invocation.getArgument(4);
             assertNull(body.getLinkedId());
-            assertEquals(TAG, body.getTag());
+            assertEquals(TAG, body.getTags());
             assertNull(body.getSuspect());
             return mockFileToResponse(200, invocation, null);
         });
@@ -265,16 +241,16 @@ public class FingerprintApiTest {
 
     @Test
     public void updateEventSuspectPositiveRequest() throws ApiException {
-        EventsUpdateRequest request = new EventsUpdateRequest();
+        EventUpdate request = new EventUpdate();
         request.setSuspect(true);
 
         addMock("updateEvent", MOCK_REQUEST_ID, invocation -> {
             List<Pair> queryParams = invocation.getArgument(3);
             assertEquals(1, queryParams.size());
 
-            EventsUpdateRequest body = invocation.getArgument(4);
+            EventUpdate body = invocation.getArgument(4);
             assertNull(body.getLinkedId());
-            assertNull(body.getTag());
+            assertNull(body.getTags());
             assertTrue(body.getSuspect());
             return mockFileToResponse(200, invocation, null);
         });
@@ -283,16 +259,16 @@ public class FingerprintApiTest {
 
     @Test
     public void updateEventSuspectNegativeRequest() throws ApiException {
-        EventsUpdateRequest request = new EventsUpdateRequest();
+        EventUpdate request = new EventUpdate();
         request.setSuspect(false);
 
         addMock("updateEvent", MOCK_REQUEST_ID, invocation -> {
             List<Pair> queryParams = invocation.getArgument(3);
             assertEquals(1, queryParams.size());
 
-            EventsUpdateRequest body = invocation.getArgument(4);
+            EventUpdate body = invocation.getArgument(4);
             assertNull(body.getLinkedId());
-            assertNull(body.getTag());
+            assertNull(body.getTags());
             assertFalse(body.getSuspect());
             return mockFileToResponse(200, invocation, null);
         });
@@ -307,18 +283,18 @@ public class FingerprintApiTest {
         TAG.put("booleanKey", true);
         TAG.put("numberKey", 123);
         TAG.put("arrayStringKey", new String[]{"value1", "value2"});
-        EventsUpdateRequest request = new EventsUpdateRequest();
+        EventUpdate request = new EventUpdate();
         request.setLinkedId(LINKED_ID);
-        request.setTag(TAG);
+        request.setTags(TAG);
         request.setSuspect(true);
 
         addMock("updateEvent", MOCK_REQUEST_ID, invocation -> {
             List<Pair> queryParams = invocation.getArgument(3);
             assertEquals(1, queryParams.size());
 
-            EventsUpdateRequest body = invocation.getArgument(4);
+            EventUpdate body = invocation.getArgument(4);
             assertEquals(LINKED_ID, body.getLinkedId());
-            assertEquals(TAG, body.getTag());
+            assertEquals(TAG, body.getTags());
             assertTrue(body.getSuspect());
             return mockFileToResponse(200, invocation, null);
         });
@@ -337,147 +313,6 @@ public class FingerprintApiTest {
     }
 
     /**
-     * Get event by requestId
-     * This endpoint allows you to get events with all the information from each activated product (Fingerprint Pro or Bot Detection). Use the requestId as a URL path :request_id parameter. This API method is scoped to a request, i.e. all returned information is by requestId.
-     * Answer will contain fields of additional products that don't described in schema
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void getEventWithExtraFieldsTest() throws ApiException {
-        addMock("getEvent", MOCK_REQUEST_WITH_EXTRA_FIELDS_ID,
-                invocation -> mockFileToResponse(200, invocation, "mocks/get_event_200_extra_fields.json")
-        );
-        EventsGetResponse response = api.getEvent(MOCK_REQUEST_WITH_EXTRA_FIELDS_ID);
-        Products products = response.getProducts();
-        assertNotNull(products);
-        assertNotNull(products.getIdentification());
-        assertNotNull(products.getIdentification().getData());
-        assertEquals("Ibk1527CUFmcnjLwIs4A9", products.getIdentification().getData().getVisitorId());
-    }
-
-    @Test
-    public void getEventWithAllFailedSignalsTest() throws ApiException {
-        addMock("getEvent", MOCK_REQUEST_WITH_ALL_FAILED_SIGNALS,
-                invocation -> mockFileToResponse(200, invocation, "mocks/get_event_200_all_errors.json")
-        );
-
-        EventsGetResponse response = api.getEvent(MOCK_REQUEST_WITH_ALL_FAILED_SIGNALS);
-        Products products = response.getProducts();
-
-        assertNotNull(products);
-        assertEquals(ErrorCode.FAILED, products.getIdentification().getError().getCode());
-        assertEquals(ErrorCode.FAILED, products.getBotd().getError().getCode());
-        assertEquals(ErrorCode.FAILED, products.getIpInfo().getError().getCode());
-        assertEquals(ErrorCode.FAILED, products.getIncognito().getError().getCode());
-        assertEquals(ErrorCode.FAILED, products.getRootApps().getError().getCode());
-        assertEquals(ErrorCode.FAILED, products.getEmulator().getError().getCode());
-        assertEquals(ErrorCode.FAILED, products.getIpBlocklist().getError().getCode());
-        assertEquals(ErrorCode.FAILED, products.getTor().getError().getCode());
-        assertEquals(ErrorCode.FAILED, products.getVpn().getError().getCode());
-        assertEquals(ErrorCode.FAILED, products.getProxy().getError().getCode());
-        assertEquals(ErrorCode.FAILED, products.getTampering().getError().getCode());
-        assertEquals(ErrorCode.FAILED, products.getClonedApp().getError().getCode());
-        assertEquals(ErrorCode.FAILED, products.getFactoryReset().getError().getCode());
-        assertEquals(ErrorCode.FAILED, products.getJailbroken().getError().getCode());
-        assertEquals(ErrorCode.FAILED, products.getFrida().getError().getCode());
-        assertEquals(ErrorCode.FAILED, products.getPrivacySettings().getError().getCode());
-        assertEquals(ErrorCode.FAILED, products.getVirtualMachine().getError().getCode());
-
-        ProductRawDeviceAttributes signalResponseRawDeviceAttributes = response.getProducts().getRawDeviceAttributes();
-        assertEquals("Error", signalResponseRawDeviceAttributes.getData().get("audio").getError().getName());
-        assertEquals("internal server error", signalResponseRawDeviceAttributes.getData().get("audio").getError().getMessage());
-        assertEquals("Error", signalResponseRawDeviceAttributes.getData().get("canvas").getError().getName());
-        assertEquals("internal server error", signalResponseRawDeviceAttributes.getData().get("canvas").getError().getMessage());
-    }
-
-    @Test
-    public void getEventBotdFailedErrorTest() throws ApiException {
-        addMock("getEvent", MOCK_REQUEST_BOTD_FAILED,
-                invocation -> mockFileToResponse(200, invocation, "mocks/get_event_200_botd_failed_error.json")
-        );
-
-        EventsGetResponse response = api.getEvent(MOCK_REQUEST_BOTD_FAILED);
-        Products products = response.getProducts();
-        assertNotNull(products);
-        assertNotNull(products.getIdentification());
-        assertNotNull(products.getIdentification().getData());
-        assertEquals("Ibk1527CUFmcnjLwIs4A9", products.getIdentification().getData().getVisitorId());
-
-        assertNotNull(products.getBotd());
-        assertNotNull(products.getBotd().getError());
-        assertEquals(ErrorCode.FAILED, products.getBotd().getError().getCode());
-    }
-
-    @Test
-    public void getEventBotdManyRequestsErrorTest() throws ApiException {
-        addMock("getEvent", MOCK_REQUEST_BOTD_MANY_REQUEST,
-                invocation -> mockFileToResponse(200, invocation, "mocks/get_event_200_too_many_requests_error.json")
-        );
-
-        EventsGetResponse response = api.getEvent(MOCK_REQUEST_BOTD_MANY_REQUEST);
-        Products products = response.getProducts();
-        assertNotNull(products);
-        assertNotNull(products.getBotd());
-        assertNotNull(products.getBotd().getError());
-        assertEquals(ErrorCode.TOO_MANY_REQUESTS, products.getBotd().getError().getCode());
-    }
-
-    @Test
-    public void getEventIdentificationFailedErrorTest() throws ApiException {
-        addMock("getEvent", MOCK_REQUEST_IDENTIFICATION_FAILED,
-                invocation -> mockFileToResponse(200, invocation, "mocks/get_event_200_identification_failed_error.json")
-        );
-
-        EventsGetResponse response = api.getEvent(MOCK_REQUEST_IDENTIFICATION_FAILED);
-        Products products = response.getProducts();
-        assertNotNull(products);
-        assertNotNull(products.getIdentification());
-        assertNotNull(products.getIdentification().getError());
-        assertEquals(ErrorCode.FAILED, products.getIdentification().getError().getCode());
-        assertNotNull(products.getBotd());
-        assertNotNull(products.getBotd().getData());
-    }
-
-    @Test
-    public void getEventIdentificationManyRequestsErrorTest() throws ApiException {
-        addMock("getEvent", MOCK_REQUEST_IDENTIFICATION_MANY_REQUEST,
-                invocation -> mockFileToResponse(200, invocation, "mocks/get_event_200_too_many_requests_error.json")
-        );
-
-        EventsGetResponse response = api.getEvent(MOCK_REQUEST_IDENTIFICATION_MANY_REQUEST);
-        Products products = response.getProducts();
-        assertNotNull(products);
-        assertNotNull(products.getIdentification());
-        assertNotNull(products.getIdentification().getError());
-        assertEquals(ErrorCode._429_TOO_MANY_REQUESTS, products.getIdentification().getError().getCode());
-    }
-
-    /**
-     * Get visits by visitorId
-     * This endpoint allows you to get a history of visits with all available information. Use the visitorId as a URL path parameter. This API method is scoped to a visitor, i.e. all returned information is by visitorId.
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void getVisitsTest() throws ApiException {
-        final String PAGINATION_KEY = "1683900801733.Ogvu1j";
-        final int LIMIT = 50;
-        addMock("getVisits", MOCK_VISITOR_ID, invocation -> {
-            List<Pair> queryParams = invocation.getArgument(3);
-
-            assertEquals(4, queryParams.size());
-            assertTrue(listContainsPair(queryParams, "request_id", MOCK_VISITOR_REQUEST_ID));
-            assertTrue(listContainsPair(queryParams, "limit", String.valueOf(LIMIT)));
-            assertTrue(listContainsPair(queryParams, "paginationKey", PAGINATION_KEY));
-
-            return mockFileToResponse(200, invocation, "mocks/get_visitors_200_limit_500.json");
-        });
-        VisitorsGetResponse response = api.getVisits(MOCK_VISITOR_ID, MOCK_VISITOR_REQUEST_ID, null, LIMIT, PAGINATION_KEY, null);
-        assertEquals(response.getVisitorId(), MOCK_VISITOR_ID);
-    }
-
-    /**
      * Webhook
      * Check that webhook correctly deserializes the JSON payload to the WebhookVisit object.
      *
@@ -488,28 +323,10 @@ public class FingerprintApiTest {
         ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
-        Webhook visit = mapper.readValue(getFileAsIOStream("mocks/webhook.json"), Webhook.class);
+        Event event = mapper.readValue(getFileAsIOStream("mocks/webhook/webhook_event.json"), Event.class);
 
-        assertEquals(MOCK_WEBHOOK_VISITOR_ID, visit.getVisitorId());
-        assertEquals(MOCK_WEBHOOK_REQUEST_ID, visit.getRequestId());
-    }
-
-    @Test
-    public void relatedVisitorsTest() throws ApiException {
-        addMock("getRelatedVisitors", null, invocation -> {
-            List<Pair> queryParams = invocation.getArgument(3);
-            assertEquals(2, queryParams.size());
-            assertTrue(listContainsPair(queryParams, "visitor_id", MOCK_VISITOR_ID));
-
-            return mockFileToResponse(200, invocation, "mocks/related-visitors/get_related_visitors_200.json");
-        });
-
-        RelatedVisitorsResponse response = api.getRelatedVisitors(MOCK_VISITOR_ID);
-        List<RelatedVisitor> relatedVisitorsList = response.getRelatedVisitors();
-
-        assertEquals(relatedVisitorsList.size(), 2);
-        assertEquals(relatedVisitorsList.get(0).getVisitorId(), "NtCUJGceWX9RpvSbhvOm");
-        assertEquals(relatedVisitorsList.get(1).getVisitorId(), "25ee02iZwGxeyT0jMNkZ");
+        assertEquals(MOCK_WEBHOOK_VISITOR_ID, event.getIdentification().getVisitorId());
+        assertEquals(MOCK_WEBHOOK_EVENT_ID, event.getEventId());
     }
 
     @Test
@@ -520,41 +337,32 @@ public class FingerprintApiTest {
             assertEquals(2, queryParams.size());
             assertTrue(listContainsPair(queryParams, "limit", String.valueOf(LIMIT)));
 
-            return mockFileToResponse(200, invocation, "mocks/get_event_search_200.json");
+            return mockFileToResponse(200, invocation, "mocks/events/search/get_event_search_200.json");
         });
 
-        SearchEventsResponse response = api.searchEvents(LIMIT, null);
-        List<SearchEventsResponseEventsInner> events = response.getEvents();
+        EventSearch response = api.searchEvents(new FingerprintApi.SearchEventsOptionalParams().setLimit(LIMIT));
+        List<Event> events = response.getEvents();
 
         assertEquals(events.size(), 1);
-        Products products = events.get(0).getProducts();
+        Event event = events.get(0);
 
-        assertNotNull(products);
-        assertNotNull(products.getIdentification());
-        assertNotNull(products.getIdentification().getData());
-        assertEquals("Ibk1527CUFmcnjLwIs4A9", products.getIdentification().getData().getVisitorId());
+        assertNotNull(event);
+        assertNotNull(event.getIdentification());
+        assertEquals("Ibk1527CUFmcnjLwIs4A9", event.getIdentification().getVisitorId());
 
-        assertFalse(products.getClonedApp().getData().getResult());
-        assertFalse(products.getEmulator().getData().getResult());
-        assertFalse(products.getFrida().getData().getResult());
-        assertFalse(products.getJailbroken().getData().getResult());
-        assertFalse(products.getIpBlocklist().getData().getResult());
-        assertFalse(products.getProxy().getData().getResult());
-        assertFalse(products.getTampering().getData().getResult());
-        assertFalse(products.getTor().getData().getResult());
-        assertFalse(products.getVpn().getData().getResult());
-        assertFalse(products.getVirtualMachine().getData().getResult());
-        assertFalse(products.getHighActivity().getData().getResult());
-        assertFalse(products.getLocationSpoofing().getData().getResult());
-        assertEquals(0, products.getFactoryReset().getData().getTimestamp());
-        ProductRawDeviceAttributes signalResponseRawDeviceAttributes = products.getRawDeviceAttributes();
-        assertEquals(127, signalResponseRawDeviceAttributes.getData().get("architecture").getValue());
-        assertEquals(35.73832903057337, signalResponseRawDeviceAttributes.getData().get("audio").getValue());
-        Map<String, Object> canvasAttribute = (Map<String, Object>) products.getRawDeviceAttributes().getData().get("canvas").getValue();
-        assertEquals(true, canvasAttribute.get("Winding"));
-        assertEquals("4dce9d6017c3e0c052a77252f29f2b1c", canvasAttribute.get("Geometry"));
-        assertEquals("p3", signalResponseRawDeviceAttributes.getData().get("colorGamut").getValue());
-        assertEquals(true, signalResponseRawDeviceAttributes.getData().get("cookiesEnabled").getValue());
+        assertFalse(event.getClonedApp());
+        assertFalse(event.getEmulator());
+        assertFalse(event.getFrida());
+        assertFalse(event.getJailbroken());
+        assertFalse(event.getIpBlocklist().getAttackSource());
+        assertFalse(event.getIpBlocklist().getTorNode());
+        assertTrue(event.getProxy());
+        assertFalse(event.getTampering());
+        assertFalse(event.getVpn());
+        assertFalse(event.getVirtualMachine());
+        assertInstanceOf(VelocityData.class, event.getVelocity().getDistinctVisitorIdByLinkedId());
+        assertFalse(event.getLocationSpoofing());
+        assertEquals(0L, event.getFactoryResetTimestamp());
     }
 
     @Test
@@ -621,16 +429,16 @@ public class FingerprintApiTest {
         expectedQueryParams.put("vpn_confidence", VPN_CONFIDENCE);
         expectedQueryParams.put("emulator", String.valueOf(EMULATOR));
         expectedQueryParams.put("incognito", String.valueOf(INCOGNITO));
-        expectedQueryParams.put("ip_blocklist", String.valueOf(IP_BLOCKLIST));
-        expectedQueryParams.put("datacenter", String.valueOf(DATACENTER));
+//        expectedQueryParams.put("ip_blocklist", String.valueOf(IP_BLOCKLIST));
+//        expectedQueryParams.put("datacenter", String.valueOf(DATACENTER));
         expectedQueryParams.put("developer_tools", String.valueOf(DEVELOPER_TOOLS));
         expectedQueryParams.put("location_spoofing", String.valueOf(LOCATION_SPOOFING));
         expectedQueryParams.put("mitm_attack", String.valueOf(MITM_ATTACK));
         expectedQueryParams.put("proxy", String.valueOf(PROXY));
         expectedQueryParams.put("sdk_version", SDK_VERSION);
         expectedQueryParams.put("sdk_platform", SDK_PLATFORM);
-        expectedQueryParams.put("proximity_id", PROXIMITY_ID);
-        expectedQueryParams.put("proximity_precision_radius", String.valueOf(PROXIMITY_PRECISION_RADIUS));
+//        expectedQueryParams.put("proximity_id", PROXIMITY_ID);
+//        expectedQueryParams.put("proximity_precision_radius", String.valueOf(PROXIMITY_PRECISION_RADIUS));
 
         addMock("searchEvents", null, invocation -> {
             List<Pair> queryParams = invocation.getArgument(3);
@@ -649,10 +457,11 @@ public class FingerprintApiTest {
 
             assertEquals(ENVIRONMENT, actualEnv);
 
-            return mockFileToResponse(200, invocation, "mocks/get_event_search_200.json");
+            return mockFileToResponse(200, invocation, "mocks/events/search/get_event_search_200.json");
         });
 
-        SearchEventsResponse response = api.searchEvents(LIMIT, new FingerprintApi.SearchEventsOptionalParams()
+        EventSearch response = api.searchEvents(new FingerprintApi.SearchEventsOptionalParams()
+                .setLimit(LIMIT)
                 .setPaginationKey(PAGINATION_KEY)
                 .setVisitorId(MOCK_VISITOR_ID)
                 .setBot(BOT).setIpAddress(IP_ADDRESS)
@@ -673,8 +482,8 @@ public class FingerprintApiTest {
                 .setVpnConfidence(VPN_CONFIDENCE)
                 .setEmulator(EMULATOR)
                 .setIncognito(INCOGNITO)
-                .setIpBlocklist(IP_BLOCKLIST)
-                .setDatacenter(DATACENTER)
+//                .setIpBlocklist(IP_BLOCKLIST)
+//                .setDatacenter(DATACENTER)
                 .setDeveloperTools(DEVELOPER_TOOLS)
                 .setLocationSpoofing(LOCATION_SPOOFING)
                 .setMitmAttack(MITM_ATTACK)
@@ -682,10 +491,10 @@ public class FingerprintApiTest {
                 .setSdkVersion(SDK_VERSION)
                 .setSdkPlatform(SDK_PLATFORM)
                 .setEnvironment(ENVIRONMENT)
-                .setProximityId(PROXIMITY_ID)
-                .setProximityPrecisionRadius(PROXIMITY_PRECISION_RADIUS)
+//                .setProximityId(PROXIMITY_ID)
+//                .setProximityPrecisionRadius(PROXIMITY_PRECISION_RADIUS)
         );
-        List<SearchEventsResponseEventsInner> events = response.getEvents();
+        List<Event> events = response.getEvents();
         assertEquals(events.size(), 1);
     }
 
@@ -694,14 +503,13 @@ public class FingerprintApiTest {
         int LIMIT = 1;
         addMock("searchEvents", null, invocation -> {
             List<Pair> queryParams = invocation.getArgument(3);
-            assertEquals(2, queryParams.size());
-            assertTrue(listContainsPair(queryParams, "limit", String.valueOf(LIMIT)));
+            assertEquals(1, queryParams.size());
 
             return mockFileToResponse(400, invocation, "mocks/errors/400_ip_address_invalid.json");
         });
 
         ApiException exception = assertThrows(ApiException.class,
-                () -> api.searchEvents(LIMIT, null));
+                () -> api.searchEvents(null));
 
         assertEquals(400, exception.getCode());
         ErrorResponse response = MAPPER.readValue(exception.getResponseBody(), ErrorResponse.class);
@@ -714,14 +522,13 @@ public class FingerprintApiTest {
         int LIMIT = 1;
         addMock("searchEvents", null, invocation -> {
             List<Pair> queryParams = invocation.getArgument(3);
-            assertEquals(2, queryParams.size());
-            assertTrue(listContainsPair(queryParams, "limit", String.valueOf(LIMIT)));
+            assertEquals(1, queryParams.size());
 
             return mockFileToResponse(403, invocation, "mocks/errors/403_feature_not_enabled.json");
         });
 
         ApiException exception = assertThrows(ApiException.class,
-                () -> api.searchEvents(LIMIT, null));
+                () -> api.searchEvents(null));
 
         assertEquals(403, exception.getCode());
         ErrorResponse response = MAPPER.readValue(exception.getResponseBody(), ErrorResponse.class);

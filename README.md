@@ -55,7 +55,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.github.fingerprintjs</groupId>
   <artifactId>fingerprint-pro-server-api-java-sdk</artifactId>
-  <version>v7.10.0</version>
+  <version>v7.8.0</version>
 </dependency>
 ```
 
@@ -70,7 +70,7 @@ repositories {
 }
 
 dependencies {
-  implementation "com.github.fingerprintjs:fingerprint-pro-server-api-java-sdk:v7.10.0"
+  implementation "com.github.fingerprintjs:fingerprint-pro-server-api-java-sdk:v7.8.0"
 }
 ```
 
@@ -85,7 +85,7 @@ repositories {
 }
 
 dependencies {
-  implementation("com.github.fingerprintjs:fingerprint-pro-server-api-java-sdk:v7.10.0")
+  implementation("com.github.fingerprintjs:fingerprint-pro-server-api-java-sdk:v7.8.0")
 }
 ```
 
@@ -99,7 +99,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-- `target/fingerprint-pro-server-api-sdk-7.10.0.jar`
+- `target/fingerprint-pro-server-api-sdk-7.8.0.jar`
 
 ## Getting Started
 
@@ -109,8 +109,8 @@ Please follow the [installation](#installation) instruction and execute the foll
 package main;
 
 import com.fingerprint.api.FingerprintApi;
-import com.fingerprint.model.EventsGetResponse;
-import com.fingerprint.model.EventsUpdateRequest;
+import com.fingerprint.model.Events;
+import com.fingerprint.model.UpdateEvents;
 import com.fingerprint.model.VisitorsGetResponse;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
@@ -122,8 +122,8 @@ public class FingerprintApiExample {
     private static final String FPJS_API_SECRET = "Fingerprint Secret API Key";
     // A mandatory visitorId of a specific visitor
     private static final String FPJS_VISITOR_ID = "visitorId";
-    // An optional requestId made by a specific visitor
-    private static final String FPJS_REQUEST_ID = "requestId";
+    // An optional eventId initiated by a specific visitor
+    private static final String FPJS_EVENT_ID = "eventId";
     // An optional linkedId of the visit
     private static final String FPJS_LINKED_ID = "linkedId";
     // An optional parameter limiting scanned results
@@ -146,7 +146,7 @@ public class FingerprintApiExample {
         // Get an event with a given requestId
         try {
             // Fetch the event with a given requestId
-            EventsGetResponse response = api.getEvent(FPJS_REQUEST_ID);
+            Event response = api.getEvent(FPJS_EVENT_ID);
             System.out.println(response.getProducts().toString());
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());
@@ -169,38 +169,11 @@ public class FingerprintApiExample {
 
         // Update an event with a given requestId
         try {
-            EventsUpdateRequest request = new EventsUpdateRequest();
+            EventUpdate request = new EventUpdate();
             request.setLinkedId("myNewLinkedId");
-            api.updateEvent(FPJS_REQUEST_ID, request);
+            api.updateEvent(FPJS_EVENT_ID, request);
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.updateEvent:" + e.getMessage());
-        }
-
-        // Get a specific visitor's all visits
-        try {
-            // Fetch all visits with a given visitorId, with a page limit
-            VisitorsGetResponse response = api.getVisits(FPJS_VISITOR_ID, null, null, LIMIT, null, null);
-            System.out.println(response.getVisits().toString());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FingerprintApi.getVisits:" + e.getMessage());
-        }
-
-        // Get a specific visitor's all visits with a linkedId
-        try {
-            // Fetch all visits with a given visitorId, with a page limit, skipping the first visit
-            VisitorsGetResponse response = api.getVisits(FPJS_VISITOR_ID, null, FPJS_LINKED_ID, LIMIT, PAGINATION_KEY, null);
-            System.out.println(response.getVisits().toString());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FingerprintApi.getVisits:" + e.getMessage());
-        }
-
-        // Use all the parameters on getVisits
-        try {
-            // Fetch the visitor's all visits with a given requestId and linkedId with a page limit while skipping the first visit
-            VisitorsGetResponse response = api.getVisits(FPJS_VISITOR_ID, FPJS_REQUEST_ID, FPJS_LINKED_ID, LIMIT, PAGINATION_KEY, null);
-            System.out.println(response.getVisits().toString());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling FingerprintApi.getVisits:" + e.getMessage());
         }
 
         // Delete visitor data with a given visitorID
@@ -284,153 +257,56 @@ class WebhookController {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.fpjs.io*
+All URIs are relative to *https://api.fpjs.io/v4*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *FingerprintApi* | [**deleteVisitorData**](docs/FingerprintApi.md#deleteVisitorData) | **DELETE** /visitors/{visitor_id} | Delete data by visitor ID
-*FingerprintApi* | [**getEvent**](docs/FingerprintApi.md#getEvent) | **GET** /events/{request_id} | Get event by request ID
-*FingerprintApi* | [**getRelatedVisitors**](docs/FingerprintApi.md#getRelatedVisitors) | **GET** /related-visitors | Get Related Visitors
-*FingerprintApi* | [**getVisits**](docs/FingerprintApi.md#getVisits) | **GET** /visitors/{visitor_id} | Get visits by visitor ID
-*FingerprintApi* | [**searchEvents**](docs/FingerprintApi.md#searchEvents) | **GET** /events/search | Get events via search
-*FingerprintApi* | [**updateEvent**](docs/FingerprintApi.md#updateEvent) | **PUT** /events/{request_id} | Update an event with a given request ID
-*FingerprintApi* | [**webhookTrace**](docs/FingerprintApi.md#webhookTrace) | **TRACE** /webhook | Dummy path to describe webhook format.
+*FingerprintApi* | [**getEvent**](docs/FingerprintApi.md#getEvent) | **GET** /events/{event_id} | Get an event by event ID
+*FingerprintApi* | [**searchEvents**](docs/FingerprintApi.md#searchEvents) | **GET** /events | Search events
+*FingerprintApi* | [**updateEvent**](docs/FingerprintApi.md#updateEvent) | **PATCH** /events/{event_id} | Update an event
 
 
 ## Documentation for Models
 
- - [Botd](docs/Botd.md)
- - [BotdBot](docs/BotdBot.md)
- - [BotdBotResult](docs/BotdBotResult.md)
+ - [BotResult](docs/BotResult.md)
  - [BrowserDetails](docs/BrowserDetails.md)
- - [ClonedApp](docs/ClonedApp.md)
- - [DeprecatedGeolocation](docs/DeprecatedGeolocation.md)
- - [DeveloperTools](docs/DeveloperTools.md)
- - [Emulator](docs/Emulator.md)
  - [Error](docs/Error.md)
  - [ErrorCode](docs/ErrorCode.md)
- - [ErrorPlainResponse](docs/ErrorPlainResponse.md)
  - [ErrorResponse](docs/ErrorResponse.md)
- - [EventsGetResponse](docs/EventsGetResponse.md)
- - [EventsUpdateRequest](docs/EventsUpdateRequest.md)
- - [FactoryReset](docs/FactoryReset.md)
- - [Frida](docs/Frida.md)
+ - [Event](docs/Event.md)
+ - [EventSearch](docs/EventSearch.md)
+ - [EventUpdate](docs/EventUpdate.md)
  - [Geolocation](docs/Geolocation.md)
- - [GeolocationCity](docs/GeolocationCity.md)
- - [GeolocationContinent](docs/GeolocationContinent.md)
- - [GeolocationCountry](docs/GeolocationCountry.md)
- - [GeolocationSubdivision](docs/GeolocationSubdivision.md)
- - [HighActivity](docs/HighActivity.md)
- - [IPBlocklist](docs/IPBlocklist.md)
- - [IPBlocklistDetails](docs/IPBlocklistDetails.md)
+ - [GeolocationSubdivisionsInner](docs/GeolocationSubdivisionsInner.md)
+ - [IPBlockList](docs/IPBlockList.md)
  - [IPInfo](docs/IPInfo.md)
- - [IPInfoASN](docs/IPInfoASN.md)
- - [IPInfoDataCenter](docs/IPInfoDataCenter.md)
  - [IPInfoV4](docs/IPInfoV4.md)
  - [IPInfoV6](docs/IPInfoV6.md)
  - [Identification](docs/Identification.md)
  - [IdentificationConfidence](docs/IdentificationConfidence.md)
- - [IdentificationSeenAt](docs/IdentificationSeenAt.md)
- - [Incognito](docs/Incognito.md)
- - [Jailbroken](docs/Jailbroken.md)
- - [LocationSpoofing](docs/LocationSpoofing.md)
- - [MitMAttack](docs/MitMAttack.md)
- - [PrivacySettings](docs/PrivacySettings.md)
- - [ProductBotd](docs/ProductBotd.md)
- - [ProductClonedApp](docs/ProductClonedApp.md)
- - [ProductDeveloperTools](docs/ProductDeveloperTools.md)
- - [ProductEmulator](docs/ProductEmulator.md)
- - [ProductFactoryReset](docs/ProductFactoryReset.md)
- - [ProductFrida](docs/ProductFrida.md)
- - [ProductHighActivity](docs/ProductHighActivity.md)
- - [ProductIPBlocklist](docs/ProductIPBlocklist.md)
- - [ProductIPInfo](docs/ProductIPInfo.md)
- - [ProductIdentification](docs/ProductIdentification.md)
- - [ProductIncognito](docs/ProductIncognito.md)
- - [ProductJailbroken](docs/ProductJailbroken.md)
- - [ProductLocationSpoofing](docs/ProductLocationSpoofing.md)
- - [ProductMitMAttack](docs/ProductMitMAttack.md)
- - [ProductPrivacySettings](docs/ProductPrivacySettings.md)
- - [ProductProximity](docs/ProductProximity.md)
- - [ProductProxy](docs/ProductProxy.md)
- - [ProductRawDeviceAttributes](docs/ProductRawDeviceAttributes.md)
- - [ProductRemoteControl](docs/ProductRemoteControl.md)
- - [ProductRootApps](docs/ProductRootApps.md)
- - [ProductSuspectScore](docs/ProductSuspectScore.md)
- - [ProductTampering](docs/ProductTampering.md)
- - [ProductTor](docs/ProductTor.md)
- - [ProductVPN](docs/ProductVPN.md)
- - [ProductVelocity](docs/ProductVelocity.md)
- - [ProductVirtualMachine](docs/ProductVirtualMachine.md)
- - [Products](docs/Products.md)
+ - [Integration](docs/Integration.md)
+ - [IntegrationSubintegration](docs/IntegrationSubintegration.md)
  - [Proximity](docs/Proximity.md)
- - [Proxy](docs/Proxy.md)
  - [ProxyConfidence](docs/ProxyConfidence.md)
  - [ProxyDetails](docs/ProxyDetails.md)
- - [RawDeviceAttribute](docs/RawDeviceAttribute.md)
- - [RawDeviceAttributeError](docs/RawDeviceAttributeError.md)
- - [RelatedVisitor](docs/RelatedVisitor.md)
- - [RelatedVisitorsResponse](docs/RelatedVisitorsResponse.md)
- - [RemoteControl](docs/RemoteControl.md)
- - [RootApps](docs/RootApps.md)
  - [SDK](docs/SDK.md)
- - [SearchEventsResponse](docs/SearchEventsResponse.md)
- - [SearchEventsResponseEventsInner](docs/SearchEventsResponseEventsInner.md)
- - [SupplementaryID](docs/SupplementaryID.md)
- - [SuspectScore](docs/SuspectScore.md)
- - [Tampering](docs/Tampering.md)
- - [Tor](docs/Tor.md)
- - [VPN](docs/VPN.md)
- - [VPNConfidence](docs/VPNConfidence.md)
- - [VPNMethods](docs/VPNMethods.md)
+ - [SupplementaryIDHighRecall](docs/SupplementaryIDHighRecall.md)
+ - [TamperingDetails](docs/TamperingDetails.md)
+ - [TriggeredByInner](docs/TriggeredByInner.md)
  - [Velocity](docs/Velocity.md)
  - [VelocityData](docs/VelocityData.md)
- - [VelocityIntervals](docs/VelocityIntervals.md)
- - [VirtualMachine](docs/VirtualMachine.md)
- - [Visit](docs/Visit.md)
- - [VisitorsGetResponse](docs/VisitorsGetResponse.md)
- - [Webhook](docs/Webhook.md)
- - [WebhookClonedApp](docs/WebhookClonedApp.md)
- - [WebhookDeveloperTools](docs/WebhookDeveloperTools.md)
- - [WebhookEmulator](docs/WebhookEmulator.md)
- - [WebhookFactoryReset](docs/WebhookFactoryReset.md)
- - [WebhookFrida](docs/WebhookFrida.md)
- - [WebhookHighActivity](docs/WebhookHighActivity.md)
- - [WebhookIPBlocklist](docs/WebhookIPBlocklist.md)
- - [WebhookIPInfo](docs/WebhookIPInfo.md)
- - [WebhookJailbroken](docs/WebhookJailbroken.md)
- - [WebhookLocationSpoofing](docs/WebhookLocationSpoofing.md)
- - [WebhookMitMAttack](docs/WebhookMitMAttack.md)
- - [WebhookPrivacySettings](docs/WebhookPrivacySettings.md)
- - [WebhookProximity](docs/WebhookProximity.md)
- - [WebhookProxy](docs/WebhookProxy.md)
- - [WebhookRemoteControl](docs/WebhookRemoteControl.md)
- - [WebhookRootApps](docs/WebhookRootApps.md)
- - [WebhookSupplementaryIDs](docs/WebhookSupplementaryIDs.md)
- - [WebhookSuspectScore](docs/WebhookSuspectScore.md)
- - [WebhookTampering](docs/WebhookTampering.md)
- - [WebhookTor](docs/WebhookTor.md)
- - [WebhookVPN](docs/WebhookVPN.md)
- - [WebhookVelocity](docs/WebhookVelocity.md)
- - [WebhookVirtualMachine](docs/WebhookVirtualMachine.md)
+ - [VpnConfidence](docs/VpnConfidence.md)
+ - [VpnMethods](docs/VpnMethods.md)
 
 
 ## Documentation for Authorization
 
 Authentication schemes defined for the API:
-### ApiKeyHeader
+### bearerAuth
 
 
-- **Type**: API key
-- **API key parameter name**: Auth-API-Key
-- **Location**: HTTP header
-
-### ApiKeyQuery
-
-
-- **Type**: API key
-- **API key parameter name**: api_key
-- **Location**: URL query string
+- **Type**: HTTP basic authentication
 
 
 ## Documentation for sealed results

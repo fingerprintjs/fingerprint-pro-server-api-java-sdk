@@ -2,9 +2,14 @@
 
 package {{invokerPackage}};
 
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Supplier;
+
 {{>generatedAnnotation}}
 public class Configuration {
-    private static ApiClient defaultApiClient = new ApiClient();
+    private static final AtomicReference<ApiClient> defaultApiClient = new AtomicReference<>();
+    private static volatile Supplier<ApiClient> apiClientFactory = ApiClient::new;
 
     /**
      * Get the default API client, which would be used when creating API
@@ -13,22 +18,33 @@ public class Configuration {
      * @return Default API client
      */
     public static ApiClient getDefaultApiClient() {
-        return defaultApiClient;
+        ApiClient client = defaultApiClient.get();
+        if (client == null) {
+            client = defaultApiClient.updateAndGet(val -> {
+                if (val != null) { // changed by another thread
+                    return val;
+                }
+                return apiClientFactory.get();
+            });
+        }
+        return client;
     }
 
     public static ApiClient getDefaultApiClient(String apiKey, Region region) {
-        defaultApiClient.setApiKey(apiKey);
-        defaultApiClient.setBasePath(region.toString());
-        return defaultApiClient;
+        ApiClient client = getDefaultApiClient();
+        client.setBearerToken(apiKey);
+        client.setBasePath(region.toString());
+        return client;
     }
 
     public static ApiClient getDefaultApiClient(String apiKey, String regionStr) {
+        ApiClient client = getDefaultApiClient();
         switch (regionStr) {
             case "eu":
             case "EU":
             case "EUROPE":
             case "europe":
-                defaultApiClient.setBasePath(Region.EUROPE.toString());
+                client.setBasePath(Region.EUROPE.toString());
                 break;
             case "global":
             case "GLOBAL":
@@ -39,25 +55,26 @@ public class Configuration {
             case "America":
             case "america":
             case "AMERICA":
-                defaultApiClient.setBasePath(Region.GLOBAL.toString());
+                client.setBasePath(Region.GLOBAL.toString());
                 break;
             case "asia":
             case "Asia":
             case "as":
             case "AS":
-                defaultApiClient.setBasePath(Region.ASIA.toString());
+                client.setBasePath(Region.ASIA.toString());
                 break;
             default:
-                defaultApiClient.setBasePath(regionStr);
+                client.setBasePath(regionStr);
         }
-        defaultApiClient.setApiKey(apiKey);
-        return defaultApiClient;
+        client.setBearerToken(apiKey);
+        return client;
     }
 
     public static ApiClient getDefaultApiClient(String apiKey) {
-        defaultApiClient.setApiKey(apiKey);
-        defaultApiClient.setBasePath(Region.GLOBAL.toString());
-        return defaultApiClient;
+        ApiClient client = getDefaultApiClient();
+        client.setBearerToken(apiKey);
+        client.setBasePath(Region.GLOBAL.toString());
+        return client;
     }
 
     /**
@@ -67,6 +84,16 @@ public class Configuration {
      * @param apiClient API client
      */
     public static void setDefaultApiClient(ApiClient apiClient) {
-        defaultApiClient = apiClient;
+        defaultApiClient.set(apiClient);
+    }
+
+    /**
+     * set the callback used to create new ApiClient objects
+     */
+    public static void setApiClientFactory(Supplier<ApiClient> factory) {
+        apiClientFactory = Objects.requireNonNull(factory);
+    }
+
+    private Configuration() {
     }
 }

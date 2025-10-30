@@ -68,6 +68,10 @@ openApiGenerate {
     gitUserId.set("fingerprintjs")
     configOptions.put("hideGenerationTimestamp", "true")
     configOptions.put("openApiNullable", "false")
+
+    globalProperties.put("apis", "Fingerprint")
+    globalProperties.put("models", "")
+    globalProperties.put("supportingFiles", "Configuration.java, JSON.java, README.md")
 }
 
 tasks.register("removeDocs") {
@@ -103,6 +107,7 @@ tasks.register<Copy>("copyReadme") {
 }
 
 tasks.register("removeWrongDocumentationLinks") {
+    // TODO remove?
     doLast {
         fileTree("$rootDir/docs").files
             .filter { it.isFile }

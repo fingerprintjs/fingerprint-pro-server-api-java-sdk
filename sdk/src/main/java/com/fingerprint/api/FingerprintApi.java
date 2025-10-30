@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")public class FingerprintApi {
-  public static final String INTEGRATION_INFO = "fingerprint-pro-server-java-sdk/7.8.0";
+  public static final String INTEGRATION_INFO = "fingerprint-pro-server-java-sdk/7.10.0";
   private ApiClient apiClient;
 
   public FingerprintApi() {

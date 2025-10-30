@@ -42,7 +42,7 @@ import java.util.function.Supplier;
 
     public static ApiClient getDefaultApiClient(String apiKey, Region region) {
         ApiClient client = getDefaultApiClient();
-        client.setApiKey(apiKey);
+        client.setBearerToken(apiKey);
         client.setBasePath(region.toString());
         return client;
     }
@@ -76,13 +76,13 @@ import java.util.function.Supplier;
             default:
                 client.setBasePath(regionStr);
         }
-        client.setApiKey(apiKey);
+        client.setBearerToken(apiKey);
         return client;
     }
 
     public static ApiClient getDefaultApiClient(String apiKey) {
         ApiClient client = getDefaultApiClient();
-        client.setApiKey(apiKey);
+        client.setBearerToken(apiKey);
         client.setBasePath(Region.GLOBAL.toString());
         return client;
     }

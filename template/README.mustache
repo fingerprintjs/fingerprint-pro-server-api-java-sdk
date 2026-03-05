@@ -1,3 +1,6 @@
+> [!WARNING]
+> This repository is deprecated. Please use the new Java SDK repository: [fingerprintjs/java-sdk](https://github.com/fingerprintjs/java-sdk).
+
 <p align="center">
     <a href="https://fingerprint.com">
         <picture>

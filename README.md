@@ -335,6 +335,8 @@ Class | Method | HTTP request | Description
  - [IdentificationConfidence](docs/IdentificationConfidence.md)
  - [IdentificationSeenAt](docs/IdentificationSeenAt.md)
  - [Incognito](docs/Incognito.md)
+ - [Integration](docs/Integration.md)
+ - [IntegrationSubintegration](docs/IntegrationSubintegration.md)
  - [Jailbroken](docs/Jailbroken.md)
  - [LocationSpoofing](docs/LocationSpoofing.md)
  - [MitMAttack](docs/MitMAttack.md)

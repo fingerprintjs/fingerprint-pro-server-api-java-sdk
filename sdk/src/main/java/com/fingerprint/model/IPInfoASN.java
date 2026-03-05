@@ -19,7 +19,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @JsonPropertyOrder({
   IPInfoASN.JSON_PROPERTY_ASN,
   IPInfoASN.JSON_PROPERTY_NAME,
-  IPInfoASN.JSON_PROPERTY_NETWORK
+  IPInfoASN.JSON_PROPERTY_NETWORK,
+  IPInfoASN.JSON_PROPERTY_TYPE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class IPInfoASN {
@@ -31,6 +32,9 @@ public class IPInfoASN {
 
   public static final String JSON_PROPERTY_NETWORK = "network";
   private String network;
+
+  public static final String JSON_PROPERTY_TYPE = "type";
+  private String type;
 
   public IPInfoASN() {
   }
@@ -113,6 +117,32 @@ public class IPInfoASN {
   }
 
 
+  public IPInfoASN type(String type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "")
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getType() {
+    return type;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setType(String type) {
+    this.type = type;
+  }
+
+
   /**
    * Return true if this IPInfoASN object is equal to o.
    */
@@ -127,12 +157,13 @@ public class IPInfoASN {
     IPInfoASN ipInfoASN = (IPInfoASN) o;
     return Objects.equals(this.asn, ipInfoASN.asn) &&
         Objects.equals(this.name, ipInfoASN.name) &&
-        Objects.equals(this.network, ipInfoASN.network);
+        Objects.equals(this.network, ipInfoASN.network) &&
+        Objects.equals(this.type, ipInfoASN.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(asn, name, network);
+    return Objects.hash(asn, name, network, type);
   }
 
   @Override
@@ -142,6 +173,7 @@ public class IPInfoASN {
     sb.append("    asn: ").append(toIndentedString(asn)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    network: ").append(toIndentedString(network)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

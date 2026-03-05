@@ -9,6 +9,7 @@
  * `SubscriptionNotActive` - Fingerprint application is not active.
  * `WrongRegion` - server and application region differ.
  * `FeatureNotEnabled` - this feature (for example, Delete API) is not enabled for your application.
+ * `WorkspaceScopedSecretKeyRequired` - The provided secret API key is scoped to an environment, but this operation requires a workspace-scoped secret API key.
  * `RequestNotFound` - the specified request ID was not found. It never existed, expired, or it has been deleted.
  * `VisitorNotFound` - The specified visitor ID was not found. It never existed or it may have already been deleted.
  * `TooManyRequests` - the limit on secret API key requests per second has been exceeded.
@@ -35,6 +36,8 @@
 * `WRONG_REGION` (value: `"WrongRegion"`)
 
 * `FEATURE_NOT_ENABLED` (value: `"FeatureNotEnabled"`)
+
+* `WORKSPACE_SCOPED_SECRET_KEY_REQUIRED` (value: `"WorkspaceScopedSecretKeyRequired"`)
 
 * `REQUEST_NOT_FOUND` (value: `"RequestNotFound"`)
 

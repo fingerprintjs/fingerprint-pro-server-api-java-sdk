@@ -1,5 +1,16 @@
 # Fingerprint Pro Server Java SDK
 
+## 7.11.0
+
+### Minor Changes
+
+- Regenerate the SDK with the latest Server API v3 schema.
+
+  - Add `sdk.integrations` with new `Integration` and `IntegrationSubintegration` models.
+  - Add `type` to `IPInfoASN`.
+  - Add `WorkspaceScopedSecretKeyRequired` to `ErrorCode`.
+  - Update generated docs and operation descriptions to reflect Server API v3 deprecation guidance. ([8e7c2d6](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/8e7c2d6c2e776371a210d04e061e61de7bc8bdd4))
+
 ## 7.10.0
 
 ### Minor Changes

@@ -13,10 +13,10 @@ import com.fingerprint.sdk.JSON;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
- * Contains results from all activated products - Fingerprint Pro, Bot Detection, and others.
+ * Contains results from Fingerprint Identification and all active Smart Signals.
  */
 
-@Schema(description = "Contains results from all activated products - Fingerprint Pro, Bot Detection, and others.")
+@Schema(description = "Contains results from Fingerprint Identification and all active Smart Signals.")
 @JsonPropertyOrder({
   EventsGetResponse.JSON_PROPERTY_PRODUCTS
 })

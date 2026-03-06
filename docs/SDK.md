@@ -10,6 +10,7 @@ Contains information about the SDK used to perform the request.
 |------------ | ------------- | ------------- | -------------|
 |**platform** | **String** | Platform of the SDK. |  |
 |**version** | **String** | SDK version string. |  |
+|**integrations** | [**List&lt;Integration&gt;**](Integration.md) |  |  [optional] |
 
 
 

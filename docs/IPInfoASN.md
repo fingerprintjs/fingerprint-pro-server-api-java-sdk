@@ -10,6 +10,7 @@
 |**asn** | **String** |  |  |
 |**name** | **String** |  |  |
 |**network** | **String** |  |  |
+|**type** | **String** |  |  [optional] |
 
 
 

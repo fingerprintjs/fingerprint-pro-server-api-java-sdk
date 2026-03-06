@@ -6,7 +6,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fingerprint.model.Integration;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fingerprint.sdk.JSON;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -18,7 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(description = "Contains information about the SDK used to perform the request.")
 @JsonPropertyOrder({
   SDK.JSON_PROPERTY_PLATFORM,
-  SDK.JSON_PROPERTY_VERSION
+  SDK.JSON_PROPERTY_VERSION,
+  SDK.JSON_PROPERTY_INTEGRATIONS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class SDK {
@@ -27,6 +31,9 @@ public class SDK {
 
   public static final String JSON_PROPERTY_VERSION = "version";
   private String version;
+
+  public static final String JSON_PROPERTY_INTEGRATIONS = "integrations";
+  private List<Integration> integrations = null;
 
   public SDK() {
   }
@@ -83,6 +90,40 @@ public class SDK {
   }
 
 
+  public SDK integrations(List<Integration> integrations) {
+    this.integrations = integrations;
+    return this;
+  }
+
+  public SDK addIntegrationItem(Integration integrationsItem) {
+    if (this.integrations == null) {
+      this.integrations = new ArrayList<>();
+    }
+    this.integrations.add(integrationsItem);
+    return this;
+  }
+
+   /**
+   * Get integrations
+   * @return integrations
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "")
+  @JsonProperty(JSON_PROPERTY_INTEGRATIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<Integration> getIntegrations() {
+    return integrations;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_INTEGRATIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIntegrations(List<Integration> integrations) {
+    this.integrations = integrations;
+  }
+
+
   /**
    * Return true if this SDK object is equal to o.
    */
@@ -96,12 +137,13 @@ public class SDK {
     }
     SDK SDK = (SDK) o;
     return Objects.equals(this.platform, SDK.platform) &&
-        Objects.equals(this.version, SDK.version);
+        Objects.equals(this.version, SDK.version) &&
+        Objects.equals(this.integrations, SDK.integrations);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(platform, version);
+    return Objects.hash(platform, version, integrations);
   }
 
   @Override
@@ -110,6 +152,7 @@ public class SDK {
     sb.append("class SDK {\n");
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    integrations: ").append(toIndentedString(integrations)).append("\n");
     sb.append("}");
     return sb.toString();
   }

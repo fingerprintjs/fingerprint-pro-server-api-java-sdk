@@ -18,6 +18,9 @@
 
 # Fingerprint Server API Java SDK
 
+> [!WARNING]
+> This repository is deprecated. Please use the [latest version](https://github.com/fingerprintjs/java-sdk/releases/latest) of the SDK in the new Java SDK repository: [fingerprintjs/java-sdk](https://github.com/fingerprintjs/java-sdk).
+
 [Fingerprint](https://fingerprint.com/) is a device intelligence platform offering industry-leading accuracy. The Fingerprint Server Java SDK is an easy way to interact with the Fingerprint [Server API](https://dev.fingerprint.com/reference/pro-server-api) from your Java application. You can search, update, and delete identification events.
 
 
@@ -332,6 +335,8 @@ Class | Method | HTTP request | Description
  - [IdentificationConfidence](docs/IdentificationConfidence.md)
  - [IdentificationSeenAt](docs/IdentificationSeenAt.md)
  - [Incognito](docs/Incognito.md)
+ - [Integration](docs/Integration.md)
+ - [IntegrationSubintegration](docs/IntegrationSubintegration.md)
  - [Jailbroken](docs/Jailbroken.md)
  - [LocationSpoofing](docs/LocationSpoofing.md)
  - [MitMAttack](docs/MitMAttack.md)

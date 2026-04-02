@@ -200,7 +200,7 @@ public class FingerprintApiTest {
         assertFalse(response.getProducts().getTampering().getData().getResult());
         assertFalse(response.getProducts().getTor().getData().getResult());
         assertFalse(response.getProducts().getVpn().getData().getResult());
-        assertFalse(response.getProducts().getVirtualMachine().getData().getResult());
+        assertTrue(response.getProducts().getVirtualMachine().getData().getResult());
         assertFalse(response.getProducts().getHighActivity().getData().getResult());
         assertFalse(response.getProducts().getLocationSpoofing().getData().getResult());
         assertEquals(0, response.getProducts().getFactoryReset().getData().getTimestamp());
@@ -543,7 +543,7 @@ public class FingerprintApiTest {
         assertFalse(products.getTampering().getData().getResult());
         assertFalse(products.getTor().getData().getResult());
         assertFalse(products.getVpn().getData().getResult());
-        assertFalse(products.getVirtualMachine().getData().getResult());
+        assertTrue(products.getVirtualMachine().getData().getResult());
         assertFalse(products.getHighActivity().getData().getResult());
         assertFalse(products.getLocationSpoofing().getData().getResult());
         assertEquals(0, products.getFactoryReset().getData().getTimestamp());

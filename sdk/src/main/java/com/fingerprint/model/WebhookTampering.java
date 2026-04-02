@@ -18,7 +18,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 @JsonPropertyOrder({
   WebhookTampering.JSON_PROPERTY_RESULT,
+  WebhookTampering.JSON_PROPERTY_CONFIDENCE,
   WebhookTampering.JSON_PROPERTY_ANOMALY_SCORE,
+  WebhookTampering.JSON_PROPERTY_ML_SCORE,
   WebhookTampering.JSON_PROPERTY_ANTI_DETECT_BROWSER
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
@@ -26,8 +28,51 @@ public class WebhookTampering {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
 
+  /**
+   * Confidence level of the tampering detection. If a tampering is not detected, confidence is \"high\". If it's detected, can be \"low\", \"medium\", or \"high\". 
+   */
+  public enum ConfidenceEnum {
+    LOW("low"),
+    
+    MEDIUM("medium"),
+    
+    HIGH("high");
+
+    private String value;
+
+    ConfidenceEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ConfidenceEnum fromValue(String value) {
+      for (ConfidenceEnum b : ConfidenceEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  public static final String JSON_PROPERTY_CONFIDENCE = "confidence";
+  private ConfidenceEnum confidence;
+
   public static final String JSON_PROPERTY_ANOMALY_SCORE = "anomalyScore";
   private Double anomalyScore;
+
+  public static final String JSON_PROPERTY_ML_SCORE = "mlScore";
+  private Double mlScore;
 
   public static final String JSON_PROPERTY_ANTI_DETECT_BROWSER = "antiDetectBrowser";
   private Boolean antiDetectBrowser;
@@ -61,6 +106,32 @@ public class WebhookTampering {
   }
 
 
+  public WebhookTampering confidence(ConfidenceEnum confidence) {
+    this.confidence = confidence;
+    return this;
+  }
+
+   /**
+   * Confidence level of the tampering detection. If a tampering is not detected, confidence is \"high\". If it's detected, can be \"low\", \"medium\", or \"high\". 
+   * @return confidence
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "Confidence level of the tampering detection. If a tampering is not detected, confidence is \"high\". If it's detected, can be \"low\", \"medium\", or \"high\". ")
+  @JsonProperty(JSON_PROPERTY_CONFIDENCE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ConfidenceEnum getConfidence() {
+    return confidence;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CONFIDENCE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setConfidence(ConfidenceEnum confidence) {
+    this.confidence = confidence;
+  }
+
+
   public WebhookTampering anomalyScore(Double anomalyScore) {
     this.anomalyScore = anomalyScore;
     return this;
@@ -86,6 +157,34 @@ public class WebhookTampering {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAnomalyScore(Double anomalyScore) {
     this.anomalyScore = anomalyScore;
+  }
+
+
+  public WebhookTampering mlScore(Double mlScore) {
+    this.mlScore = mlScore;
+    return this;
+  }
+
+   /**
+   * A score that indicates the models calculated probability that an event is coming from an anti detect browser.   * Values above `0.8` indicate that the request is an anti detect browser based on the ml model   * Values below `0.8` indicate that the request is not an anti detect browser based on the ml model 
+   * minimum: 0
+   * maximum: 1
+   * @return mlScore
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "A score that indicates the models calculated probability that an event is coming from an anti detect browser.   * Values above `0.8` indicate that the request is an anti detect browser based on the ml model   * Values below `0.8` indicate that the request is not an anti detect browser based on the ml model ")
+  @JsonProperty(JSON_PROPERTY_ML_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Double getMlScore() {
+    return mlScore;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ML_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMlScore(Double mlScore) {
+    this.mlScore = mlScore;
   }
 
 
@@ -128,13 +227,15 @@ public class WebhookTampering {
     }
     WebhookTampering webhookTampering = (WebhookTampering) o;
     return Objects.equals(this.result, webhookTampering.result) &&
+        Objects.equals(this.confidence, webhookTampering.confidence) &&
         Objects.equals(this.anomalyScore, webhookTampering.anomalyScore) &&
+        Objects.equals(this.mlScore, webhookTampering.mlScore) &&
         Objects.equals(this.antiDetectBrowser, webhookTampering.antiDetectBrowser);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(result, anomalyScore, antiDetectBrowser);
+    return Objects.hash(result, confidence, anomalyScore, mlScore, antiDetectBrowser);
   }
 
   @Override
@@ -142,7 +243,9 @@ public class WebhookTampering {
     StringBuilder sb = new StringBuilder();
     sb.append("class WebhookTampering {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
+    sb.append("    confidence: ").append(toIndentedString(confidence)).append("\n");
     sb.append("    anomalyScore: ").append(toIndentedString(anomalyScore)).append("\n");
+    sb.append("    mlScore: ").append(toIndentedString(mlScore)).append("\n");
     sb.append("    antiDetectBrowser: ").append(toIndentedString(antiDetectBrowser)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -17,12 +17,16 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 
 @JsonPropertyOrder({
-  WebhookVirtualMachine.JSON_PROPERTY_RESULT
+  WebhookVirtualMachine.JSON_PROPERTY_RESULT,
+  WebhookVirtualMachine.JSON_PROPERTY_ML_SCORE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class WebhookVirtualMachine {
   public static final String JSON_PROPERTY_RESULT = "result";
   private Boolean result;
+
+  public static final String JSON_PROPERTY_ML_SCORE = "mlScore";
+  private Double mlScore;
 
   public WebhookVirtualMachine() {
   }
@@ -53,6 +57,34 @@ public class WebhookVirtualMachine {
   }
 
 
+  public WebhookVirtualMachine mlScore(Double mlScore) {
+    this.mlScore = mlScore;
+    return this;
+  }
+
+   /**
+   * Machine learning–based virtual machine score,  represented as a floating-point value between 0 and 1 (inclusive), with up to three decimal places of precision. A higher score means a higher confidence in the positive `virtual_machine` detection result 
+   * minimum: 0
+   * maximum: 1
+   * @return mlScore
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "Machine learning–based virtual machine score,  represented as a floating-point value between 0 and 1 (inclusive), with up to three decimal places of precision. A higher score means a higher confidence in the positive `virtual_machine` detection result ")
+  @JsonProperty(JSON_PROPERTY_ML_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Double getMlScore() {
+    return mlScore;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ML_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMlScore(Double mlScore) {
+    this.mlScore = mlScore;
+  }
+
+
   /**
    * Return true if this WebhookVirtualMachine object is equal to o.
    */
@@ -65,12 +97,13 @@ public class WebhookVirtualMachine {
       return false;
     }
     WebhookVirtualMachine webhookVirtualMachine = (WebhookVirtualMachine) o;
-    return Objects.equals(this.result, webhookVirtualMachine.result);
+    return Objects.equals(this.result, webhookVirtualMachine.result) &&
+        Objects.equals(this.mlScore, webhookVirtualMachine.mlScore);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(result);
+    return Objects.hash(result, mlScore);
   }
 
   @Override
@@ -78,6 +111,7 @@ public class WebhookVirtualMachine {
     StringBuilder sb = new StringBuilder();
     sb.append("class WebhookVirtualMachine {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
+    sb.append("    mlScore: ").append(toIndentedString(mlScore)).append("\n");
     sb.append("}");
     return sb.toString();
   }

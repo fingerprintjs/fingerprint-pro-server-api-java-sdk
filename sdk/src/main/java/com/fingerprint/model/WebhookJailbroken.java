@@ -33,11 +33,11 @@ public class WebhookJailbroken {
   }
 
    /**
-   * iOS specific jailbreak detection. There are 2 values:    * `true` - Jailbreak detected.   * `false` - No signs of jailbreak or the client is not iOS. 
+   * iOS specific jailbreak detection. There are 2 values:   * `true` - Jailbreak detected.   * `false` - No signs of jailbreak or the client is not iOS. 
    * @return result
   **/
   @jakarta.annotation.Nullable
-  @Schema(description = "iOS specific jailbreak detection. There are 2 values:    * `true` - Jailbreak detected.   * `false` - No signs of jailbreak or the client is not iOS. ")
+  @Schema(description = "iOS specific jailbreak detection. There are 2 values:   * `true` - Jailbreak detected.   * `false` - No signs of jailbreak or the client is not iOS. ")
   @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

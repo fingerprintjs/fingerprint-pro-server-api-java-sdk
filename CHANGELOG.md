@@ -1,5 +1,12 @@
 # Fingerprint Pro Server Java SDK
 
+## 7.12.0
+
+### Minor Changes
+
+- Add `mlScore` fields to the `VirtualMachine` signal ([89edc4e](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/89edc4ea2fc80199547fc1f283df0ef6414a22fa))
+- Add `confidence` and `mlScore` fields to the `Tampering` signal ([89edc4e](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/89edc4ea2fc80199547fc1f283df0ef6414a22fa))
+
 ## 7.11.0
 
 ### Minor Changes

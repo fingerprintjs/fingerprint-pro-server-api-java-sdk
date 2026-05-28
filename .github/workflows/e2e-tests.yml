@@ -22,6 +22,7 @@ jobs:
     with:
       sdk: java
       sdkVersion: ${{ needs.read-version.outputs.version }}
+      sdkPackageName: 'com.github.fingerprintjs:fingerprint-pro-server-api-java-sdk'
       appId: ${{ vars.RUNNER_APP_ID }}
       commitSha: ${{ github.event.pull_request.head.sha || github.sha }}
     secrets:

@@ -21,7 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
   VPNMethods.JSON_PROPERTY_PUBLIC_V_P_N,
   VPNMethods.JSON_PROPERTY_AUXILIARY_MOBILE,
   VPNMethods.JSON_PROPERTY_OS_MISMATCH,
-  VPNMethods.JSON_PROPERTY_RELAY
+  VPNMethods.JSON_PROPERTY_RELAY,
+  VPNMethods.JSON_PROPERTY_ML_PREDICTION
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class VPNMethods {
@@ -39,6 +40,9 @@ public class VPNMethods {
 
   public static final String JSON_PROPERTY_RELAY = "relay";
   private Boolean relay;
+
+  public static final String JSON_PROPERTY_ML_PREDICTION = "mlPrediction";
+  private Boolean mlPrediction;
 
   public VPNMethods() {
   }
@@ -173,6 +177,32 @@ public class VPNMethods {
   }
 
 
+  public VPNMethods mlPrediction(Boolean mlPrediction) {
+    this.mlPrediction = mlPrediction;
+    return this;
+  }
+
+   /**
+   * `true` if the request came from a device running a VPN, `false` otherwise.   
+   * @return mlPrediction
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "`true` if the request came from a device running a VPN, `false` otherwise.   ")
+  @JsonProperty(JSON_PROPERTY_ML_PREDICTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getMlPrediction() {
+    return mlPrediction;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ML_PREDICTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMlPrediction(Boolean mlPrediction) {
+    this.mlPrediction = mlPrediction;
+  }
+
+
   /**
    * Return true if this VPNMethods object is equal to o.
    */
@@ -189,12 +219,13 @@ public class VPNMethods {
         Objects.equals(this.publicVPN, vpNMethods.publicVPN) &&
         Objects.equals(this.auxiliaryMobile, vpNMethods.auxiliaryMobile) &&
         Objects.equals(this.osMismatch, vpNMethods.osMismatch) &&
-        Objects.equals(this.relay, vpNMethods.relay);
+        Objects.equals(this.relay, vpNMethods.relay) &&
+        Objects.equals(this.mlPrediction, vpNMethods.mlPrediction);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(timezoneMismatch, publicVPN, auxiliaryMobile, osMismatch, relay);
+    return Objects.hash(timezoneMismatch, publicVPN, auxiliaryMobile, osMismatch, relay, mlPrediction);
   }
 
   @Override
@@ -206,6 +237,7 @@ public class VPNMethods {
     sb.append("    auxiliaryMobile: ").append(toIndentedString(auxiliaryMobile)).append("\n");
     sb.append("    osMismatch: ").append(toIndentedString(osMismatch)).append("\n");
     sb.append("    relay: ").append(toIndentedString(relay)).append("\n");
+    sb.append("    mlPrediction: ").append(toIndentedString(mlPrediction)).append("\n");
     sb.append("}");
     return sb.toString();
   }

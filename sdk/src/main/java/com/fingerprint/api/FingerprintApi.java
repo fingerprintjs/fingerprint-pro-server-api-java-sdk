@@ -410,6 +410,8 @@ public class FingerprintApi {
     private Boolean developerTools;
     private Boolean locationSpoofing;
     private Boolean mitmAttack;
+    private Boolean rareDevice;
+    private String rareDevicePercentileBucket;
     private Boolean proxy;
     private String sdkVersion;
     private String sdkPlatform;
@@ -838,6 +840,36 @@ public class FingerprintApi {
     }
 
     /**
+     * getter for rareDevice - Filter events by Rare Device detection result. > Note: When using this parameter, only events with the `products.rareDevice.data.result` property set to `true` or `false` are returned. Events without a `products.rareDevice` Smart Signal result are left out of the response. 
+     */
+    public Boolean getRareDevice() {
+      return rareDevice;
+    }
+
+    /**
+     * setter for rareDevice - Filter events by Rare Device detection result. > Note: When using this parameter, only events with the `products.rareDevice.data.result` property set to `true` or `false` are returned. Events without a `products.rareDevice` Smart Signal result are left out of the response. 
+     */
+    public SearchEventsOptionalParams setRareDevice(Boolean rareDevice) {
+      this.rareDevice = rareDevice;
+      return this;
+    }
+
+    /**
+     * getter for rareDevicePercentileBucket - Filter events by Rare Device percentile bucket. `<p95` - device configuration is in the bottom 95% (most common). `p95-p99` - device is in the 95th to 99th percentile. `p99-p99.5` - device is in the 99th to 99.5th percentile. `p99.5-p99.9` - device is in the 99.5th to 99.9th percentile. `p99.9+` - device is in the top 0.1% (rarest). `not_seen` - device configuration has never been observed before. 
+     */
+    public String getRareDevicePercentileBucket() {
+      return rareDevicePercentileBucket;
+    }
+
+    /**
+     * setter for rareDevicePercentileBucket - Filter events by Rare Device percentile bucket. `<p95` - device configuration is in the bottom 95% (most common). `p95-p99` - device is in the 95th to 99th percentile. `p99-p99.5` - device is in the 99th to 99.5th percentile. `p99.5-p99.9` - device is in the 99.5th to 99.9th percentile. `p99.9+` - device is in the top 0.1% (rarest). `not_seen` - device configuration has never been observed before. 
+     */
+    public SearchEventsOptionalParams setRareDevicePercentileBucket(String rareDevicePercentileBucket) {
+      this.rareDevicePercentileBucket = rareDevicePercentileBucket;
+      return this;
+    }
+
+    /**
      * getter for proxy - Filter events by Proxy detection result. > Note: When using this parameter, only events with the `products.proxy.data.result` property set to `true` or `false` are returned. Events without a `products.proxy` Smart Signal result are left out of the response. 
      */
     public Boolean getProxy() {
@@ -1011,6 +1043,8 @@ public class FingerprintApi {
       localVarQueryParams.addAll(apiClient.parameterToPairs("", "developer_tools", searchEventsOptionalParams.getDeveloperTools()));
       localVarQueryParams.addAll(apiClient.parameterToPairs("", "location_spoofing", searchEventsOptionalParams.getLocationSpoofing()));
       localVarQueryParams.addAll(apiClient.parameterToPairs("", "mitm_attack", searchEventsOptionalParams.getMitmAttack()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "rare_device", searchEventsOptionalParams.getRareDevice()));
+      localVarQueryParams.addAll(apiClient.parameterToPairs("", "rare_device_percentile_bucket", searchEventsOptionalParams.getRareDevicePercentileBucket()));
       localVarQueryParams.addAll(apiClient.parameterToPairs("", "proxy", searchEventsOptionalParams.getProxy()));
       localVarQueryParams.addAll(apiClient.parameterToPairs("", "sdk_version", searchEventsOptionalParams.getSdkVersion()));
       localVarQueryParams.addAll(apiClient.parameterToPairs("", "sdk_platform", searchEventsOptionalParams.getSdkPlatform()));

@@ -18,11 +18,13 @@ import com.fingerprint.model.ProductIPInfo;
 import com.fingerprint.model.ProductIdentification;
 import com.fingerprint.model.ProductIncognito;
 import com.fingerprint.model.ProductJailbroken;
+import com.fingerprint.model.ProductLabels;
 import com.fingerprint.model.ProductLocationSpoofing;
 import com.fingerprint.model.ProductMitMAttack;
 import com.fingerprint.model.ProductPrivacySettings;
 import com.fingerprint.model.ProductProximity;
 import com.fingerprint.model.ProductProxy;
+import com.fingerprint.model.ProductRareDevice;
 import com.fingerprint.model.ProductRawDeviceAttributes;
 import com.fingerprint.model.ProductRemoteControl;
 import com.fingerprint.model.ProductRootApps;
@@ -68,7 +70,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
   Products.JSON_PROPERTY_VELOCITY,
   Products.JSON_PROPERTY_DEVELOPER_TOOLS,
   Products.JSON_PROPERTY_MITM_ATTACK,
-  Products.JSON_PROPERTY_PROXIMITY
+  Products.JSON_PROPERTY_RARE_DEVICE,
+  Products.JSON_PROPERTY_PROXIMITY,
+  Products.JSON_PROPERTY_LABELS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class Products {
@@ -147,8 +151,14 @@ public class Products {
   public static final String JSON_PROPERTY_MITM_ATTACK = "mitmAttack";
   private ProductMitMAttack mitmAttack;
 
+  public static final String JSON_PROPERTY_RARE_DEVICE = "rareDevice";
+  private ProductRareDevice rareDevice;
+
   public static final String JSON_PROPERTY_PROXIMITY = "proximity";
   private ProductProximity proximity;
+
+  public static final String JSON_PROPERTY_LABELS = "labels";
+  private ProductLabels labels;
 
   public Products() {
   }
@@ -805,6 +815,32 @@ public class Products {
   }
 
 
+  public Products rareDevice(ProductRareDevice rareDevice) {
+    this.rareDevice = rareDevice;
+    return this;
+  }
+
+   /**
+   * Get rareDevice
+   * @return rareDevice
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "")
+  @JsonProperty(JSON_PROPERTY_RARE_DEVICE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ProductRareDevice getRareDevice() {
+    return rareDevice;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RARE_DEVICE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRareDevice(ProductRareDevice rareDevice) {
+    this.rareDevice = rareDevice;
+  }
+
+
   public Products proximity(ProductProximity proximity) {
     this.proximity = proximity;
     return this;
@@ -828,6 +864,32 @@ public class Products {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setProximity(ProductProximity proximity) {
     this.proximity = proximity;
+  }
+
+
+  public Products labels(ProductLabels labels) {
+    this.labels = labels;
+    return this;
+  }
+
+   /**
+   * Get labels
+   * @return labels
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "")
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ProductLabels getLabels() {
+    return labels;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLabels(ProductLabels labels) {
+    this.labels = labels;
   }
 
 
@@ -868,12 +930,14 @@ public class Products {
         Objects.equals(this.velocity, products.velocity) &&
         Objects.equals(this.developerTools, products.developerTools) &&
         Objects.equals(this.mitmAttack, products.mitmAttack) &&
-        Objects.equals(this.proximity, products.proximity);
+        Objects.equals(this.rareDevice, products.rareDevice) &&
+        Objects.equals(this.proximity, products.proximity) &&
+        Objects.equals(this.labels, products.labels);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(identification, botd, rootApps, emulator, ipInfo, ipBlocklist, tor, vpn, proxy, incognito, tampering, clonedApp, factoryReset, jailbroken, frida, privacySettings, virtualMachine, rawDeviceAttributes, highActivity, locationSpoofing, suspectScore, remoteControl, velocity, developerTools, mitmAttack, proximity);
+    return Objects.hash(identification, botd, rootApps, emulator, ipInfo, ipBlocklist, tor, vpn, proxy, incognito, tampering, clonedApp, factoryReset, jailbroken, frida, privacySettings, virtualMachine, rawDeviceAttributes, highActivity, locationSpoofing, suspectScore, remoteControl, velocity, developerTools, mitmAttack, rareDevice, proximity, labels);
   }
 
   @Override
@@ -905,7 +969,9 @@ public class Products {
     sb.append("    velocity: ").append(toIndentedString(velocity)).append("\n");
     sb.append("    developerTools: ").append(toIndentedString(developerTools)).append("\n");
     sb.append("    mitmAttack: ").append(toIndentedString(mitmAttack)).append("\n");
+    sb.append("    rareDevice: ").append(toIndentedString(rareDevice)).append("\n");
     sb.append("    proximity: ").append(toIndentedString(proximity)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("}");
     return sb.toString();
   }

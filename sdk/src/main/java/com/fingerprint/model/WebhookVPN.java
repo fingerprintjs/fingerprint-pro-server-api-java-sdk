@@ -21,6 +21,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @JsonPropertyOrder({
   WebhookVPN.JSON_PROPERTY_RESULT,
   WebhookVPN.JSON_PROPERTY_CONFIDENCE,
+  WebhookVPN.JSON_PROPERTY_ML_SCORE,
   WebhookVPN.JSON_PROPERTY_ORIGIN_TIMEZONE,
   WebhookVPN.JSON_PROPERTY_ORIGIN_COUNTRY,
   WebhookVPN.JSON_PROPERTY_METHODS
@@ -32,6 +33,9 @@ public class WebhookVPN {
 
   public static final String JSON_PROPERTY_CONFIDENCE = "confidence";
   private VPNConfidence confidence;
+
+  public static final String JSON_PROPERTY_ML_SCORE = "mlScore";
+  private Double mlScore;
 
   public static final String JSON_PROPERTY_ORIGIN_TIMEZONE = "originTimezone";
   private String originTimezone;
@@ -94,6 +98,34 @@ public class WebhookVPN {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setConfidence(VPNConfidence confidence) {
     this.confidence = confidence;
+  }
+
+
+  public WebhookVPN mlScore(Double mlScore) {
+    this.mlScore = mlScore;
+    return this;
+  }
+
+   /**
+   * Machine learning–based VPN score, represented as a floating-point value between 0 and 1 (inclusive), with up to three decimal places of precision. A higher score means a higher confidence in the positive `vpn` detection result. This Smart Signal is currently in beta and only available to select customers. If you are interested, please [contact our support team](https://fingerprint.com/support/). 
+   * minimum: 0
+   * maximum: 1
+   * @return mlScore
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "Machine learning–based VPN score, represented as a floating-point value between 0 and 1 (inclusive), with up to three decimal places of precision. A higher score means a higher confidence in the positive `vpn` detection result. This Smart Signal is currently in beta and only available to select customers. If you are interested, please [contact our support team](https://fingerprint.com/support/). ")
+  @JsonProperty(JSON_PROPERTY_ML_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Double getMlScore() {
+    return mlScore;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ML_SCORE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMlScore(Double mlScore) {
+    this.mlScore = mlScore;
   }
 
 
@@ -189,6 +221,7 @@ public class WebhookVPN {
     WebhookVPN webhookVPN = (WebhookVPN) o;
     return Objects.equals(this.result, webhookVPN.result) &&
         Objects.equals(this.confidence, webhookVPN.confidence) &&
+        Objects.equals(this.mlScore, webhookVPN.mlScore) &&
         Objects.equals(this.originTimezone, webhookVPN.originTimezone) &&
         Objects.equals(this.originCountry, webhookVPN.originCountry) &&
         Objects.equals(this.methods, webhookVPN.methods);
@@ -196,7 +229,7 @@ public class WebhookVPN {
 
   @Override
   public int hashCode() {
-    return Objects.hash(result, confidence, originTimezone, originCountry, methods);
+    return Objects.hash(result, confidence, mlScore, originTimezone, originCountry, methods);
   }
 
   @Override
@@ -205,6 +238,7 @@ public class WebhookVPN {
     sb.append("class WebhookVPN {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("    confidence: ").append(toIndentedString(confidence)).append("\n");
+    sb.append("    mlScore: ").append(toIndentedString(mlScore)).append("\n");
     sb.append("    originTimezone: ").append(toIndentedString(originTimezone)).append("\n");
     sb.append("    originCountry: ").append(toIndentedString(originCountry)).append("\n");
     sb.append("    methods: ").append(toIndentedString(methods)).append("\n");

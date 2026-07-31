@@ -24,12 +24,14 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class ProxyDetails {
   /**
-   * Residential proxies use real user IP addresses to appear as legitimate traffic,  while data center proxies are public proxies hosted in data centers 
+   * Residential proxies use real user IP addresses to appear as legitimate traffic, while data center proxies are public proxies hosted in data centers. `unknown` is reported when a proxy is detected solely by the ML model and the IP sources did not determine a specific type. 
    */
   public enum ProxyTypeEnum {
     RESIDENTIAL("residential"),
     
-    DATA_CENTER("data_center");
+    DATA_CENTER("data_center"),
+    
+    UNKNOWN("unknown");
 
     private String value;
 
@@ -73,11 +75,11 @@ public class ProxyDetails {
   }
 
    /**
-   * Residential proxies use real user IP addresses to appear as legitimate traffic,  while data center proxies are public proxies hosted in data centers 
+   * Residential proxies use real user IP addresses to appear as legitimate traffic, while data center proxies are public proxies hosted in data centers. `unknown` is reported when a proxy is detected solely by the ML model and the IP sources did not determine a specific type. 
    * @return proxyType
   **/
   @jakarta.annotation.Nonnull
-  @Schema(required = true, description = "Residential proxies use real user IP addresses to appear as legitimate traffic,  while data center proxies are public proxies hosted in data centers ")
+  @Schema(required = true, description = "Residential proxies use real user IP addresses to appear as legitimate traffic, while data center proxies are public proxies hosted in data centers. `unknown` is reported when a proxy is detected solely by the ML model and the IP sources did not determine a specific type. ")
   @JsonProperty(JSON_PROPERTY_PROXY_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

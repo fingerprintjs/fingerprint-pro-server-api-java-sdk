@@ -33,11 +33,11 @@ public class DeveloperTools {
   }
 
    /**
-   * `true` if the browser is Chrome with DevTools open or Firefox with Developer Tools open, `false` otherwise. 
+   * `true` if the browser has DevTools open (Chrome, Firefox) or the Android/iOS device has Developer Tools enabled, `false` otherwise. 
    * @return result
   **/
   @jakarta.annotation.Nonnull
-  @Schema(required = true, description = "`true` if the browser is Chrome with DevTools open or Firefox with Developer Tools open, `false` otherwise. ")
+  @Schema(required = true, description = "`true` if the browser has DevTools open (Chrome, Firefox) or the Android/iOS device has Developer Tools enabled, `false` otherwise. ")
   @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

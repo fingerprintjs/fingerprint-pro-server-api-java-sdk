@@ -27,6 +27,7 @@ import com.fingerprint.model.WebhookMitMAttack;
 import com.fingerprint.model.WebhookPrivacySettings;
 import com.fingerprint.model.WebhookProximity;
 import com.fingerprint.model.WebhookProxy;
+import com.fingerprint.model.WebhookRareDevice;
 import com.fingerprint.model.WebhookRemoteControl;
 import com.fingerprint.model.WebhookRootApps;
 import com.fingerprint.model.WebhookSupplementaryIDs;
@@ -92,6 +93,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   Webhook.JSON_PROPERTY_VELOCITY,
   Webhook.JSON_PROPERTY_DEVELOPER_TOOLS,
   Webhook.JSON_PROPERTY_MITM_ATTACK,
+  Webhook.JSON_PROPERTY_RARE_DEVICE,
   Webhook.JSON_PROPERTY_REPLAYED,
   Webhook.JSON_PROPERTY_SDK,
   Webhook.JSON_PROPERTY_SUPPLEMENTARY_IDS,
@@ -224,6 +226,9 @@ public class Webhook {
 
   public static final String JSON_PROPERTY_MITM_ATTACK = "mitmAttack";
   private WebhookMitMAttack mitmAttack;
+
+  public static final String JSON_PROPERTY_RARE_DEVICE = "rareDevice";
+  private WebhookRareDevice rareDevice;
 
   public static final String JSON_PROPERTY_REPLAYED = "replayed";
   private Boolean replayed;
@@ -1360,6 +1365,32 @@ public class Webhook {
   }
 
 
+  public Webhook rareDevice(WebhookRareDevice rareDevice) {
+    this.rareDevice = rareDevice;
+    return this;
+  }
+
+   /**
+   * Get rareDevice
+   * @return rareDevice
+  **/
+  @jakarta.annotation.Nullable
+  @Schema(description = "")
+  @JsonProperty(JSON_PROPERTY_RARE_DEVICE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public WebhookRareDevice getRareDevice() {
+    return rareDevice;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RARE_DEVICE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRareDevice(WebhookRareDevice rareDevice) {
+    this.rareDevice = rareDevice;
+  }
+
+
   public Webhook replayed(Boolean replayed) {
     this.replayed = replayed;
     return this;
@@ -1518,6 +1549,7 @@ public class Webhook {
         Objects.equals(this.velocity, webhook.velocity) &&
         Objects.equals(this.developerTools, webhook.developerTools) &&
         Objects.equals(this.mitmAttack, webhook.mitmAttack) &&
+        Objects.equals(this.rareDevice, webhook.rareDevice) &&
         Objects.equals(this.replayed, webhook.replayed) &&
         Objects.equals(this.sdk, webhook.sdk) &&
         Objects.equals(this.supplementaryIds, webhook.supplementaryIds) &&
@@ -1526,7 +1558,7 @@ public class Webhook {
 
   @Override
   public int hashCode() {
-    return Objects.hash(requestId, url, ip, environmentId, tag, time, timestamp, ipLocation, linkedId, visitorId, visitorFound, confidence, firstSeenAt, lastSeenAt, browserDetails, incognito, clientReferrer, components, bot, userAgent, rootApps, emulator, ipInfo, ipBlocklist, tor, vpn, proxy, tampering, clonedApp, factoryReset, jailbroken, frida, privacySettings, virtualMachine, rawDeviceAttributes, highActivity, locationSpoofing, suspectScore, remoteControl, velocity, developerTools, mitmAttack, replayed, sdk, supplementaryIds, proximity);
+    return Objects.hash(requestId, url, ip, environmentId, tag, time, timestamp, ipLocation, linkedId, visitorId, visitorFound, confidence, firstSeenAt, lastSeenAt, browserDetails, incognito, clientReferrer, components, bot, userAgent, rootApps, emulator, ipInfo, ipBlocklist, tor, vpn, proxy, tampering, clonedApp, factoryReset, jailbroken, frida, privacySettings, virtualMachine, rawDeviceAttributes, highActivity, locationSpoofing, suspectScore, remoteControl, velocity, developerTools, mitmAttack, rareDevice, replayed, sdk, supplementaryIds, proximity);
   }
 
   @Override
@@ -1575,6 +1607,7 @@ public class Webhook {
     sb.append("    velocity: ").append(toIndentedString(velocity)).append("\n");
     sb.append("    developerTools: ").append(toIndentedString(developerTools)).append("\n");
     sb.append("    mitmAttack: ").append(toIndentedString(mitmAttack)).append("\n");
+    sb.append("    rareDevice: ").append(toIndentedString(rareDevice)).append("\n");
     sb.append("    replayed: ").append(toIndentedString(replayed)).append("\n");
     sb.append("    sdk: ").append(toIndentedString(sdk)).append("\n");
     sb.append("    supplementaryIds: ").append(toIndentedString(supplementaryIds)).append("\n");

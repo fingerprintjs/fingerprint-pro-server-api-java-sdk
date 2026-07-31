@@ -33,7 +33,9 @@ Contains all information about the request identified by `requestId`, depending 
 |**velocity** | [**ProductVelocity**](ProductVelocity.md) |  |  [optional] |
 |**developerTools** | [**ProductDeveloperTools**](ProductDeveloperTools.md) |  |  [optional] |
 |**mitmAttack** | [**ProductMitMAttack**](ProductMitMAttack.md) |  |  [optional] |
+|**rareDevice** | [**ProductRareDevice**](ProductRareDevice.md) |  |  [optional] |
 |**proximity** | [**ProductProximity**](ProductProximity.md) |  |  [optional] |
+|**labels** | [**ProductLabels**](ProductLabels.md) |  |  [optional] |
 
 
 

@@ -1,5 +1,13 @@
 # Fingerprint Pro Server Java SDK
 
+## 7.13.0
+
+### Minor Changes
+
+- Add the Labels Smart Signal. The `Products` response now exposes a `labels` field (`ProductLabels`) whose `data` is an array of label predictions (`label`, `prediction`, `mlScore`). ([daeefa7](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/daeefa764131abfd72e90d914ac02e8f35af54f0))
+- Add machine learning-based Smart Signals from the Server API schema: `mlScore` on the `VPN` and `Proxy` results (and their webhook counterparts), and `mlPrediction` on `VPNMethods`. These signals are in beta and only available to select customers. ([daeefa7](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/daeefa764131abfd72e90d914ac02e8f35af54f0))
+- Add the `unknown` value to the `ProxyDetails` `proxyType` field. ([daeefa7](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/daeefa764131abfd72e90d914ac02e8f35af54f0))
+
 ## 7.12.0
 
 ### Minor Changes

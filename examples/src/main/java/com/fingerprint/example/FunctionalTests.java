@@ -27,7 +27,7 @@ public class FunctionalTests {
         final FingerprintApi api = new FingerprintApi(Configuration.getDefaultApiClient(apiSecret, region));
 
         long end = Instant.now().toEpochMilli();
-        long start = Instant.now().minus(90L, ChronoUnit.DAYS).toEpochMilli();
+        long start = Instant.now().minus(89L, ChronoUnit.DAYS).toEpochMilli();
 
         String visitorId = "";
         String requestId = "";

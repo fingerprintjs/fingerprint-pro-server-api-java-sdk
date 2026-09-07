@@ -24,7 +24,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class ProxyDetails {
   /**
-   * Residential proxies use real user IP addresses to appear as legitimate traffic, while data center proxies are public proxies hosted in data centers. `unknown` is reported when a proxy is detected solely by the ML model and the IP sources did not determine a specific type. 
+   * Proxy type:  * `residential` - proxies that route through residential and telecom IP addresses to appear as legitimate traffic  * `data_center` - proxies which route through data centers  * `unknown` - reported when a proxy is detected solely by the ML model and the IP sources did not determine a specific type 
    */
   public enum ProxyTypeEnum {
     RESIDENTIAL("residential"),
@@ -75,11 +75,11 @@ public class ProxyDetails {
   }
 
    /**
-   * Residential proxies use real user IP addresses to appear as legitimate traffic, while data center proxies are public proxies hosted in data centers. `unknown` is reported when a proxy is detected solely by the ML model and the IP sources did not determine a specific type. 
+   * Proxy type:  * `residential` - proxies that route through residential and telecom IP addresses to appear as legitimate traffic  * `data_center` - proxies which route through data centers  * `unknown` - reported when a proxy is detected solely by the ML model and the IP sources did not determine a specific type 
    * @return proxyType
   **/
   @jakarta.annotation.Nonnull
-  @Schema(required = true, description = "Residential proxies use real user IP addresses to appear as legitimate traffic, while data center proxies are public proxies hosted in data centers. `unknown` is reported when a proxy is detected solely by the ML model and the IP sources did not determine a specific type. ")
+  @Schema(required = true, description = "Proxy type:  * `residential` - proxies that route through residential and telecom IP addresses to appear as legitimate traffic  * `data_center` - proxies which route through data centers  * `unknown` - reported when a proxy is detected solely by the ML model and the IP sources did not determine a specific type ")
   @JsonProperty(JSON_PROPERTY_PROXY_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

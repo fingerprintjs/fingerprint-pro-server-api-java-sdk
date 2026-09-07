@@ -15,10 +15,10 @@ import com.fingerprint.sdk.JSON;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
- * Pagination-related fields `lastTimestamp` and `paginationKey` are included if you use a pagination parameter like `limit` or `before` and there is more data available on the next page.
+ * Deprecated response shape for `GET /visitors/{visitor_id}`. The `visits` array currently contains at most one item. Use `GET /events/search` for multi-event history and filtering.
  */
 
-@Schema(description = "Pagination-related fields `lastTimestamp` and `paginationKey` are included if you use a pagination parameter like `limit` or `before` and there is more data available on the next page.")
+@Schema(description = "Deprecated response shape for `GET /visitors/{visitor_id}`. The `visits` array currently contains at most one item. Use `GET /events/search` for multi-event history and filtering.")
 @JsonPropertyOrder({
   VisitorsGetResponse.JSON_PROPERTY_VISITOR_ID,
   VisitorsGetResponse.JSON_PROPERTY_VISITS,
@@ -133,11 +133,11 @@ public class VisitorsGetResponse {
   }
 
    /**
-   * Request ID of the last visit in the current page of results. Use this value in the following request as the `paginationKey` parameter to get the next page of results.
+   * Use this value in the following request as the `paginationKey` parameter to get the next result.
    * @return paginationKey
   **/
   @jakarta.annotation.Nullable
-  @Schema(description = "Request ID of the last visit in the current page of results. Use this value in the following request as the `paginationKey` parameter to get the next page of results.")
+  @Schema(description = "Use this value in the following request as the `paginationKey` parameter to get the next result.")
   @JsonProperty(JSON_PROPERTY_PAGINATION_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

@@ -183,11 +183,11 @@ public class VPNMethods {
   }
 
    /**
-   * `true` if the request came from a device running a VPN, `false` otherwise.   
+   * `true` if the request came from a device running a VPN, `false` otherwise. 
    * @return mlPrediction
   **/
   @jakarta.annotation.Nullable
-  @Schema(description = "`true` if the request came from a device running a VPN, `false` otherwise.   ")
+  @Schema(description = "`true` if the request came from a device running a VPN, `false` otherwise. ")
   @JsonProperty(JSON_PROPERTY_ML_PREDICTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

@@ -22,7 +22,7 @@ Delete data by visitor ID
 
 > 🚧 Deprecation Notice
 >
-> This version of Server API is marked as deprecated starting on **Jan 7th 2026** and will be fully removed on **Jan 7th 2027** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy). If you still use this version, please follow our [migration guide](https://dev.fingerprint.com/reference/migrating-from-server-api-v3-to-v4) to migrate from this deprecated version to the new one.
+> This version of Server API is marked as deprecated starting on **Jan 7th 2026** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy). If you still use this version, please follow our [migration guide](https://dev.fingerprint.com/reference/migrating-from-server-api-v3-to-v4) to migrate from this deprecated version to the new one.
 
 Request deleting all data associated with the specified visitor ID. This API is useful for compliance with privacy regulations.
 ### Which data is deleted?
@@ -127,7 +127,7 @@ Get event by request ID
 
 > 🚧 Deprecation Notice
 >
-> This version of Server API is marked as deprecated starting on **Jan 7th 2026** and will be fully removed on **Jan 7th 2027** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy). If you still use this version, please follow our [migration guide](https://dev.fingerprint.com/reference/migrating-from-server-api-v3-to-v4#migrating-get-events) to migrate from this deprecated version to the new one.
+> This version of Server API is marked as deprecated starting on **Jan 7th 2026** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy). If you still use this version, please follow our [migration guide](https://dev.fingerprint.com/reference/migrating-from-server-api-v3-to-v4#migrating-get-events) to migrate from this deprecated version to the new one.
 
 Get a detailed analysis of an individual identification event, including Smart Signals. 
 Please note that the response includes mobile signals (e.g. `rootApps`) even if the request originated from a non-mobile platform.
@@ -203,6 +203,8 @@ public class FingerprintApiExample {
 | **200** | OK. |  -  |
 | **403** | Forbidden. Access to this API is denied. |  -  |
 | **404** | Not found. The request ID cannot be found in this application&#39;s data. |  -  |
+| **429** | Too Many Requests. The request is throttled. To protect service stability during rare periods of extreme load, we may return HTTP 429 responses with message &#x60;too many search requests&#x60; even if you are within your assigned rate limits.  |  -  |
+| **504** | Gateway Timeout. Search execution exceeded the allowed timeout window. |  -  |
 
 
 ## getRelatedVisitors
@@ -213,7 +215,7 @@ Get Related Visitors
 
 > 🚧 Deprecation Notice
 >
-> This version of Server API is marked as deprecated starting on **Jan 7th 2026** and will be fully removed on **Jan 7th 2027** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy).
+> This version of Server API is marked as deprecated starting on **Jan 7th 2026** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy).
 
 Related visitors API lets you link web visits and in-app browser visits that originated from the same mobile device.
 It searches the past 6 months of identification events to find the visitor IDs that belong to the same mobile device as the given visitor ID.
@@ -303,9 +305,11 @@ Get visits by visitor ID
 
 > 🚧 Deprecation Notice
 >
-> This version of Server API is marked as deprecated starting on **Jan 7th 2026** and will be fully removed on **Jan 7th 2027** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy). If you still use this version, please follow our [migration guide](https://dev.fingerprint.com/reference/migrating-from-server-api-v3-to-v4#migrating-get-visitors) to migrate from this deprecated version to the new one.
+> This version of Server API is marked as deprecated starting on **Jan 7th 2026** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy). If you still use this version, please follow our [migration guide](https://dev.fingerprint.com/reference/migrating-from-server-api-v3-to-v4#migrating-get-visitors) to migrate from this deprecated version to the new one.
 
-Get a history of visits (identification events) for a specific `visitorId`. Use the `visitorId` as a URL path parameter.
+This endpoint is deprecated. Use `GET /events/search` to query visit history or filter across multiple events.
+
+`GET /visitors/{visitor_id}` currently returns at most one visit in `visits`, even when no filters are provided.
 Only information from the _Identification_ product is returned.
 
 #### Headers
@@ -345,9 +349,9 @@ public class FingerprintApiExample {
         String visitorId = "visitorId_example"; // String | Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Identification and all active Smart Signals.
         String requestId = "requestId_example"; // String | Filter visits by `requestId`.  Every identification request has a unique identifier associated with it called `requestId`. This identifier is returned to the client in the identification [result](https://dev.fingerprint.com/reference/get-function#requestid). When you filter visits by `requestId`, only one visit will be returned. 
         String linkedId = "linkedId_example"; // String | Filter visits by your custom identifier.  You can use [`linkedId`](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example: session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier. 
-        Integer limit = 56; // Integer | Limit scanned results.  For performance reasons, the API first scans some number of events before filtering them. Use `limit` to specify how many events are scanned before they are filtered by `requestId` or `linkedId`. Results are always returned sorted by the timestamp (most recent first). By default, the most recent 100 visits are scanned, the maximum is 500. 
-        String paginationKey = "paginationKey_example"; // String | Use `paginationKey` to get the next page of results.  When more results are available (e.g., you requested 200 results using `limit` parameter, but a total of 600 results are available), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `requestId` of the last returned event. In the following request, use that value in the `paginationKey` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/visitors/:visitorId?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/visitors/:visitorId?limit=200&paginationKey=1683900801733.Ogvu1j`  Pagination happens during scanning and before filtering, so you can get less visits than the `limit` you specified with more available on the next page. When there are no more results available for scanning, the `paginationKey` attribute is not returned. 
-        Long before = 56L; // Long | ⚠️ Deprecated pagination method, please use `paginationKey` instead. Timestamp (in milliseconds since epoch) used to paginate results. 
+        Integer limit = 56; // Integer | Limit scanned results.  `GET /visitors/{visitor_id}` currently returns at most one visit. Use `GET /events/search` for paginated multi-event queries. 
+        String paginationKey = "paginationKey_example"; // String | Deprecated pagination parameter retained for backward compatibility.  `GET /visitors/{visitor_id}` currently returns at most one visit, so pagination is not expected. Use `GET /events/search` for paginated results. 
+        Long before = 56L; // Long | ⚠️ Deprecated pagination method, please use `paginationKey` instead. Timestamp (in milliseconds since epoch) used to paginate results. `GET /visitors/{visitor_id}` currently returns at most one visit, so pagination is not expected. 
         try {
             VisitorsGetResponse result = api.getVisits(visitorId, requestId, linkedId, limit, paginationKey, before);
             System.out.println(result);
@@ -367,9 +371,9 @@ public class FingerprintApiExample {
 | **visitorId** | **String**| Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Identification and all active Smart Signals. | |
 | **requestId** | **String**| Filter visits by `requestId`.  Every identification request has a unique identifier associated with it called `requestId`. This identifier is returned to the client in the identification [result](https://dev.fingerprint.com/reference/get-function#requestid). When you filter visits by `requestId`, only one visit will be returned.  | [optional] |
 | **linkedId** | **String**| Filter visits by your custom identifier.  You can use [`linkedId`](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example: session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier.  | [optional] |
-| **limit** | **Integer**| Limit scanned results.  For performance reasons, the API first scans some number of events before filtering them. Use `limit` to specify how many events are scanned before they are filtered by `requestId` or `linkedId`. Results are always returned sorted by the timestamp (most recent first). By default, the most recent 100 visits are scanned, the maximum is 500.  | [optional] |
-| **paginationKey** | **String**| Use `paginationKey` to get the next page of results.  When more results are available (e.g., you requested 200 results using `limit` parameter, but a total of 600 results are available), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `requestId` of the last returned event. In the following request, use that value in the `paginationKey` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/visitors/:visitorId?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/visitors/:visitorId?limit=200&paginationKey=1683900801733.Ogvu1j`  Pagination happens during scanning and before filtering, so you can get less visits than the `limit` you specified with more available on the next page. When there are no more results available for scanning, the `paginationKey` attribute is not returned.  | [optional] |
-| **before** | **Long**| ⚠️ Deprecated pagination method, please use `paginationKey` instead. Timestamp (in milliseconds since epoch) used to paginate results.  | [optional] |
+| **limit** | **Integer**| Limit scanned results.  `GET /visitors/{visitor_id}` currently returns at most one visit. Use `GET /events/search` for paginated multi-event queries.  | [optional] |
+| **paginationKey** | **String**| Deprecated pagination parameter retained for backward compatibility.  `GET /visitors/{visitor_id}` currently returns at most one visit, so pagination is not expected. Use `GET /events/search` for paginated results.  | [optional] |
+| **before** | **Long**| ⚠️ Deprecated pagination method, please use `paginationKey` instead. Timestamp (in milliseconds since epoch) used to paginate results. `GET /visitors/{visitor_id}` currently returns at most one visit, so pagination is not expected.  | [optional] |
 
 ### Return type
 
@@ -390,7 +394,9 @@ public class FingerprintApiExample {
 | **200** | OK. |  -  |
 | **400** | Bad request. The visitor ID or query parameters are missing or in the wrong format. |  -  |
 | **403** | Forbidden. Access to this API is denied. |  -  |
-| **429** | Too Many Requests. The request is throttled. |  * Retry-After - Indicates how many seconds you should wait before attempting the next request. <br>  |
+| **404** | Not found. The visitor ID cannot be found in this application&#39;s data. |  -  |
+| **429** | Too Many Requests. The request is throttled. To protect service stability during rare periods of extreme load, we may return HTTP 429 responses with message &#x60;too many search requests&#x60; even if you are within your assigned rate limits.  |  * Retry-After - Indicates how many seconds you should wait before attempting the next request. <br>  |
+| **504** | Gateway Timeout. Search execution exceeded the allowed timeout window. |  -  |
 
 
 ## searchEvents
@@ -401,7 +407,7 @@ Get events via search
 
 > 🚧 Deprecation Notice
 >
-> This version of Server API is marked as deprecated starting on **Jan 7th 2026** and will be fully removed on **Jan 7th 2027** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy). If you still use this version, please follow our [migration guide](https://dev.fingerprint.com/reference/migrating-from-server-api-v3-to-v4#migrating-get-eventssearch) to migrate from this deprecated version to the new one.
+> This version of Server API is marked as deprecated starting on **Jan 7th 2026** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy). If you still use this version, please follow our [migration guide](https://dev.fingerprint.com/reference/migrating-from-server-api-v3-to-v4#migrating-get-eventssearch) to migrate from this deprecated version to the new one.
 
 Search for identification events, including Smart Signals, using multiple filtering criteria. If you don't provide `start` or `end` parameters, the default search range is the last 7 days.
 
@@ -445,7 +451,7 @@ public class FingerprintApiExample {
         String linkedId = "linkedId_example"; // String | Filter events by your custom identifier.  You can use [linked IDs](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example, session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier. 
         Long start = 56L; // Long | Filter events with a timestamp greater than the start time, in Unix time (milliseconds). 
         Long end = 56L; // Long | Filter events with a timestamp smaller than the end time, in Unix time (milliseconds). 
-        Boolean reverse = true; // Boolean | Sort events in reverse timestamp order. 
+        Boolean reverse = false; // Boolean | When `true`, sort events oldest first (ascending timestamp order). Default is newest first (descending timestamp order). 
         Boolean suspect = true; // Boolean | Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent). > Note: When using this parameter, only events with the `suspect` property explicitly set to `true` or `false` are returned. Events with undefined `suspect` property are left out of the response. 
         Boolean vpn = true; // Boolean | Filter events by VPN Detection result. > Note: When using this parameter, only events with the `products.vpn.data.result` property set to `true` or `false` are returned. Events without a `products.vpn` Smart Signal result are left out of the response. 
         Boolean virtualMachine = true; // Boolean | Filter events by Virtual Machine Detection result. > Note: When using this parameter, only events with the `products.virtualMachine.data.result` property set to `true` or `false` are returned. Events without a `products.virtualMachine` Smart Signal result are left out of the response. 
@@ -542,7 +548,7 @@ Object containing optional parameters for API method. Supports a fluent interfac
 | **linkedId** | **String**| Filter events by your custom identifier.  You can use [linked IDs](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example, session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier.  | [optional] |
 | **start** | **Long**| Filter events with a timestamp greater than the start time, in Unix time (milliseconds).  | [optional] |
 | **end** | **Long**| Filter events with a timestamp smaller than the end time, in Unix time (milliseconds).  | [optional] |
-| **reverse** | **Boolean**| Sort events in reverse timestamp order.  | [optional] |
+| **reverse** | **Boolean**| When `true`, sort events oldest first (ascending timestamp order). Default is newest first (descending timestamp order).  | [optional] [default to false] |
 | **suspect** | **Boolean**| Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent). > Note: When using this parameter, only events with the `suspect` property explicitly set to `true` or `false` are returned. Events with undefined `suspect` property are left out of the response.  | [optional] |
 | **vpn** | **Boolean**| Filter events by VPN Detection result. > Note: When using this parameter, only events with the `products.vpn.data.result` property set to `true` or `false` are returned. Events without a `products.vpn` Smart Signal result are left out of the response.  | [optional] |
 | **virtualMachine** | **Boolean**| Filter events by Virtual Machine Detection result. > Note: When using this parameter, only events with the `products.virtualMachine.data.result` property set to `true` or `false` are returned. Events without a `products.virtualMachine` Smart Signal result are left out of the response.  | [optional] |
@@ -591,6 +597,9 @@ Object containing optional parameters for API method. Supports a fluent interfac
 | **200** | Events matching the filter(s). |  -  |
 | **400** | Bad request. One or more supplied search parameters are invalid, or a required parameter is missing. |  -  |
 | **403** | Forbidden. Access to this API is denied. |  -  |
+| **404** | Not found. The requested visitor does not exist in this application&#39;s data. |  -  |
+| **429** | Too Many Requests. The request is throttled. To protect service stability during rare periods of extreme load, we may return HTTP 429 responses with message &#x60;too many search requests&#x60; even if you are within your assigned rate limits.  |  -  |
+| **504** | Gateway Timeout. Search execution exceeded the allowed timeout window. |  -  |
 
 
 ## updateEvent
@@ -601,7 +610,7 @@ Update an event with a given request ID
 
 > 🚧 Deprecation Notice
 >
-> This version of Server API is marked as deprecated starting on **Jan 7th 2026** and will be fully removed on **Jan 7th 2027** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy). If you still use this version, please follow our [migration guide](https://dev.fingerprint.com/reference/migrating-from-server-api-v3-to-v4#migrating-update-events) to migrate from this deprecated version to the new one.
+> This version of Server API is marked as deprecated starting on **Jan 7th 2026** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy). If you still use this version, please follow our [migration guide](https://dev.fingerprint.com/reference/migrating-from-server-api-v3-to-v4#migrating-update-events) to migrate from this deprecated version to the new one.
 
 Change information in existing events specified by `requestId` or *flag suspicious events*.
 

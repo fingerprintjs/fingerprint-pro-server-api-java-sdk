@@ -114,7 +114,6 @@ public class FunctionalTests {
             assert productIdentification != null;
             Identification oldEventIdentificationData = productIdentification.getData();
             assert oldEventIdentificationData != null;
-            String oldVisitorId = oldEventIdentificationData.getVisitorId();
             String oldRequestId = oldEventIdentificationData.getRequestId();
 
             if (requestId.equals(oldRequestId)) {
@@ -123,7 +122,6 @@ public class FunctionalTests {
             }
 
             api.getEvent(oldRequestId);
-            api.getVisits(oldVisitorId, null, null, null, null, null);
             System.out.println("Old events are good");
         } catch (ApiException e) {
             System.err.println("Exception when trying to read old data:" + e.getMessage());

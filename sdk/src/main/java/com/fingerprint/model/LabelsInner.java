@@ -45,10 +45,10 @@ public class LabelsInner {
    * Get label
    * @return label
   **/
-  @jakarta.annotation.Nullable
-  @Schema(description = "")
+  @jakarta.annotation.Nonnull
+  @Schema(required = true, description = "")
   @JsonProperty(JSON_PROPERTY_LABEL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getLabel() {
     return label;
@@ -56,7 +56,7 @@ public class LabelsInner {
 
 
   @JsonProperty(JSON_PROPERTY_LABEL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLabel(String label) {
     this.label = label;
   }

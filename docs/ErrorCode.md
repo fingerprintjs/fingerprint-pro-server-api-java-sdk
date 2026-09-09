@@ -4,6 +4,7 @@
     Error code:
  * `RequestCannotBeParsed` - the query parameters or JSON payload contains some errors 
           that prevented us from parsing it (wrong type/surpassed limits).
+ * `RequestReadTimeout` - the request body could not be read before the connection timed out.
  * `TokenRequired` - `Auth-API-Key` header is missing or empty.
  * `TokenNotFound` - no Fingerprint application found for specified secret key.
  * `SubscriptionNotActive` - Fingerprint application is not active.
@@ -26,6 +27,8 @@
 
 
 * `REQUEST_CANNOT_BE_PARSED` (value: `"RequestCannotBeParsed"`)
+
+* `REQUEST_READ_TIMEOUT` (value: `"RequestReadTimeout"`)
 
 * `TOKEN_REQUIRED` (value: `"TokenRequired"`)
 

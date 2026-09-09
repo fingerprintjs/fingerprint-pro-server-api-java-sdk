@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**label** | **String** |  |  [optional] |
+|**label** | **String** |  |  |
 |**prediction** | **Boolean** |  |  [optional] |
 |**mlScore** | **Double** |  |  [optional] |
 

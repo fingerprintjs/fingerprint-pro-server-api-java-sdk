@@ -63,13 +63,13 @@ public class VirtualMachine {
   }
 
    /**
-   * Machine learning-based virtual machine score,  represented as a floating-point value between 0 and 1 (inclusive), with up to three decimal places of precision. A higher score means a higher confidence in the positive `virtual_machine` detection result     
+   * Machine learning-based virtual machine score,  represented as a floating-point value between 0 and 1 (inclusive), with up to three decimal places of precision. A higher score means a higher confidence in the positive `virtual_machine` detection result 
    * minimum: 0
    * maximum: 1
    * @return mlScore
   **/
   @jakarta.annotation.Nullable
-  @Schema(description = "Machine learning-based virtual machine score,  represented as a floating-point value between 0 and 1 (inclusive), with up to three decimal places of precision. A higher score means a higher confidence in the positive `virtual_machine` detection result     ")
+  @Schema(description = "Machine learning-based virtual machine score,  represented as a floating-point value between 0 and 1 (inclusive), with up to three decimal places of precision. A higher score means a higher confidence in the positive `virtual_machine` detection result ")
   @JsonProperty(JSON_PROPERTY_ML_SCORE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

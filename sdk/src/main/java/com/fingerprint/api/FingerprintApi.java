@@ -4,7 +4,9 @@ import com.fingerprint.sdk.ApiException;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiResponse;
 import com.fingerprint.sdk.Configuration;
+import com.fingerprint.sdk.InvalidArgumentException;
 import com.fingerprint.sdk.Pair;
+import com.fingerprint.sdk.PathParameters;
 import com.fingerprint.sdk.Region;
 
 import jakarta.ws.rs.core.GenericType;
@@ -67,6 +69,7 @@ public class FingerprintApi {
    * > 🚧 Deprecation Notice > > This version of Server API is marked as deprecated starting on **Jan 7th 2026** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy). If you still use this version, please follow our [migration guide](https://dev.fingerprint.com/reference/migrating-from-server-api-v3-to-v4) to migrate from this deprecated version to the new one.  Request deleting all data associated with the specified visitor ID. This API is useful for compliance with privacy regulations. ### Which data is deleted? - Browser (or device) properties - Identification requests made from this browser (or device)  #### Browser (or device) properties - Represents the data that Fingerprint collected from this specific browser (or device) and everything inferred and derived from it. - Upon request to delete, this data is deleted asynchronously (typically within a few minutes) and it will no longer be used to identify this browser (or device) for your [Fingerprint Workspace](https://dev.fingerprint.com/docs/glossary#fingerprint-workspace).  #### Identification requests made from this browser (or device) - Fingerprint stores the identification requests made from a browser (or device) for up to 30 (or 90) days depending on your plan. To learn more, see [Data Retention](https://dev.fingerprint.com/docs/regions#data-retention). - Upon request to delete, the identification requests that were made by this browser   - Within the past 10 days are deleted within 24 hrs.   - Outside of 10 days are allowed to purge as per your data retention period.  ### Corollary After requesting to delete a visitor ID, - If the same browser (or device) requests to identify, it will receive a different visitor ID. - If you request [`/events` API](https://dev.fingerprint.com/reference/getevent) with a `request_id` that was made outside of the 10 days, you will still receive a valid response. - If you request [`/visitors` API](https://dev.fingerprint.com/reference/getvisits) for the deleted visitor ID, the response will include identification requests that were made outside of those 10 days.  ### Interested? Please [contact our support team](https://fingerprint.com/support/) to enable it for you. Otherwise, you will receive a 403. 
    * @param visitorId The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) you want to delete. (required)
    * @throws ApiException if fails to make API call
+   * @throws InvalidArgumentException without sending a request when visitorId is "." or "..", as those values are not valid identifiers
    * @http.response.details
      <table summary="Response Details" border="1">
        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -87,6 +90,7 @@ public class FingerprintApi {
    * @param visitorId The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) you want to delete. (required)
    * @return ApiResponse<Void>
    * @throws ApiException if fails to make API call
+   * @throws InvalidArgumentException without sending a request when visitorId is "." or "..", as those values are not valid identifiers
    * @http.response.details
      <table summary="Response Details" border="1">
        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -105,6 +109,8 @@ public class FingerprintApi {
       throw new ApiException(400, "Missing the required parameter 'visitorId' when calling deleteVisitorData");
     }
     
+    // verify the path parameter 'visitorId' can address a resource
+    PathParameters.validate("visitorId", visitorId.toString());
     // create path and map variables
     String localVarPath = "/visitors/{visitor_id}"
       .replaceAll("\\{" + "visitor_id" + "\\}", apiClient.escapeString(visitorId.toString()));
@@ -143,6 +149,7 @@ public class FingerprintApi {
    * @param requestId The unique [identifier](https://dev.fingerprint.com/reference/get-function#requestid) of each identification request. (required)
    * @return EventsGetResponse
    * @throws ApiException if fails to make API call
+   * @throws InvalidArgumentException without sending a request when requestId is "." or "..", as those values are not valid identifiers
    * @http.response.details
      <table summary="Response Details" border="1">
        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -163,6 +170,7 @@ public class FingerprintApi {
    * @param requestId The unique [identifier](https://dev.fingerprint.com/reference/get-function#requestid) of each identification request. (required)
    * @return ApiResponse<EventsGetResponse>
    * @throws ApiException if fails to make API call
+   * @throws InvalidArgumentException without sending a request when requestId is "." or "..", as those values are not valid identifiers
    * @http.response.details
      <table summary="Response Details" border="1">
        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -181,6 +189,8 @@ public class FingerprintApi {
       throw new ApiException(400, "Missing the required parameter 'requestId' when calling getEvent");
     }
     
+    // verify the path parameter 'requestId' can address a resource
+    PathParameters.validate("requestId", requestId.toString());
     // create path and map variables
     String localVarPath = "/events/{request_id}"
       .replaceAll("\\{" + "request_id" + "\\}", apiClient.escapeString(requestId.toString()));
@@ -304,6 +314,7 @@ public class FingerprintApi {
    * @param before ⚠️ Deprecated pagination method, please use `paginationKey` instead. Timestamp (in milliseconds since epoch) used to paginate results. `GET /visitors/{visitor_id}` currently returns at most one visit, so pagination is not expected.  (optional)
    * @return VisitorsGetResponse
    * @throws ApiException if fails to make API call
+   * @throws InvalidArgumentException without sending a request when visitorId is "." or "..", as those values are not valid identifiers
    * @http.response.details
      <table summary="Response Details" border="1">
        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -330,6 +341,7 @@ public class FingerprintApi {
    * @param before ⚠️ Deprecated pagination method, please use `paginationKey` instead. Timestamp (in milliseconds since epoch) used to paginate results. `GET /visitors/{visitor_id}` currently returns at most one visit, so pagination is not expected.  (optional)
    * @return ApiResponse<VisitorsGetResponse>
    * @throws ApiException if fails to make API call
+   * @throws InvalidArgumentException without sending a request when visitorId is "." or "..", as those values are not valid identifiers
    * @http.response.details
      <table summary="Response Details" border="1">
        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -349,6 +361,8 @@ public class FingerprintApi {
       throw new ApiException(400, "Missing the required parameter 'visitorId' when calling getVisits");
     }
     
+    // verify the path parameter 'visitorId' can address a resource
+    PathParameters.validate("visitorId", visitorId.toString());
     // create path and map variables
     String localVarPath = "/visitors/{visitor_id}"
       .replaceAll("\\{" + "visitor_id" + "\\}", apiClient.escapeString(visitorId.toString()));
@@ -1094,6 +1108,7 @@ public class FingerprintApi {
    * @param requestId The unique event [identifier](https://dev.fingerprint.com/reference/get-function#requestid). (required)
    * @param eventsUpdateRequest  (required)
    * @throws ApiException if fails to make API call
+   * @throws InvalidArgumentException without sending a request when requestId is "." or "..", as those values are not valid identifiers
    * @http.response.details
      <table summary="Response Details" border="1">
        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1115,6 +1130,7 @@ public class FingerprintApi {
    * @param eventsUpdateRequest  (required)
    * @return ApiResponse<Void>
    * @throws ApiException if fails to make API call
+   * @throws InvalidArgumentException without sending a request when requestId is "." or "..", as those values are not valid identifiers
    * @http.response.details
      <table summary="Response Details" border="1">
        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1138,6 +1154,8 @@ public class FingerprintApi {
       throw new ApiException(400, "Missing the required parameter 'eventsUpdateRequest' when calling updateEvent");
     }
     
+    // verify the path parameter 'requestId' can address a resource
+    PathParameters.validate("requestId", requestId.toString());
     // create path and map variables
     String localVarPath = "/events/{request_id}"
       .replaceAll("\\{" + "request_id" + "\\}", apiClient.escapeString(requestId.toString()));

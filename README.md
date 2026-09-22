@@ -118,6 +118,7 @@ import com.fingerprint.model.VisitorsGetResponse;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
 import com.fingerprint.sdk.Configuration;
+import com.fingerprint.sdk.InvalidArgumentException;
 import com.fingerprint.sdk.Region;
 
 public class FingerprintApiExample {
@@ -151,6 +152,10 @@ public class FingerprintApiExample {
             // Fetch the event with a given requestId
             EventsGetResponse response = api.getEvent(FPJS_REQUEST_ID);
             System.out.println(response.getProducts().toString());
+        } catch (InvalidArgumentException e) {
+            // Thrown before a request is sent when an argument, such as requestId here, is
+            // `.` or `..`. Those values are not valid identifiers.
+            System.err.println("Invalid " + e.getParameter() + ": \"" + e.getValue() + "\"");
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());
         }

@@ -96,6 +96,10 @@ public class FingerprintApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **visitorId** | **String**| The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) you want to delete. | |
 
+### Invalid argument values
+
+`visitorId` must not be `.` or `..`. Those values are not valid identifiers, so the call throws an `InvalidArgumentException`, with the error code `InvalidArgument`, without sending a request.
+
 ### Return type
 
 null (empty response body)
@@ -183,6 +187,10 @@ public class FingerprintApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **requestId** | **String**| The unique [identifier](https://dev.fingerprint.com/reference/get-function#requestid) of each identification request. | |
+
+### Invalid argument values
+
+`requestId` must not be `.` or `..`. Those values are not valid identifiers, so the call throws an `InvalidArgumentException`, with the error code `InvalidArgument`, without sending a request.
 
 ### Return type
 
@@ -374,6 +382,10 @@ public class FingerprintApiExample {
 | **limit** | **Integer**| Limit scanned results.  `GET /visitors/{visitor_id}` currently returns at most one visit. Use `GET /events/search` for paginated multi-event queries.  | [optional] |
 | **paginationKey** | **String**| Deprecated pagination parameter retained for backward compatibility.  `GET /visitors/{visitor_id}` currently returns at most one visit, so pagination is not expected. Use `GET /events/search` for paginated results.  | [optional] |
 | **before** | **Long**| ⚠️ Deprecated pagination method, please use `paginationKey` instead. Timestamp (in milliseconds since epoch) used to paginate results. `GET /visitors/{visitor_id}` currently returns at most one visit, so pagination is not expected.  | [optional] |
+
+### Invalid argument values
+
+`visitorId` must not be `.` or `..`. Those values are not valid identifiers, so the call throws an `InvalidArgumentException`, with the error code `InvalidArgument`, without sending a request.
 
 ### Return type
 
@@ -667,6 +679,10 @@ public class FingerprintApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **requestId** | **String**| The unique event [identifier](https://dev.fingerprint.com/reference/get-function#requestid). | |
 | **eventsUpdateRequest** | [**EventsUpdateRequest**](EventsUpdateRequest.md)|  | |
+
+### Invalid argument values
+
+`requestId` must not be `.` or `..`. Those values are not valid identifiers, so the call throws an `InvalidArgumentException`, with the error code `InvalidArgument`, without sending a request.
 
 ### Return type
 

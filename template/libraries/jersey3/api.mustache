@@ -4,7 +4,9 @@ import {{invokerPackage}}.ApiException;
 import {{invokerPackage}}.ApiClient;
 import {{invokerPackage}}.ApiResponse;
 import {{invokerPackage}}.Configuration;
+import {{invokerPackage}}.InvalidArgumentException;
 import {{invokerPackage}}.Pair;
+import {{invokerPackage}}.PathParameters;
 import {{invokerPackage}}.Region;
 
 import jakarta.ws.rs.core.GenericType;
@@ -113,6 +115,9 @@ public class {{classname}} {
    * @return {{.}}
    {{/returnType}}
    * @throws ApiException if fails to make API call
+   {{#pathParams}}
+   * @throws InvalidArgumentException without sending a request when {{paramName}} is "." or "..", as those values are not valid identifiers
+   {{/pathParams}}
    {{#responses.0}}
    * @http.response.details
      <table summary="Response Details" border="1">
@@ -166,6 +171,9 @@ public class {{classname}} {
    {{/vendorExtensions.x-flatten-optional-params}}
    * @return ApiResponse<{{returnType}}{{^returnType}}Void{{/returnType}}>
    * @throws ApiException if fails to make API call
+   {{#pathParams}}
+   * @throws InvalidArgumentException without sending a request when {{paramName}} is "." or "..", as those values are not valid identifiers
+   {{/pathParams}}
    {{#responses.0}}
    * @http.response.details
      <table summary="Response Details" border="1">
@@ -199,6 +207,10 @@ public class {{classname}} {
       throw new ApiException(400, "Missing the required parameter '{{paramName}}' when calling {{operationId}}");
     }
     {{/required}}{{/allParams}}
+    {{#pathParams}}
+    // verify the path parameter '{{paramName}}' can address a resource
+    PathParameters.validate("{{paramName}}", {{{paramName}}}.toString());
+    {{/pathParams}}
     // create path and map variables
     String localVarPath = "{{{path}}}"{{#pathParams}}
       .replaceAll("\\{" + "{{baseName}}" + "\\}", apiClient.escapeString({{{paramName}}}.toString())){{/pathParams}};

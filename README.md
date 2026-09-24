@@ -153,8 +153,6 @@ public class FingerprintApiExample {
             EventsGetResponse response = api.getEvent(FPJS_REQUEST_ID);
             System.out.println(response.getProducts().toString());
         } catch (InvalidArgumentException e) {
-            // Thrown before a request is sent when an argument, such as requestId here, is
-            // `.` or `..`. Those values are not valid identifiers.
             System.err.println("Invalid " + e.getParameter() + ": \"" + e.getValue() + "\"");
         } catch (ApiException e) {
             System.err.println("Exception when calling FingerprintApi.getEvent:" + e.getMessage());

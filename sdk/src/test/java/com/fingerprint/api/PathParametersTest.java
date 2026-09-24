@@ -154,7 +154,8 @@ public class PathParametersTest {
 
                 assertTrue(requestedPaths.isEmpty(), context);
 
-                assertEquals(400, exception.getCode(), context);
+                // No response is involved, so there is no HTTP status to report.
+                assertEquals(0, exception.getCode(), context);
                 // The message stays generic on purpose: it must not tell a caller which values are
                 // rejected, since it can surface to end users.
                 assertEquals(

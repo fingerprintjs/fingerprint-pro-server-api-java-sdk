@@ -108,7 +108,7 @@ public class FingerprintApi {
     // verify the path parameter 'visitorId' is a valid identifier
     String escapedVisitorId = apiClient.escapeString(visitorId.toString());
     if (escapedVisitorId.equals(".") || escapedVisitorId.equals("..")) {
-      throw new ApiException(400, "invalid value for path parameter visitorId");
+      throw new ApiException("invalid value for path parameter visitorId");
     }
 
     // create path and map variables
@@ -190,7 +190,7 @@ public class FingerprintApi {
     // verify the path parameter 'requestId' is a valid identifier
     String escapedRequestId = apiClient.escapeString(requestId.toString());
     if (escapedRequestId.equals(".") || escapedRequestId.equals("..")) {
-      throw new ApiException(400, "invalid value for path parameter requestId");
+      throw new ApiException("invalid value for path parameter requestId");
     }
 
     // create path and map variables
@@ -364,7 +364,7 @@ public class FingerprintApi {
     // verify the path parameter 'visitorId' is a valid identifier
     String escapedVisitorId = apiClient.escapeString(visitorId.toString());
     if (escapedVisitorId.equals(".") || escapedVisitorId.equals("..")) {
-      throw new ApiException(400, "invalid value for path parameter visitorId");
+      throw new ApiException("invalid value for path parameter visitorId");
     }
 
     // create path and map variables
@@ -1159,7 +1159,7 @@ public class FingerprintApi {
     // verify the path parameter 'requestId' is a valid identifier
     String escapedRequestId = apiClient.escapeString(requestId.toString());
     if (escapedRequestId.equals(".") || escapedRequestId.equals("..")) {
-      throw new ApiException(400, "invalid value for path parameter requestId");
+      throw new ApiException("invalid value for path parameter requestId");
     }
 
     // create path and map variables

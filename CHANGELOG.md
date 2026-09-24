@@ -1,5 +1,11 @@
 # Fingerprint Pro Server Java SDK
 
+## 7.14.1
+
+### Patch Changes
+
+- **sdk**: `getEvent`, `updateEvent`, `getVisits`, and `deleteVisitorData` now validate their ID path parameter and throw an `ApiException` without sending a request when the value is not a valid identifier. ([c56d7aa](https://github.com/fingerprintjs/fingerprint-pro-server-api-java-sdk/commit/c56d7aa5bd32592436be541909496dbfe998482d))
+
 ## 7.14.0
 
 ### Minor Changes

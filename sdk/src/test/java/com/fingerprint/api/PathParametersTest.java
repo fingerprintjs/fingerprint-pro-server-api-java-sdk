@@ -4,7 +4,6 @@ import com.fingerprint.model.EventsUpdateRequest;
 import com.fingerprint.sdk.ApiClient;
 import com.fingerprint.sdk.ApiException;
 import com.fingerprint.sdk.ApiResponse;
-import com.fingerprint.sdk.InvalidArgumentException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mockito;
@@ -147,37 +146,24 @@ public class PathParametersTest {
                 String context = endpoint.name + ": " + value;
 
                 FingerprintApi api = apiCapturingPaths();
-                InvalidArgumentException exception = assertThrows(
-                        InvalidArgumentException.class,
+                ApiException exception = assertThrows(
+                        ApiException.class,
                         () -> endpoint.call.apply(api, value),
                         context
                 );
 
                 assertTrue(requestedPaths.isEmpty(), context);
 
-                assertEquals(InvalidArgumentException.ERROR_CODE, exception.getErrorCode(), context);
-                assertEquals(endpoint.paramName, exception.getParameter(), context);
-                assertEquals(value, exception.getValue(), context);
-
-                // The message names both the offending parameter and its value.
-                assertTrue(exception.getMessage().contains(endpoint.paramName), context);
-                assertTrue(exception.getMessage().contains(value), context);
+                assertEquals(400, exception.getCode(), context);
+                // The message stays generic on purpose: it must not tell a caller which values are
+                // rejected, since it can surface to end users.
+                assertEquals(
+                        "invalid value for path parameter " + endpoint.paramName,
+                        exception.getMessage(),
+                        context
+                );
             }
         }
-    }
-
-    /**
-     * Catching {@link ApiException} keeps catching every failure these operations report, so the
-     * new exception does not escape existing error handling.
-     */
-    @Test
-    public void invalidPathParamIsAnApiException() throws ApiException {
-        FingerprintApi api = apiCapturingPaths();
-
-        ApiException exception = assertThrows(ApiException.class, () -> api.getEvent(".."));
-
-        assertTrue(exception instanceof InvalidArgumentException);
-        assertEquals(400, exception.getCode());
     }
 
     /**

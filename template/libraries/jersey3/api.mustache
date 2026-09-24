@@ -204,7 +204,7 @@ public class {{classname}} {
     // verify the path parameter '{{paramName}}' is a valid identifier
     String escaped{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}} = apiClient.escapeString({{{paramName}}}.toString());
     if (escaped{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}}.equals(".") || escaped{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}}.equals("..")) {
-      throw new ApiException(400, "invalid value for path parameter {{paramName}}");
+      throw new ApiException("invalid value for path parameter {{paramName}}");
     }
 
     {{/pathParams}}

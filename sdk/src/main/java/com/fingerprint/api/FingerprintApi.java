@@ -65,7 +65,7 @@ public class FingerprintApi {
   /**
    * Delete data by visitor ID
    * > 🚧 Deprecation Notice > > This version of Server API is marked as deprecated starting on **Jan 7th 2026** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy). If you still use this version, please follow our [migration guide](https://dev.fingerprint.com/reference/migrating-from-server-api-v3-to-v4) to migrate from this deprecated version to the new one.  Request deleting all data associated with the specified visitor ID. This API is useful for compliance with privacy regulations. ### Which data is deleted? - Browser (or device) properties - Identification requests made from this browser (or device)  #### Browser (or device) properties - Represents the data that Fingerprint collected from this specific browser (or device) and everything inferred and derived from it. - Upon request to delete, this data is deleted asynchronously (typically within a few minutes) and it will no longer be used to identify this browser (or device) for your [Fingerprint Workspace](https://dev.fingerprint.com/docs/glossary#fingerprint-workspace).  #### Identification requests made from this browser (or device) - Fingerprint stores the identification requests made from a browser (or device) for up to 30 (or 90) days depending on your plan. To learn more, see [Data Retention](https://dev.fingerprint.com/docs/regions#data-retention). - Upon request to delete, the identification requests that were made by this browser   - Within the past 10 days are deleted within 24 hrs.   - Outside of 10 days are allowed to purge as per your data retention period.  ### Corollary After requesting to delete a visitor ID, - If the same browser (or device) requests to identify, it will receive a different visitor ID. - If you request [`/events` API](https://dev.fingerprint.com/reference/getevent) with a `request_id` that was made outside of the 10 days, you will still receive a valid response. - If you request [`/visitors` API](https://dev.fingerprint.com/reference/getvisits) for the deleted visitor ID, the response will include identification requests that were made outside of those 10 days.  ### Interested? Please [contact our support team](https://fingerprint.com/support/) to enable it for you. Otherwise, you will receive a 403. 
-   * @param visitorId The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) you want to delete. (required)
+   * @param visitorId The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) you want to delete. (required) A value that is not a valid identifier is rejected with an {@link ApiException} before a request is sent.
    * @throws ApiException if fails to make API call
    * @http.response.details
      <table summary="Response Details" border="1">
@@ -84,7 +84,7 @@ public class FingerprintApi {
   /**
    * Delete data by visitor ID
    * > 🚧 Deprecation Notice > > This version of Server API is marked as deprecated starting on **Jan 7th 2026** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy). If you still use this version, please follow our [migration guide](https://dev.fingerprint.com/reference/migrating-from-server-api-v3-to-v4) to migrate from this deprecated version to the new one.  Request deleting all data associated with the specified visitor ID. This API is useful for compliance with privacy regulations. ### Which data is deleted? - Browser (or device) properties - Identification requests made from this browser (or device)  #### Browser (or device) properties - Represents the data that Fingerprint collected from this specific browser (or device) and everything inferred and derived from it. - Upon request to delete, this data is deleted asynchronously (typically within a few minutes) and it will no longer be used to identify this browser (or device) for your [Fingerprint Workspace](https://dev.fingerprint.com/docs/glossary#fingerprint-workspace).  #### Identification requests made from this browser (or device) - Fingerprint stores the identification requests made from a browser (or device) for up to 30 (or 90) days depending on your plan. To learn more, see [Data Retention](https://dev.fingerprint.com/docs/regions#data-retention). - Upon request to delete, the identification requests that were made by this browser   - Within the past 10 days are deleted within 24 hrs.   - Outside of 10 days are allowed to purge as per your data retention period.  ### Corollary After requesting to delete a visitor ID, - If the same browser (or device) requests to identify, it will receive a different visitor ID. - If you request [`/events` API](https://dev.fingerprint.com/reference/getevent) with a `request_id` that was made outside of the 10 days, you will still receive a valid response. - If you request [`/visitors` API](https://dev.fingerprint.com/reference/getvisits) for the deleted visitor ID, the response will include identification requests that were made outside of those 10 days.  ### Interested? Please [contact our support team](https://fingerprint.com/support/) to enable it for you. Otherwise, you will receive a 403. 
-   * @param visitorId The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) you want to delete. (required)
+   * @param visitorId The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) you want to delete. (required) A value that is not a valid identifier is rejected with an {@link ApiException} before a request is sent.
    * @return ApiResponse<Void>
    * @throws ApiException if fails to make API call
    * @http.response.details
@@ -105,9 +105,15 @@ public class FingerprintApi {
       throw new ApiException(400, "Missing the required parameter 'visitorId' when calling deleteVisitorData");
     }
     
+    // verify the path parameter 'visitorId' is a valid identifier
+    String escapedVisitorId = apiClient.escapeString(visitorId.toString());
+    if (escapedVisitorId.equals(".") || escapedVisitorId.equals("..")) {
+      throw new ApiException("invalid value for path parameter visitorId");
+    }
+
     // create path and map variables
     String localVarPath = "/visitors/{visitor_id}"
-      .replaceAll("\\{" + "visitor_id" + "\\}", apiClient.escapeString(visitorId.toString()));
+      .replaceAll("\\{" + "visitor_id" + "\\}", escapedVisitorId);
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -140,7 +146,7 @@ public class FingerprintApi {
   /**
    * Get event by request ID
    * > 🚧 Deprecation Notice > > This version of Server API is marked as deprecated starting on **Jan 7th 2026** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy). If you still use this version, please follow our [migration guide](https://dev.fingerprint.com/reference/migrating-from-server-api-v3-to-v4#migrating-get-events) to migrate from this deprecated version to the new one.  Get a detailed analysis of an individual identification event, including Smart Signals.  Please note that the response includes mobile signals (e.g. `rootApps`) even if the request originated from a non-mobile platform. It is highly recommended that you **ignore** the mobile signals for such requests.   Use `requestId` as the URL path parameter. This API method is scoped to a request, i.e. all returned information is by `requestId`. 
-   * @param requestId The unique [identifier](https://dev.fingerprint.com/reference/get-function#requestid) of each identification request. (required)
+   * @param requestId The unique [identifier](https://dev.fingerprint.com/reference/get-function#requestid) of each identification request. (required) A value that is not a valid identifier is rejected with an {@link ApiException} before a request is sent.
    * @return EventsGetResponse
    * @throws ApiException if fails to make API call
    * @http.response.details
@@ -160,7 +166,7 @@ public class FingerprintApi {
   /**
    * Get event by request ID
    * > 🚧 Deprecation Notice > > This version of Server API is marked as deprecated starting on **Jan 7th 2026** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy). If you still use this version, please follow our [migration guide](https://dev.fingerprint.com/reference/migrating-from-server-api-v3-to-v4#migrating-get-events) to migrate from this deprecated version to the new one.  Get a detailed analysis of an individual identification event, including Smart Signals.  Please note that the response includes mobile signals (e.g. `rootApps`) even if the request originated from a non-mobile platform. It is highly recommended that you **ignore** the mobile signals for such requests.   Use `requestId` as the URL path parameter. This API method is scoped to a request, i.e. all returned information is by `requestId`. 
-   * @param requestId The unique [identifier](https://dev.fingerprint.com/reference/get-function#requestid) of each identification request. (required)
+   * @param requestId The unique [identifier](https://dev.fingerprint.com/reference/get-function#requestid) of each identification request. (required) A value that is not a valid identifier is rejected with an {@link ApiException} before a request is sent.
    * @return ApiResponse<EventsGetResponse>
    * @throws ApiException if fails to make API call
    * @http.response.details
@@ -181,9 +187,15 @@ public class FingerprintApi {
       throw new ApiException(400, "Missing the required parameter 'requestId' when calling getEvent");
     }
     
+    // verify the path parameter 'requestId' is a valid identifier
+    String escapedRequestId = apiClient.escapeString(requestId.toString());
+    if (escapedRequestId.equals(".") || escapedRequestId.equals("..")) {
+      throw new ApiException("invalid value for path parameter requestId");
+    }
+
     // create path and map variables
     String localVarPath = "/events/{request_id}"
-      .replaceAll("\\{" + "request_id" + "\\}", apiClient.escapeString(requestId.toString()));
+      .replaceAll("\\{" + "request_id" + "\\}", escapedRequestId);
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -296,7 +308,7 @@ public class FingerprintApi {
   /**
    * Get visits by visitor ID
    * > 🚧 Deprecation Notice > > This version of Server API is marked as deprecated starting on **Jan 7th 2026** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy). If you still use this version, please follow our [migration guide](https://dev.fingerprint.com/reference/migrating-from-server-api-v3-to-v4#migrating-get-visitors) to migrate from this deprecated version to the new one.  This endpoint is deprecated. Use `GET /events/search` to query visit history or filter across multiple events.  `GET /visitors/{visitor_id}` currently returns at most one visit in `visits`, even when no filters are provided. Only information from the _Identification_ product is returned.  #### Headers  * `Retry-After` — Present in case of `429 Too many requests`. Indicates how long you should wait before making a follow-up request. The value is non-negative decimal integer indicating the seconds to delay after the response is received. 
-   * @param visitorId Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Identification and all active Smart Signals. (required)
+   * @param visitorId Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Identification and all active Smart Signals. (required) A value that is not a valid identifier is rejected with an {@link ApiException} before a request is sent.
    * @param requestId Filter visits by `requestId`.  Every identification request has a unique identifier associated with it called `requestId`. This identifier is returned to the client in the identification [result](https://dev.fingerprint.com/reference/get-function#requestid). When you filter visits by `requestId`, only one visit will be returned.  (optional)
    * @param linkedId Filter visits by your custom identifier.  You can use [`linkedId`](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example: session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier.  (optional)
    * @param limit Limit scanned results.  `GET /visitors/{visitor_id}` currently returns at most one visit. Use `GET /events/search` for paginated multi-event queries.  (optional)
@@ -322,7 +334,7 @@ public class FingerprintApi {
   /**
    * Get visits by visitor ID
    * > 🚧 Deprecation Notice > > This version of Server API is marked as deprecated starting on **Jan 7th 2026** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy). If you still use this version, please follow our [migration guide](https://dev.fingerprint.com/reference/migrating-from-server-api-v3-to-v4#migrating-get-visitors) to migrate from this deprecated version to the new one.  This endpoint is deprecated. Use `GET /events/search` to query visit history or filter across multiple events.  `GET /visitors/{visitor_id}` currently returns at most one visit in `visits`, even when no filters are provided. Only information from the _Identification_ product is returned.  #### Headers  * `Retry-After` — Present in case of `429 Too many requests`. Indicates how long you should wait before making a follow-up request. The value is non-negative decimal integer indicating the seconds to delay after the response is received. 
-   * @param visitorId Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Identification and all active Smart Signals. (required)
+   * @param visitorId Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Identification and all active Smart Signals. (required) A value that is not a valid identifier is rejected with an {@link ApiException} before a request is sent.
    * @param requestId Filter visits by `requestId`.  Every identification request has a unique identifier associated with it called `requestId`. This identifier is returned to the client in the identification [result](https://dev.fingerprint.com/reference/get-function#requestid). When you filter visits by `requestId`, only one visit will be returned.  (optional)
    * @param linkedId Filter visits by your custom identifier.  You can use [`linkedId`](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example: session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier.  (optional)
    * @param limit Limit scanned results.  `GET /visitors/{visitor_id}` currently returns at most one visit. Use `GET /events/search` for paginated multi-event queries.  (optional)
@@ -349,9 +361,15 @@ public class FingerprintApi {
       throw new ApiException(400, "Missing the required parameter 'visitorId' when calling getVisits");
     }
     
+    // verify the path parameter 'visitorId' is a valid identifier
+    String escapedVisitorId = apiClient.escapeString(visitorId.toString());
+    if (escapedVisitorId.equals(".") || escapedVisitorId.equals("..")) {
+      throw new ApiException("invalid value for path parameter visitorId");
+    }
+
     // create path and map variables
     String localVarPath = "/visitors/{visitor_id}"
-      .replaceAll("\\{" + "visitor_id" + "\\}", apiClient.escapeString(visitorId.toString()));
+      .replaceAll("\\{" + "visitor_id" + "\\}", escapedVisitorId);
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1091,7 +1109,7 @@ public class FingerprintApi {
   /**
    * Update an event with a given request ID
    * > 🚧 Deprecation Notice > > This version of Server API is marked as deprecated starting on **Jan 7th 2026** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy). If you still use this version, please follow our [migration guide](https://dev.fingerprint.com/reference/migrating-from-server-api-v3-to-v4#migrating-update-events) to migrate from this deprecated version to the new one.  Change information in existing events specified by `requestId` or *flag suspicious events*.  When an event is created, it is assigned `linkedId` and `tag` submitted through the JS agent parameters. This information might not be available on the client so the Server API allows for updating the attributes after the fact.  **Warning** It's not possible to update events older than 10 days. 
-   * @param requestId The unique event [identifier](https://dev.fingerprint.com/reference/get-function#requestid). (required)
+   * @param requestId The unique event [identifier](https://dev.fingerprint.com/reference/get-function#requestid). (required) A value that is not a valid identifier is rejected with an {@link ApiException} before a request is sent.
    * @param eventsUpdateRequest  (required)
    * @throws ApiException if fails to make API call
    * @http.response.details
@@ -1111,7 +1129,7 @@ public class FingerprintApi {
   /**
    * Update an event with a given request ID
    * > 🚧 Deprecation Notice > > This version of Server API is marked as deprecated starting on **Jan 7th 2026** according to our [API Deprecation Policy](https://dev.fingerprint.com/reference/api-deprecation-policy). If you still use this version, please follow our [migration guide](https://dev.fingerprint.com/reference/migrating-from-server-api-v3-to-v4#migrating-update-events) to migrate from this deprecated version to the new one.  Change information in existing events specified by `requestId` or *flag suspicious events*.  When an event is created, it is assigned `linkedId` and `tag` submitted through the JS agent parameters. This information might not be available on the client so the Server API allows for updating the attributes after the fact.  **Warning** It's not possible to update events older than 10 days. 
-   * @param requestId The unique event [identifier](https://dev.fingerprint.com/reference/get-function#requestid). (required)
+   * @param requestId The unique event [identifier](https://dev.fingerprint.com/reference/get-function#requestid). (required) A value that is not a valid identifier is rejected with an {@link ApiException} before a request is sent.
    * @param eventsUpdateRequest  (required)
    * @return ApiResponse<Void>
    * @throws ApiException if fails to make API call
@@ -1138,9 +1156,15 @@ public class FingerprintApi {
       throw new ApiException(400, "Missing the required parameter 'eventsUpdateRequest' when calling updateEvent");
     }
     
+    // verify the path parameter 'requestId' is a valid identifier
+    String escapedRequestId = apiClient.escapeString(requestId.toString());
+    if (escapedRequestId.equals(".") || escapedRequestId.equals("..")) {
+      throw new ApiException("invalid value for path parameter requestId");
+    }
+
     // create path and map variables
     String localVarPath = "/events/{request_id}"
-      .replaceAll("\\{" + "request_id" + "\\}", apiClient.escapeString(requestId.toString()));
+      .replaceAll("\\{" + "request_id" + "\\}", escapedRequestId);
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();

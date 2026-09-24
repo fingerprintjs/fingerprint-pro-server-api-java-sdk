@@ -95,13 +95,13 @@ public class {{classname}} {
    {{^vendorExtensions.x-flatten-optional-params}}
    {{#allParams}}
    {{#required}}
-   * @param {{paramName}} {{{description}}} (required)
+   * @param {{paramName}} {{{description}}} (required){{#isPathParam}} A value that is not a valid identifier is rejected with an {@link ApiException} before a request is sent.{{/isPathParam}}
    {{/required}}
    {{/allParams}}
    {{/vendorExtensions.x-flatten-optional-params}}
    {{#vendorExtensions.x-flatten-optional-params}}
    {{#allParams}}
-   * @param {{paramName}} {{{description}}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}
+   * @param {{paramName}} {{{description}}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}{{#isPathParam}} A value that is not a valid identifier is rejected with an {@link ApiException} before a request is sent.{{/isPathParam}}
    {{/allParams}}
    {{/vendorExtensions.x-flatten-optional-params}}
    {{^vendorExtensions.x-flatten-optional-params}}
@@ -150,13 +150,13 @@ public class {{classname}} {
    {{^vendorExtensions.x-flatten-optional-params}}
    {{#allParams}}
    {{#required}}
-   * @param {{paramName}} {{{description}}} (required)
+   * @param {{paramName}} {{{description}}} (required){{#isPathParam}} A value that is not a valid identifier is rejected with an {@link ApiException} before a request is sent.{{/isPathParam}}
    {{/required}}
    {{/allParams}}
    {{/vendorExtensions.x-flatten-optional-params}}
    {{#vendorExtensions.x-flatten-optional-params}}
    {{#allParams}}
-   * @param {{paramName}} {{{description}}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}
+   * @param {{paramName}} {{{description}}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}{{#isPathParam}} A value that is not a valid identifier is rejected with an {@link ApiException} before a request is sent.{{/isPathParam}}
    {{/allParams}}
    {{/vendorExtensions.x-flatten-optional-params}}
    {{^vendorExtensions.x-flatten-optional-params}}
@@ -199,9 +199,18 @@ public class {{classname}} {
       throw new ApiException(400, "Missing the required parameter '{{paramName}}' when calling {{operationId}}");
     }
     {{/required}}{{/allParams}}
+    {{! "." and ".." are not valid path parameters}}
+    {{#pathParams}}
+    // verify the path parameter '{{paramName}}' is a valid identifier
+    String escaped{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}} = apiClient.escapeString({{{paramName}}}.toString());
+    if (escaped{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}}.equals(".") || escaped{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}}.equals("..")) {
+      throw new ApiException("invalid value for path parameter {{paramName}}");
+    }
+
+    {{/pathParams}}
     // create path and map variables
     String localVarPath = "{{{path}}}"{{#pathParams}}
-      .replaceAll("\\{" + "{{baseName}}" + "\\}", apiClient.escapeString({{{paramName}}}.toString())){{/pathParams}};
+      .replaceAll("\\{" + "{{baseName}}" + "\\}", escaped{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}}){{/pathParams}};
 
     // query params
     {{javaUtilPrefix}}List<Pair> localVarQueryParams = new {{javaUtilPrefix}}ArrayList<Pair>();

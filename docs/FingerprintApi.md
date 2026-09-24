@@ -94,7 +94,7 @@ public class FingerprintApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **visitorId** | **String**| The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) you want to delete. | |
+| **visitorId** | **String**| The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) you want to delete. A value that is not a valid identifier is rejected before a request is sent. | |
 
 ### Return type
 
@@ -182,7 +182,7 @@ public class FingerprintApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **requestId** | **String**| The unique [identifier](https://dev.fingerprint.com/reference/get-function#requestid) of each identification request. | |
+| **requestId** | **String**| The unique [identifier](https://dev.fingerprint.com/reference/get-function#requestid) of each identification request. A value that is not a valid identifier is rejected before a request is sent. | |
 
 ### Return type
 
@@ -368,7 +368,7 @@ public class FingerprintApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **visitorId** | **String**| Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Identification and all active Smart Signals. | |
+| **visitorId** | **String**| Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Identification and all active Smart Signals. A value that is not a valid identifier is rejected before a request is sent. | |
 | **requestId** | **String**| Filter visits by `requestId`.  Every identification request has a unique identifier associated with it called `requestId`. This identifier is returned to the client in the identification [result](https://dev.fingerprint.com/reference/get-function#requestid). When you filter visits by `requestId`, only one visit will be returned.  | [optional] |
 | **linkedId** | **String**| Filter visits by your custom identifier.  You can use [`linkedId`](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example: session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier.  | [optional] |
 | **limit** | **Integer**| Limit scanned results.  `GET /visitors/{visitor_id}` currently returns at most one visit. Use `GET /events/search` for paginated multi-event queries.  | [optional] |
@@ -665,7 +665,7 @@ public class FingerprintApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **requestId** | **String**| The unique event [identifier](https://dev.fingerprint.com/reference/get-function#requestid). | |
+| **requestId** | **String**| The unique event [identifier](https://dev.fingerprint.com/reference/get-function#requestid). A value that is not a valid identifier is rejected before a request is sent. | |
 | **eventsUpdateRequest** | [**EventsUpdateRequest**](EventsUpdateRequest.md)|  | |
 
 ### Return type

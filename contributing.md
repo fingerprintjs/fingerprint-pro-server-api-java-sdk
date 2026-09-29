@@ -16,7 +16,7 @@ In the project we use local jar file `bin/generator.jar`.
 
 You can just run `sh ./scripts/generate.sh` script and it will do all the work.
 
-To download fresh OpenAPI schema run `sh ./scripts/sync.sh`
+To download fresh OpenAPI schema run `./scripts/sync.sh`
 
 ### Testing the local source code of the SDK
 
